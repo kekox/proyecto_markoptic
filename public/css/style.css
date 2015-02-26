@@ -1,0 +1,155 @@
+/* ==========================================================================
+   Keko custom styles
+   ========================================================================== */
+html, body {
+    height: 100%;
+} 
+
+/* Backgrounds */
+.schema-gray{
+    background-color: #e9eaed;
+    height: auto !important;
+    min-height: 86%
+}
+
+.schema-teal{
+    background-color: #31a463;
+}
+
+.schema-light-gray{
+    background-color: #f1f2f2;
+
+}
+
+.schema-light-blue{
+    background-color: #E7EBF2;
+}
+
+.schema-black{
+    background-color: #000000;
+}
+
+.color-black{
+    color:black;
+    padding-bottom:10px;
+}
+
+.highlight{
+  background-color: green;
+}
+
+.highlight2{
+  background-color: blue;
+}
+
+.highlight3{
+  background-color: yellow;
+}
+
+.highlight4{
+  background-color: orange;
+}
+
+.highlight5{
+  background-color: green;
+}
+
+.nospace{
+    margin-bottom:-20px;
+}
+
+.space{
+    margin-top:20px;
+}
+
+.space-sm{
+    margin-top:10px;
+}
+
+
+/*Estilos para el Dashboard*/
+.grid-dashboard h3{
+    font-size: 36px;
+    font-weight: 5px;
+    font-family: 'Bitter','Open Sans',sans-serif;
+    color: #204056;
+}
+
+.grid{
+    background-color: #fff;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-bottom:20px;
+    border: #e0e0e0 1px solid;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+.grid:hover{
+    -moz-box-shadow: 0 0 10px #ccc; 
+    -webkit-box-shadow: 0 0 10px #ccc; 
+    box-shadow: 10px 10px 5px #ccc;
+}
+
+
+.grid a{
+    text-decoration: none;
+}
+/*Terminan estilos para el dashboard */
+
+/*Estilos dashboard proyectos */
+.grid-dashboard-proyecto h3{
+    font-size: 36px;
+    font-weight: 5px;
+    font-family: 'Bitter','Open Sans',sans-serif;
+    color: #204056;
+}
+
+.gridproyectos{
+    background-color: #fff;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom:20px;
+    border: #e0e0e0 1px solid;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+
+}
+
+.gridproyectos:hover{
+    -moz-box-shadow: 0 0 5px #ccc; 
+    -webkit-box-shadow: 0 0 5px #ccc; 
+    box-shadow: 10px 10px 5px #ccc;
+    
+}
+
+.gridproyectos a:hover{
+    color: #088A08;
+    text-decoration: underline;
+}
+  
+
+/*Termina estilos dashboard proyectos */
+
+/*Styles form proyectos*/
+.grid-form-1-proyecto h3{
+    font-size: 36px;
+    font-weight: 5px;
+    font-family: 'Bitter','Open Sans',sans-serif;
+    color: #204056;
+}
+
+#formulario label{
+    font-size:16px;
+   font-family: 'Montserrat','Open Sans',sans-serif;
+}
+
+
+
+
+
+
+
+
+
+

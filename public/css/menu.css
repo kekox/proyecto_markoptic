@@ -1,0 +1,114 @@
+
+/* MENU */
+
+body {
+  left: 0;
+  margin: 0;
+  position: relative;
+}
+
+/* Initial menu */
+.menu {
+  background: #202024 url('../img/menu-background.png') repeat left top;
+  left: -220px;  /* Esto hace la magia */
+  height: 100%;
+  position: fixed;
+  width: 220px;
+}
+
+/* Diseño para el menu */
+
+.menu ul {
+  border-top: 1px solid #636366;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  border-bottom: 1px solid #636366;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 45px;
+  padding-bottom: 3px;
+  padding-left: 20px;
+  padding-top: 3px;
+}
+
+.menu a {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.menu a:hover {
+  color: #FF8000;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.icon-close {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  font-size: 16px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-top: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.icon-close a:hover {
+  color: red;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  font-size: 16px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  padding-top: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.icon-menu {
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  padding-left: 25px;
+  padding-top: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.icon-menu a{
+  color: #000;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  padding-bottom: 25px;
+  padding-left: 0px;
+  padding-top: 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.icon-menu a:hover {
+  color: red;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  padding-bottom: 25px;
+  padding-left: 0px;
+  padding-top: 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
+.icon-menu i {
+  margin-right: 5px;
+}
+
+/* TERMINA MENU */
+
