@@ -34,10 +34,11 @@
             </li>
 
             </ul>
-        </div>
+</div>
 
-          
-            <div class="icon-menu"><a>
+             <div class="icon-menu"><a>
             <span class="glyphicon glyphicon-menu-hamburger"></span>
             Menu
             </a></div>
+          
+           

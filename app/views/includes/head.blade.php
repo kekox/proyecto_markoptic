@@ -7,7 +7,7 @@
 	<meta name="author" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Sistema Test</title>	
-	{{ HTML::style('css/bootstrap.css') }}
+	  {{ HTML::style('css/bootstrap.css') }}
   	{{ HTML::style('css/style.css') }}
   	{{ HTML::style('css/menu.css') }}
   	{{ HTML::style('css/login.css') }}

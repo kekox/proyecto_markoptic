@@ -1,6 +1,3 @@
-
-<<<<<<< HEAD
-
 var main = function() {
   /* Push the body and the nav over by 285px over */
   $('.icon-menu').click(function() {
@@ -98,5 +95,4 @@ $(document).ready(swap4);
 
 
 
-=======
->>>>>>> 3ae0826af16cc63f5c4401e5854ab305470aed6d
+
