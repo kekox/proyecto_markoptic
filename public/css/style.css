@@ -7,7 +7,7 @@ html, body {
 
 /* Backgrounds */
 .schema-gray{
-    background-color: #e9eaed;
+    background-color:#eee ; /*#e9eaed*/
     height: auto !important;
     min-height: 86%
 }
@@ -64,6 +64,19 @@ html, body {
 
 .space-sm{
     margin-top:10px;
+}
+
+/*Bienvenida*/
+
+.welcome{
+    color: #ffffff;
+    font-family: 'Bitter','Open Sans',sans-serif;
+    margin-bottom:-20px;
+}
+
+.welcome:hover{
+    color:white;
+    text-decoration: underline;
 }
 
 

@@ -20,6 +20,7 @@
   <!-- Para texto de parrafo-->
   {{HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,400')}}
 
+  
 </head>
 
   <body>   
@@ -28,9 +29,7 @@
     <nav class="navbar navbar-default navbartop ">
       <div class="container-fluid ">
         <div class="navbar-header hidden-xs">
-          <a class="navbar-brand" href="#">
-            <img alt="Brand" src="...">
-          </a>
+  
         </div>
         <center><p class="text-muted menutop">Sistema de Integración de Proyectos</p></center>
       </div>
@@ -64,46 +63,58 @@
 
 
           <div class="panel-body ">
-              @if (Session::has('message_incorrect'))
-                <div class="alert alert-danger"><span class="fa fa-exclamation-triangle"></span>{{ Session::get('message_incorrect') }}</div>
-              @elseif (Session::has('message_exito'))
-                <div class="alert alert-info"><span class="fa fa-check-circle"></span>{{ Session::get('message_exito') }}</div>
+
+              <center><div id="mensaje"></div></center>
+              @if(Session::has('message'))
+              <p class="alert alert-info">{{ Session::get('message') }}</p>
               @endif
+              
+            
 
                 <!--Formulario-->
-                {{ Form::open(array('url' => 'login','class' => 'form-horizontal', 'role' => 'form')) }}
+                {{ Form::open(array(
+                  'url' => 'login',
+                  'class' => 'form-horizontal', 
+                  'role' => 'form',
+                  'id' => 'formlogin'
+                   ))}}
 
                 <!-- Name -->
                 
                 <div class="input-group separetedinput">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                      {{ Form::email('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Correo Electronico')) }}
+                      {{ Form::email('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Correo Electronico', )) }}
                      
                 </div>
-                <span class="bg-danger">  {{ $errors->first('email') }}</span>
+                <span class="bg-danger" id="_email">  {{ $errors->first('email') }}</span>
                 
                 <!-- Password -->
                 <div class="input-group separetedinput">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                       {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Contraseña')) }}        
                 </div>
-                <span class="bg-danger">  {{ $errors->first('password') }}</span>
-                      
-                             
+                <span class="bg-danger" id="_password">  {{ $errors->first('password') }}</span>
+                 
+                <div class="form-group">
+                  &nbsp;&nbsp;&nbsp;&nbsp;<label>{{ Form::checkbox('remember','',false)}} Recordar mis datos
+                </label>
+               
+                </div>     
+                              
                 <!-- Login button -->
                     <div class="col-sm-5 col-lg-6">
                       <div class="row">
-                        {{ Form::submit('Iniciar Sesion', array('class' => 'btn btn-primary btn-block col-lg-3 '))}}
+                        {{ Form::input('button',null,'Iniciar Sesion', array('class' => 'btn btn-primary btn-block col-lg-3 ' , 'id' => 'btnlogin'))}}
                         {{ Form::close() }}
                       </div>
                     </div>
-
+                      <div class="load" align="center" style="display:none"><img src="img/gif/enviando.gif" alt=""></div>
                     <br>
                     <br>
                     <br>
                 
 
-                <p>¿Se te olvido tu contraseña? {{HTML::link('','Recuperar Contraseña', array('class' => ''))}}</p>
+                <p>¿Se te olvido tu contraseña? {{HTML::link('account/reset','Recuperar Contraseña', array('class' => ''))}}</p>
                 <br>
                 
           </div><!--Termina el panel body-->
@@ -164,6 +175,61 @@
     {{ HTML::script('js/jquery.js') }}
     {{ HTML::script('js/npm.js')}}
     {{ HTML::script('js/main.js') }}
+
+  <script>
+
+  $(function(){
+    
+      function send_ajax()
+      {
+        $.ajax({
+          url: 'login',
+          dataType: 'json',
+          type:'POST',
+          data: $('#formlogin').serialize(), //Se obtienen los datos del formulario
+
+
+            success: function(datos)
+            {
+              
+              //Donde se vana  mostrar los errores
+              $('#_email , #_password ').text('');
+
+                //Si la respuesta de ajax es false se hace esto
+                if(datos.success == false){
+                $.each(datos.errors, function(index, value)
+                {
+                  
+                  $('#_'+index).text(value);
+                  $('#mensaje').text("Password/username Invalid*");
+                
+                });
+                  
+                }
+                //Si la respuesta del ajax es verdadero se hace esto
+                else
+                {
+                   $('#mensaje').text("Bienvenido al Sistema");
+                  window.location = 'bienvenida';
+                }
+            },
+
+            errors: function(errors){
+              $('#errores').html("");
+              $('#errores').html(errors);
+            }
+        });
+      }
+
+        //Se manda a llamar la funcion
+        $('#btnlogin').on('click',function()
+        {
+            send_ajax();
+            
+        });
+  });
+</script>
+
 
   </body>
 </html>

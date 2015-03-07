@@ -1,14 +1,17 @@
 <?php
-
 class UserController extends BaseController{
-
-
      public function showLogin()
     {     
-       
+        // Check if we already logged in
+        if (Auth::check())
+        {
+            // Redirect to homepage
+            return Redirect::to('bienvenida');
+        }
+        // Show the login page
         return View::make('users/login');
+        
     }
-
     public function postLogin()
     {
 
@@ -16,6 +19,7 @@ class UserController extends BaseController{
             'email'=>Input::get('email'),
             'password'=>Input::get('password'),
         );
+        $remember = (Input::has('remember')) ? true : false;
 
         $rules=array(
             'email'=> 'required|email',
@@ -24,57 +28,62 @@ class UserController extends BaseController{
 
         $validator = Validator::make($data,$rules);
 
-
-        if ($validator->passes())
+         if(Request::ajax())
         {
-            // Try to log the user in.
-            if (Auth::attempt($data))
+            if ($validator->passes())
             {
-                return Redirect::to('dashboard')
-                ->with('message_welcome', ' Bienvenidos al sistema de integración de proyectos ');
-                
+                // Try to log the user in.
+               
+                if (Auth::attempt($data,$remember))
+                {
+                    return Response::json
+                                    ([
+                                        'success' => true,
+                                        'message' => 'Te has loggeado correctamente'
+                                    ]);
+                    
+                }
+                else
+                {
+                    $msg = "Email/password are incorrect";
+                    return Response::json
+
+                                    ([
+                                        'success' => false,
+                                        'errors' => $msg
+                                    ]);          
+                }
             }
             else
             {
-                return Redirect::to('login')
-                ->with('message_incorrect', ' Your email/password was incorrect.')
-                ->withErrors($validator)
-                ->withInput();
-                
+                    return Response::json
+                                    ([
+                                        'success' => false,
+                                        'errors' => $validator ->getMessageBag()->toArray()
+
+                                    ]);
             }
         }
-
-        // Something went wrong.
-        return Redirect::to('login')
-                ->withErrors($validator)
-                ->withInput(Input::except('password'));
-               
-                
-        
+           
     }
+
     public function showCreate() {
         return View::make('users/create');
     }
 
     public function postCreate(){
-
         $data=array(
             'nombre'=>Input::get('nombre'),
             'email'=>Input::get('email'),
             'password'=>Input::get('password')
         );
-
         $rules=array(
             'nombre' => 'required|min:3|alpha',
             'email' => 'required|min:2|email|unique:users',
             'password' => 'required|min:6' 
         );
-
-        $mensajes = array ('password.regex' => 'El formato de el :attribute no es correcto, debe de tener entre 8 y 10 caracteres, por lo menos un digito y un alfanumérico, y no puede contener caracteres espaciales');
-
-
+        
         $validator = Validator::make($data, $rules);
-
         if ($validator->passes()) {
             $user = new User;
             $user->nombre = Input::get('nombre');
@@ -82,30 +91,27 @@ class UserController extends BaseController{
             $user->password =  Hash::make(Input::get('password'));
             $user->save();
 
+            Mail::send('emails.welcome', array('nombre'=>Input::get('nombre')), function($message){
+                $message->to(Input::get('email'), Input::get('nombre'));
+                $message->subject('Gracias por registrarse');    
+             });
+
          return Redirect::to('login')
          ->with('message_exito', 'Thank you for creating a new account. Please sign in.');
          }
-
         return Redirect::to('create')
                 ->with('message_fail', ' Verifique sus datos.')
                 ->withErrors($validator)
                 ->withInput();
-
         
     }
-
     public function getLogout()
     {
         // Log out
         Auth::logout();
-
         // Redirect to homepage
         return Redirect::to('login')
                 ->with('info', 'Haz cerrado sesion');
     }
-
-
    
-
-
 }

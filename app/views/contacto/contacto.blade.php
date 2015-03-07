@@ -2,10 +2,6 @@
 @section('title')
 :: Dashboard
 @stop 
-@section('head')
-
-@stop
- 
 @section('contenido')
 
   <section >
@@ -16,16 +12,18 @@
                   	<div class="col-lg-8 col-lg-offset-2">
                   		
                   		<center><h3>Contacto</h3></center>
-                      <small>{{HTML::link('dashboard',' ',array('class' => 'glyphicon glyphicon-arrow-left color-black' , 'id' =>'formcontacto'))}}</small>
+                      <small>{{HTML::link('dashboard',' ',array('class' => 'glyphicon glyphicon-arrow-left color-black' ))}}</small>
                       {{-- Se despliegan los errores de acuerdo a su situacion--}}
-                      @if (Session::has('message_alert'))
-                        <div class="alert alert-danger"><span class="fa fa-exclamation-triangle"></span>{{ Session::get('message_alert') }}</div>
-                        @elseif(Session::has('message_exito'))
-                         <div class="alert alert-success" ><span class="fa fa-check-circle"></span>{{ Session::get('message_exito') }}</div>
-                      @endif
+                      
+                      <center><div id="mensaje"></div></center>
+                    
+                         {{ Form::open(array(
+                        'url' => 'contacto',
+                        'class' => 'form-horizontal', 
+                        'role' => 'form' , 
+                        'id' =>'formcontacto'
+                        ))}}
 
-
-                      {{ Form::open(array('url' => 'contacto','class' => 'form-horizontal', 'role' => 'form')) }}
                       <div class="form-group">
                           {{form::label('Nombre:')}}
                           {{Form::input('text','name',Input::old('name'),array('class' => 'form-control' , 'placeholder' =>'Nombre'))}}
@@ -56,8 +54,8 @@
                       
                       
 
-            
-                      {{Form::input('submit',null,'Enviar',array('class' =>'btn btn-primary','id'=> 'btncontact'))}}
+                   
+                      {{Form::input('button',null,'Enviar',array('class' =>'btn btn-primary','id'=> 'btncontact'))}}
 
 
 
@@ -65,7 +63,8 @@
 
 						
 
-		                  	
+		                  <div class="load" align="center" style="display:none"><img src="img/gif/enviando.gif" alt=""></div>
+                      <div class="load2" align="center" style="display:none"><img src="img/gif/ok.png" alt=""></div>	
 
               		</div>
             	</div>
@@ -75,4 +74,65 @@
             
     
   </section>
+
+  <script>
+
+  $(function(){
+    
+      function send_ajax()
+      {
+        $.ajax({
+          url: 'contacto',
+          cache: false,
+          dataType: 'json',
+          type:'POST',
+          data: $('#formcontacto').serialize(), //Se obtienen los datos del formulario
+
+            beforeSend: function(){
+              $('.load').show();
+              $('.load2').hide();
+            },
+
+            success: function(datos)
+            {
+              $('.load').hide();
+               $('.load2').hide();
+              //Donde se vana  mostrar los errores
+              $('#_name , #_email , #_subject , #_msg').text('');
+
+                //Si la respuesta de ajax es false se hace esto
+                if(datos.success == false){
+                $.each(datos.errors, function(index, value)
+                {
+                  $('#_'+index).text(value);
+                  $('#mensaje').text("Favor de revisar los campos*");
+                 
+                  //window.location='dashboard'; Redirije a otro Lugar
+                });
+                }
+                //Si la respuesta del ajax es verdadero se hace esto
+                else
+                {
+                  document.getElementById('formcontacto').reset();
+                  $('#mensaje').text("Mensaje enviado con Exito");
+                  $('.load2').show();
+                  setTimeout("window.location = 'contacto'",3000);
+                  
+                }
+            },
+
+            
+            
+        });
+      }
+
+        //Se manda a llamar la funcion
+        $('#btncontact').on('click',function()
+        {
+            send_ajax();
+            
+        });
+  });
+</script>
+
 @stop

@@ -9,7 +9,7 @@ class ContactoController extends Controller {
 
 	public function postContacto()
 	{
-		$mensaje =null;
+		
 		
 		$data= array(
 			'name' => Input::get('name'),
@@ -27,29 +27,45 @@ class ContactoController extends Controller {
 
 
         $validator = Validator::make($data, $rules);
+        if(Request::ajax())
+	    			{
+	        if ($validator->passes()) 
+	        {
+	        	$toEmail='keko_daniel@hotmail.com';
+	        	$toName='Administrador';
+	        	$fromEmail=Input::get('email');
+				$fromName=Input::get('name');
 
-        if ($validator->passes()) {
-        	$toEmail='keko_daniel@hotmail.com';
-        	$toName='Administrador';
-        	$fromEmail= Input::get('email');
-			$fromName=Input::get('name');
-	            Mail::send('emails.contacto',$data,function($message) use($toName,$toEmail,$fromName,$fromEmail)
-	            {
-	            	$message->to($toEmail,$toName);
-	            	$message->from($fromEmail,$fromName);
-	            	$message->subject('Nuevo email de un usuario');
-	            });
-
-            	
-            	return Redirect::to('contacto')
-            		->with('message_exito', ' Mensaje enviado con éxito');
-         	}
-
-         	return Redirect::to('contacto')
-                ->with('message_alert', ' Favor de llenar los campos correctamente*')
-                ->withErrors($validator)
-                ->withInput();
+		            Mail::send('emails.contacto',$data,function($message) use($toEmail,$toName,$fromName,$fromEmail)
+		            {
+		            	$message->to($toEmail,$toName);
+		            	$message->from($fromEmail,$fromName);
+		            	$message->subject('Nuevo email de un usuario');
+		            });
+		            
+		           		return Response::json
+			        			([
+			        				'success' => true,
+			        				'message' => 'Se ha enviado correctamente'
+			        			]);
+	            	
+	            	
+	        }
+	        else
+	        {	
+	        		
+	        			return Response::json
+			        			([
+			        				'success' => false,
+			        				'errors' => $validator ->getMessageBag()->toArray()
+			        			]);
+			       
+	        }
+	   
+	     }    
+         	
 		
 		
-	}
-}
+	}//Termina la function postController
+
+}//Llave que termina la clase

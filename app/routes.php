@@ -14,8 +14,6 @@
 /* Pagina Bienvenida y Login*/
 Route::get('/',array('uses' => 'UserController@showLogin'));
 
-/* Probando angular */
-Route::get('test', array('uses' => 'AngularController@showTest'));
 
 
 /*login*/
@@ -25,16 +23,25 @@ Route::get ('create', array('uses' => 'UserController@showCreate'));
 Route::post('create', array('before' => 'csrf','uses' => 'UserController@postCreate'));
 Route::get ('logout',  array('uses' => 'UserController@getLogout'));
 
-/* Redireccionar a la raiz en caso de que se accede a una pagina que no existe
+/*Reset Password*/
+Route::get('account/reset',array('uses' => 'PasswordController@showRemind'));
+Route::post('account/reset',array('uses' => 'PasswordController@postRemind'));
+Route::get('account/reset/{token}', array('uses' => 'PasswordController@showReset','as'=>'account.reset'));
+Route::post('account/reset/{token}', array('uses' => 'PasswordController@postReset','as'=>'account.update'));
+
+/* Redireccionar a la raiz en caso de que se accede a una pagina que no existe*/
 App::missing(function($excepcion)
 {
 	return Response::view('error.error404',array(),404);
 });
-*/
 
 
 Route::group(array('before' => 'auth'), function()
 {
+
+	/*Pagina Bienvenida*/
+    Route::get('bienvenida', array('uses' => 'HomeController@showWelcome'));
+	
 	/*Pagina Home*/
     Route::get('dashboard', array('uses' => 'HomeController@showDashboard'));
 

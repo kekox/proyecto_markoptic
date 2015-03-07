@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'keko_daniel@hotmail.com', 'name' => 'Markoptic Administrator'),
 
 	/*
 	|--------------------------------------------------------------------------

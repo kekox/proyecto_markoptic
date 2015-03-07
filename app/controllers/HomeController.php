@@ -23,8 +23,7 @@ class HomeController extends BaseController {
 	protected function showDashboard()
 	{
 		return View::make('dashboard',array (Auth::user()->email ));
-
-		
+	
 	}
 
 
