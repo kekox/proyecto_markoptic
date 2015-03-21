@@ -7,7 +7,7 @@
           <a href="">Contáctanos </a>
           / 
           <a href="">Avisos y Condiciones</a>
-          <span class="pull-right text-muted menubottom hidden-xs">©Markoptic 2015</span>
+          <span class="pull-right text-muted menubottom hidden-xs">© Markoptic 2015</span>
           </center>       
         </div>
       </footer>

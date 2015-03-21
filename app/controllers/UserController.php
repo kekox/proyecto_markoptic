@@ -1,6 +1,7 @@
 <?php
 class UserController extends BaseController{
-     public function showLogin()
+
+     public function getLogin()
     {     
         // Check if we already logged in
         if (Auth::check())
@@ -9,7 +10,7 @@ class UserController extends BaseController{
             return Redirect::to('bienvenida');
         }
         // Show the login page
-        return View::make('users/login');
+        return View::make('users.login');
         
     }
     public function postLogin()
@@ -45,12 +46,11 @@ class UserController extends BaseController{
                 }
                 else
                 {
-                    $msg = "Email/password are incorrect";
                     return Response::json
 
                                     ([
                                         'success' => false,
-                                        'errors' => $msg
+                                        'message' => 'Email/password are incorrect'
                                     ]);          
                 }
             }
@@ -67,19 +67,26 @@ class UserController extends BaseController{
            
     }
 
-    public function showCreate() {
+    public function getCreate() {
         return View::make('users/create');
     }
 
     public function postCreate(){
         $data=array(
             'nombre'=>Input::get('nombre'),
+            'apellidoP'=>Input::get('apellidoP'),
+            'apellidoM'=>Input::get('apellidoM'),
             'email'=>Input::get('email'),
+            'perfil'=>Input::get('perfil'),
             'password'=>Input::get('password')
+
         );
         $rules=array(
-            'nombre' => 'required|min:3|alpha',
+            'nombre' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3',
+            'apellidoP' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
+            'apellidoM' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'email' => 'required|min:2|email|unique:users',
+            'perfil' => 'required',
             'password' => 'required|min:6' 
         );
         
@@ -87,7 +94,10 @@ class UserController extends BaseController{
         if ($validator->passes()) {
             $user = new User;
             $user->nombre = Input::get('nombre');
+            $user->apellido_Paterno = Input::get('apellidoP');
+            $user->apellido_Materno = Input::get('apellidoM');
             $user->email = Input::get('email');
+            $user->perfil = Input::get('perfil');
             $user->password =  Hash::make(Input::get('password'));
             $user->save();
 
@@ -106,6 +116,15 @@ class UserController extends BaseController{
         
     }
     public function getLogout()
+    {
+        // Log out
+        Auth::logout();
+        // Redirect to homepage
+        return Redirect::to('login')
+                ->with('info', 'Haz cerrado sesion');
+    }
+
+     public function postLogout()
     {
         // Log out
         Auth::logout();

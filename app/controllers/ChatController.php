@@ -5,7 +5,9 @@ class ChatController extends Controller {
 	
 	protected function showChat()
 	{
-		return View::make('chat/chat');
+		$id= Auth::user()->id_perfil;
+		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		return View::make('chat/chat',array('perfiles' => $perfiles));
 	}
 
 }

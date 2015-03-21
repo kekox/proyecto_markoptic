@@ -36,8 +36,8 @@
             </ul>
 </div>
 
-             <div class="icon-menu"><a>
-            <span class="glyphicon glyphicon-menu-hamburger"></span>
+             <div class="icon-menu "><a>
+            <span class="glyphicon glyphicon-menu-hamburger " style="margin-left:-25px;"></span>
             Menu
             </a></div>
           

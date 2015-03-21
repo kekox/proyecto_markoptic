@@ -1,108 +1,91 @@
-/* ==========================================================================
-   Keko's custom styles
-   ========================================================================== */
+/*Bienvenida*/
 
-
-
-
-/* ==========================================================================
-   Alex's custom styles
-   ========================================================================== */
-/*barra de navegacion*/
-.navbar-brand {
-    margin: 0 30px;
-    padding: 5px;
-    }
-
-.navbar{
-    border-bottom: solid #31a463 5px;
-}
-.shadow {
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+.welcome{
+    color: #ffffff;
+    font-family: 'Bitter','Open Sans',sans-serif;
+    margin-bottom:-20px;
 }
 
-/*separador horizontal*/
-hr {
-    border-top-color: #ddd;
-    border-bottom: #eee;
-    border-style: solid none;
-    border-width: 1px 0 1px 0;
-    margin: 10px 0;
+.welcome:hover{
+    color:white;
+    text-decoration: underline;
 }
 
-.lateral-well{
-   padding: 8px;
-}
-.body-well{
-   padding: 15px;
-}
-.body-well h3{
-   margin-top: 0;
+
+/*Estilos para el Dashboard*/
+.grid-dashboard h3{
+    font-size: 36px;
+    font-weight: 5px;
+    font-family: 'Bitter','Open Sans',sans-serif;
+    color: #204056;
 }
 
-.nav-header{
-    padding: 3px 15px;
-    font-size: 1.08em;
-    font-weight: 900;
-    color:#999;
-}
-.nav-list li a{
-    padding: 3px 15px;
-    font-size: .9em;
-    font-weight: 600;
-}
-.nav-list li a:link, a:hover, a:visited, a:active {
-background-color:transparent;
-
-}
-
-/*opciones del cvu*/
-.option-block{
+.grid{
+    background-color: #fff;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-bottom:20px;
+    margin-top: 10px;
     border: #e0e0e0 1px solid;
-    text-align: center;
+    
+}
+
+.grid:hover{
+    -moz-box-shadow: 0 0 10px #ccc; 
+    -webkit-box-shadow: 0 0 10px #ccc; 
+    box-shadow: 10px 10px 5px #ccc;
+    border-bottom: solid 5px #31a463;
+}
+
+
+.grid a{
+    text-decoration: none;
+}
+/*Terminan estilos para el dashboard */
+
+/*Estilos dashboard proyectos */
+.grid-dashboard-proyecto h3{
+    font-size: 36px;
+    font-weight: 5px;
+    font-family: 'Bitter','Open Sans',sans-serif;
+    color: #204056;
+}
+
+.gridproyectos{
+    background-color: #fff;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom:20px;
+    border: #e0e0e0 1px solid;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
-    border-radius: 3px;
-    margin: 10px;
-    padding: 5px;
-    font-weight: bolder;
-    font-size: 0.9em;
-    background-color: #eaeaea;
-}
-.option-block p{
-margin: 0;
+
 }
 
-.option-block img{
-    width: 80px;
-    height: 80px;
-    opacity:0.2;
-}
-.option-block img:hover{
-    opacity:0.35;
+.gridproyectos:hover{
+    -moz-box-shadow: 0 0 5px #ccc; 
+    -webkit-box-shadow: 0 0 5px #ccc; 
+    box-shadow: 10px 10px 5px #ccc;
+    
 }
 
-.logo{
-    height: 180px;
-    width: auto;
-    margin-top: -80px;
-    margin-bottom: 20px;
+.gridproyectos a:hover{
+    color: #088A08;
+    text-decoration: underline;
 }
-.text-justify{
-    text-align: justify;
+  
+
+/*Termina estilos dashboard proyectos */
+
+/*Styles form proyectos*/
+.grid-form-1-proyecto h3{
+    font-size: 36px;
+    font-weight: 5px;
+    font-family: 'Bitter','Open Sans',sans-serif;
+    color: #204056;
 }
-.label-as-badge {
-    border-radius: 1em;
+
+#formulario label{
+    font-size:16px;
+   font-family: 'Montserrat','Open Sans',sans-serif;
 }
-
-
-
-
-
-
-
-
-
-
-
-

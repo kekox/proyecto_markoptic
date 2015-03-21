@@ -69,14 +69,34 @@
               @endif
 
                 <!--Formulario-->
-                {{ Form::open(array('url' => 'create','class' => 'form-horizontal', 'role' => 'form')) }}
+                {{ Form::open(array(
+                  'route' => 'account.create',
+                  'class' => 'form-horizontal', 
+                  'role' => 'form')) }}
+
                 <!-- nombre -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ Form::text('nombre', Input::old('nombre'), array('class' => 'form-control', 'placeholder' => 'Nombre')) }}
+                        {{ Form::text('nombre', Input::old('nombre'), array('class' => 'form-control', 'placeholder' => 'Nombre(s)')) }}
                 </div>
                  <!--Errores-->
                 <span class="bg-danger">  {{ $errors->first('nombre') }}</span>
+
+                <!-- Apellido Paterno -->
+                <div class="input-group separetedinput" >
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ Form::text('apellidoP', Input::old('apellidoP'), array('class' => 'form-control', 'placeholder' => 'Apellido Paterno')) }}
+                </div>
+                 <!--Errores-->
+                <span class="bg-danger">  {{ $errors->first('apellidoP') }}</span>
+
+                 <!-- Apellido Materno -->
+                <div class="input-group separetedinput" >
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ Form::text('apellidoM', Input::old('apellidoM'), array('class' => 'form-control', 'placeholder' => 'Apellido Materno')) }}
+                </div>
+                 <!--Errores-->
+                <span class="bg-danger">  {{ $errors->first('apellidoM') }}</span>
                 
        
                 <!-- Email -->
@@ -85,6 +105,17 @@
                 {{ Form::email('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Correo Electronico')) }}
                 </div>
                 <span class="bg-danger">  {{ $errors->first('email') }}</span>
+
+                <!-- Perfil -->
+                <div class="input-group separetedinput" >
+    
+                {{ Form::select('perfil',array(
+                  '1' =>'Usuario',
+                  '2' => 'Investigador',
+                  '3' => 'Administrador'
+                  ),'Usuario') }}
+                </div>
+                <span class="bg-danger">  {{ $errors->first('perfil') }}</span>
                 
 
                 <!-- Password -->

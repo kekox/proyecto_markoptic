@@ -12,30 +12,33 @@
 */
 
 /* Pagina Bienvenida y Login*/
-Route::get('/',array('uses' => 'UserController@showLogin'));
+Route::get('/',array('uses' => 'HomeController@showLogin'));
 
-
+/*Route::controller('account','UserController');*/
 
 /*login*/
-Route::get ('login' , array('uses' => 'UserController@showLogin'));
-Route::post('login' , array('before' => 'csrf','uses' => 'UserController@postLogin'));
-Route::get ('create', array('uses' => 'UserController@showCreate'));
-Route::post('create', array('before' => 'csrf','uses' => 'UserController@postCreate'));
-Route::get ('logout',  array('uses' => 'UserController@getLogout'));
+Route::get ('login' , array('uses' => 'UserController@getLogin'));
+Route::post('login' , array('before' => 'csrf','uses' => 'UserController@postLogin','as'=>'account.login'));
+Route::get ('create', array('uses' => 'UserController@getCreate'));
+Route::post('create', array('before' => 'csrf','uses' => 'UserController@postCreate','as'=>'account.create'));
+Route::get ('logout',  array('uses' => 'UserController@getLogout','as'=>'account.logout'));
+
+
 
 /*Reset Password*/
-Route::get('account/reset',array('uses' => 'PasswordController@showRemind'));
-Route::post('account/reset',array('uses' => 'PasswordController@postRemind'));
-Route::get('account/reset/{token}', array('uses' => 'PasswordController@showReset','as'=>'account.reset'));
-Route::post('account/reset/{token}', array('uses' => 'PasswordController@postReset','as'=>'account.update'));
+Route::get('password/reset',array('uses' => 'PasswordController@showRemind'));
+Route::post('password/reset',array('uses' => 'PasswordController@postRemind','as'=>'account.reset'));
+Route::get('password/reset/{token}', array('uses' => 'PasswordController@showReset'));
+Route::post('password/reset/{token}', array('uses' => 'PasswordController@postReset','as'=>'password.update'));
 
-/* Redireccionar a la raiz en caso de que se accede a una pagina que no existe*/
+/* Redirecciona a una pagina de error personalizada y ofrece la opcion de ir a inicio o regresar*/
 App::missing(function($excepcion)
 {
 	return Response::view('error.error404',array(),404);
 });
 
 
+/*Filtro para no permirtir a estas paginas sin estar loggiado  */
 Route::group(array('before' => 'auth'), function()
 {
 
@@ -45,19 +48,33 @@ Route::group(array('before' => 'auth'), function()
 	/*Pagina Home*/
     Route::get('dashboard', array('uses' => 'HomeController@showDashboard'));
 
+    /*update perfil*/
+    Route::post('updateperfil',array('uses'=>'CmsController@postUpdatePerfil','as'=>'user.update.perfil'));
+    Route::get('password/change',array('uses'=>'PasswordController@getChange','as'=>'password.change'));
+
 
     /*seccion proyectos*/
-	Route::get('proyectos', array('uses' => 'ProyectoController@showIndex'));
-	Route::get('proyectos/agregar/seccion1',array('uses' => 'ProyectoController@showCreate'));
-	Route::post('proyectos/agregar',array('uses' => 'ProyectoController@postCreate'));
-	Route::get('proyectos/agregar/seccion2',array('uses' => 'ProyectoController@showCreate2'));
-	Route::post('proyectos/agregar2',array('uses' => 'ProyectoController@postCreate2'));
-	Route::get('proyectos/agregar/seccion3',array('uses' => 'ProyectoController@showCreate3'));
-	Route::post('proyectos/agregar3',array('uses' => 'ProyectoController@postCreate3'));
+    Route::get('proyectos', array('uses' => 'ProyectoController@showIndex'));
+    	/*prefijo para */
+		Route::group(array('prefix' => 'proyectos/agregar/seccion'),function()
+		{
+			Route::get('/1',array('uses' => 'ProyectoController@showCreate'));
+			Route::post('/1',array('uses' => 'ProyectoController@postCreate','as'=>'addseccion1' ));
+			Route::get('/2',array('uses' => 'ProyectoController@showCreate2'));
+			Route::post('/2',array('uses' => 'ProyectoController@postCreate2','as'=>'addseccion2'));
+			Route::get('/3',array('uses' => 'ProyectoController@showCreate3'));
+			Route::post('/3',array('uses' => 'ProyectoController@postCreate3','as'=>'addseccion3'));
+		});
+	
 
 
 	/*Seccion CMS*/
-	Route::get('cms',array('uses' => 'CmsController@showIndex'));
+	Route::get('cms',array('uses' => 'CmsController@getIndex'));
+	Route::post('cms',array('uses' => 'CmsController@postStore','as'=>'user.store'));
+	Route::get('cms/delete/{id}',array('uses' => 'CmsController@getDelete','as'=>'user.delete'));
+	Route::post('cms/edit/{id}',array('uses' => 'CmsController@postData','as'=>'user.data'));
+	Route::post('cms/update',array('uses'=>'CmsController@postUpdate','as'=>'user.update'));
+
 
 
 	/*Seccion del chat */
@@ -65,10 +82,12 @@ Route::group(array('before' => 'auth'), function()
 
 	/*Seccion de dudas y sugerencias */
 	Route::get('contacto',array('uses' => 'ContactoController@showContacto'));
-	Route::post('contacto',array('uses' => 'ContactoController@postContacto'));
+	Route::post('contacto',array('uses' => 'ContactoController@postContacto', 'as' =>'contacto.sent'));
+
+	
+	
+
 });
-
-
 
 
 

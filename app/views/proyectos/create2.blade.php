@@ -16,7 +16,7 @@
 
 						          <!--Formulario-->
                     <div id="formulario" class="space">
-                        {{ Form::open(array('url' => 'proyectos/agregar2','class' => 'form-horizontal', 'role' => 'form')) }}
+                        {{ Form::open(array('route' => 'addseccion2','class' => 'form-horizontal', 'role' => 'form')) }}
                         
                          
                 

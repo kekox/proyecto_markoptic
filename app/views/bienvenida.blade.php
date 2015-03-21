@@ -8,8 +8,10 @@
 	<section>
 
 
-			<div class="jumbotron" style="margin-bottom:-30px;">
-				<div class="container" style="background-color:white; border: #e0e0e0 1px solid; ">
+
+			<div class="jumbotron schema-white" style="margin-bottom:-30px;">
+				<div class="container " >
+
 					
 						<span>
 							<img src="img/bienvenida.jpg" alt="" class="img-responsive">
@@ -17,7 +19,7 @@
 						<br>
 					
 						<span>
-							<center><button type="btn" class="btn btn-success btn-lg">{{ HTML::link('dashboard', ' ir al Dashboard',array('class' => 'welcome')); }}</button></center>
+							<center><button type="btn" class="btn btn-primary btn-lg">{{ HTML::link('dashboard', ' ir al Dashboard',array('class' => 'welcome')); }}</button></center>
 						</span>
 				
 					

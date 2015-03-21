@@ -6,7 +6,7 @@ class PasswordController extends BaseController {
 
 	public function showRemind()
  	{
-    	return View::make('account/remind');
+    	return View::make('password/remind');
   	}
 
 	public function postRemind()
@@ -36,7 +36,7 @@ class PasswordController extends BaseController {
         		}
         		
         }else{
-        		return Redirect::to('account/reset')
+        		return Redirect::to('password/reset')
         			->withErrors($validator)
                 	->withInput();
         }
@@ -47,7 +47,7 @@ class PasswordController extends BaseController {
 	public function showReset($token = null)
 	{
 		if (is_null($token)) App::abort(404);
-  		return View::make('account/reset')->with('token', $token);
+  		return View::make('password/reset')->with('token', $token);
 	}
 
 	public function postReset($token)
@@ -80,10 +80,10 @@ class PasswordController extends BaseController {
 			        return Redirect::back()->with('error', Lang::get($response));
 
 			    case Password::PASSWORD_RESET:
-			        return Redirect::to('/');
+			        return Redirect::to('login');
 		    	}
 	  	}else{
-	  		return View::make('account/reset')->with('token', $token)->withErrors($validator);
+	  		return View::make('password/reset')->with('token', $token)->withErrors($validator);
         			
                 	
 	  	}
@@ -92,6 +92,15 @@ class PasswordController extends BaseController {
 
 	}
 
+	public function getChange(){
+		$id= Auth::user()->id_perfil;
+		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		return View::make('password/change',array('perfiles' => $perfiles));
+	}
 
+
+	public function postChange(){
+
+	}
 	
 }

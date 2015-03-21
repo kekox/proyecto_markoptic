@@ -9,18 +9,22 @@ class ProyectoController extends Controller {
 	 */
 	protected function showIndex()
 	{
-		return View::make('proyectos/index');
+		$id= Auth::user()->id_perfil;
+		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		return View::make('proyectos/index',array('perfiles' => $perfiles));
 	}
 
 
 	protected function showCreate()
-	{
-		return View::make('proyectos/create');
+	{	
+		$id= Auth::user()->id_perfil;
+		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		return View::make('proyectos/create',array('perfiles' => $perfiles));
 	}
 
 	protected function postCreate()
 	{
-		return Redirect::to('proyectos/agregar/seccion2')
+		return Redirect::to('proyectos/agregar/seccion/2')
                 ->with('message_welcome', 'Se ha loggueado con exito')
                 ->withInput();
 
@@ -28,12 +32,14 @@ class ProyectoController extends Controller {
 
 	protected function showCreate2()
 	{
-		return View::make('proyectos/create2');
+		$id= Auth::user()->id_perfil;
+		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		return View::make('proyectos/create2',array('perfiles' => $perfiles));
 	}
 
 	protected function postCreate2()
 	{
-		return Redirect::to('proyectos/agregar/seccion3')
+		return Redirect::to('proyectos/agregar/seccion/3')
                 ->with('message', 'Se ha loggueado con exito')
                 ->withInput();
 
@@ -41,6 +47,8 @@ class ProyectoController extends Controller {
 
 	protected function showCreate3()
 	{
-		return View::make('proyectos/create3');
+		$id= Auth::user()->id_perfil;
+		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		return View::make('proyectos/create3',array('perfiles' => $perfiles));
 	}
 }

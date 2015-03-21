@@ -29,7 +29,6 @@
     <nav class="navbar navbar-default navbartop ">
       <div class="container-fluid ">
         <div class="navbar-header hidden-xs">
-  
         </div>
         <center><p class="text-muted menutop">Sistema de Integración de Proyectos</p></center>
       </div>
@@ -64,16 +63,17 @@
 
           <div class="panel-body ">
 
-              <center><div id="mensaje"></div></center>
+              <center><span id="mensaje" class="display-errors" ></span></center>
+              <center><span id="errores" class="display-errors" ></span></center>
               @if(Session::has('message'))
-              <p class="alert alert-info">{{ Session::get('message') }}</p>
+              <p class="alert alert-info"><center>{{ Session::get('message') }}</center></p>
               @endif
               
             
 
                 <!--Formulario-->
                 {{ Form::open(array(
-                  'url' => 'login',
+                  'route' => 'account.login',
                   'class' => 'form-horizontal', 
                   'role' => 'form',
                   'id' => 'formlogin'
@@ -83,17 +83,17 @@
                 
                 <div class="input-group separetedinput">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                      {{ Form::email('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Correo Electronico', )) }}
+                      {{ Form::email('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Correo Electronico', 'id' => 'username' )) }}
                      
                 </div>
-                <span class="bg-danger" id="_email">  {{ $errors->first('email') }}</span>
+                <span class=" display-errors"  id="_email">  {{ $errors->first('email') }}</span>
                 
                 <!-- Password -->
                 <div class="input-group separetedinput">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                      {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Contraseña')) }}        
+                      {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Contraseña','id'=>'password')) }}        
                 </div>
-                <span class="bg-danger" id="_password">  {{ $errors->first('password') }}</span>
+                <span class=" display-errors" id="_password">  {{ $errors->first('password') }}</span>
                  
                 <div class="form-group">
                   &nbsp;&nbsp;&nbsp;&nbsp;<label>{{ Form::checkbox('remember','',false)}} Recordar mis datos
@@ -114,7 +114,7 @@
                     <br>
                 
 
-                <p>¿Se te olvido tu contraseña? {{HTML::link('account/reset','Recuperar Contraseña', array('class' => ''))}}</p>
+                <p>¿Se te olvido tu contraseña? {{HTML::link('password/reset','Recuperar Contraseña', array('class' => ''))}}</p>
                 <br>
                 
           </div><!--Termina el panel body-->
@@ -135,7 +135,7 @@
           <a href="">Contáctanos </a>
           / 
           <a href="">Avisos y Condiciones</a>
-          <span class="pull-right text-muted hidden-xs">©Markoptic 2015</span>
+          <span class="pull-right text-muted hidden-xs">© Markoptic 2015</span>
           </center>
           
         </div>
@@ -201,16 +201,17 @@
                 {
                   
                   $('#_'+index).text(value);
-                  $('#mensaje').text("Password/username Invalid*");
+                  
                 
-                });
+                }($('#mensaje').text("Password/username Invalid*")));
                   
                 }
                 //Si la respuesta del ajax es verdadero se hace esto
                 else
                 {
-                   $('#mensaje').text("Bienvenido al Sistema");
-                  window.location = 'bienvenida';
+
+                      $('#mensaje').text("Bienvenido al Sistema");
+                       window.location = 'bienvenida';
                 }
             },
 

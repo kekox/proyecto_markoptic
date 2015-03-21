@@ -16,7 +16,7 @@
 
 		                  	<div  class="col-sm-5 col-md-5 col-lg-5 gridproyectos" >
 		                  		<center><img id="agregar" style="margin-top:10px;" src="img/add.png" alt=""></center>
-		                  		<center><h3>{{HTML::link('proyectos/agregar/seccion1','Agregar')}}</h3></center>             		
+		                  		<center><h3>{{HTML::link('proyectos/agregar/seccion/1','Agregar')}}</h3></center>             		
 		                  	</div>
 
 		                  	<div class="col-sm-5 col-md-5 col-lg-5 gridproyectos">

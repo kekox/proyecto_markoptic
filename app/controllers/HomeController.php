@@ -14,15 +14,31 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+	public function showLogin()
+	{
+		// Check if we already logged in
+        if (Auth::check())
+        {
+            // Redirect to homepage
+            return Redirect::to('bienvenida');
+        }
+        // Show the login page
+        return View::make('users/login');
+	}
 
 	public function showWelcome()
 	{
-		return View::make('bienvenida');
+		$id= Auth::user()->id_perfil;
+		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		return View::make('bienvenida',array('perfiles' => $perfiles));
 	}
 
 	protected function showDashboard()
 	{
-		return View::make('dashboard',array (Auth::user()->email ));
+		$id= Auth::user()->id_perfil;
+		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		return View::make('dashboard',array('perfiles' => $perfiles));
+
 	
 	}
 

@@ -12,13 +12,16 @@ html, body {
     min-height: 86%
 }
 
+.schema-white{
+    background-color: #ffffff;
+}
+
 .schema-teal{
     background-color: #31a463;
 }
 
 .schema-light-gray{
     background-color: #f1f2f2;
-
 }
 
 .schema-light-blue{
@@ -29,9 +32,46 @@ html, body {
     background-color: #000000;
 }
 
+.schema-red{
+    background-color: #c9302c;
+}
+
+.schema-green{
+    background-color: #5cb85c;
+}
+
+.schema-navy-blue{
+  background: #343D46;
+  border-bottom: 1px solid white;
+  font-size: 16px;
+  font-family: 'Montserrat';
+}
+
+/*colores de letras*/
 .color-black{
-    color:black;
-    padding-bottom:10px;
+    color:#000000;
+}
+
+.color-white{
+    color:#ffffff;
+}
+
+/*familia de letras*/
+.opensans{
+    font-family: 'Open Sans';
+}
+
+.roboto{
+  font-family: 'roboto'
+}
+
+
+/*titulos*/
+.titulo{
+    font-family: 'Montserrat';
+    font-weight:200px;
+    font-size: 30px;
+    font-style: bold;
 }
 
 .highlight{
@@ -66,96 +106,16 @@ html, body {
     margin-top:10px;
 }
 
-/*Bienvenida*/
-
-.welcome{
-    color: #ffffff;
-    font-family: 'Bitter','Open Sans',sans-serif;
-    margin-bottom:-20px;
+.display-errors{
+    color:#a94442; 
+    border-color:#ebccd1;
 }
 
-.welcome:hover{
-    color:white;
-    text-decoration: underline;
+.display-warning{
+    color:#8a6d3b; 
+    border-color:#faebcc;
 }
 
-
-/*Estilos para el Dashboard*/
-.grid-dashboard h3{
-    font-size: 36px;
-    font-weight: 5px;
-    font-family: 'Bitter','Open Sans',sans-serif;
-    color: #204056;
-}
-
-.grid{
-    background-color: #fff;
-    margin-left: 10px;
-    margin-right: 5px;
-    margin-bottom:20px;
-    border: #e0e0e0 1px solid;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-}
-
-.grid:hover{
-    -moz-box-shadow: 0 0 10px #ccc; 
-    -webkit-box-shadow: 0 0 10px #ccc; 
-    box-shadow: 10px 10px 5px #ccc;
-}
-
-
-.grid a{
-    text-decoration: none;
-}
-/*Terminan estilos para el dashboard */
-
-/*Estilos dashboard proyectos */
-.grid-dashboard-proyecto h3{
-    font-size: 36px;
-    font-weight: 5px;
-    font-family: 'Bitter','Open Sans',sans-serif;
-    color: #204056;
-}
-
-.gridproyectos{
-    background-color: #fff;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom:20px;
-    border: #e0e0e0 1px solid;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-
-}
-
-.gridproyectos:hover{
-    -moz-box-shadow: 0 0 5px #ccc; 
-    -webkit-box-shadow: 0 0 5px #ccc; 
-    box-shadow: 10px 10px 5px #ccc;
-    
-}
-
-.gridproyectos a:hover{
-    color: #088A08;
-    text-decoration: underline;
-}
-  
-
-/*Termina estilos dashboard proyectos */
-
-/*Styles form proyectos*/
-.grid-form-1-proyecto h3{
-    font-size: 36px;
-    font-weight: 5px;
-    font-family: 'Bitter','Open Sans',sans-serif;
-    color: #204056;
-}
-
-#formulario label{
-    font-size:16px;
-   font-family: 'Montserrat','Open Sans',sans-serif;
-}
 
 
 

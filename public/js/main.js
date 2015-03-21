@@ -37,59 +37,33 @@ $('.menu ul > li').hover(function(){
 
 };
 
-var swap1 = function(){
-  $('#agregar').on(
-    {'mouseover' : function() {
-      $(this).attr('src','img/addhover.png');
-    },
-    mouseout : function() {
-  $(this).attr('src','img/add.png');
-    }
-  });
-};
 
-var swap2 = function(){
-  $('#buscar').on({
-    'mouseover' : function() {
-      $(this).attr('src','img/buscarhover.png');
-    },
-    mouseout : function() {
-  $(this).attr('src','img/buscar.png');
-    }
-  });
-};
+$(document).ready(function(){
+    $('#username, #password').on('keyup',function(){
+        highlight_error($(this));
+    }).focus(function(){
+        highlight_error($(this));
+    }).blur(function(){
+        highlight_error($(this));
+    });
+});
 
-var swap3 = function(){
-  $('#eliminar').on({
-    'mouseover' : function() {
-      $(this).attr('src','img/deletehover.png');
-    },
-    mouseout : function() {
-  $(this).attr('src','img/delete.png');
+function highlight_error(el) {
+    if(el.val().length == 0 || el.val().length != 0) {
+        el.parent().addClass('has-success');
+    } else {
+        el.parent().removeClass('has-success');
     }
-  });
-};
 
-var swap4 = function(){
-  $('#ver').on({
-    'mouseover' : function() {
-      $(this).attr('src','img/verhover.png');
-    },
-    mouseout : function() {
-  $(this).attr('src','img/ver.png');
-    }
-  });
-};
 
+};
 
 
 $(document).ready(main);
 $(document).ready(dashboard);
 $(document).ready(menu);
-$(document).ready(swap1);
-$(document).ready(swap2);
-$(document).ready(swap3);
-$(document).ready(swap4);
+$(document).ready()
+
 
 
 

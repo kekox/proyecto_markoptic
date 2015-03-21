@@ -72,6 +72,7 @@ return array(
 	"unique"               => "The :attribute has already been taken.",
 	"url"                  => "The :attribute format is invalid.",
 	"timezone"             => "The :attribute must be a valid zone.",
+	
 
 	/*
 	|--------------------------------------------------------------------------
@@ -87,8 +88,11 @@ return array(
 	'custom' => array(
 		'attribute-name' => array(
 			'rule-name' => 'custom-message',
+			
 		),
+		
 	),
+
 
 	/*
 	|--------------------------------------------------------------------------

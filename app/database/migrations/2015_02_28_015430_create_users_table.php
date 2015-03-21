@@ -16,7 +16,10 @@ class CreateUsersTable extends Migration {
 		{
 			$table->increments('id'); // id auto incremental primary key
             $table->string('nombre', 50);  //varchar 50
+            $table->string('apellido_Paterno',50);
+            $table->string('apellido_Materno',50);
             $table->string('email', 100);  //varchar 100
+            $table->tinyInteger('id_perfil');
             $table->string('password', 200); //varchar 200 para encriptar los passwords
             $table->string('remember_token', 200);  //varchar 200 para encriptar los passwords
             $table->timestamps();//campos para controlar inserts y updates //created_at updated_at

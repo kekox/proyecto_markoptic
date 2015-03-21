@@ -7,6 +7,9 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
+	public function perfil(){
+		return $this->BelongsTo('Perfil','id_perfil');
+	}
 	use UserTrait, RemindableTrait;
 	/**
 	 * The database table used by the model.
@@ -21,7 +24,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
  	* @var array
  	*/
 
-		protected $hidden = array('password', 'remember_token');
+	protected $hidden = array('password', 'remember_token');
 	protected $fillable = array('nombre','email','password');
 
 	public function getAuthIdentifier()

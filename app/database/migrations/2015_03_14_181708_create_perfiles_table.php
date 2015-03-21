@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProyectosTable extends Migration {
+class CreatePerfilesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,11 @@ class CreateProyectosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('proyectos', function(Blueprint $table)
+		Schema::create('perfiles', function(Blueprint $table)
 		{
-			$table->integer('id'); // id auto incremental primary key
-            $table->string('nombre', 50);  //varchar 50
+			$table->increments('id_perfil'); // id auto incremental primary key
+            $table->string('nombre_perfil', 50);  //varchar 50
+            $table->string('desc_perfil',50);
             $table->timestamps();//campos para controlar inserts y updates //created_at updated_at
 		});
 	}
@@ -27,7 +28,7 @@ class CreateProyectosTable extends Migration {
 	 */
 	public function down()
 	{
-			Schema::drop('proyectos');
+		Schema::drop('perfiles');
 	}
 
 }
