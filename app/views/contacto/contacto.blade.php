@@ -15,7 +15,8 @@
                       <small>{{HTML::link('dashboard',' ',array('class' => 'glyphicon glyphicon-arrow-left color-black' ))}}</small>
                       {{-- Se despliegan los errores de acuerdo a su situacion--}}
                       
-                      <center><span id="mensaje" class="bg-warning display-warning"></span></center>
+                      <center><span id="mensaje" class="bg-errors display-errors"></span></center>
+                      <center><span id="mensaje]_exito" class="bg-errors display-errors"></span></center>
                     
                          {{ Form::open(array(
                         'route' => 'contacto.sent',
@@ -27,30 +28,31 @@
                       <div class="form-group">
                           {{form::label('Nombre:')}}
                           {{Form::input('text','name',Input::old('name'),array('class' => 'form-control' , 'placeholder' =>'Nombre'))}}
-                          <span class="bg-danger display-errors" id="_name"> {{ $errors->first('name') }} </span>
+                          <span class="bg-errors display-errors" id="_name"> {{ $errors->first('name') }} </span>
                       </div>
-                     
-                
+
                       <div class="form-group">
                           {{form::label('Email:')}}
-                          {{Form::input('email','email',Input::old('email'),array('class' => 'form-control' , 'placeholder' =>'Corre Electronico'))}}
-                           <span class="bg-danger display-errors" id="_email">{{ $errors->first('email') }}</span>
+                          {{Form::input('email','correo',Input::old('correo'),array('class' => 'form-control' , 'placeholder' =>'Corre Electronico'))}}
+                           <span class="bg-errors display-errors" id="_correo">{{ $errors->first('correo') }}</span>
 
                       </div>
-                     
+
                       <div class="form-group">
                           {{form::label('Asunto:')}}
                           {{Form::input('text','subject',null,array('class' => 'form-control' , 'placeholder' =>'Asunto del Mensaje'))
                           }}
-                          <span class="bg-danger display-errors" id="_subject">{{ $errors->first('subject') }}</span>
+                          <span class="bg-errors display-errors" id="_subject">{{ $errors->first('subject') }}</span>
                       </div>
                       
 
                       <div class="form-group">
                           {{form::label('Mensaje:')}}
                           {{Form::textarea('msg',null,array('class' => 'form-control' , 'placeholder' =>'Cuerpo del mensaje'))}}
-                          <span class="bg-danger display-errors" id="_msg">{{ $errors->first('msg') }}</span>
+                          <span class="bg-errors display-errors" id="_msg">{{ $errors->first('msg') }}</span>
                       </div>
+                      
+
                       
                       
 
@@ -62,9 +64,10 @@
                       {{ Form::close() }}
 
 						
-
-		                  <div class="load" align="center" style="display:none"><img src="img/gif/enviando.gif" alt=""><p class="alert alert-success">Mensaje enviado con Éxito! Gracias.</p></div>
-                      <div class="load2" align="center" style="display:none"><img src="img/gif/ok.png" alt=""></div>
+                      <br>
+                      <div id="progressTimer" class="enviando" style="display:none">Enviando...</div>
+		                  <div class="load" align="center" style="display:none"><img src="img/gif/enviando.gif" alt=""></div>
+                      <div class="load2" align="center" style="display:none"><img src="img/gif/ok.png" alt=""><p class="alert alert-success">Mensaje enviado con Éxito! Gracias.</p></div>
                       <div class="load3" align="center" style="display:none"><img src="img/gif/error.png" alt=""><p class="alert alert-danger">Error al Intentar enviar el mensaje</p></div>	
 
               		</div>
@@ -76,11 +79,25 @@
     
   </section>
 
-  <script>
+{{ HTML::script('js/jquery.progressTimer.js') }}
+<script>
+  $("#progressTimer").progressTimer({
 
+    timeLimit: 9,
+    warningThreshold: 10,
+    baseStyle: 'progress-bar-success',
+    warningStyle: 'progress-bar-success',
+    completeStyle: 'progress-bar-success',
+    onFinish: function() {
+        console.log("I'm done");
+    }
+
+});
+</script>
+<script>
   $(function(){
     
-      function send_ajax()
+      function send_ajax_contacto()
       {
         $.ajax({
           url: 'contacto',
@@ -88,20 +105,20 @@
           type:'POST',
           data: $('#formcontacto').serialize(), //Se obtienen los datos del formulario
             beforeSend: function(){
-              $('.load').show();
+              $('.enviando').show();
+              $('.load').hide();
               $('.load2').hide();
               $('.load3').hide();
             },
-
             success: function(datos)
             {
+              $('.enviando').hide();
               $('.load').hide();
               $('.load2').hide();
               $('.load3').hide();
              
               //Donde se vana  mostrar los errores
-              $('#_name , #_email , #_subject , #_msg').text('');
-
+              $('#_name , #_correo , #_subject , #_msg').text('');
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
                 $.each(datos.errors, function(index, value)
@@ -109,38 +126,34 @@
                   $('#_'+index).text(value);
                   $('#mensaje').text("Revisa los campos porfavor*");
                   $('.load3').show();
-
                   setTimeout(function(){
                   $('.load3').hide();
                   },3000);
                   
                   //window.location='dashboard'; Redirije a otro Lugar
                 });
-
                 }
                 //Si la respuesta del ajax es verdadero se hace esto
                 else
                 {
+                 
+                  $('.enviando').show();
                   document.getElementById('formcontacto').reset();
-                  $('#mensaje').text("Mensaje enviado con Exito");
+                  $('#mensaje').text("Mensaje enviado con Éxito");
+                  $('.enviando').hide();
                   $('.load2').show();
                   setTimeout("window.location = 'contacto'",3000);
                   
                 }
             }
-
             
             
         });
       }
-
-
-
         //Se manda a llamar la funcion
         $('#btncontact').on('click',function()
         {
-
-            send_ajax();
+            send_ajax_contacto();
             
         });
   });

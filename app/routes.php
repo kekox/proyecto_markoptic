@@ -74,6 +74,7 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('cms/delete/{id}',array('uses' => 'CmsController@getDelete','as'=>'user.delete'));
 	Route::post('cms/edit/{id}',array('uses' => 'CmsController@postData','as'=>'user.data'));
 	Route::post('cms/update',array('uses'=>'CmsController@postUpdate','as'=>'user.update'));
+	Route::post('proyectos/agregar/seccion/cms/edit/{id}',array('uses' => 'CmsController@postData','as'=>'user.data'));
 
 
 

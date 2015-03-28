@@ -15,27 +15,28 @@ class ContactoController extends Controller {
 		
 		$data= array(
 			'name' => Input::get('name'),
-			'email' => Input::get('email'),
+			'correo' => Input::get('correo'),
 			'subject' => Input::get('subject'),
 			'msg' => Input::get('msg'),
 			);
 
 		$rules=array(
 			'name' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:30',
-	        'email'=> 'required|email|between:3,50',
+	        'correo'=> 'required|email|between:3,50',
 	        'subject'=> 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:80',
 	        'msg'=> 'required|between:5,500',
 	        );
 
 
+
         $validator = Validator::make($data, $rules);
         if(Request::ajax())
-	    			{
+	    {
 	        if ($validator->passes()) 
 	        {
 	        	$toEmail='keko_daniel@hotmail.com';
 	        	$toName='Administrador';
-	        	$fromEmail=Input::get('email');
+	        	$fromEmail=Input::get('correo');
 				$fromName=Input::get('name');
 
 		            Mail::send('emails.contacto',$data,function($message) use($toEmail,$toName,$fromName,$fromEmail)

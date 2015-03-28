@@ -80,7 +80,7 @@
                   </div>
 
                   <div class="modal-body">
-                    <center><span id="mensaje" class=" display-errors" ></span></center>
+                    
                       <!--Formulario-->
                 {{ Form::open(array(
                   'class' => 'form-horizontal', 
@@ -152,7 +152,7 @@
                   </div>
 
                   <div class="modal-body">
-                    <center><span id="mensaje" class=" display-errors" ></span></center>
+                    
                       <!--Formulario-->
                 {{ Form::open(array(
                   'route' => 'user.update.perfil',

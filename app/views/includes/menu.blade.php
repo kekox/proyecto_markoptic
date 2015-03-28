@@ -3,7 +3,8 @@
           <!-- Menu icon -->
           <div class="icon-close">
            
-            <a><img src="img/close.png">Cerrar</a>
+            <a><img src="../../../img/close.png">Cerrar</a>
+            
           </div>
 
           <!-- Menu -->
@@ -20,12 +21,16 @@
 
 
             <li>
-            {{ HTML::link('cms', ' CMS',array('class' => 'glyphicon glyphicon-cog')); }}
+            {{ HTML::link('chat', ' Chat',array('class' => 'glyphicon glyphicon-comment')); }}
+            </li>
+
+             <li>
+            {{ HTML::link('contacto', ' Sugerencias',array('class' => 'glyphicon glyphicon-envelope')); }}
             </li>
 
 
             <li>
-            {{ HTML::link('chat', ' Chat',array('class' => 'glyphicon glyphicon-comment')); }}
+            {{ HTML::link('cms', ' Cms',array('class' => 'glyphicon glyphicon-cog')); }}
             </li>
 
 

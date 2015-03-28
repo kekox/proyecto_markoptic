@@ -5,3 +5,4 @@
 {{ HTML::script('js/tooltips.js') }}
 {{ HTML::script('//cdn.datatables.net/responsive/1.0.4/js/dataTables.responsive.js') }}
 
+

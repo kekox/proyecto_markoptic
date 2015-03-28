@@ -63,10 +63,11 @@
 
           <div class="panel-body ">
 
-              <center><span id="mensaje" class="display-errors" ></span></center>
+              <center><span id="_mensaje" class="display-errors" ></span></center>
               <center><span id="errores" class="display-errors" ></span></center>
-              @if(Session::has('message'))
-              <p class="alert alert-info"><center>{{ Session::get('message') }}</center></p>
+              @if(Session::has('message_remind'))
+              <center><span class="display-info">{{ Session::get('message_remind') }}</span></center>
+              <br>
               @endif
               
             
@@ -173,7 +174,6 @@
 
     {{ HTML::script('js/bootstrap.js') }}
     {{ HTML::script('js/jquery.js') }}
-    {{ HTML::script('js/npm.js')}}
     {{ HTML::script('js/main.js') }}
 
   <script>
@@ -194,17 +194,16 @@
               
               //Donde se vana  mostrar los errores
               $('#_email , #_password ').text('');
+              var dom = document.getElementById('#formlogin');
 
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
-                $.each(datos.errors, function(index, value)
-                {
-                  
-                  $('#_'+index).text(value);
-                  
-                
-                }($('#mensaje').text("Password/username Invalid*")));
-                  
+                  $('#_mensaje').text('Username/Password Invalid');
+                     $.each(datos.errors, function(index, value)
+                      {
+                        
+                        $('#_'+index).text(value);
+                      });
                 }
                 //Si la respuesta del ajax es verdadero se hace esto
                 else

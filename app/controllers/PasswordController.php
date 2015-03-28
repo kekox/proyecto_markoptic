@@ -32,7 +32,7 @@ class PasswordController extends BaseController {
 						return Redirect::back()->with('message','Ingrese un email válido');
 
 					case Password::REMINDER_SENT:			 
-						return Redirect::to('login')->with('message', 'El correo ha sido enviado con éxito!');
+						return Redirect::to('login')->with('message_remind', 'El correo ha sido enviado con éxito!');
         		}
         		
         }else{
