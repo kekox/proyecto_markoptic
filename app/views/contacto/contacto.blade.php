@@ -8,15 +8,16 @@
             <div class="container-fluid">
               <div class="row">
                  
-                <div id="formproyectos" class="grid-form-1-proyecto">
+                  <div id="contacto" >
                   	<div class="col-lg-8 col-lg-offset-2">
                   		
-                  		<center><h3>Contacto</h3></center>
-                      <small>{{HTML::link('dashboard',' ',array('class' => 'glyphicon glyphicon-arrow-left color-black' ))}}</small>
+                  		<h3>Contacto</h3>
+                      <small>{{HTML::link('dashboard',' ',array('class' => 'fa fa-arrow-circle-left color-black fa-3x ' ))}}</small>
                       {{-- Se despliegan los errores de acuerdo a su situacion--}}
                       
                       <center><span id="mensaje" class="bg-errors display-errors"></span></center>
-                      <center><span id="mensaje]_exito" class="bg-errors display-errors"></span></center>
+                      <center><span id="mensaje_exito" class="bg-errors display-errors"></span></center>
+                      <br>
                     
                          {{ Form::open(array(
                         'route' => 'contacto.sent',
@@ -57,7 +58,7 @@
                       
 
                    
-                      {{Form::input('button',null,'Enviar',array('class' =>'btn btn-primary','id'=> 'btncontact'))}}
+                      {{Form::input('button',null,'Enviar',array('class' =>'btn btn-primary roboto','id'=> 'btncontact'))}}
 
 
 
@@ -71,8 +72,8 @@
                       <div class="load3" align="center" style="display:none"><img src="img/gif/error.png" alt=""><p class="alert alert-danger">Error al Intentar enviar el mensaje</p></div>	
 
               		</div>
-            	</div>
-
+            	
+              </div>
             </div>
         </div>
             

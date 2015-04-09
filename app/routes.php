@@ -14,6 +14,10 @@
 /* Pagina Bienvenida y Login*/
 Route::get('/',array('uses' => 'HomeController@showLogin'));
 
+Route::get('formtest',function(){
+	return View::make('formtest');
+});
+
 /*Route::controller('account','UserController');*/
 
 /*login*/
@@ -51,6 +55,7 @@ Route::group(array('before' => 'auth'), function()
     /*update perfil*/
     Route::post('updateperfil',array('uses'=>'CmsController@postUpdatePerfil','as'=>'user.update.perfil'));
     Route::get('password/change',array('uses'=>'PasswordController@getChange','as'=>'password.change'));
+    Route::post('password/change',array('uses'=>'PasswordCOntroller@postChange','as'=>'password.change.post'));
 
 
     /*seccion proyectos*/
@@ -76,7 +81,8 @@ Route::group(array('before' => 'auth'), function()
 	Route::post('cms/update',array('uses'=>'CmsController@postUpdate','as'=>'user.update'));
 	Route::post('proyectos/agregar/seccion/cms/edit/{id}',array('uses' => 'CmsController@postData','as'=>'user.data'));
 
-
+	/*Reset Password*/
+	Route::post('password/cms/edit/{id}',array('uses' => 'CmsController@postData','as'=>'user.data'));
 
 	/*Seccion del chat */
 	Route::get('chat',array('uses' => 'ChatController@showChat'));

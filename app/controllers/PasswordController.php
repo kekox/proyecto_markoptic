@@ -100,7 +100,55 @@ class PasswordController extends BaseController {
 
 
 	public function postChange(){
+		$id=Auth::user()->id;
+		$user= User::find($id);
 
+		
+		$data=array(
+			'password_anterior' => Input::get('password_anterior'),
+			'password'=> Input::get('password'),
+			'password_confirmation' => Input::get('password_confirmation'),
+			);
+
+		$rules=array(
+			'password_anterior' => 'required',
+			'password'=>'required|min:6',
+			'password_confirmation'=>'same:password',
+			);
+	
+		$validator = Validator::make($data,$rules);
+
+		$comparepass = Input::get('password_anterior');
+
+		if(Hash::check($comparepass,$user->password)){
+			if($validator->passes()){
+				$password=Input::get('password');
+
+				$user->password = Hash::make($password);
+
+				$user->save();
+			}else{
+				$idp= Auth::user()->id_perfil;
+				$perfiles = Perfil::where('id_perfil','=',$idp)->get();
+
+				return Redirect::to('password/change')
+	                ->with('message_fail2', 'Favor de repetir la contraseña.')
+	                ->withErrors($validator)
+	                ->withInput();
+			}
+			
+		}else{
+			/*$idp= Auth::user()->id_perfil;
+			$perfiles = Perfil::where('id_perfil','=',$idp)->get();
+			return View::make('bienvenida',array('perfiles' => $perfiles));*/
+
+			return Redirect::to('password/change')
+                ->with('message_fail', 'Introducir contraseña correcta.')
+                ->withErrors($validator)
+                ->withInput();
+		}
+
+		
 	}
 	
 }

@@ -2,9 +2,9 @@
       
           <!-- Menu icon -->
           <div class="icon-close">
-           
-            <a><img src="../../../img/close.png">Cerrar</a>
-            
+            <a><img src="../../../img/close.png">
+            Cerrar
+            </a> 
           </div>
 
           <!-- Menu -->

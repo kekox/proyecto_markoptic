@@ -6,29 +6,59 @@
 @section('contenido')
 
 	<section>
-
-
-
-			<div class="jumbotron schema-white" style="margin-bottom:-30px;">
-				<div class="container " >
-
-					
-						<span>
-							<img src="img/bienvenida.jpg" alt="" class="img-responsive">
-						</span>
-						<br>
-					
-						<span>
-							<center><button type="btn" class="btn btn-primary btn-lg">{{ HTML::link('dashboard', ' ir al Dashboard',array('class' => 'welcome')); }}</button></center>
-						</span>
-				
+		<div id="welcome">
+            <div class="container-fluid">
+              <div class="row">
+                 
+              
+                  	<div class="col-lg-8 col-lg-offset-2"> 
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                   
+							<button type="btn" class="btn btn-primary btn-lg">{{ HTML::link('dashboard', ' ir al Dashboard'); }}</button>
 					
 					<br>
-				</div>	
-			</div>
+					<br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
 
-				
-            	
+
+                    <p class="pull-right"style="color:transparent;">a</p>
+
+              		
+            	</div>
+
+            </div>
+        </div>
+            
+  </div> 		        	
   	</section>
 
 @stop
