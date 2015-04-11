@@ -10,7 +10,8 @@
     @include('includes.headerStatic')
 
     <!-- Main body -->
-    <div class="container" id="LoginPage">
+    <div id="LoginPage" >
+    <div class="container " >
               <div class="row">
                 <div id="panel-left">
                 <div class="col-lg-6 col-md-6 col-sm-12 ">
@@ -99,6 +100,7 @@
                         
               </div><!--Termina el row-->
     </div> <!--Termina el container-->
+    </div>
     
     <!--Footer-->
     @include('includes.footerStatic')

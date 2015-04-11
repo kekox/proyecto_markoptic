@@ -63,6 +63,36 @@ html, body {
     color:#ffffff;
 }
 
+.text-blue{
+    color:#2ab1de;
+}
+
+.text-blue-fb{
+   color:#3b5998;
+} 
+.text-red{
+    color:#de2f2f;
+}
+
+.text-yellow{
+    color:#ebdb00;
+}
+
+.text-green{
+    color:#159049;
+}
+
+.text-orange{
+    color:#ffa200;
+}
+
+.text-brown{
+   color:#6e4114;
+}
+
+.text-black{
+  color:#333;
+}
 /*familia de letras*/
 .montserrat{
   font-family: 'Montserrat',Helvetica;
@@ -105,6 +135,10 @@ html, body {
 /*Helpers*/
 .nospace{
     margin-bottom:-20px;
+}
+
+.nospacetop{
+    margin-top: -20px;
 }
 
 .space{

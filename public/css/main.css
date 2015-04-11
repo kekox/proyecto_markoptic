@@ -18,6 +18,8 @@
   font-size:30px;
   margin-top:5px;
   font-family:'Montserrat',sans-serif;
+  font-weight: 400;
+  color: #204056;
 }
 #LoginPage label{
   font-weight: 400;
@@ -154,44 +156,89 @@ footer a:hover{
     color:#fff;
 }
 
-/*Estilos para el Dashboard*/
+/* Empiezan Estilos Dashboard */
 
-.grid-dashboard h3{
+#dashboard1 .heading h3{
     font-size: 36px;
     font-weight: 700;
     font-family: 'Montserrat','Roboto',sans-serif;
+    /*color: #777;*/
     color: #204056;
 }
 
-.grid{
-    background-color: #fff;
+
+#dashboard1 .box{
+    background-color:#159049;
     margin-left: 10px;
     margin-right: 5px;
     margin-bottom:20px;
     margin-top: 10px;
     border: #e0e0e0 1px solid;
-    
-}
-
-.grid:hover{
-    -moz-box-shadow: 0 0 10px #ccc; 
-    -webkit-box-shadow: 0 0 10px #ccc; 
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-shadow: 0 0 5px #ccc; 
+    -webkit-box-shadow: 0 0 5px #ccc; 
     box-shadow: 10px 10px 5px #ccc;
-    border-bottom: solid 10px #ff9900;
-    background-color: #343D46;
-
+    border-radius: 10px;
+   ¿
 }
 
+#dashboard1 .box:hover{
+    border-bottom: 3px solid #2ab1de;
+}
 
-.grid a{
+#dashboard1 a{
     text-decoration: none;
 }
 
-.grid a:hover{
-    text-decoration: none;
-    color:yellow;
-    
+#dashboard1 .box a{
+    color:#337ab7;
 }
+
+#dashboard1 .box .ft a:hover{
+    color:#337ab7;
+    text-decoration: underline;
+}
+
+
+#dashboard1 .box h3{
+    font-family: 'Montserrat','Roboto',Helvetica;
+    font-size: 26px;
+    font-weight: 700;
+    font-style: none;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    color:white;
+}
+
+
+#dashboard1 .box .content{
+    background-color: white;
+    padding-bottom: 15px;
+    text-align: justify;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 15px;
+
+
+}
+
+#dashboard1 .box .ft{
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    width: 100%;
+}
+
+#dashboard1 .box .ft p{
+    text-align: center;
+    background-color: #fff;
+    margin-bottom: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
 /*Terminan estilos para el dashboard */
 
 /*Estilos dashboard proyectos */
@@ -224,7 +271,8 @@ footer a:hover{
     color: #088A08;
     text-decoration: underline;
 }
-  
+
+
 
 /*Termina estilos dashboard proyectos */
 
@@ -281,6 +329,10 @@ footer a:hover{
 #contacto{
     font-family: 'Roboto slab',Helvetica;
     font-weight: 700px;
+    background-attachment: scroll;
+    background-image: url(../img/backgrounds/.jpg) ;
+    background-position: center center; 
+    background-repeat: none;
 }
 
 #contacto h3{
@@ -327,30 +379,94 @@ footer a:hover{
 /*Termina CMS page styles*/
 
 
+/*Empiezan Chat page Styles*/
 #chat-page{
     text-align: center;
     background-attachment: scroll;
     background-image: url(../img/backgrounds/bg5.jpg);
-    background-position: center center;  
+    background-position: center center; 
+    padding-top: 25px;
 }
 
-#chat-page .heading h3{
+#chat-page .chatbox{
+    padding-top: 5px;
+    border:2px solid #eee;
+    border-radius: 10px;
+}
+
+#chat-page .introduction{
+    background-color: #31a463;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin:20px;
+    border:1px solid #f0f0f0;
+    border-radius: 10px;
+}
+
+#chat-page .introduction .heading h3{
     font-family: 'Montserrat','Roboto',Helvetica;
     font-weight: 700;
-    font-size: 36px;
-    /*color:#204056;*/
+    font-size: 32px;
+    text-align: center;
+    color:#fff;
+
+}
+
+#chat-page .introduction .content p{
+    font-size: 16px;
+    font-family: 'Roboto Slab','Nunito',sans-serif;
+    color: #fff;
+    font-weight: 400;
+    padding-bottom: 10px;
+}
+
+#chat-page .introduction .status p{
+    font-family: 'Roboto Slab','Nunito',sans-serif;
+    font-weight: 400;
     color:#fff;
 }
 
+#chat-page .introduction .status p span.offline{
+    font-family: 'Roboto Slab','Nunito',sans-serif;
+    font-weight: 700;
+    color:#ff0000;
+    text-shadow:1px 1px #222
+}
+
+#chat-page .introduction .status p span.online{
+    font-family: 'Roboto Slab','Nunito',sans-serif;
+    font-weight: 700;
+    color:#00FF00;
+    text-shadow:1px 1px #222
+}
+
+#chat-page .media .media-body{
+    text-align: justify;
+}
+
+#chat-page .media .media-body h4{
+    text-align: center;
+    margin-bottom:5px;
+}
+
+#chat-page .media .media-body p{
+    margin-right:10px;
+}
+
+
+/*Termina chat Page Styles*/
+
+/*Empieza Change password Styles*/
 #bg-change-password{
     text-align: center;
     background-attachment: scroll;
     background-image: url(../img/backgrounds/bgpassword.jpg);
     background-position: center center;  
+    background-repeat: none;
 }
 
 #change-password{
-    padding-top: 150px;
+    padding-top: 140px;
 }
 
 #change-password .panel{
@@ -369,3 +485,5 @@ footer a:hover{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+/*Termina Change Password Styles*/

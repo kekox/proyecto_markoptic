@@ -18,6 +18,11 @@ Route::get('formtest',function(){
 	return View::make('formtest');
 });
 
+Route::get('test',function(){
+	return View::make('test');
+});
+
+
 /*Route::controller('account','UserController');*/
 
 /*login*/

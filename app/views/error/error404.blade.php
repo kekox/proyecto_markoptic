@@ -1,26 +1,11 @@
 <!DOCTYPE html>
 <html class="schema-gray">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Error 404 - Página no encontrada</title>
-	{{ HTML::style('css/bootstrap.css') }}
-	{{ HTML::style('css/style.css') }}
-
-<script>
-	function newLocation() 
-	{ 
-	window.location= history.go(-1);
-	} 
-
-	function newHome() 
-	{ 
-	window.location= 'http://www.webapp.com/bienvenida';
-	} 
-</script>
-
-</head>
+<!--Head-->
+@include('includes.head')
 <body>
+	
+	<!--Nav-->
+
 
 	<div class="jumbotron" style="margin-bottom:-30px;">
 		<div class="container" style="background-color:white; border: #e0e0e0 1px solid; ">
@@ -77,11 +62,24 @@
 				</div>
 
 			</div>	
+			
 		</div>
 		<br>
 		<br>
 		<footer class="text-muted "><center>© 2015 Markoptic</center></footer>
 	</div>
+
+	<script>
+	function newLocation() 
+	{ 
+	window.location= history.go(-1);
+	} 
+
+	function newHome() 
+	{ 
+	window.location= 'http://www.webapp.com/bienvenida';
+	} 
+</script>
 
 	{{ HTML::script('js/bootstrap.js') }}
 	{{ HTML::script('js/jquery.js') }}

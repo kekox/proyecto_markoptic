@@ -5,11 +5,12 @@
 @section('contenido')
 
   <section >
-            <div class="container-fluid">
+  <div id="contacto" >
+            <div class="container-fluid ">
               <div class="row">
                  
-                  <div id="contacto" >
-                  	<div class="col-lg-8 col-lg-offset-2">
+                  
+                  	<div class="col-lg-8 col-lg-offset-2 ">
                   		
                   		<h3>Contacto</h3>
                       <small>{{HTML::link('dashboard',' ',array('class' => 'fa fa-arrow-circle-left color-black fa-3x ' ))}}</small>
@@ -75,9 +76,15 @@
             	
               </div>
             </div>
+            <br>
+            
+                    
+
+
+             <p style="color:transparent;">a</p> 
         </div>
             
-    
+        
   </section>
 
 {{ HTML::script('js/jquery.progressTimer.js') }}

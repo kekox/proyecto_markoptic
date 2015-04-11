@@ -127,6 +127,10 @@ class PasswordController extends BaseController {
 				$user->password = Hash::make($password);
 
 				$user->save();
+
+				return Redirect::to('dashboard')
+         		->with('message_exito', 'Contraseña Cambiada satisfactoriamente.');
+
 			}else{
 				$idp= Auth::user()->id_perfil;
 				$perfiles = Perfil::where('id_perfil','=',$idp)->get();

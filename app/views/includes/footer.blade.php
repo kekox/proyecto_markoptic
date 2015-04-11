@@ -1,6 +1,6 @@
-  <nav class="navbar navbar-default nospace" >
+  <nav class="navbar navbar-default nospace " >
       <footer>
-        <div class="well-sm space-sm">
+        <div class="well-sm space-sm ">
           <center class="text-muted">
           <a href="">Privacidad </a>
           / 

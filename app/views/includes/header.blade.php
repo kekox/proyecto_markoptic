@@ -4,7 +4,7 @@
     <div class="col-xs-12 col-lg-12">
 
                 <div class="navbar-header">
-                	@include('includes.menu')  	
+                  @include('includes.menu')   
                     
 
                 </div>
@@ -13,41 +13,25 @@
 
                 <ul class="nav navbar-nav navbar-right"  >
 
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><span class="glyphicon glyphicon-user" ></span> Perfil <span class="caret"></span></a>
-                      <ul class="dropdown-menu" >
-                        <div class="col-lg-12" style="width:250px; height:130px; border-bottom: dashed 1px #31a463">
-                            <div class="row">
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><span class="fa fa-user fa-fw" ></span> Perfil <span class="caret"></span></a>
 
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
-                                    <img src="http://placehold.it/96x96" alt="" class="img-responsive img-circle">
-                                    
-                                </div>
-
-                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style="border-left: dashed 1px #31a463">
-                                    <p><strong><center>{{Auth::user()->nombre." ".Auth::user()->apellido_Paterno}}</center> </strong></p>
-                                    @foreach($perfiles as $perfil)
-                                    <p><strong><center>{{$perfil->nombre_perfil}}</center></strong></p>
-                                    @endforeach
-                                    <p style="font-size:11px;"><strong>{{Auth::user()->email}} </strong></p>
-                                    <p>{{ HTML::link('#MyModalView', ' Ver mi información',array('class'=>'schema-teal btn btn-success btn-block btn-xs edit','data-toggle'=>'modal','id'=>Auth::user()->id)); }}
-                                    
-                                    
-                                </div>
-                               
-                            </div>
+                    <ul class="dropdown-menu" >
+                        <div class="list-group" style="margin-bottom:-20px;">
+                          <a href="">@foreach($perfiles as $perfil)<center>{{$perfil->nombre_perfil}}</center>
+                          @endforeach</a>
+                          {{ HTML::link('#MyModalView', 'Ver información',array('class'=>'list-group-item edit ','data-toggle'=>'modal','id'=>Auth::user()->id));}}
+                          {{ HTML::link('#MyModalEdit2', 'Editar Información',array('class'=>'list-group-item edit ','data-toggle'=>'modal','id'=>Auth::user()->id)); }}
+                          {{ HTML::link('logout', 'Logout',array('class'=>'list-group-item edit ')); }}
                         </div>
+                    
+                      
+                    </ul>
 
-                        <div class="col-lg-12" style="margin-top:10px;">
-
-                            <p>{{ HTML::link('logout', ' Logout',array('type'=>'button','class'=>'btn btn-danger btn-block btn-xs jlogout', )); }}</p>
-                        </div>
-                       
-                      </ul>
-                    </li>
+                  </li>
                 </ul>
            
-                 <center class="text-muted menutop hidden-xs montserrat"> Sistema de Integración de Proyectos </center>
+                 <center class="menutop hidden-xs "> <img src="img/logo-fundacion.png" alt="Fundacion Markoptic" style="width:64px;" > Sistema de Integración de Proyectos </center>
        
         
 		
@@ -192,6 +176,7 @@
 
 
 </script>
+
 </nav>
 
   

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-bottom" >
+<nav class="navbar navbar-default navbar-fixed-bottom hidden-xs" >
       <footer>
         <div class="well-sm space-sm  ">
           <center class="text-muted">

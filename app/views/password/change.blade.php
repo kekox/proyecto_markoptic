@@ -25,7 +25,8 @@
                         
                        ))}}
                     </div>
-                     @if(Session::has('message_fail'))
+                    <br>
+                    @if(Session::has('message_fail'))
                       <center><span class="display-errors">{{ Session::get('message_fail') }}</span></center> 
                     @endif
                     @if(Session::has('message_fail2'))
@@ -58,7 +59,7 @@
                                 <div class="form-group">
                               {{ Form::submit('Cambiar contraseña', array('class' => 'btn btn-primary btn-sm  '))}}
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              {{ HTML::link('dashboard','Ir al dashboard',array('class'=>'btn btn-success btn-sm'))}}
+                              {{ HTML::link('dashboard','Ir al dashboard',array('class'=>'btn btn-success btn-sm','style'=>'margin-left:25px;'))}}
                         
                                 </div>
                               </div>
@@ -87,13 +88,14 @@
         <br>
         <br>
         <br>
+         <p style="color:transparent;">a</p>
         <br>
-        
+        <br>
        
         
         
         
-        <p style="color:transparent;">a</p>  
+         
                  
         
   </div>            
