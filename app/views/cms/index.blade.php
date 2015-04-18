@@ -200,6 +200,8 @@
                   $('#formedit input[name="apellido_materno_edit"]').val(datos.apellido_Materno)
                   $('#formedit input[name="email_edit"]').val(datos.email)
                   $('#formedit input[name="perfil_edit"]').val(datos.id_perfil)
+                  
+
                 }
             },
            

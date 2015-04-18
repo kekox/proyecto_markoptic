@@ -48,6 +48,7 @@
                 </div>
                 <span class="bg-danger" id="_email">  {{ $errors->first('email') }}</span>
 
+                 
                 <!-- Perfil -->
                 <div class="input-group separetedinput col-lg-6" >
 

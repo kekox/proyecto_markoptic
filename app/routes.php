@@ -22,6 +22,9 @@ Route::get('test',function(){
 	return View::make('test');
 });
 
+Route::get('test2',function(){
+	return View::make('test2');
+});
 
 /*Route::controller('account','UserController');*/
 
@@ -91,6 +94,7 @@ Route::group(array('before' => 'auth'), function()
 
 	/*Seccion del chat */
 	Route::get('chat',array('uses' => 'ChatController@showChat'));
+	Route::post('chat',array('before' => 'csrf','uses' => 'ChatController@postChat'));
 
 	/*Seccion de dudas y sugerencias */
 	Route::get('contacto',array('uses' => 'ContactoController@showContacto'));

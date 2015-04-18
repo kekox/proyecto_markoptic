@@ -14,15 +14,15 @@
                 <ul class="nav navbar-nav navbar-right"  >
 
                   <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><span class="fa fa-user fa-fw" ></span> Perfil <span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><span class="fa fa-user fa-fw" ></span> Mi Perfil <span class="caret"></span></a>
 
                     <ul class="dropdown-menu" >
                         <div class="list-group" style="margin-bottom:-20px;">
-                          <a href="">@foreach($perfiles as $perfil)<center>{{$perfil->nombre_perfil}}</center>
-                          @endforeach</a>
-                          {{ HTML::link('#MyModalView', 'Ver información',array('class'=>'list-group-item edit ','data-toggle'=>'modal','id'=>Auth::user()->id));}}
-                          {{ HTML::link('#MyModalEdit2', 'Editar Información',array('class'=>'list-group-item edit ','data-toggle'=>'modal','id'=>Auth::user()->id)); }}
-                          {{ HTML::link('logout', 'Logout',array('class'=>'list-group-item edit ')); }}
+                          <span >@foreach($perfiles as $perfil)<center class="schema-teal color-white roboto" style="margin-top:-5px;">{{$perfil->nombre_perfil}}</center>
+                          @endforeach</span>
+                          {{ HTML::link('#MyModalView', ' Ver información',array('class'=>'list-group-item edit glyphicon glyphicon-eye-open','data-toggle'=>'modal','id'=>Auth::user()->id));}}
+                        {{--  {{ HTML::link('#MyModalEdit2', ' Editar Información',array('class'=>'list-group-item edit glyphicon glyphicon-pencil','data-toggle'=>'modal','id'=>Auth::user()->id)); }} --}} 
+                          {{ HTML::link('logout', ' Logout',array('class'=>'list-group-item glyphicon glyphicon-ban-circle')); }}
                         </div>
                     
                       
@@ -31,7 +31,7 @@
                   </li>
                 </ul>
            
-                 <center class="menutop hidden-xs "> <img src="img/logo-fundacion.png" alt="Fundacion Markoptic" style="width:64px;" > Sistema de Integración de Proyectos </center>
+                <center class="menutop hidden-xs ">  Sistema de Integración de Proyectos </center>
        
         
 		

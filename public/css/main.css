@@ -420,20 +420,20 @@ footer a:hover{
     padding-bottom: 10px;
 }
 
-#chat-page .introduction .status p{
+#chat-page .introduction .status span{
     font-family: 'Roboto Slab','Nunito',sans-serif;
     font-weight: 400;
     color:#fff;
 }
 
-#chat-page .introduction .status p span.offline{
+#chat-page .introduction .status span.offline{
     font-family: 'Roboto Slab','Nunito',sans-serif;
     font-weight: 700;
     color:#ff0000;
     text-shadow:1px 1px #222
 }
 
-#chat-page .introduction .status p span.online{
+#chat-page .introduction .status span.online{
     font-family: 'Roboto Slab','Nunito',sans-serif;
     font-weight: 700;
     color:#00FF00;
