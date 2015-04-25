@@ -6,26 +6,26 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
+	use UserTrait, RemindableTrait;
+	protected $table = 'users';
+	protected $hidden = array('password', 'remember_token');
+	protected $fillable = array(
+		'perfil_id',
+		'nombre',
+		'apellido_Paterno',
+		'apellido_Materno',
+		'email',
+		'password'
+		);
 
-	public function perfil(){
+	public function perfiles(){
 		return $this->BelongsTo('Perfil','id_perfil');
 	}
-	use UserTrait, RemindableTrait;
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
 
-	/**
-	* The attributes excluded from the model's JSON form.
- 	*
- 	* @var array
- 	*/
-
-	protected $hidden = array('password', 'remember_token');
-	protected $fillable = array('nombre','email','password');
+	public function proyectos(){
+		return $this->hasMany('Proyecto','id_user');
+	}
+	
 
 	public function getAuthIdentifier()
     {

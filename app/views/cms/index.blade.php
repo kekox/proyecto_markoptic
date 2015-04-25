@@ -51,7 +51,7 @@
                                   <td><center>{{$user->nombre}}</center></td>
                                   <td><center>{{$user->apellido_Paterno." ".$user->apellido_Materno}}</center></td>
                                   <td><center>{{$user->email}}</center></td>
-                                  <td><center>{{$user->id_perfil}}</center></td> 
+                                  <td><center>{{$user->perfil_id}}</center></td> 
                                   <td><center>{{$user->updated_at}}</center></td> 
                                   <td><center>
                                   {{HTML::link('#MyModalEdit',' Editar',array('class'=>'btn btn-success btn-sm fa fa-pencil edit','data-toggle'=>'modal','title'=>$user->id))}}
@@ -121,7 +121,7 @@
             {
               
               //Donde se vana  mostrar los errores
-              $('#_nombre ,#_apellido_paterno, #_apellido_materno, #_email, #_perfil, #_password ').text('');
+              $('#_nombree ,#_apellido_paternoo, #_apellido_maternoo, #_emaail, #_perfil, #_password ').text('');
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
                 $.each(datos.errors, function(index, value)

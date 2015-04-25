@@ -1,0 +1,42 @@
+<?php
+
+class Proyecto extends Eloquent  {
+
+	protected $table = 'proyectos';
+	protected $fillable = array(
+		'folio',
+		'id_user',
+		'modalidad',
+		'nombre_proyecto',
+		'tipo_de_proyecto',
+		'contextualizacion',
+		'propuesta',
+		'area_industrial',
+		'area_conocimiento',
+		'palabras_ckave',
+		'descripcion_innovacion',
+		'tipo_innovacion',
+		'grado_innovacion',
+		'tipo_mercado'
+		);
+
+	public function users(){
+		return $this->BelongsTo('User','id');
+	}
+	
+	public function descripciones(){
+		return $this->hasOne('Descripcion','folio_proyecto');
+	}
+
+	public function analisis_tecnicos(){
+		return $this->hasOne('AnalisisTecnico','folio_proyecto');
+	}
+
+	public function analisis_comerciales(){
+		return $this->hasOne('AnalisisComercial','folio_proyecto');
+	}
+
+	public function generales(){
+		return $this->hasOne('General','folio_proyecto');
+	}
+}

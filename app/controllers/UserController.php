@@ -97,7 +97,7 @@ class UserController extends BaseController{
             $user->apellido_Paterno = Input::get('apellidoP');
             $user->apellido_Materno = Input::get('apellidoM');
             $user->email = Input::get('email');
-            $user->perfil = Input::get('perfil');
+            $user->perfil_id = Input::get('perfil');
             $user->password =  Hash::make(Input::get('password'));
             $user->save();
 

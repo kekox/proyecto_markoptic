@@ -3,7 +3,7 @@
 class ContactoController extends Controller {
 
 	protected function showContacto(){
-		$id= Auth::user()->id_perfil;
+		$id= Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('contacto/contacto',array('perfiles' => $perfiles));
 	}

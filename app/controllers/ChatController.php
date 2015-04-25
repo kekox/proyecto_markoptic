@@ -5,7 +5,7 @@ class ChatController extends Controller {
 	
 	public function showChat()
 	{
-		$id= Auth::user()->id_perfil;
+		$id= Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		$status = HipSupport::isOnline();
 		//$status = HipSupport::isOnline();

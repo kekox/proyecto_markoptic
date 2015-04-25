@@ -93,7 +93,7 @@ class PasswordController extends BaseController {
 	}
 
 	public function getChange(){
-		$id= Auth::user()->id_perfil;
+		$id= Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('password/change',array('perfiles' => $perfiles));
 	}

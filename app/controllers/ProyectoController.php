@@ -9,7 +9,7 @@ class ProyectoController extends Controller {
 	 */
 	protected function showIndex()
 	{
-		$id= Auth::user()->id_perfil;
+		$id= Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('proyectos/index',array('perfiles' => $perfiles));
 	}
@@ -17,7 +17,7 @@ class ProyectoController extends Controller {
 
 	protected function showCreate()
 	{	
-		$id= Auth::user()->id_perfil;
+		$id= Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('proyectos/create',array('perfiles' => $perfiles));
 	}
@@ -32,7 +32,7 @@ class ProyectoController extends Controller {
 
 	protected function showCreate2()
 	{
-		$id= Auth::user()->id_perfil;
+		$id= Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('proyectos/create2',array('perfiles' => $perfiles));
 	}
@@ -47,7 +47,7 @@ class ProyectoController extends Controller {
 
 	protected function showCreate3()
 	{
-		$id= Auth::user()->id_perfil;
+		$id= Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('proyectos/create3',array('perfiles' => $perfiles));
 	}

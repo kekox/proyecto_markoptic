@@ -4,7 +4,7 @@ class CmsController extends Controller
     public function getIndex()
     {
         $users = User::all();
-        $id= Auth::user()->id_perfil;
+        $id= Auth::user()->perfil_id;
         $myid= Auth::user()->id;
         if($id==3)
         {
@@ -21,17 +21,17 @@ class CmsController extends Controller
     public function postStore()
     {
         $data=array(
-            'nombre'=>Input::get('nombre'),
-            'apellido_paterno'=>Input::get('apellido_paterno'),
-            'apellido_materno'=>Input::get('apellido_materno'),
+            'nombree'=>Input::get('nombree'),
+            'apellido_paternoo'=>Input::get('apellido_paternoo'),
+            'apellido_maternoo'=>Input::get('apellido_maternoo'),
             'email'=>Input::get('email'),
             'perfil'=>Input::get('perfil'),
             'password'=>Input::get('password')
         );
         $rules=array(
-            'nombre' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3',
-            'apellido_paterno' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
-            'apellido_materno' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
+            'nombree' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3',
+            'apellido_paternoo' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
+            'apellido_maternoo' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'email' => 'required|min:2|email|unique:users',
             'perfil' => 'required',
             'password' => 'required|min:6' 
@@ -42,11 +42,11 @@ class CmsController extends Controller
         {
             if ($validator->passes()) {
                 $user = new User;
-                $user->nombre = Input::get('nombre');
-                $user->apellido_Paterno = Input::get('apellido_paterno');
-                $user->apellido_Materno = Input::get('apellido_materno');
+                $user->nombre = Input::get('nombree');
+                $user->apellido_Paterno = Input::get('apellido_paternoo');
+                $user->apellido_Materno = Input::get('apellido_maternoo');
                 $user->email = Input::get('email');
-                $user->id_perfil = Input::get('perfil');
+                $user->perfil_id = Input::get('perfil');
                 $user->password =  Hash::make(Input::get('password'));
                 $user->save();
                /* Mail::send('emails.welcome', array('nombre'=>Input::get('nombre')), function($message){
@@ -87,7 +87,7 @@ class CmsController extends Controller
             'apellido_Paterno'=>$user->apellido_Paterno,
             'apellido_Materno'=>$user->apellido_Materno,
             'email'=>$user->email,
-            'id_perfil'=>$user->id_perfil,
+            'perfil_id'=>$user->perfil_id,
         );
         return Response::json($data);
     }
@@ -118,7 +118,7 @@ class CmsController extends Controller
         $user->apellido_Paterno= Input::get('apellido_paterno_edit');
         $user->apellido_Materno= Input::get('apellido_materno_edit');
         $user->email = Input::get('email_edit');
-        $user->id_perfil = Input::get('perfil_edit');
+        $user->perfil_id = Input::get('perfil_edit');
         $user->save();
             return Redirect::to('cms')
                 ->with('message_edit','Usuario Editado Correctamente');

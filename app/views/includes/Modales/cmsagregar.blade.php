@@ -19,26 +19,26 @@
                 <!-- nombre -->
                 <div class="input-group separetedinput " >
                     <span class="input-group-addon "><i class="glyphicon glyphicon-user "></i></span>
-                        {{ Form::text('nombre', Input::old('nombre'), array('class' => 'form-control', 'placeholder' => 'Nombre(s)')) }}
+                        {{ Form::text('nombree', Input::old('nombre'), array('class' => 'form-control', 'placeholder' => 'Nombre(s)')) }}
                 </div>
                  <!--Errores-->
-                <span class="bg-danger" id="_nombre">  {{ $errors->first('nombre') }}</span>
+                <span class="bg-danger" id="_nombree">  {{ $errors->first('nombree') }}</span>
 
                 <!-- Apellido Paterno -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ Form::text('apellido_paterno', Input::old('apellido_paterno'), array('class' => 'form-control', 'placeholder' => 'Apellido Paterno')) }}
+                        {{ Form::text('apellido_paternoo', Input::old('apellido_paternoo'), array('class' => 'form-control', 'placeholder' => 'Apellido Paterno')) }}
                 </div>
                  <!--Errores-->
-                <span class="bg-danger" id="_apellido_paterno">  {{ $errors->first('apellido_paterno') }}</span>
+                <span class="bg-danger" id="_apellido_paternoo">  {{ $errors->first('apellido_paternoo') }}</span>
 
                  <!-- Apellido Materno -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ Form::text('apellido_materno', Input::old('apellido_materno'), array('class' => 'form-control', 'placeholder' => 'Apellido Materno')) }}
+                        {{ Form::text('apellido_maternoo', Input::old('apellido_maternoo'), array('class' => 'form-control', 'placeholder' => 'Apellido Materno')) }}
                 </div>
                  <!--Errores-->
-                <span class="bg-danger" id="_apellido_materno">  {{ $errors->first('apellido_materno') }}</span>
+                <span class="bg-danger" id="_apellido_maternoo">  {{ $errors->first('apellido_maternoo') }}</span>
                 
        
                 <!-- Email -->
