@@ -9,9 +9,8 @@
         <div id="cms">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
+                <div class="col-lg-12 ">
                       <h3 class="heading">Content Managent System</h3>
-                     <small>{{HTML::link('dashboard',' ',array('class' => 'fa fa-arrow-circle-left color-black fa-3x ' ))}}</small>
                     @if(Session::has('message_delete'))
                        <div class="alert alert-warning"><center><span class="fa fa-check-circle"></span>
                        <a href="#" class="close" data-dismiss="alert">&times;</a>{{ Session::get('message_delete') }}</center></div>
@@ -22,6 +21,8 @@
                        <div class="alert alert-success"><center><span class="fa fa-check-circle"></span>
                        <a href="#" class="close" data-dismiss="alert">&times;</a>{{ Session::get('message_edit') }}</center></div>
                     @endif
+                     <small>{{HTML::link('dashboard',' ',array('class' => 'fa fa-arrow-circle-left color-black fa-3x ' ))}}</small>
+                   
 
                       <button id="add" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><span class="fa fa-user-plus"> Agregar Usuario</span></button>
 
@@ -177,7 +178,7 @@
         //Se mandaa a llamar las funciones
         $('.edit').on('click',function()
         {
-           id = $(this).attr('title');
+          id = $(this).attr('title'); 
           $.ajax({
           url: 'cms/edit/'+id,
           dataType: 'json',

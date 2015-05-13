@@ -2,7 +2,6 @@
 
 class PasswordController extends BaseController {
 
-	
 
 	public function showRemind()
  	{
@@ -11,6 +10,7 @@ class PasswordController extends BaseController {
 
 	public function postRemind()
 	{
+
 		$data=array(
             'email'=>Input::get('email'),
         );
@@ -40,12 +40,11 @@ class PasswordController extends BaseController {
         			->withErrors($validator)
                 	->withInput();
         }
- 
-  		
 	}
 
 	public function showReset($token = null)
 	{
+
 		if (is_null($token)) App::abort(404);
   		return View::make('password/reset')->with('token', $token);
 	}
@@ -57,9 +56,9 @@ class PasswordController extends BaseController {
       'email', 'password', 'password_confirmation', 'token'
     	);
 	  $rules=array(
-            'email'=> 'required|email',
-            'password' => 'required|min:6',
-            'password_confirmation' => 'same:password',
+			'email'                 => 'required|email',
+			'password'              => 'required|min:6',
+			'password_confirmation' => 'same:password',
         );
 
 	  	$validator = Validator::make($credentials,$rules);
@@ -74,9 +73,9 @@ class PasswordController extends BaseController {
 
 			switch ($response)
 		    	{
-			    case Password::INVALID_PASSWORD:
-			    case Password::INVALID_TOKEN:
-			    case Password::INVALID_USER:
+				case Password::INVALID_PASSWORD:
+				case Password::INVALID_TOKEN:
+				case Password::INVALID_USER:
 			        return Redirect::back()->with('error', Lang::get($response));
 
 			    case Password::PASSWORD_RESET:
@@ -87,33 +86,32 @@ class PasswordController extends BaseController {
         			
                 	
 	  	}
-	 
-	   
-
 	}
 
-	public function getChange(){
-		$id= Auth::user()->perfil_id;
+	public function getChange()
+	{
+		$id       = Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('password/change',array('perfiles' => $perfiles));
 	}
 
 
-	public function postChange(){
-		$id=Auth::user()->id;
-		$user= User::find($id);
+	public function postChange()
+	{
+		$id   = Auth::user()->id;
+		$user = User::find($id);
 
 		
 		$data=array(
-			'password_anterior' => Input::get('password_anterior'),
-			'password'=> Input::get('password'),
+			'password_anterior'     => Input::get('password_anterior'),
+			'password'              => Input::get('password'),
 			'password_confirmation' => Input::get('password_confirmation'),
 			);
 
 		$rules=array(
-			'password_anterior' => 'required',
-			'password'=>'required|min:6',
-			'password_confirmation'=>'same:password',
+			'password_anterior'     => 'required',
+			'password'              =>'required|min:6',
+			'password_confirmation' =>'same:password',
 			);
 	
 		$validator = Validator::make($data,$rules);
@@ -122,23 +120,22 @@ class PasswordController extends BaseController {
 
 		if(Hash::check($comparepass,$user->password)){
 			if($validator->passes()){
-				$password=Input::get('password');
 
+				$password       = Input::get('password');
 				$user->password = Hash::make($password);
-
 				$user->save();
 
 				return Redirect::to('dashboard')
-         		->with('message_exito', 'Contraseña Cambiada satisfactoriamente.');
+         			->with('message_exito', 'Contraseña Cambiada satisfactoriamente.');
 
 			}else{
 				$idp= Auth::user()->id_perfil;
 				$perfiles = Perfil::where('id_perfil','=',$idp)->get();
 
 				return Redirect::to('password/change')
-	                ->with('message_fail2', 'Favor de repetir la contraseña.')
-	                ->withErrors($validator)
-	                ->withInput();
+					->with('message_fail2', 'Favor de repetir la contraseña.')
+					->withErrors($validator)
+					->withInput();
 			}
 			
 		}else{
@@ -150,9 +147,7 @@ class PasswordController extends BaseController {
                 ->with('message_fail', 'Introducir contraseña correcta.')
                 ->withErrors($validator)
                 ->withInput();
-		}
-
-		
+		}	
 	}
 	
 }

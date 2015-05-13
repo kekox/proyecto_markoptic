@@ -25,8 +25,8 @@ class CreateProyectosTable extends Migration {
 			
 
 			//Tuplas
+			$table->string('nombre_proyecto');
             $table->string('modalidad', 50);
-            $table->string('nombre_proyecto');
             $table->string('tipo_de_proyecto',50);
             $table->string('contextualizacion',255);
             $table->string('propuesta');

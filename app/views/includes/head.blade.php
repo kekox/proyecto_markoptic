@@ -5,6 +5,7 @@
 	<meta name="author" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Sistema Test</title>	
+    {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') }}
 	  {{ HTML::style('css/bootstrap.css') }}
     {{ HTML::style('css/main.css') }}
   	{{ HTML::style('css/style.css') }}
@@ -12,7 +13,6 @@
     {{ HTML::style('css/dataTables.css') }}
     {{ HTML::style('css/formValidation.css')}}
   	{{ HTML::script('js/jquery.js')}}
-  	{{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') }}
     {{ HTML::style('//cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css') }}
 
     

@@ -29,11 +29,11 @@ Route::get('test2',function(){
 /*Route::controller('account','UserController');*/
 
 /*login*/
-Route::get ('login' , array('uses' => 'UserController@getLogin'));
-Route::post('login' , array('before' => 'csrf','uses' => 'UserController@postLogin','as'=>'account.login'));
-Route::get ('create', array('uses' => 'UserController@getCreate'));
-Route::post('create', array('before' => 'csrf','uses' => 'UserController@postCreate','as'=>'account.create'));
-Route::get ('logout',  array('uses' => 'UserController@getLogout','as'=>'account.logout'));
+Route::get ('login' , array('uses' => 'AuthController@index'));
+Route::post('login' , array('before' => 'csrf','uses' => 'AuthController@postLogin','as'=>'account.login'));
+Route::get ('create', array('uses' => 'AuthController@create'));
+Route::post('create', array('before' => 'csrf','uses' => 'AuthController@store','as'=>'account.create'));
+Route::get ('logout',  array('uses' => 'AuthController@getLogout','as'=>'account.logout'));
 
 
 
@@ -67,30 +67,37 @@ Route::group(array('before' => 'auth'), function()
 
 
     /*seccion proyectos*/
-    Route::get('proyectos', array('uses' => 'ProyectoController@showIndex'));
+    Route::get('proyectos', array('uses' => 'HomeController@showDashboardProyectos'));
     	/*prefijo para */
-		Route::group(array('prefix' => 'proyectos/agregar/seccion'),function()
+		Route::group(array('prefix' => 'proyectos/seccion/'),function()
 		{
-			Route::get('/1',array('uses' => 'ProyectoController@showCreate'));
-			Route::post('/1',array('uses' => 'ProyectoController@postCreate','as'=>'addseccion1' ));
-			Route::get('/2',array('uses' => 'ProyectoController@showCreate2'));
-			Route::post('/2',array('uses' => 'ProyectoController@postCreate2','as'=>'addseccion2'));
-			Route::get('/3',array('uses' => 'ProyectoController@showCreate3'));
-			Route::post('/3',array('uses' => 'ProyectoController@postCreate3','as'=>'addseccion3'));
+			Route::get('1',array('uses' => 'ProyectoController@create'));
+			Route::post('1',array('uses' => 'ProyectoController@store','as'=>'addseccion1' ));
+
+			Route::get('2',array('uses' => 'DescripcionController@create'));
+			Route::post('2',array('uses' => 'DescripcionController@store','as'=>'addseccion2'));
+
+			Route::get('3',array('uses' => 'AnalisisTecnicoController@create'));
+			Route::post('3',array('uses' => 'AnalisisTecnicoController@store','as'=>'addseccion3'));
+			
+			Route::get('4',array('uses' => 'AnalisisComercialController@create'));
+			Route::post('4',array('uses' => 'AnalisisComercialController@store', 'as' => 'addseccion4'));
 		});
 	
 
 
 	/*Seccion CMS*/
-	Route::get('cms',array('uses' => 'CmsController@getIndex'));
-	Route::post('cms',array('uses' => 'CmsController@postStore','as'=>'user.store'));
-	Route::get('cms/delete/{id}',array('uses' => 'CmsController@getDelete','as'=>'user.delete'));
-	Route::post('cms/edit/{id}',array('uses' => 'CmsController@postData','as'=>'user.data'));
-	Route::post('cms/update',array('uses'=>'CmsController@postUpdate','as'=>'user.update'));
-	Route::post('proyectos/agregar/seccion/cms/edit/{id}',array('uses' => 'CmsController@postData','as'=>'user.data'));
+	Route::get('cms',array('uses' => 'CmsController@index'));
+	Route::post('cms',array('uses' => 'CmsController@store','as'=>'user.store'));
+	Route::post('cms/edit/{id}',array('uses' => 'CmsController@edit','as'=>'user.data'));
+	Route::post('cms/update',array('uses'=>'CmsController@update','as'=>'user.update'));
+	Route::get('cms/delete/{id}',array('uses' => 'CmsController@destroy','as'=>'user.delete'));
+
+	
+	Route::post('proyectos/seccion/cms/edit/{id}',array('uses' => 'CmsController@edit','as'=>'user.data'));
 
 	/*Reset Password*/
-	Route::post('password/cms/edit/{id}',array('uses' => 'CmsController@postData','as'=>'user.data'));
+	Route::post('password/cms/edit/{id}',array('uses' => 'CmsController@edit','as'=>'user.data'));
 
 	/*Seccion del chat */
 	Route::get('chat',array('uses' => 'ChatController@showChat'));
@@ -105,19 +112,3 @@ Route::group(array('before' => 'auth'), function()
 
 });
 
-
-
-
-/*para insertar un usuario*/
-Route::get('insertar',function(){
-
-	$usuario = new User;
-
-	$usuario->nombre = "keko";
-	$usuario->correo = "keko_daniel@hotmail.com";
-	$usuario->password = "keko1234";
-
-	$usuario->save();
-
-	return "El usuario prueba ha sido salvado en la base de datos";
-});

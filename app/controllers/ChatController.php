@@ -20,10 +20,9 @@ class ChatController extends Controller {
 	    if ($validator->passes()) {
 
 	       		 $room = HipSupport::init([
-	    	
-			        'room_name' => 'Live Chat With' . Input::get('name'),
-			        'notification' => [
-			            'message' => Input::get('name') . ' would like to chat.'
+						'room_name' => 'Live Chat With' . Input::get('name'),
+						'notification' => [
+						'message' => Input::get('name') . ' would like to chat.'
 			        ]
 			    ]);
 
@@ -32,7 +31,7 @@ class ChatController extends Controller {
 			        if (Request::ajax()) {
 			            return Response::json(['url' => $room->hipsupport_url]);
 			        }
-			        return Redirect::to($room->hipsupport_url);
+			        	return Redirect::to($room->hipsupport_url);
 			    } 
 	    }else{
 	    	return Redirect::to('chat')

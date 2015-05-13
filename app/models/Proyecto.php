@@ -39,4 +39,24 @@ class Proyecto extends Eloquent  {
 	public function generales(){
 		return $this->hasOne('General','folio_proyecto');
 	}
+
+	public function mercados(){
+		return $this->hasOne('Mercado','folio_proyecto');
+	}
+
+	public function vinculaciones(){
+		return $this->hasOne('vinculacion','folio_proyecto');
+	}
+
+	public function instituciones(){
+		return $this->hasMany('Institucion','folio_proyecto');
+	}
+
+	public function trabajos_detallados(){
+		return $this->hasOne('TrabajoDetallado','folio_proyecto');
+	}
+
+	public function asesorias(){
+		return $this->hasOne('Asesoria','folio_proyecto');
+	}
 }

@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder {
 		//this message shown in your terminal after running db:seed command
 		$this->command->info("Admin created :)");
 		//call uses table seeder class
-		$this->call('ProyectoTableSeeder');
+		$this->call('MainTableSeeder');
 		//this message shown in your terminal after running db:seed command
-		$this->command->info("Proyecto table seeded :)");
+		$this->command->info("All tables seeded :)");
 		
 	}
 

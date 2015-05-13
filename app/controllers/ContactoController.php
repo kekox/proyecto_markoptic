@@ -3,7 +3,7 @@
 class ContactoController extends Controller {
 
 	protected function showContacto(){
-		$id= Auth::user()->perfil_id;
+		$id       = Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('contacto/contacto',array('perfiles' => $perfiles));
 	}
@@ -14,17 +14,17 @@ class ContactoController extends Controller {
 		
 		
 		$data= array(
-			'name' => Input::get('name'),
-			'correo' => Input::get('correo'),
+			'name'    => Input::get('name'),
+			'correo'  => Input::get('correo'),
 			'subject' => Input::get('subject'),
-			'msg' => Input::get('msg'),
+			'msg'     => Input::get('msg'),
 			);
 
 		$rules=array(
-			'name' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:30',
-	        'correo'=> 'required|email|between:3,50',
-	        'subject'=> 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:80',
-	        'msg'=> 'required|between:5,500',
+			'name'    => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:30',
+			'correo'  => 'required|email|between:3,50',
+			'subject' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:80',
+			'msg'     => 'required|between:5,500',
 	        );
 
 
@@ -34,16 +34,16 @@ class ContactoController extends Controller {
 	    {
 	        if ($validator->passes()) 
 	        {
-	        	$toEmail='keko_daniel@hotmail.com';
-	        	$toName='Administrador';
-	        	$fromEmail=Input::get('correo');
-				$fromName=Input::get('name');
+				$toEmail   ='keko_daniel@hotmail.com';
+				$toName    ='Administrador';
+				$fromEmail =Input::get('correo');
+				$fromName  =Input::get('name');
 
 		            Mail::send('emails.contacto',$data,function($message) use($toEmail,$toName,$fromName,$fromEmail)
 		            {
-		            	$message->to($toEmail,$toName);
-		            	$message->from($fromEmail,$fromName);
-		            	$message->subject('Nuevo email de un usuario');
+						$message->to($toEmail,$toName);
+						$message->from($fromEmail,$fromName);
+						$message->subject('Nuevo email de un usuario');
 		            });
 		            
 		           		return Response::json

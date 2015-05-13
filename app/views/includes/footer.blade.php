@@ -1,7 +1,7 @@
   <nav class="navbar navbar-default nospace " >
       <footer>
         <div class="well-sm space-sm ">
-          <span class="pull-left" style="opacity:0.8;"><img src="img/logo-fundacion.png" alt="Fundacion Markoptic" style="width:64px;" ></span>
+          <span class="pull-left" style="opacity:0.8;"><img src="../../img/logo-fundacion.png" alt="Fundacion Markoptic" style="width:64px;" ></span>
           <center class="text-muted">
           <a href="">Privacidad </a>
           / 

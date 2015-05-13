@@ -12,7 +12,7 @@ class CreateTrabajoDetalladoTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('trabajo_detallado', function(Blueprint $table)
+		Schema::create('trabajos_detallados', function(Blueprint $table)
 		{
 			$table->engine ='InnoDB';
 			//primary key
@@ -38,7 +38,7 @@ class CreateTrabajoDetalladoTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('trabajo_detallado');
+		Schema::drop('trabajos_detallados');
 	}
 
 }

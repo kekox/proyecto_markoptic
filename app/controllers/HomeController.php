@@ -28,18 +28,25 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		$id= Auth::user()->perfil_id;
+		$id       = Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('bienvenida',array('perfiles' => $perfiles));
 	}
 
 	protected function showDashboard()
 	{
-		$id= Auth::user()->perfil_id;
+		$id       = Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('dashboard',array('perfiles' => $perfiles));
 
 	
+	}
+
+	protected function showDashboardProyectos()
+	{
+		$id       = Auth::user()->perfil_id;
+		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		return View::make('proyectos/index',array('perfiles' => $perfiles));
 	}
 
 

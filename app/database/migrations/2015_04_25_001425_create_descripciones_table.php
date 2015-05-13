@@ -18,7 +18,7 @@ class CreateDescripcionesTable extends Migration {
 			//primary key
 			$table->increments('id'); 
 			//Foreign Key
-			$table->integer('folio_proyecto');
+			$table->integer('folio_proyecto')->unique();
 			$table->foreign('folio_proyecto')->references('folio')->on('proyectos')->onDelete('cascade');
 			//Tuplas
 			$table->string('descripcion_propuesta');
