@@ -12,16 +12,18 @@
                 <div id="formproyectos" >
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
-                  		<center><h3>Analisis Comercial - Sección 4/7</h3></center>
+                  		<center><h3>Analisis Comerciales - Sección 4/7</h3></center>
+                  		
+                  		
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
-				            <div id="formulariotecnico" class="space">
+				            <div id="formulariocomercial" class="space">
 		                		{{ Form::open(array(
-								'route' => 'addseccion3',
+								'route' => 'addseccion4',
 								'class' => 'form-horizontal', 
 								'role'  => 'form',
-								'id'    =>'formtecnico',
+								'id'    => 'formcomercial',
 		                		))}}
 
 		                		 <center><span class=" display-errors"  id="_campo0">  {{ $errors->first('campo0') }}</span></center>
@@ -38,7 +40,7 @@
 										@endif 
 				               			</div>
 				               			<div class="col-lg-1">
-				               				  <a href="#" data-toggle="tooltip" id="myTooltip1" >
+				               				  <a href="#" data-toggle="tooltip" id="myTooltip0" >
 				               				  <span class="fa-stack fa-2x">
 							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
 							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
@@ -52,7 +54,7 @@
 		               			<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo1" >Antecedentes</label></center>
+				               				<center><label for="campo1" >Características de la empresa</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo1" placeholder="Informacion acerca del campo..."name="campo1" row="2"></textarea> 
@@ -67,13 +69,13 @@
 							            </div>
 									</section>
 								</div> <!-- Termina primer campo -->
-								
+
 
 								<center><span class=" display-errors"  id="_campo2">  {{ $errors->first('campo2') }}</span></center>
 								<div class="col-lg-12"> <!-- Empiezan el segundo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo2" >Estado de la Técnica 1</label></center>
+				               				<center><label for="campo2" >Funciones críticas de administración</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo2" placeholder="Informacion acerca del campo..." name="campo2" row="2"></textarea> 
@@ -93,7 +95,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el tercer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo3" >Estado de la Técnica 2</label></center>
+				               				<center><label for="campo3" >Experiencia del personal </label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo3" placeholder="Informacion acerca del campo..."name="campo3" row="2"></textarea> 
@@ -113,7 +115,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el cuarto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo4" >Estado de la Técnica 3</label></center>
+				               				<center><label for="campo4" >Récord de éxito en comercialización de proyectos y otras investigaciones</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo4" placeholder="Informacion acerca del campo..."name="campo4" row="2"></textarea> 
@@ -129,71 +131,11 @@
 									</section>
 								</div> <!-- Termina cuarto campo -->
 
-								<center><span class=" display-errors"  id="_campo5">  {{ $errors->first('campo5') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el quinto campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo5" >Estado de la Técnica 4</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo5" placeholder="Informacion acerca del campo..."name="campo5" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip5">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el quinto campo -->
-
-								<center><span class=" display-errors"  id="_campo6">  {{ $errors->first('campo6') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el sexto campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo6" >Estado de la Técnica 5</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo6" placeholder="Informacion acerca del campo..."name="campo6" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip6">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el sexto campo -->
-
-								<center><span class=" display-errors"  id="_campo7">  {{ $errors->first('campo7') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el septimo campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo7" >Especificar cuál es la fuente de origen de la tecnología (p.e desarrollo interno, adquisición, transferencia de otra empresa o institución académica)</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo7" placeholder="Informacion acerca del campo..."name="campo7" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip7">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el septimo campo -->
-
-														
 								
+
 								<div class="col-lg-7 col-lg-offset-2 col-lg-push-1">
 								<!--  <button class="btn btn-primary btn-block roboto" id="btnproyecto" type="submit" value="Enviar">Siguiente</button>-->
-								<input class="btn btn-primary btn-block roboto" id="btntecnico" type="button" value="Siguiente">
+								<input class="btn btn-primary btn-block roboto" id="btncomercial" type="button" value="Siguiente">
 								{{--{{ Form::submit('Siguiente', array('class' => 'btn btn-primary btn-block'))}}--}}
 								<br>
 				       			
@@ -221,7 +163,7 @@ $(document).ready(function(){
 
     $('input[type="button"]').attr('disabled','disabled');
 
-     $('#formulariotecnico').on('keyup',function()
+     $('#formulariocomercial').on('keyup',function()
      {
         if(
             $('#campo0').val() !='' 
@@ -233,12 +175,6 @@ $(document).ready(function(){
           	$('#campo3').val() !=''
           	&&
           	$('#campo4').val() !=''
-          	&&
-          	$('#campo5').val() !=''
-          	&&
-          	$('#campo6').val() !=''
-          	&&
-          	$('#campo7').val() !=''
         ){
             $('input[type="button"]').removeAttr('disabled');
         	$('#campo0').removeAttr('disabled');
@@ -249,13 +185,13 @@ $(document).ready(function(){
 
      });
 
-    $('#btntecnico').on('click',function()
+    $('#btncomercial').on('click',function()
     {
     	$.ajax({
-          url: '3',
+          url: '4',
           dataType: 'json',
           type:'POST',
-          data: $('#formtecnico').serialize(), //Se obtienen los datos del formulario
+          data: $('#formcomercial').serialize(), //Se obtienen los datos del formulario
            
             success: function(datos)
             {
@@ -268,11 +204,11 @@ $(document).ready(function(){
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#_mensaje').text("Revise los campos porfavor*");
+                  $('#_mensaje').text(datos.message);
                 });
                 }else{
-                  document.getElementById('formtecnico').reset();
-                  window.location = 'http://www.webapp.com/proyectos/seccion/2';
+                  document.getElementById('formcomercial').reset();
+                  window.location = '5';
                 
                   
                 }
@@ -280,15 +216,16 @@ $(document).ready(function(){
 
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
-            		
-            		alert('Favor de seleccionar el folio del proyecto que puso al principio.')
-			        $('#_campo0').text('Seleccione el folio correcto');
+            		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
+			        $('#_campo0').text('Seleccione el folio Correcto');
+
+			        console.log(XMLHttpRequest);
 			    }else{
             	 	alert("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
 				    console.log(XMLHttpRequest.statusText);
 				    console.log(textStatus);
-				    console.log(errorThrown);;
+				    console.log(errorThrown);
 		    	}
 			}
             

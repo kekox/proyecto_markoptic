@@ -49,7 +49,7 @@ class ProyectoController extends Controller {
 
 		if($validator->passes()){
 			if(Request::ajax()){
-			$proyecto                         = new Proyecto;
+			/*$proyecto                         = new Proyecto;
 			$proyecto->folio                  = Input::get('campo1');
 			$proyecto->id_user                = Auth::user()->id;
 			$proyecto->nombre_proyecto        = Input::get('campo0');
@@ -64,7 +64,7 @@ class ProyectoController extends Controller {
 			$proyecto->tipo_innovacion        = Input::get('campo10');
 			$proyecto->grado_innovacion       = Input::get('campo11');
 			$proyecto->tipo_mercado           = Input::get('campo12');
-			$proyecto->save();
+			$proyecto->save();*/
 			
 			return Response::json
                                     ([
@@ -72,7 +72,7 @@ class ProyectoController extends Controller {
                                         'message' => 'Success'
                                     ]);  
 			}else{
-			$proyecto                         = new Proyecto;
+			/*$proyecto                         = new Proyecto;
 			$proyecto->folio                  = Input::get('campo1');
 			$proyecto->id_user                = Auth::user()->id;
 			$proyecto->nombre_proyecto        = Input::get('campo0');
@@ -87,7 +87,7 @@ class ProyectoController extends Controller {
 			$proyecto->tipo_innovacion        = Input::get('campo10');
 			$proyecto->grado_innovacion       = Input::get('campo11');
 			$proyecto->tipo_mercado           = Input::get('campo12');
-			$proyecto->save();
+			$proyecto->save();*/
 			
 			return Redirect::to('proyectos/seccion/2')	
          			->with('message_exito', 'Sección 2');	

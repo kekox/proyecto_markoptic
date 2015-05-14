@@ -15,10 +15,10 @@ class AuthController extends BaseController{
     }
     public function postLogin()
     {
-
+        
         $data=array(
             'email'=>Input::get('email'),
-            'password'=>Input::get('password'),
+            'password'=>Input::get('password')            
         );
         $remember = (Input::has('remember')) ? true : false;
 

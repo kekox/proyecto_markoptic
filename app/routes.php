@@ -81,7 +81,13 @@ Route::group(array('before' => 'auth'), function()
 			Route::post('3',array('uses' => 'AnalisisTecnicoController@store','as'=>'addseccion3'));
 			
 			Route::get('4',array('uses' => 'AnalisisComercialController@create'));
-			Route::post('4',array('uses' => 'AnalisisComercialController@store', 'as' => 'addseccion4'));
+			Route::post('4',array('uses' => 'AnalisisComercialController@store','as' => 'addseccion4'));
+
+			Route::get('5',array('uses'=> 'GeneralController@create'));
+			Route::post('5',array('uses' => 'GeneralController@store', 'as' => 'addseccion5'));
+
+			Route::get('6',array('uses'=> 'MercadoController@create'));
+			Route::post('6',array('uses' => 'MercadoController@store', 'as' => 'addseccion6'));
 		});
 	
 

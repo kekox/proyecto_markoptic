@@ -75,15 +75,15 @@ class CmsController extends Controller
         
         $user = User::find($user_id);
 
-        $data=Array(
-            'success'          => true,
+        $data=([
+            'success'          =>true,
             'id'               =>$user->id,
             'nombre'           =>$user->nombre,
             'apellido_Paterno' =>$user->apellido_Paterno,
             'apellido_Materno' =>$user->apellido_Materno,
             'email'            =>$user->email,
             'perfil_id'        =>$user->perfil_id,
-        );
+        ]);
         return Response::json($data);
     }
     

@@ -253,7 +253,7 @@ $(document).ready(function(){
                 });
                 }else{
                   document.getElementById('formdescripciones').reset();
-                  window.location = 'http://www.webapp.com/proyectos/seccion/4';
+                  window.location = '3';
                 
                   
                 }

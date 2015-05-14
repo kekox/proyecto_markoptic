@@ -73,9 +73,7 @@
                         <span class=" display-errors" id="_password">  {{ $errors->first('password') }}</span>
                          
                         <div class="form-group">
-                          &nbsp;&nbsp;&nbsp;&nbsp;<label>{{ Form::checkbox('remember','',false)}} Recordar mi sesión
-                        </label>
-                       
+                          &nbsp;&nbsp;&nbsp;&nbsp;<input name="remember" type="checkbox" /> Recordar mi sesión                
                         </div>     
                                       
                         <!-- Login button -->

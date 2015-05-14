@@ -13,6 +13,10 @@
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
                   		<center><h3>Analisis Tecnicos - Sección 3/7</h3></center>
+                  		<center><a href="">Ver folios</a></center>
+                  		<center>
+                  		
+						</center>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
@@ -24,7 +28,7 @@
 								'id'    =>'formtecnico',
 		                		))}}
 
-		                		 <center><span class=" display-errors"  id="_campo0">  {{ $errors->first('campo0') }}</span></center>
+		                		<center><span class=" display-errors"  id="_campo0">  {{ $errors->first('campo0') }}</span></center>
 		                		<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
@@ -38,7 +42,7 @@
 										@endif 
 				               			</div>
 				               			<div class="col-lg-1">
-				               				  <a href="#" data-toggle="tooltip" id="myTooltip1" >
+				               				  <a href="#" data-toggle="tooltip" id="myTooltip0" >
 				               				  <span class="fa-stack fa-2x">
 							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
 							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
@@ -212,11 +216,7 @@
             </div>
         </div>
             
-    @if($proyectoss)
-					@foreach($proyectoss as $proyectosss)
-				              Nombrel del proyecto: <strong>{{$proyectosss->nombre_proyecto}}</strong>, folio: <strong>{{$proyectosss->folio}}</strong> <br> 				
-				    @endforeach
-			@endif 
+    
   </section>
 
 <script>
@@ -276,7 +276,7 @@ $(document).ready(function(){
                 });
                 }else{
                   document.getElementById('formtecnico').reset();
-                  window.location = 'http://www.webapp.com/proyectos/seccion/4';
+                  window.location = '4';
                 
                   
                 }

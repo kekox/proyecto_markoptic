@@ -184,6 +184,7 @@
           dataType: 'json',
           type:'POST',
           data: $('#formedit').serialize(), //Se obtienen los datos del formulario
+
             success: function(datos)
             {
                 //Si la respuesta de ajax es false se hace esto
@@ -195,7 +196,7 @@
                 //Si la respuesta del ajax es verdadero se hace esto
                 else
                 {
-                  $('#formedit input[name="user_id"]').val(datos.id)
+                 
                   $('#formedit input[name="nombre_edit"]').val(datos.nombre)
                   $('#formedit input[name="apellido_paterno_edit"]').val(datos.apellido_Paterno)
                   $('#formedit input[name="apellido_materno_edit"]').val(datos.apellido_Materno)
@@ -205,7 +206,23 @@
 
                 }
             },
-           
+
+            error: function (XMLHttpRequest, textStatus, errorThrown) 
+            {
+              if (XMLHttpRequest.status === 500) {
+                alert('Favor de seleccionar el folio del proyecto que puso al principio.');
+              $('#_campo0').text('Seleccione el folio Correcto');
+
+                console.log(XMLHttpRequest);
+              }else{
+                      alert("Algo esta mal");
+                  //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
+                  console.log(XMLHttpRequest.statusText);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+              }
+            }
+                 
         });
             
         });
