@@ -12,16 +12,16 @@
                 <div id="formproyectos" >
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
-                  		<center><h3>Mercado - Sección 6/11</h3></center>
+                  		<center><h3>Asesoría - Sección 10/10</h3></center>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
-				            <div id="formulariomercado" class="space">
+				            <div id="formularioasesoria" class="space">
 		                		{{ Form::open(array(
-								'route' => 'addseccion6',
+								'route' => 'addseccion10',
 								'class' => 'form-horizontal', 
 								'role'  => 'form',
-								'id'    =>'formmercado',
+								'id'    =>'formasesoria',
 		                		))}}
 
 		                		<center><span class=" display-errors"  id="_campo0">  {{ $errors->first('campo0') }}</span></center>
@@ -52,7 +52,7 @@
 		               			<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo1" >Mercado del nuevo producto.</label></center>
+				               				<center><label for="campo1" >PREGUNTA 1: ¿En la formulación de su propuesta, recibió asesoría/consultoría de un tercero (Despacho, Oficina de Transferencia de Tecnología, Centro de Patentamiento, IES, CI)?</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo1" placeholder="Informacion acerca del campo..."name="campo1" row="2"></textarea> 
@@ -73,7 +73,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el segundo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo2" >Modelo de negocio y aceptación en el mercado.</label></center>
+				               				<center><label for="campo2" >PREGUNTA 2: Indique la entidad que la auxilió en el desarrollo y llenado de la propuesta; favor de seleccionarlo de acuerdo a su RENIECYT.</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo2" placeholder="Informacion acerca del campo..." name="campo2" row="2"></textarea> 
@@ -93,7 +93,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el tercer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo3" >Precio del producto (pesos)</label></center>
+				               				<center><label for="campo3" >PREGUNTA 3: Selecciones las etapas de las propuestas en las que participó o participará la entidad que brindó la asesoría.</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo3" placeholder="Informacion acerca del campo..."name="campo3" row="2"></textarea> 
@@ -113,7 +113,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el cuarto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo4" >Proyecciones de mercado.</label></center>
+				               				<center><label for="campo4" >PREGUNTA 4: ¿La entidad que le auxilió en la preparación y llenado de la propuesta le cobrará honorarios?</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo4" placeholder="Informacion acerca del campo..."name="campo4" row="2"></textarea> 
@@ -129,11 +129,11 @@
 									</section>
 								</div> <!-- Termina cuarto campo -->
 
-								<center><span class=" display-errors"  id="_campo5">  {{ $errors->first('campo5') }}</span></center>
+								<center><span class=" display-errors"  id="_campo5">  {{ $errors->first('campo4') }}</span></center>
 								<div class="col-lg-12"> <!-- Empiezan el quinto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo5" >Enfoque de inserción en el mercado.</label></center>
+				               				<center><label for="campo5" >Responsables del Proyecto</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo5" placeholder="Informacion acerca del campo..."name="campo5" row="2"></textarea> 
@@ -147,113 +147,12 @@
 							                  </a>
 							            </div>
 									</section>
-								</div> <!-- Termina el quinto campo -->
-
-								<center><span class=" display-errors"  id="_campo6">  {{ $errors->first('campo6') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el sexto campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo6" >Cliente objetivo.</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo6" placeholder="Informacion acerca del campo..."name="campo6" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip6">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el sexto campo -->
-
-								<center><span class=" display-errors"  id="_campo7">  {{ $errors->first('campo7') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el septimo campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo7" >Descripción de los beneficios sociales, educativos o científicos.</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo7" placeholder="Informacion acerca del campo..."name="campo7" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip7">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el septimo campo -->
-
-								<center><span class=" display-errors"  id="_campo8">  {{ $errors->first('campo8') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el octavo campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo8" >Competencia.</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo8" placeholder="Informacion acerca del campo..."name="campo8" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip8">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el octavo campo -->
-
-								<center><span class=" display-errors"  id="_campo9">  {{ $errors->first('campo9') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el noveno campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo9" >Patentes similares al producto o servicio propuesto por la empresa</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo9" placeholder="Informacion acerca del campo..."name="campo9" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip9">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el noveno campo -->
-
-								<center><span class=" display-errors"  id="_campo10">  {{ $errors->first('campo10') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el decimo campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo10" >Barreras</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo10" placeholder="Informacion acerca del campo..."name="campo10" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip10">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el decimo campo -->
-
-														
+								</div> <!-- Termina quinto campo -->
+					
 								
 								<div class="col-lg-7 col-lg-offset-2 col-lg-push-1">
 								<!--  <button class="btn btn-primary btn-block roboto" id="btnproyecto" type="submit" value="Enviar">Siguiente</button>-->
-								<input class="btn btn-primary btn-block roboto" id="btnmercado" type="button" value="Siguiente">
+								<input class="btn btn-primary btn-block roboto" id="btnasesoria" type="button" value="Finalizar">
 								{{--{{ Form::submit('Siguiente', array('class' => 'btn btn-primary btn-block'))}}--}}
 								<br>
 				       			
@@ -281,7 +180,7 @@ $(document).ready(function(){
 
     $('input[type="button"]').attr('disabled','disabled');
 
-     $('#formulariomercado').on('keyup',function()
+     $('#formularioasesoria').on('keyup',function()
      {
         if(
             $('#campo0').val() !='' 
@@ -295,16 +194,6 @@ $(document).ready(function(){
           	$('#campo4').val() !=''
           	&&
           	$('#campo5').val() !=''
-          	&&
-          	$('#campo6').val() !=''
-          	&&
-          	$('#campo7').val() !=''
-          	&&
-          	$('#campo8').val() !=''
-          	&&
-          	$('#campo9').val() !=''
-          	&&
-          	$('#campo10').val() !=''
         ){
             $('input[type="button"]').removeAttr('disabled');
         	$('#campo0').removeAttr('disabled');
@@ -315,20 +204,20 @@ $(document).ready(function(){
 
      });
 
-    $('#btnmercado').on('click',function()
+    $('#btnasesoria').on('click',function()
     {
     	$.ajax({
-          url: '6',
+          url: '10',
           dataType: 'json',
           type:'POST',
-          data: $('#formmercado').serialize(), //Se obtienen los datos del formulario
+          data: $('#formasesoria').serialize(), //Se obtienen los datos del formulario
            
             success: function(datos)
             {
              
              
               //Donde se vana  mostrar los errores
-              $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4 ,#_campo5 ,#_campo6 ,#_campo7 ,#_campo8 ,#_campo9 ,#_campo10').text('');
+              $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4,#_campo5').text('');
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
                 $.each(datos.errors, function(index, value)
@@ -337,8 +226,9 @@ $(document).ready(function(){
                   $('#_mensaje').text(datos.message);
                 });
                 }else{
-                  document.getElementById('formmercado').reset();
-                  window.location = '7';
+                  document.getElementById('formasesoria').reset();
+                  alert(datos.message);
+                  window.location = 'http://www.webapp.com/proyectos';
                 
                   
                 }

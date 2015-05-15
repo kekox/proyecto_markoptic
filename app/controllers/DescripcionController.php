@@ -8,8 +8,9 @@ class DescripcionController extends Controller {
 	{	
 		$id= Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		$idselected = Auth::user()->id;
 
-		$proyectos = Proyecto::orderBy('created_at','desc')->take(1)->get();
+		$proyectos = Proyecto::orderBy('created_at','desc')->where('id_user','=',$idselected)->take(1)->get();
 		return View::make('descripcion/create',array('perfiles' => $perfiles,'proyectos'=>$proyectos));
 	}
 

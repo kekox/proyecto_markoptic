@@ -12,7 +12,7 @@
                 <div id="formproyectos" >
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
-                  		<center><h3>Descripción - Sección 2/7</h3></center>
+                  		<center><h3>Descripción - Sección 2/10</h3></center>
                   		<center><span id="_mensaje" class="display-errors" ></span></center>
 						{{--@if($proyectos)
 							@foreach($proyectos as $proyecto)
@@ -261,7 +261,7 @@ $(document).ready(function(){
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
             		
-            		alert('Favor de seleccionar el folio del proyecto que puso al principio.')
+            		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
 			        $('#_campo0').text('Seleccione el folio correcto');
 			    }else{
             	 	alert("Algo esta mal");

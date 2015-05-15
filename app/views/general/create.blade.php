@@ -324,7 +324,7 @@ $(document).ready(function(){
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
-            		alert('El folio que ha decidido tomar , ya existe. Favor de seleccionar otro Folio.')
+            		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
 			        $('#_campo0').text('Favor de cambiar el folio');
 			    }else{
             	 	alert("Algo esta mal");

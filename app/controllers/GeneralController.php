@@ -45,7 +45,7 @@ class GeneralController extends Controller {
 
 		if($validator->passes()){
 			if(Request::ajax()){
-				$general                                  = new General;
+				/*$general                                  = new General;
 				$general->folio_proyecto                  = Input::get('campo0');
 				$general->nivel_de_tecnologia             = Input::get('campo1');
 				$general->nivel_de_innovacion             = Input::get('campo2');
@@ -56,7 +56,7 @@ class GeneralController extends Controller {
 				$general->disponibilidad_y_compatibilidad = Input::get('campo7');
 				$general->plan_de_proteccion              = Input::get('campo8');
 				$general->generacion_de_ingresos          = Input::get('campo9');
-				$general->save();
+				$general->save();*/
 
 				return Response::json
 	                                    ([
@@ -64,7 +64,7 @@ class GeneralController extends Controller {
 	                                        'message' => 'Success'
 	                                    ]);  
 			}else{
-				$general                                  = new General;
+				/*$general                                  = new General;
 				$general->folio_proyecto                  = Input::get('campo0');
 				$general->nivel_de_tecnologia             = Input::get('campo1');
 				$general->nivel_de_innovacion             = Input::get('campo2');
@@ -75,7 +75,7 @@ class GeneralController extends Controller {
 				$general->disponibilidad_y_compatibilidad = Input::get('campo7');
 				$general->plan_de_proteccion              = Input::get('campo8');
 				$general->generacion_de_ingresos          = Input::get('campo9');
-				$general->save();
+				$general->save();*/
 			
 				return Redirect::to('proyectos/seccion/6')	
 	         			->with('message_exito', 'Sección 6');	

@@ -25,7 +25,7 @@ class CreateTrabajoDetalladoTable extends Migration {
 			$table->string('desc_justificacion_actividades');
 			$table->string('producto_etapa');
 			$table->string('desc_etapas');
-			$table->string('presupuesto');
+			$table->double('presupuesto');
 			//Created_at & Updated_at
             $table->timestamps();
 		});

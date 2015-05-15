@@ -12,23 +12,26 @@
                 <div id="formproyectos" >
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
-                  		<center><h3>Mercado - Sección 6/11</h3></center>
+                  		<center><h3>Trabajo Detallado - Sección 9/10</h3></center>
+                  		<center>
+                  		
+						</center>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
-				            <div id="formulariomercado" class="space">
+				            <div id="formulariodetallado" class="space">
 		                		{{ Form::open(array(
-								'route' => 'addseccion6',
+								'route' => 'addseccion9',
 								'class' => 'form-horizontal', 
 								'role'  => 'form',
-								'id'    =>'formmercado',
+								'id'    => 'formdetallado',
 		                		))}}
 
 		                		<center><span class=" display-errors"  id="_campo0">  {{ $errors->first('campo0') }}</span></center>
-		                		<div class="col-lg-12"> <!-- Empieza el cero campo -->
+		                		<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo0" >Folio</label></center>
+				               				<center><label for="campo1" >Folio</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               			@if($proyectos)
@@ -46,13 +49,13 @@
 							                  </a>
 							            </div>
 									</section>
-								</div> <!-- Termina cero campo -->
+								</div> <!-- Termina primer campo -->
 								
 		               			<center><span class=" display-errors"  id="_campo1">  {{ $errors->first('campo1') }}</span></center>
 		               			<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo1" >Mercado del nuevo producto.</label></center>
+				               				<center><label for="campo1" >Descripción general del plan de trabajo para el ciclo fiscal.</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo1" placeholder="Informacion acerca del campo..."name="campo1" row="2"></textarea> 
@@ -73,7 +76,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el segundo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo2" >Modelo de negocio y aceptación en el mercado.</label></center>
+				               				<center><label for="campo2" >Descripción y justificación de las actividades.</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo2" placeholder="Informacion acerca del campo..." name="campo2" row="2"></textarea> 
@@ -93,7 +96,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el tercer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo3" >Precio del producto (pesos)</label></center>
+				               				<center><label for="campo3" >Productos de la etapa.</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo3" placeholder="Informacion acerca del campo..."name="campo3" row="2"></textarea> 
@@ -113,7 +116,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el cuarto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo4" >Proyecciones de mercado.</label></center>
+				               				<center><label for="campo4" >Descripción de las etapas posteriores.</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo4" placeholder="Informacion acerca del campo..."name="campo4" row="2"></textarea> 
@@ -133,7 +136,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el quinto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo5" >Enfoque de inserción en el mercado.</label></center>
+				               				<center><label for="campo5" >Presupuesto</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo5" placeholder="Informacion acerca del campo..."name="campo5" row="2"></textarea> 
@@ -149,111 +152,10 @@
 									</section>
 								</div> <!-- Termina el quinto campo -->
 
-								<center><span class=" display-errors"  id="_campo6">  {{ $errors->first('campo6') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el sexto campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo6" >Cliente objetivo.</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo6" placeholder="Informacion acerca del campo..."name="campo6" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip6">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el sexto campo -->
 
-								<center><span class=" display-errors"  id="_campo7">  {{ $errors->first('campo7') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el septimo campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo7" >Descripción de los beneficios sociales, educativos o científicos.</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo7" placeholder="Informacion acerca del campo..."name="campo7" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip7">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el septimo campo -->
-
-								<center><span class=" display-errors"  id="_campo8">  {{ $errors->first('campo8') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el octavo campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo8" >Competencia.</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo8" placeholder="Informacion acerca del campo..."name="campo8" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip8">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el octavo campo -->
-
-								<center><span class=" display-errors"  id="_campo9">  {{ $errors->first('campo9') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el noveno campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo9" >Patentes similares al producto o servicio propuesto por la empresa</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo9" placeholder="Informacion acerca del campo..."name="campo9" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip9">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el noveno campo -->
-
-								<center><span class=" display-errors"  id="_campo10">  {{ $errors->first('campo10') }}</span></center>
-								<div class="col-lg-12"> <!-- Empiezan el decimo campo -->
-			               			<section  class="form-group">
-				               			<div class="col-lg-3 ">
-				               				<center><label for="campo10" >Barreras</label></center>
-				               			</div>
-				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo10" placeholder="Informacion acerca del campo..."name="campo10" row="2"></textarea> 
-				               			</div>
-				               			<div class="col-lg-1">
-											  <a href="#" data-toggle="tooltip" id="myTooltip10">
-				               				  <span class="fa-stack fa-2x">
-							                  <i class="fa fa-circle  fa-stack-2x text-orange" ></i>
-							                  <i class="fa fa-info  fa-stack-1x fa-inverse"></i>
-							                  </span></center>
-							                  </a>
-							            </div>
-									</section>
-								</div> <!-- Termina el decimo campo -->
-
-														
-								
 								<div class="col-lg-7 col-lg-offset-2 col-lg-push-1">
 								<!--  <button class="btn btn-primary btn-block roboto" id="btnproyecto" type="submit" value="Enviar">Siguiente</button>-->
-								<input class="btn btn-primary btn-block roboto" id="btnmercado" type="button" value="Siguiente">
+								<input class="btn btn-primary btn-block roboto" id="btndetallado" type="button" value="Siguiente">
 								{{--{{ Form::submit('Siguiente', array('class' => 'btn btn-primary btn-block'))}}--}}
 								<br>
 				       			
@@ -281,7 +183,7 @@ $(document).ready(function(){
 
     $('input[type="button"]').attr('disabled','disabled');
 
-     $('#formulariomercado').on('keyup',function()
+     $('#formulariodetallado').on('keyup',function()
      {
         if(
             $('#campo0').val() !='' 
@@ -295,16 +197,6 @@ $(document).ready(function(){
           	$('#campo4').val() !=''
           	&&
           	$('#campo5').val() !=''
-          	&&
-          	$('#campo6').val() !=''
-          	&&
-          	$('#campo7').val() !=''
-          	&&
-          	$('#campo8').val() !=''
-          	&&
-          	$('#campo9').val() !=''
-          	&&
-          	$('#campo10').val() !=''
         ){
             $('input[type="button"]').removeAttr('disabled');
         	$('#campo0').removeAttr('disabled');
@@ -315,38 +207,41 @@ $(document).ready(function(){
 
      });
 
-    $('#btnmercado').on('click',function()
+    $('#btndetallado').on('click',function()
     {
     	$.ajax({
-          url: '6',
+          url: '9',
           dataType: 'json',
           type:'POST',
-          data: $('#formmercado').serialize(), //Se obtienen los datos del formulario
+          data: $('#formdetallado').serialize(), //Se obtienen los datos del formulario
            
             success: function(datos)
             {
              
              
               //Donde se vana  mostrar los errores
-              $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4 ,#_campo5 ,#_campo6 ,#_campo7 ,#_campo8 ,#_campo9 ,#_campo10').text('');
+              $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4 ,#_campo5 ,#_campo6 ,#_campo7').text('');
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#_mensaje').text(datos.message);
+                  $('#_mensaje').text("Revise los campos porfavor*");
                 });
                 }else{
-                  document.getElementById('formmercado').reset();
-                  window.location = '7';
+                  document.getElementById('formdetallado').reset();
+                  window.location = '10';
                 
                   
                 }
             },
+
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
-            		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
-			        $('#_campo0').text('Favor de cambiar el folio');
+            		alert('Favor de seleccionar el folio del proyecto que puso al principio.')
+			        $('#_campo0').text('Seleccione el folio Correcto');
+
+			        console.log(XMLHttpRequest);
 			    }else{
             	 	alert("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest

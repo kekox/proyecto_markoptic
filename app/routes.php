@@ -88,6 +88,18 @@ Route::group(array('before' => 'auth'), function()
 
 			Route::get('6',array('uses'=> 'MercadoController@create'));
 			Route::post('6',array('uses' => 'MercadoController@store', 'as' => 'addseccion6'));
+
+			Route::get('7',array('uses'=> 'VinculacionController@create'));
+			Route::post('7',array('uses' => 'VinculacionController@store', 'as' => 'addseccion7'));
+
+			Route::get('8',array('uses'=> 'InstitucionController@create'));
+			Route::post('8',array('uses' => 'InstitucionController@store', 'as' => 'addseccion8'));
+
+			Route::get('9',array('uses'=> 'TrabajoDetalladoController@create'));
+			Route::post('9',array('uses' => 'TrabajoDetalladoController@store', 'as' => 'addseccion9'));
+
+			Route::get('10',array('uses'=> 'AsesoriaController@create'));
+			Route::post('10',array('uses' => 'AsesoriaController@store', 'as' => 'addseccion10'));
 		});
 	
 

@@ -10,6 +10,11 @@
               <div class="row">
                   <div id="dashboardproyectos" class="grid-dashboard-proyecto">
                   		<center><h3>Proyectos</h3></center>
+                  		@if(Session::has('message_exito'))
+	                      <center><span class="display-info">{{ Session::get('message_exito') }}</span></center>
+	                      <br>
+	                      @endif
+                  		<center><span id="_mensaje" class="display-info" ></span></center>
                   	
                   	<div class="col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2 col-lg-9 col-lg-offset-2 ">
                   		

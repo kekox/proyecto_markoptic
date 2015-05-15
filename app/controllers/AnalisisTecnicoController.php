@@ -84,7 +84,8 @@ class AnalisisTecnicoController extends Controller {
 			 	return Response::json
                                     ([
                                         'success' => false,
-                                        'errors' => $validator ->getMessageBag()->toArray()
+                                        'errors' => $validator ->getMessageBag()->toArray(),
+                                        'message' => 'Revise los campos porfavor*',
                                     ]);
 			 }else{
 
