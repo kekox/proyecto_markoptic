@@ -38,14 +38,14 @@ class AsesoriaController extends Controller {
 		if($validator->passes()){
 			if(Request::ajax()){
 
-				$asesoria                           = new Asesoria;
+				/*$asesoria                           = new Asesoria;
 				$asesoria->folio_proyecto           = Input::get('campo0');
 				$asesoria->pregunta_1               = Input::get('campo1');
 				$asesoria->pregunta_2               = Input::get('campo2');
 				$asesoria->pregunta_3               = Input::get('campo3');
 				$asesoria->pregunta_4               = Input::get('campo4');
 				$asesoria->responsable_del_proyecto = Input::get('campo5');
-				$asesoria->save();
+				$asesoria->save();*/
 				
 			
 
@@ -57,14 +57,14 @@ class AsesoriaController extends Controller {
                                     ]);  
 			}else{
 				
-				$asesoria                           = new Asesoria;
+				/*$asesoria                           = new Asesoria;
 				$asesoria->folio_proyecto           = Input::get('campo0');
 				$asesoria->pregunta_1               = Input::get('campo1');
 				$asesoria->pregunta_2               = Input::get('campo2');
 				$asesoria->pregunta_3               = Input::get('campo3');
 				$asesoria->pregunta_4               = Input::get('campo4');
 				$asesoria->responsable_del_proyecto = Input::get('campo5');
-				$asesoria->save();
+				$asesoria->save();*/
 
 			
 			

@@ -40,7 +40,7 @@ class DescripcionController extends Controller {
 
 			if($validator->passes()){
 				if(Request::ajax()){
-					/*$descripcion                              = new Descripcion;
+					$descripcion                              = new Descripcion;
 					$descripcion->folio_proyecto              = Input::get('campo0');
 					$descripcion->descripcion_propuesta       = Input::get('campo1');
 					$descripcion->principales_actividades     = Input::get('campo2');
@@ -48,7 +48,7 @@ class DescripcionController extends Controller {
 					$descripcion->objetivo_gral               = Input::get('campo4');
 					$descripcion->resultados_esperados        = Input::get('campo5');
 					$descripcion->descripcion_estrategica_tec = Input::get('campo6');
-					$descripcion->save();*/
+					$descripcion->save();
 
 					return Response::json
                                     ([
@@ -56,7 +56,7 @@ class DescripcionController extends Controller {
                                         'message' => 'Éxito'
                                     ]); 
                 }else{
-                	/*$descripcion                              = new Descripcion;
+                	$descripcion                              = new Descripcion;
 					$descripcion->folio_proyecto              = Input::get('campo0');
 					$descripcion->descripcion_propuesta       = Input::get('campo1');
 					$descripcion->principales_actividades     = Input::get('campo2');
@@ -64,7 +64,7 @@ class DescripcionController extends Controller {
 					$descripcion->objetivo_gral               = Input::get('campo4');
 					$descripcion->resultados_esperados        = Input::get('campo5');
 					$descripcion->descripcion_estrategica_tec = Input::get('campo6');
-					$descripcion->save();*/
+					$descripcion->save();
 
 					return Redirect::to('proyectos/seccion/3')	
          				->with('message_exito', 'Sección 3');	
