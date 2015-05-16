@@ -12,7 +12,7 @@
                 <div id="formproyectos" >
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
-                  		<center><h3>Analisis Comerciales - Sección 4/7</h3></center>
+                  		<center><h3>Análisis Comerciales - Sección 4/7</h3></center>
                   		
                   		
 						<center><span id="_mensaje" class="display-errors" ></span></center>
