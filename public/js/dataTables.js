@@ -11073,7 +11073,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "No hay ningun usuario registrado.Por favor registre uno",
+			"sEmptyTable": "No existe ningun registro. Por favor haga un registro.",
 	
 	
 			/**

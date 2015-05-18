@@ -39,7 +39,8 @@
 
                   <div class="panel-body ">
 
-                      <center><span id="_mensaje" class="display-errors" ></span></center>
+                      <center><span id="_mensajefail" class="display-errors" ></span></center>
+                      <center><span id="_mensajesuccess" class="display-info" ></span></center>
                       <center><span id="errores" class="display-errors" ></span></center>
                       @if(Session::has('message_remind'))
                       <center><span class="display-info">{{ Session::get('message_remind') }}</span></center>
@@ -128,30 +129,37 @@
               
               //Donde se vana  mostrar los errores
               $('#_email , #_password ').text('');
-              var dom = document.getElementById('#formlogin');
 
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
-                  $('#_mensaje').text('Username/Password Invalid');
+                  
                      $.each(datos.errors, function(index, value)
                       {
-                        
                         $('#_'+index).text(value);
+                        $('#_mensajefail').text(datos.message);
                       });
                 }
                 //Si la respuesta del ajax es verdadero se hace esto
                 else
                 {
 
-                      $('#mensaje').text("Bienvenido al Sistema");
-                       window.location = 'bienvenida';
+                      $('#_mensajesuccess').text(datos.message);
+                      window.location = 'dashboard';
                 }
             },
 
-            errors: function(errors){
-              $('#errores').html("");
-              $('#errores').html(errors);
-            }
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+              if (XMLHttpRequest.status === 500) {
+                
+                 
+              }else{
+                    alert("Algo esta mal");
+                //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
+                console.log(XMLHttpRequest.statusText);
+                console.log(textStatus);
+                console.log(errorThrown);;
+          }
+      }
         });
       }
 

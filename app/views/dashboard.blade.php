@@ -10,7 +10,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
 			          <div class="heading">
 			                    <center><h3>Dashboard</h3></center>
-			                      @if (Session::has('message_welcome'))
+			                  @if (Session::has('message_welcome'))
 			                      <center><div class="alert alert-success"><span class="fa fa-smile-o"></span><a href="#" class="close" data-dismiss="alert">&times;</a>{{ Session::get('message_welcome') }}</div></center>
 			                  @endif
 			                  @if (Session::has('message'))
@@ -18,7 +18,7 @@
 			                  @endif
 			                  @if(Session::has('message_exito'))
 			                         <center><div class="alert alert-success"><span class="fa fa-smile-o"></span><a href="#" class="close" data-dismiss="alert">&times;</a>{{ Session::get('message_exito') }}</div></center>
-			                      @endif
+			                  @endif
 
 			                    </div>
 			    </div>

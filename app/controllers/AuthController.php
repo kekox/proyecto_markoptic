@@ -40,7 +40,7 @@ class AuthController extends BaseController{
                     return Response::json
                                     ([
                                         'success' => true,
-                                        'message' => 'Te has loggeado correctamente'
+                                        'message' => 'Bienvenido al Sistema.'
                                     ]);
                     
                 }
@@ -59,7 +59,8 @@ class AuthController extends BaseController{
                     return Response::json
                                     ([
                                         'success' => false,
-                                        'errors' => $validator ->getMessageBag()->toArray()
+                                        'errors'  => $validator ->getMessageBag()->toArray(),
+                                        'message' => 'Email/password are incorrect'
 
                                     ]);
             }
@@ -73,32 +74,32 @@ class AuthController extends BaseController{
 
     public function store(){
         $data=array(
-            'nombre'=>Input::get('nombre'),
-            'apellidoP'=>Input::get('apellidoP'),
-            'apellidoM'=>Input::get('apellidoM'),
-            'email'=>Input::get('email'),
-            'perfil'=>Input::get('perfil'),
-            'password'=>Input::get('password')
+            'nombre'    =>Input::get('nombre'),
+            'apellidoP' =>Input::get('apellidoP'),
+            'apellidoM' =>Input::get('apellidoM'),
+            'email'     =>Input::get('email'),
+            'perfil'    =>Input::get('perfil'),
+            'password'  =>Input::get('password')
 
         );
         $rules=array(
-            'nombre' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3',
+            'nombre'    => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3',
             'apellidoP' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'apellidoM' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
-            'email' => 'required|min:2|email|unique:users',
-            'perfil' => 'required',
-            'password' => 'required|min:6' 
+            'email'     => 'required|min:2|email|unique:users',
+            'perfil'    => 'required',
+            'password'  => 'required|min:6' 
         );
         
         $validator = Validator::make($data, $rules);
         if ($validator->passes()) {
-            $user = new User;
-            $user->nombre = Input::get('nombre');
+            $user                   = new User;
+            $user->nombre           = Input::get('nombre');
             $user->apellido_Paterno = Input::get('apellidoP');
             $user->apellido_Materno = Input::get('apellidoM');
-            $user->email = Input::get('email');
-            $user->perfil_id = Input::get('perfil');
-            $user->password =  Hash::make(Input::get('password'));
+            $user->email            = Input::get('email');
+            $user->perfil_id        = Input::get('perfil');
+            $user->password         =  Hash::make(Input::get('password'));
             $user->save();
 
             Mail::send('emails.welcome', array('nombre'=>Input::get('nombre')), function($message){
@@ -124,13 +125,6 @@ class AuthController extends BaseController{
                 ->with('info', 'Haz cerrado sesion');
     }
 
-     public function postLogout()
-    {
-        // Log out
-        Auth::logout();
-        // Redirect to homepage
-        return Redirect::to('login')
-                ->with('info', 'Haz cerrado sesion');
-    }
+    
    
 }

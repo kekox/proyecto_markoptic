@@ -20,7 +20,7 @@ class HomeController extends BaseController {
         if (Auth::check())
         {
             // Redirect to homepage
-            return Redirect::to('bienvenida');
+            return Redirect::to('dashboard');
         }
         // Show the login page
         return View::make('users/login');
@@ -49,6 +49,10 @@ class HomeController extends BaseController {
 		return View::make('proyectos/index',array('perfiles' => $perfiles));
 	}
 
-
+	public function showProyectosdelete(){
+		$id       = Auth::user()->perfil_id;
+		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		return View::make('proyectos/indexdelete',array('perfiles' => $perfiles));
+	}
 	
 }

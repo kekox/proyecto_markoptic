@@ -68,6 +68,8 @@ Route::group(array('before' => 'auth'), function()
 
     /*seccion proyectos*/
     Route::get('proyectos', array('uses' => 'HomeController@showDashboardProyectos'));
+    Route::get('proyectos/delete',array('uses' => 'HomeController@showProyectosdelete'));
+    Route::get('proyectos/delete/{id}',array('uses' => 'DescripcionController@destroy','as' => 'deleteproyect'));
     	/*prefijo para */
 		Route::group(array('prefix' => 'proyectos/seccion/'),function()
 		{
@@ -100,6 +102,8 @@ Route::group(array('before' => 'auth'), function()
 			
 			Route::get('10',array('uses'  => 'AsesoriaController@create'));
 			Route::post('10',array('uses' => 'AsesoriaController@store', 'as' => 'addseccion10'));
+
+
 		});
 	
 

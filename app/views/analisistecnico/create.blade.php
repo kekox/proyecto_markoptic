@@ -12,7 +12,7 @@
                 <div id="formproyectos" >
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
-                  		<center><h3>Análisis Tecnicos - Sección 3/7</h3></center>
+                  		<center><h3>Análisis Tecnicos - Sección 3/10</h3></center>
                   		<center><a href="">Ver folios</a></center>
                   		<center>
                   		

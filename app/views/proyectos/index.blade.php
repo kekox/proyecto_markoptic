@@ -37,7 +37,7 @@
 
 		                  	<div class="col-sm-5 col-md-5 col-lg-5 gridproyectos">
 		                  		<center><img id="eliminar" style="margin-top:10px;" src="img/delete.png" alt=""></center>
-		                  		<center><h3>{{HTML::link('proyectos','Eliminar')}}</h3></center> 
+		                  		<center><h3>{{HTML::link('proyectos/delete','Eliminar')}}</h3></center> 
 		                  	</div>
 						
 				    </div>

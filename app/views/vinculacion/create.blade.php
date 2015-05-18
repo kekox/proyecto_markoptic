@@ -12,7 +12,7 @@
                 <div id="formproyectos" >
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
-                  		<center><h3>Vinculacion - Sección 7/11</h3></center>
+                  		<center><h3>Vinculacion - Sección 7/10</h3></center>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
@@ -33,7 +33,7 @@
 				               			<div class="col-lg-7">
 				               			@if($proyectos)
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" disabled>{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Información acerca del campo..."name="campo0" row="2" disabled>{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif 
 				               			</div>
@@ -55,7 +55,7 @@
 				               				<center><label for="campo1" >Razones que justifiquen la asociación.</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo1" placeholder="Informacion acerca del campo..."name="campo1" row="2"></textarea> 
+				               				<textarea type="text" class="form-control"  id="campo1" placeholder="Información acerca del campo..."name="campo1" row="2"></textarea> 
 				               			</div>
 				               			<div class="col-lg-1">
 				               				  <a href="#" data-toggle="tooltip" id="myTooltip1" >
@@ -76,7 +76,7 @@
 				               				<center><label for="campo2" >La empresa Proponente o algunos de los integrantes de la Red cuentan con experiencia en sinergias de marketing.</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo2" placeholder="Informacion acerca del campo..." name="campo2" row="2"></textarea> 
+				               				<textarea type="text" class="form-control"  id="campo2" placeholder="Información acerca del campo..." name="campo2" row="2"></textarea> 
 				               			</div>
 				               			<div class="col-lg-1">
 											  <a href="#" data-toggle="tooltip" id="myTooltip2">
@@ -96,7 +96,7 @@
 				               				<center><label for="campo3" >La Empresa Proponente o algunos de los integrantes de la Red cuentan con experiencia en sinergias tecnológicas.</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo3" placeholder="Informacion acerca del campo..."name="campo3" row="2"></textarea> 
+				               				<textarea type="text" class="form-control"  id="campo3" placeholder="Información acerca del campo..."name="campo3" row="2"></textarea> 
 				               			</div>
 				               			<div class="col-lg-1">
 											  <a href="#" data-toggle="tooltip" id="myTooltip3">
@@ -116,7 +116,7 @@
 				               				<center><label for="campo4" >4.	La Empresa Proponente o algunos de los integrantes de la Red cuentan con experiencia en sinergias de producción/procesamiento.</label></center>
 				               			</div>
 				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo4" placeholder="Informacion acerca del campo..."name="campo4" row="2"></textarea> 
+				               				<textarea type="text" class="form-control"  id="campo4" placeholder="Información acerca del campo..."name="campo4" row="2"></textarea> 
 				               			</div>
 				               			<div class="col-lg-1">
 											  <a href="#" data-toggle="tooltip" id="myTooltip4">
@@ -226,7 +226,7 @@ $(document).ready(function(){
 			        $('#_campo0').text('Favor de cambiar el folio');
 			    }else{
             	 	alert("Algo esta mal");
-				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
+				    //Se puede obtener Información útil inspecionando el Objeto XMLHttpRequest
 				    console.log(XMLHttpRequest.statusText);
 				    console.log(textStatus);
 				    console.log(errorThrown);;
