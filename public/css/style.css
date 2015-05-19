@@ -59,10 +59,6 @@ html, body {
     color:#000000;
 }
 
-.color-white{
-    color:#ffffff;
-}
-
 .text-blue{
     color:#2ab1de;
 }
@@ -92,6 +88,10 @@ html, body {
 
 .text-black{
   color:#333;
+}
+
+.text-white{
+  color:#ffffff;
 }
 /*familia de letras*/
 .montserrat{

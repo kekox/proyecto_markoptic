@@ -30,7 +30,7 @@
 
                       <table id="example" class="table table-hover responsive" cellspacing="0" width="100%">
                           
-                          <thead class="schema-dark color-white">
+                          <thead class="schema-dark text-white">
                               <tr>
                                   <th><center>ID</center></th>
                                   <th><center>Nombre(s)</center></th>
@@ -49,7 +49,7 @@
                                 @foreach($users as $user)
                               <tr class="opensans">
                                   <td><center>{{$user->id}}</center></td>
-                                  <td><center>{{$user->nombre}}</center></td>
+                                  <td><center>{{{$user->nombre}}}</center></td>
                                   <td><center>{{$user->apellido_Paterno." ".$user->apellido_Materno}}</center></td>
                                   <td><center>{{$user->email}}</center></td>
                                   <td><center>{{$user->perfil_id}}</center></td> 
@@ -196,7 +196,7 @@
                 //Si la respuesta del ajax es verdadero se hace esto
                 else
                 {
-                 
+                  $('#formedit input[name="user_id"]').val(datos.id)
                   $('#formedit input[name="nombre_edit"]').val(datos.nombre)
                   $('#formedit input[name="apellido_paterno_edit"]').val(datos.apellido_Paterno)
                   $('#formedit input[name="apellido_materno_edit"]').val(datos.apellido_Materno)

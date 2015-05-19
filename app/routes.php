@@ -68,6 +68,7 @@ Route::group(array('before' => 'auth'), function()
 
     /*seccion proyectos*/
     Route::get('proyectos', array('uses' => 'HomeController@showDashboardProyectos'));
+    Route::get('dashboardproyectos',array('uses' => 'HomeController@showDashboardProyectos2'));
     Route::get('proyectos/delete',array('uses' => 'HomeController@showProyectosdelete'));
     Route::get('proyectos/delete/{id}',array('uses' => 'DescripcionController@destroy','as' => 'deleteproyect'));
     	/*prefijo para */

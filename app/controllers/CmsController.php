@@ -82,7 +82,7 @@ class CmsController extends Controller
             'apellido_Paterno' =>$user->apellido_Paterno,
             'apellido_Materno' =>$user->apellido_Materno,
             'email'            =>$user->email,
-            'perfil_id'        =>$user->perfil_id,
+            'perfil_id'        =>$user->perfil_id
         ]);
         return Response::json($data);
     }
@@ -96,7 +96,7 @@ class CmsController extends Controller
             'apellido_paterno' =>Input::get('apellido_paterno_edit'),
             'apellido_materno' =>Input::get('apellido_materno_edit'),
             'email'            =>Input::get('email_edit'),
-            'perfil'           =>Input::get('perfil_edit'),
+            'perfil'           =>Input::get('perfil_edit')
            
         );
         $rules=array(
@@ -104,7 +104,7 @@ class CmsController extends Controller
             'apellido_paterno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'apellido_materno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'email'            => 'required|min:2|email',
-            'perfil'           => 'required',
+            'perfil'           => 'required'
         );
         
         $validator = Validator::make($data, $rules);

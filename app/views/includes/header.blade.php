@@ -18,7 +18,7 @@
 
                     <ul class="dropdown-menu" >
                         <div class="list-group" style="margin-bottom:-20px;">
-                          <span >@foreach($perfiles as $perfil)<center class="schema-teal color-white roboto" style="margin-top:-5px;">{{$perfil->nombre_perfil}}</center>
+                          <span >@foreach($perfiles as $perfil)<center class="schema-teal text-white roboto" style="margin-top:-5px;">{{$perfil->nombre_perfil}}</center>
                           @endforeach</span>
                           {{ HTML::link('#MyModalView', ' Ver información',array('class'=>'list-group-item edit glyphicon glyphicon-eye-open','data-toggle'=>'modal','id'=>Auth::user()->id));}}
                         {{--  {{ HTML::link('#MyModalEdit2', ' Editar Información',array('class'=>'list-group-item edit glyphicon glyphicon-pencil','data-toggle'=>'modal','id'=>Auth::user()->id)); }} --}} 

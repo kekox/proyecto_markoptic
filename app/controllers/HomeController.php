@@ -45,9 +45,15 @@ class HomeController extends BaseController {
 	protected function showDashboardProyectos()
 	{
 		$id       = Auth::user()->perfil_id;
+		$users = DB::table('users')->lists('id');
+		
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
-		return View::make('proyectos/index',array('perfiles' => $perfiles));
+		$proyectos = Proyecto::orderBy('created_at')->get();
+
+		return View::make('proyectos/index',array('perfiles' => $perfiles,'proyectos' => $proyectos));
 	}
+
+
 
 	public function showProyectosdelete(){
 		$id       = Auth::user()->perfil_id;

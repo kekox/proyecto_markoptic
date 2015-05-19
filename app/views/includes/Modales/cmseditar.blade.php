@@ -55,8 +55,8 @@
                 <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
               
                 {{ Form::select('perfil_edit',array(
-                  '1' =>'Usuario',
-                  '2' => 'Investigador',
+                  '2' =>'Usuario',
+                  '1' => 'Investigador',
                   '3' => 'Administrador'
                   ),'Usuario',array('class'=>'form-control')) }}
               

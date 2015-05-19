@@ -10,6 +10,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
 			          <div class="heading">
 			                    <center><h3>Dashboard</h3></center>
+			                    
 			                  @if (Session::has('message_welcome'))
 			                      <center><div class="alert alert-success"><span class="fa fa-smile-o"></span><a href="#" class="close" data-dismiss="alert">&times;</a>{{ Session::get('message_welcome') }}</div></center>
 			                  @endif
@@ -81,6 +82,9 @@
       
     			</section>
 
+				@if(isset($perfiles))
+					@foreach($perfiles as $perfil)
+						@if($perfil->id_perfil==3)
                 <section>
 				    <div class="col-sm-12 col-md-4 col-lg-10 col-lg-offset-2">
 
@@ -100,13 +104,11 @@
 				                </div>
 				          </div>
 				          </a>
-				          
-
-				          
-
 				    </div>
     			</section>
-
+    					@endif
+    				@endforeach
+				@endif
                   	
                   	
             	

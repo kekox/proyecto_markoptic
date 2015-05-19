@@ -17,7 +17,7 @@
 
                       <table id="datatable2" class="table table-hover responsive" cellspacing="0" width="100%">
                           
-                          <thead class="schema-dark color-white">
+                          <thead class="schema-dark text-white">
                               <tr>
                                   <th><center>Folio</center></th>
                                   <th><center>Nombre</center></th>
