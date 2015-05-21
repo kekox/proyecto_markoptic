@@ -14,7 +14,7 @@
                 <ul class="nav navbar-nav navbar-right"  >
 
                   <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><span class="fa fa-user fa-fw" ></span> Mi Perfil <span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ><span class="fa fa-user fa-fw" ></span>{{Auth::user()->nombre}} {{Auth::user()->apellido_Paterno}} <span class="caret"></span></a>
 
                     <ul class="dropdown-menu" >
                         <div class="list-group" style="margin-bottom:-20px;">
@@ -63,7 +63,7 @@
 
                   <div class="modal-header schema-green">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                   <center><h3 class="modal-title" id="myModalLabel"><span class="fa fa-pencil color-white"> Información de {{Auth::user()->nombre}} </span></h3></center>
+                   <center><h3 class="modal-title" id="myModalLabel"><span class="fa fa-pencil text-white"> Información de {{Auth::user()->nombre}} </span></h3></center>
                   </div>
 
                   <div class="modal-body">

@@ -33,32 +33,37 @@ class HomeController extends BaseController {
 		return View::make('bienvenida',array('perfiles' => $perfiles));
 	}
 
-	protected function showDashboard()
+	public function showDashboard()
 	{
 		$id       = Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
 		return View::make('dashboard',array('perfiles' => $perfiles));
-
-	
 	}
 
-	protected function showDashboardProyectos()
+
+	public function showProyectos()
 	{
 		$id       = Auth::user()->perfil_id;
-		$users = DB::table('users')->lists('id');
-		
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
-		$proyectos = Proyecto::orderBy('created_at')->get();
+
+		if(isset($_GET['buscar'])){
+			$buscar = Input::get("buscar");
+			$proyectos = Proyecto::where('folio','LIKE','%'.$buscar.'%')->orwhere('nombre_proyecto','LIKE','%'.$buscar.'%')->Paginate(6);
+
+		}else{
+			$proyectos = Proyecto::orderBy('created_at')->simplePaginate(15);
+		}
 
 		return View::make('proyectos/index',array('perfiles' => $perfiles,'proyectos' => $proyectos));
 	}
 
 
-
-	public function showProyectosdelete(){
+	public function showProyectoslist(){
 		$id       = Auth::user()->perfil_id;
 		$perfiles = Perfil::where('id_perfil','=',$id)->get();
-		return View::make('proyectos/indexdelete',array('perfiles' => $perfiles));
+		$proyectos = Proyecto::all();
+
+		return View::make('proyectos/indexlist',array('perfiles' => $perfiles,'proyectos'=>$proyectos));
 	}
 	
 }

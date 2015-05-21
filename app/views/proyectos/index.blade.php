@@ -4,27 +4,45 @@
 @stop 
  
 @section('contenido')
-	<section>
+  <section>
             <div id="dashboard1">
 				
                 <div class="col-lg-8 col-lg-offset-2">
 			          <div class="heading">
 			                    <center><h3>Proyectos</h3></center>
-			                    <div class="col-lg-6 col-lg-offset-3" >
-				                    <div class="input-group">
-								      <input type="text" class="form-control" placeholder="Buscar proyecto...">
+								<a href="proyectos/seccion/1"><button class="btn btn-primary pull-right"><i class="fa fa-plus fa-inverse"> Agregar Proyecto</i></button></a>
+			                    <div class="col-lg-8 col-lg-offset-2" >
+	
+			                    <!--Formulario-->
+		                        {{ Form::open(array(
+									'route'  => 'proyectosindex',
+									'method' => 'GET',
+									'class'  => 'form-horizontal', 
+									'role'   => 'form',
+		                           ))}}
+								<center>
+		                           <div class="input-group">
+		                          	  <span class="input-group-btn">
+								        <button class="btn btn-default" id="back" ><i class="fa fa-arrow-circle-left fa-1x color-black"></i></button>
+								      </span>
+								      <input type="text" class="form-control" placeholder="Indique el nombre o folio del proyecto a buscar..." name="buscar">
 								      <span class="input-group-btn">
-								        <a href=""><button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button></a>
+								        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
 								      </span>
 								    </div>
+								</center>
+							
+                      			
+                             	{{ Form::close() }}
 								</div>
+								
 			          </div>
 			    </div>
 
 				@if(isset($perfiles))
 					@foreach($perfiles as $perfil)
 						@if($perfil->id_perfil==3)
-					<a href="proyectos/delete">
+					<a href="proyectos/list">
 					<span class="fa-stack fa-2x pull-right">
 					<i class="fa fa-square  fa-stack-2x fa-inverse"></i>
 					<i class="fa fa-list fa-stack-1x text-black"></i>
@@ -55,9 +73,10 @@
 					                  </span></center>
 									
 									<center>Nombre del proyecto:<br>{{{$proyecto->nombre_proyecto}}}</center>
-
-									
+									<br>
 									<center>usuario:<br>{{{$proyecto->id_user}}}</center>
+
+									<center>usuario:<br>{{{$proyecto->nombre}}}</center>
 									
 
 								  </div>
@@ -87,6 +106,8 @@
 
 				          
       				</div>
+
+
     			</section>
 
 				
@@ -95,8 +116,25 @@
                   	
             	
 			</div>
-            
-    
+
+            <div class="container">
+				<center>{{$proyectos->appends(array("buscar"=> Input::get("buscar")))->links()}}</center>
+			</div>
+    	
   </section>
 
+<script>
+	
+$(document).ready(function(){
+
+     $('#back').on('click',function()
+     {
+       window.history.back();
+
+     });
+
+});
+
+
+</script>				  
 @stop

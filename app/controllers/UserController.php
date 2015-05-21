@@ -3,13 +3,12 @@ class UserController extends BaseController{
 
      public function getLogin()
     {     
-        // Check if we already logged in
+        
         if (Auth::check())
         {
-            // Redirect to homepage
-            return Redirect::to('bienvenida');
+            return Redirect::to('dashboard');
         }
-        // Show the login page
+        
         return View::make('users.login');
         
     }

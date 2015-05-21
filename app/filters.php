@@ -33,6 +33,22 @@ App::after(function($request, $response)
 | integrates HTTP Basic authentication for quick, simple checking.
 |
 */
+Route::filter('admin',function(){
+
+	if(Auth::user()->perfil_id != 3){
+		return Redirect::to('dashboard')
+			->with('message','Lo sentimos, acceso restringido');
+	}
+		
+
+});
+
+Route::filter('check',function(){
+	
+	if(Route::current()->getName() != 'proyectos/seccion/2')
+    return redirect::to('dashboard');
+
+});
 
 Route::filter('auth', function()
 {

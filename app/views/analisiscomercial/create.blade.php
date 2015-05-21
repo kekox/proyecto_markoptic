@@ -13,7 +13,13 @@
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
                   		<center><h3>Análisis Comerciales - Sección 4/10</h3></center>
-                  		
+                  		<div class="col-lg-7 col-lg-offset-3">
+	                  		<div class="progress">
+							  <div class="progress-bar progress-bar-success " role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+							   30% Completo
+							  </div>
+							</div>
+                  		</div>
                   		
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
@@ -98,7 +104,7 @@
 				               				<center><label for="campo3" >Experiencia del personal </label></center>
 				               			</div>
 				               			<div class="col-lg-7">
-				               				<textarea type="text" class="form-control"  id="campo3" placeholder="Informacion acerca del campo..."name="campo3" row="2"></textarea> 
+				               				<textarea type="text" class="form-control"  id="_campo3" placeholder="Informacion acerca del campo..."name="campo3" row="2"></textarea> 
 				               			</div>
 				               			<div class="col-lg-1">
 											  <a href="#" data-toggle="tooltip" id="myTooltip3">
@@ -198,7 +204,7 @@ $(document).ready(function(){
              
              
               //Donde se vana  mostrar los errores
-              $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4 ,#_campo5 ,#_campo6 ,#_campo7').text('');
+              $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4').text('');
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
                 $.each(datos.errors, function(index, value)

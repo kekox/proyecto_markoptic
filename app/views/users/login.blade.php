@@ -14,12 +14,13 @@
     <div class="container " >
               <div class="row">
                 <div id="panel-left">
-                <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="col-lg-6 col-md-6 col-sm-12 -moz-col-lg-6 col-md-6 col-sm-12">
                   <div class="media-left">
                     <img src="img/investigacion.jpg" alt="Investigacion" class="img-responsive hidden-xs hidden-sm" >
                       <div class="panelfooter">
-                        <h3>Ven y forma parte de nuestro equipo!</h3>
-                          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, doloremque.</p>
+                        <h3>¡Bienvenido!</h3>
+                          <p> El centro de investigación y fundación Markoptic les da la más cordial bienvenida a su sistema de integración de proyectos, con el fin de brindarles el mejor servicio.</p>
+
                       </div>
                   </div>
                 </div><!--Acaba la primera (1/2) division de grid-->
@@ -104,8 +105,8 @@
     <!--Footer-->
     @include('includes.footerStatic')
     
-    <!--Modal-->
-    @include('includes.Modales.login')
+
+
       
     <!--Scripts-->
     @include('includes.script')

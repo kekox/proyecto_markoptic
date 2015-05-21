@@ -13,6 +13,13 @@
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
                   		<center><h3>Asesoría - Sección 10/10</h3></center>
+                  		<div class="col-lg-7 col-lg-offset-3">
+	                  		<div class="progress">
+							  <div class="progress-bar progress-bar-success " role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+							   90% Completo
+							  </div>
+							</div>
+                  		</div>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
@@ -235,8 +242,7 @@ $(document).ready(function(){
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
-            		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
-			        $('#_campo0').text('Favor de cambiar el folio');
+            		
 			    }else{
             	 	alert("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest

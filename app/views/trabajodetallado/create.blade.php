@@ -13,9 +13,14 @@
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
                   		<center><h3>Trabajo Detallado - Sección 9/10</h3></center>
-                  		<center>
-                  		
-						</center>
+                  		<div class="col-lg-7 col-lg-offset-3">
+	                  		<div class="progress">
+							  <div class="progress-bar progress-bar-success " role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+							   80% Completo
+							  </div>
+							</div>
+                  		</div>
+
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->

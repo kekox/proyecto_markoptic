@@ -13,10 +13,14 @@
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
                   		<center><h3>Análisis Tecnicos - Sección 3/10</h3></center>
-                  		<center><a href="">Ver folios</a></center>
-                  		<center>
-                  		
-						</center>
+                  		<div class="col-lg-7 col-lg-offset-3">
+	                  		<div class="progress">
+							  <div class="progress-bar progress-bar-success " role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+							  20% Completo
+							  </div>
+							</div>
+                  		</div>
+
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->

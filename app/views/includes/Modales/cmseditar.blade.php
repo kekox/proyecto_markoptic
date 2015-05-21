@@ -4,7 +4,7 @@
 
                   <div class="modal-header schema-green">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                   <center><h3 class="modal-title" id="myModalLabel"><span class="fa fa-pencil color-white"> Editar Usuario </span></h3></center>
+                   <center><h3 class="modal-title" id="myModalLabel"><span class="fa fa-pencil text-white"> Editar Usuario </span></h3></center>
                   </div>
 
                   <div class="modal-body">
@@ -21,32 +21,29 @@
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         {{ Form::text('nombre_edit', Input::old('nombre'), array('class' => 'form-control', 'placeholder' => 'Nombre(s)')) }}
                 </div>
-                 <!--Errores-->
-                <span class="bg-danger" id="_nombre">  {{ $errors->first('nombre') }}</span>
+                 
 
                 <!-- Apellido Paterno -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         {{ Form::text('apellido_paterno_edit', Input::old('apellido_Paterno'), array('class' => 'form-control', 'placeholder' => 'Apellido Paterno')) }}
                 </div>
-                 <!--Errores-->
-                <span class="bg-danger" id="_apellido_paterno">  {{ $errors->first('apellido_paterno') }}</span>
+     
+               
 
                  <!-- Apellido Materno -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         {{ Form::text('apellido_materno_edit', Input::old('apellido_Materno'), array('class' => 'form-control', 'placeholder' => 'Apellido Materno')) }}
                 </div>
-                 <!--Errores-->
-                <span class="bg-danger" id="_apellido_materno">  {{ $errors->first('apellido_Materno') }}</span>
-                
+
        
                 <!-- Email -->
                 <div class="input-group separetedinput" >
                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                 {{ Form::email('email_edit', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Correo Electronico')) }}
                 </div>
-                <span class="bg-danger" id="_email">  {{ $errors->first('email') }}</span>
+                
 
                  
                 <!-- Perfil -->
@@ -55,14 +52,13 @@
                 <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
               
                 {{ Form::select('perfil_edit',array(
-                  '2' =>'Usuario',
                   '1' => 'Investigador',
+                  '2' => 'Usuario',
                   '3' => 'Administrador'
                   ),'Usuario',array('class'=>'form-control')) }}
               
                 </div>
-                
-                <span class="bg-danger" id="_perfil">  {{ $errors->first('perfil') }}</span>
+
 
                 <input type="hidden" name="user_id" >
 

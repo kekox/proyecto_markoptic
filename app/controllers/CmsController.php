@@ -6,18 +6,12 @@ class CmsController extends Controller
         $users = User::all();
         $id    = Auth::user()->perfil_id;
         $myid  = Auth::user()->id;
-        if($id ==3)
-        {
-            $perfiles = Perfil::where('id_perfil','=',$id)->get();
-            $users = User::where('id','<>',$myid)->get();
-            return View::make('cms/index',array('perfiles' => $perfiles,'users'=>$users));
-        }
-        else{
-            return Redirect::to('dashboard')
-                            ->with('message','Lo sentimos, acceso restringido');
-            
-            
-        }
+        
+        $perfiles = Perfil::where('id_perfil','=',$id)->get();
+        $users = User::where('id','<>',$myid)->get();
+        return View::make('cms/index',array('perfiles' => $perfiles,'users'=>$users));
+        
+        
     }
 
     public function store()
@@ -32,8 +26,8 @@ class CmsController extends Controller
         );
         $rules=array(
             'nombree'           => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3',
-            'apellido_paternoo' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
-            'apellido_maternoo' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
+            'apellido_paternoo' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
+            'apellido_maternoo' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'email'             => 'required|min:2|email|unique:users',
             'perfil'            => 'required',
             'password'          => 'required|min:6' 
@@ -82,21 +76,22 @@ class CmsController extends Controller
             'apellido_Paterno' =>$user->apellido_Paterno,
             'apellido_Materno' =>$user->apellido_Materno,
             'email'            =>$user->email,
-            'perfil_id'        =>$user->perfil_id
+            'perfil_id'        =>$user->perfil_id,
         ]);
+
         return Response::json($data);
     }
     
     public function update()
     {
-        $user_id = Input::get('user_id');
+         $user_id = Input::get('user_id');
         $user    = User::find($user_id);
         $data=array(
             'nombre'           =>Input::get('nombre_edit'),
             'apellido_paterno' =>Input::get('apellido_paterno_edit'),
             'apellido_materno' =>Input::get('apellido_materno_edit'),
             'email'            =>Input::get('email_edit'),
-            'perfil'           =>Input::get('perfil_edit')
+            'perfil'           =>Input::get('perfil_edit'),
            
         );
         $rules=array(
@@ -104,7 +99,7 @@ class CmsController extends Controller
             'apellido_paterno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'apellido_materno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'email'            => 'required|min:2|email',
-            'perfil'           => 'required'
+            'perfil'           => 'required',
         );
         
         $validator = Validator::make($data, $rules);
@@ -121,13 +116,14 @@ class CmsController extends Controller
         }
         else
         {
-            return Response::json
-                                    ([
-                                        'success' => false,
-                                        'errors' => $validator ->getMessageBag()->toArray()
-                                    ]);
+            return Redirect::to('cms')
+                    ->withErrors($validator)
+                    ->with('message_fail','Error al modificar el usuario. Favor de revisar los siguientes errores:')
+                    ->withInput();
+           
         }
     }
+
     
     public function destroy($user_id)
     {

@@ -4,7 +4,9 @@
 @stop 
 
 @section('contenido')
-
+<script>
+	document.onload(alert('Estas a punto de iniciar el proceso de agregar proyecto, tome en cuenta las siguientes recomendaciones antes de iniciar el proceso:\n\n*Contar con el tiempo necesario para realizar el proceso.\n*En todo momento recordar el folio del proyecto.\n*Una vez iniciado el proceso llegar hasta el final de este mismo.\n\n En caso de no contar con el tiempo suficiente , cancele el proceso porfavor.'));
+</script>
   <section >
             <div class="container-fluid ">
               <div class="row">
@@ -13,6 +15,13 @@
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
                   		<center><h3>Proyecto - Sección 1/10</h3></center>
+                  		<div class="col-lg-7 col-lg-offset-3">
+	                  		<div class="progress">
+							  <div class="progress-bar progress-bar-success " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+							  0% Completo
+							  </div>
+							</div>
+                  		</div>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->

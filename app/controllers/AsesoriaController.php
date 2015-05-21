@@ -69,7 +69,7 @@ class AsesoriaController extends Controller {
 			
 			
 			return Redirect::to('proyectos')	
-         			->with('message_exito', 'Proyecto Agregado Exitosamente');
+         			->with('message_exito', 'Proyecto agregado satisfactoriamente');
 			}
 			
 

@@ -4,7 +4,7 @@
 
                   <div class="modal-header schema-red">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     <center><h3 class="modal-title" id="myModalLabel"><span class="fa fa-trash-o color-white"> Eliminar Usuario</span></h3></center>
+                     <center><h3 class="modal-title" id="myModalLabel"><span class="fa fa-trash-o text-white"> Eliminar Usuario</span></h3></center>
                   </div>
 
                   <div class="modal-body">

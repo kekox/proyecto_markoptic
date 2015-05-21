@@ -14,12 +14,20 @@
                     @if(Session::has('message_delete'))
                        <div class="alert alert-warning"><center><span class="fa fa-check-circle"></span>
                        <a href="#" class="close" data-dismiss="alert">&times;</a>{{ Session::get('message_delete') }}</center></div>
-                    @elseif(Session::has('message_delete'))
-                       <div class="alert alert-warning"><center><span class="fa fa-check-circle"></span>
-                       <a href="#" class="close" data-dismiss="alert">&times;</a>{{ Session::get('message_delete') }}</center></div>
                     @elseif(Session::has('message_edit'))
                        <div class="alert alert-success"><center><span class="fa fa-check-circle"></span>
                        <a href="#" class="close" data-dismiss="alert">&times;</a>{{ Session::get('message_edit') }}</center></div>
+                    @elseif(Session::has('message_fail'))
+                       <div class="alert alert-danger"><center><span class="fa fa-times-circle"></span>
+                       <a href="#" class="close" data-dismiss="alert">&times;</a>{{ Session::get('message_fail') }}
+                        <!--Errores-->
+                        <br>
+                          <span class="display-errors "> {{ $errors->first('nombre') }}</span><br>
+                          <span class="display-errors "> {{ $errors->first('apellido_paterno') }}</span><br>
+                          <span class="display-errors "> {{ $errors->first('apellido_Materno') }}</span><br>
+                          <span class="display-errors "> {{ $errors->first('email') }}</span><br>
+                          <span class="display-errors "> {{ $errors->first('perfil') }}</span><br>
+                       </center></div>
                     @endif
                      <small>{{HTML::link('dashboard',' ',array('class' => 'fa fa-arrow-circle-left color-black fa-3x ' ))}}</small>
                    
@@ -49,7 +57,7 @@
                                 @foreach($users as $user)
                               <tr class="opensans">
                                   <td><center>{{$user->id}}</center></td>
-                                  <td><center>{{{$user->nombre}}}</center></td>
+                                  <td><center>{{$user->nombre}}</center></td>
                                   <td><center>{{$user->apellido_Paterno." ".$user->apellido_Materno}}</center></td>
                                   <td><center>{{$user->email}}</center></td>
                                   <td><center>{{$user->perfil_id}}</center></td> 

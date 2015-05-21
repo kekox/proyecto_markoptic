@@ -28,6 +28,8 @@ Route::get('test2',function(){
 
 /*Route::controller('account','UserController');*/
 
+Route::when('*', 'csrf', array('post', 'put', 'delete'));
+
 /*login*/
 Route::get ('login' , array('uses'   => 'AuthController@index'));
 Route::post('login' , array('before' => 'csrf','uses' => 'AuthController@postLogin','as'=>'account.login'));
@@ -67,10 +69,9 @@ Route::group(array('before' => 'auth'), function()
 
 
     /*seccion proyectos*/
-    Route::get('proyectos', array('uses' => 'HomeController@showDashboardProyectos'));
-    Route::get('dashboardproyectos',array('uses' => 'HomeController@showDashboardProyectos2'));
-    Route::get('proyectos/delete',array('uses' => 'HomeController@showProyectosdelete'));
-    Route::get('proyectos/delete/{id}',array('uses' => 'DescripcionController@destroy','as' => 'deleteproyect'));
+    Route::get('proyectos', array('uses' => 'HomeController@showProyectos','as'=>'proyectosindex'));
+    Route::get('proyectos/list',array('uses' => 'HomeController@showProyectoslist'));
+
     	/*prefijo para */
 		Route::group(array('prefix' => 'proyectos/seccion/'),function()
 		{
@@ -110,7 +111,7 @@ Route::group(array('before' => 'auth'), function()
 
 
 	/*Seccion CMS*/
-	Route::get('cms',array('uses'             => 'CmsController@index'));
+	Route::get('cms',array('before'=>'admin','uses'             => 'CmsController@index'));
 	Route::post('cms',array('uses'            => 'CmsController@store','as'=>'user.store'));
 	Route::post('cms/edit/{id}',array('uses'  => 'CmsController@edit','as'=>'user.data'));
 	Route::post('cms/update',array('uses'     => 'CmsController@update','as'=>'user.update'));
