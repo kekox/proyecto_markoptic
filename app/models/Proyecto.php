@@ -20,6 +20,7 @@ class Proyecto extends Eloquent  {
 		'tipo_mercado'
 		);
 
+	/********************************************** Relaciones ***************************************************/
 	public function users(){
 		return $this->BelongsTo('User','id');
 	}
@@ -58,5 +59,12 @@ class Proyecto extends Eloquent  {
 
 	public function asesorias(){
 		return $this->hasOne('Asesoria','folio_proyecto');
+	}
+
+	/********************************************** Querys ***************************************************/
+
+	public function scopeObtenerProyecto($query){
+		$idselected = Auth::user()->id;
+		return $query->orderBy('created_at','desc')->where('id_user','=',$idselected);
 	}
 }

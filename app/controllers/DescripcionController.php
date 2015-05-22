@@ -6,11 +6,9 @@ class DescripcionController extends Controller {
 
 	public function create()
 	{	
-		$id= Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
-		$idselected = Auth::user()->id;
-
-		$proyectos = Proyecto::orderBy('created_at','desc')->where('id_user','=',$idselected)->take(1)->get();
+		$perfiles = Perfil::ObtenerPerfil()->get();
+		$proyectos = Proyecto::ObtenerProyecto()->take(1)->get();
+		
 		return View::make('descripcion/create',array('perfiles' => $perfiles,'proyectos'=>$proyectos));
 	}
 
@@ -36,7 +34,16 @@ class DescripcionController extends Controller {
 			'campo6'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
 			);
 
-			$validator = Validator::make($data, $rules);
+			$messages=([
+			'required'   => 'El campo es obligatorio.',
+			'numeric'    => 'El campo debe ser numérico',
+			'regex'      => 'El formato del campo es inválido',
+			'campo0.min' => 'El tamaño del campo debe ser de al menos :min número.',
+			'min'        => 'El campo debe contener al menos :min caracteres.',
+			'unique'	 => 'El folio ya ha sido registrado'
+			]);
+
+			$validator = Validator::make($data, $rules,$messages);
 
 			if($validator->passes()){
 				if(Request::ajax()){
@@ -74,8 +81,9 @@ class DescripcionController extends Controller {
 
 			 		return Response::json
                                     ([
-                                        'success' => false,
-                                        'errors' => $validator ->getMessageBag()->toArray()
+										'success' => false,
+										'errors'  => $validator ->getMessageBag()->toArray(),
+										'message' => 'Revise los campos porfavor*'
                                     ]);
 			 	}else{
 

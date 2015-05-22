@@ -5,7 +5,7 @@
 
 @section('contenido')
 <script>
-	document.onload(alert('Estas a punto de iniciar el proceso de agregar proyecto, tome en cuenta las siguientes recomendaciones antes de iniciar el proceso:\n\n*Contar con el tiempo necesario para realizar el proceso.\n*En todo momento recordar el folio del proyecto.\n*Una vez iniciado el proceso llegar hasta el final de este mismo.\n\n En caso de no contar con el tiempo suficiente , cancele el proceso porfavor.'));
+	document.onload(alert('Estas a punto de iniciar el proceso de agregar un proyecto, tome en cuenta las siguientes recomendaciones antes de iniciar el proceso:\n\n*Contar con el tiempo necesario para realizar el proceso.\n*En todo momento recordar el folio del proyecto.\n*Una vez iniciado el proceso llegar hasta el final de este mismo.\n\n En caso de no contar con el tiempo suficiente , cancele el proceso porfavor.'));
 </script>
   <section >
             <div class="container-fluid ">
@@ -22,6 +22,8 @@
 							  </div>
 							</div>
                   		</div>
+                  		<br>
+                  		<br>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
@@ -37,7 +39,7 @@
 		                		<div class="col-lg-12"> <!-- Empieza el cero campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo0" >Titulo de Proyecto</label></center>
+				               				<center><label for="campo0" >Titulo de Proyecto<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2"></textarea> 
@@ -57,7 +59,7 @@
 		               			<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo1" >Folio</label></center>
+				               				<center><label for="campo1" >Folio<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo1" placeholder="Informacion acerca del campo..."name="campo1" row="2"></textarea> 
@@ -118,7 +120,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el cuarto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo4" >Contextualización</label></center>
+				               				<center><label for="campo4" >Contextualización<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo4" placeholder="Informacion acerca del campo..."name="campo4" row="2"></textarea> 
@@ -198,7 +200,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el octavo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo8" >Palabras clave</label></center>
+				               				<center><label for="campo8" >Palabras clave<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo8" placeholder="Informacion acerca del campo..."name="campo8" row="2"></textarea> 
@@ -218,7 +220,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el noveno campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo9" >Descripción/ Tipo de innovación</label></center>
+				               				<center><label for="campo9" >Descripción/ Tipo de innovación<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo9" placeholder="Informacion acerca del campo..."name="campo9" row="2"></textarea> 
@@ -331,27 +333,11 @@ $(document).ready(function(){
             &&  
             $('#campo1').val() !=''
           	&&
-          	$('#campo2').val() !=''
-          	&&
-          	$('#campo3').val() !=''
-          	&&
           	$('#campo4').val() !=''
-          	&&
-          	$('#campo5').val() !=''
-          	&&
-          	$('#campo6').val() !=''
-          	&&
-          	$('#campo7').val() !=''
           	&&
           	$('#campo8').val() !=''
           	&&
           	$('#campo9').val() !=''
-          	&&
-          	$('#campo10').val() !=''
-          	&&
-          	$('#campo11').val() !=''
-          	&&
-          	$('#campo12').val() !=''
         ){
             $('input[type="button"]').removeAttr('disabled');
         }else{
@@ -379,7 +365,7 @@ $(document).ready(function(){
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#_mensaje').text("Revise los campos porfavor*");
+                  $('#_mensaje').text(datos.message);
                 });
                 }else{
                   document.getElementById('formproyectos1').reset();
@@ -390,7 +376,7 @@ $(document).ready(function(){
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
-            		alert('El folio que ha decidido tomar , ya existe. Favor de seleccionar otro Folio.')
+            		alert('El folio que ha decidido tomar , ya existe. Favor de seleccionar otro # de Folio.')
 			        $('#_campo1').text('Favor de cambiar el folio');
 			    }else{
             	 	alert("Algo esta mal");

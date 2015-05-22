@@ -139,7 +139,7 @@ $(document).ready(function()
      {
             $("#myTooltip0").tooltip({
                 html:true,
-                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong>(En caso de no ser el folio, correcto , favor de cambiarlo).</strong>',
+                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong><br>Nota.<br>En caso de no ser el folio, correcto , favor de cambiarlo.</strong>',
                 placement : 'right',
                 trigger: 'click hover',
                 container: 'body'
@@ -220,7 +220,7 @@ $(document).ready(function()
      {
             $("#myTooltip0").tooltip({
                 html:true,
-                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong>(En caso de no ser el folio correcto , favor de cambiarlo).</strong>',
+                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong><br>Nota.<br>En caso de no ser el folio correcto , favor de cambiarlo.</strong>',
                 placement : 'right',
                 trigger: 'click hover',
                 container: 'body'
@@ -309,7 +309,7 @@ $(document).ready(function()
      {
             $("#myTooltip0").tooltip({
                 html:true,
-                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong>(En caso de no ser el folio correcto , favor de cambiarlo).</strong>',
+                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong><br>Nota.<br>En caso de no ser el folio correcto , favor de cambiarlo.</strong>',
                 placement : 'right',
                 trigger: 'click hover',
                 container: 'body'
@@ -369,7 +369,7 @@ $(document).ready(function()
      {
             $("#myTooltip0").tooltip({
                 html:true,
-                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong>(En caso de no ser el folio, correcto , favor de cambiarlo).</strong>',
+                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong><br>Nota.<br>En caso de no ser el folio, correcto , favor de cambiarlo.</strong>',
                 placement : 'right',
                 trigger: 'click hover',
                 container: 'body'
@@ -474,7 +474,7 @@ $(document).ready(function()
      {
             $("#myTooltip0").tooltip({
                 html:true,
-                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong>(En caso de no ser el folio, correcto , favor de cambiarlo).</strong>',
+                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong><br>Nota.<br>En caso de no ser el folio, correcto , favor de cambiarlo.</strong>',
                 placement : 'right',
                 trigger: 'click hover',
                 container: 'body'
@@ -588,7 +588,7 @@ $(document).ready(function()
      {
             $("#myTooltip0").tooltip({
                 html:true,
-                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong>(En caso de no ser el folio correcto , favor de cambiarlo).</strong>',
+                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong><br>Nota.<br>En caso de no ser el folio correcto , favor de cambiarlo.</strong>',
                 placement : 'right',
                 trigger: 'click hover',
                 container: 'body'
@@ -648,7 +648,7 @@ $(document).ready(function()
      {
             $("#myTooltip0").tooltip({
                 html:true,
-                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong>(En caso de no ser el folio, correcto , favor de cambiarlo).</strong>',
+                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong><br>Nota.<br>En caso de no ser el folio, correcto , favor de cambiarlo.</strong>',
                 placement : 'right',
                 trigger: 'click hover',
                 container: 'body'
@@ -816,7 +816,7 @@ $(document).ready(function()
      {
             $("#myTooltip0").tooltip({
                 html:true,
-                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong>(En caso de no ser el folio correcto , favor de cambiarlo).</strong>',
+                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong><br>Nota.<br>En caso de no ser el folio correcto , favor de cambiarlo.</strong>',
                 placement : 'right',
                 trigger: 'click hover',
                 container: 'body'
@@ -884,7 +884,7 @@ $(document).ready(function()
      {
             $("#myTooltip0").tooltip({
                 html:true,
-                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong>(En caso de no ser el folio correcto , favor de cambiarlo).</strong>',
+                title : 'Indique el folio del proyecto. El cual señalo al principio<br><strong><br>Nota.<br>En caso de no ser el folio correcto , favor de cambiarlo.</strong>',
                 placement : 'right',
                 trigger: 'click hover',
                 container: 'body'

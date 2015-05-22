@@ -28,30 +28,30 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		$id       = Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		$perfiles = Perfil::ObtenerPerfil()->get();
 		return View::make('bienvenida',array('perfiles' => $perfiles));
 	}
 
 	public function showDashboard()
 	{
-		$id       = Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		$perfiles = Perfil::ObtenerPerfil()->get();
 		return View::make('dashboard',array('perfiles' => $perfiles));
 	}
 
 
 	public function showProyectos()
 	{
-		$id       = Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		$perfiles = Perfil::ObtenerPerfil()->get();
 
 		if(isset($_GET['buscar'])){
 			$buscar = Input::get("buscar");
-			$proyectos = Proyecto::where('folio','LIKE','%'.$buscar.'%')->orwhere('nombre_proyecto','LIKE','%'.$buscar.'%')->Paginate(6);
+			$proyectos = Proyecto::where('folio','LIKE','%'.$buscar.'%')
+				->orwhere('nombre_proyecto','LIKE','%'.$buscar.'%')
+				->Paginate(6);
 
 		}else{
-			$proyectos = Proyecto::orderBy('created_at')->simplePaginate(15);
+			$proyectos = Proyecto::orderBy('created_at')
+				->simplePaginate(15);
 		}
 
 		return View::make('proyectos/index',array('perfiles' => $perfiles,'proyectos' => $proyectos));

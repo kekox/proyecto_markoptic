@@ -20,7 +20,10 @@
 							  </div>
 							</div>
                   		</div>
+                  		<br>
+                  		<br>
                   		<center><span id="_mensaje" class="display-errors" ></span></center>
+                  		
 						{{--@if($proyectos)
 							@foreach($proyectos as $proyecto)
 				              <p>{{$proyecto->folio}}</p>
@@ -40,7 +43,7 @@
 		                		<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo0" >Folio</label></center>
+				               				<center><label for="campo0" >Folio.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               			@if(isset($proyectos))
@@ -64,7 +67,7 @@
 		               			<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo1" >Breve descripción de la propuesta</label></center>
+				               				<center><label for="campo1" >Breve descripción de la propuesta.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo1" placeholder="Informacion acerca del campo..."name="campo1" row="2"></textarea> 
@@ -85,7 +88,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el segundo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center ><label for="campo2" class="justify">Enumere y describa las principales actividades a desarrollar (posteriormente deberá calendarizarlas) en el Plan de Trabajo)</label></center>
+				               				<center ><label for="campo2" class="justify">Enumere y describa las principales actividades a desarrollar (posteriormente deberá calendarizarlas) en el Plan de Trabajo.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo2" placeholder="Informacion acerca del campo..." name="campo2" row="2"></textarea> 
@@ -105,7 +108,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el tercer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo3" >Enumere y describa los principales entregables comprometidos.</label></center>
+				               				<center><label for="campo3" >Enumere y describa los principales entregables comprometidos.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo3" placeholder="Informacion acerca del campo..."name="campo3" row="2"></textarea> 
@@ -125,7 +128,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el cuarto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo4" >Objetivo general</label></center>
+				               				<center><label for="campo4" >Objetivo general.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo4" placeholder="Informacion acerca del campo..."name="campo4" row="2"></textarea> 
@@ -145,7 +148,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el quinto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo5" >Resultados esperados</label></center>
+				               				<center><label for="campo5" >Resultados esperados.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo5" placeholder="Informacion acerca del campo..."name="campo5" row="2"></textarea> 
@@ -165,7 +168,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el sexto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo6" >Descripción de cómo se enmarca en la estrategia tecnológica de la empresa</label></center>
+				               				<center><label for="campo6" >Descripción de cómo se enmarca en la estrategia tecnológica de la empresa.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo6" placeholder="Informacion acerca del campo..."name="campo6" row="2"></textarea> 
@@ -240,6 +243,7 @@ $(document).ready(function(){
 
     $('#btndescripciones').on('click',function()
     {
+    	var MyRegExp = /ya ha sido registrado/;
     	$.ajax({
           url: '2',
           dataType: 'json',
@@ -256,7 +260,16 @@ $(document).ready(function(){
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#_mensaje').text("Revise los campos porfavor*");
+                  $('#_mensaje').text(message);
+                  if(MyRegExp.test(value)){
+                  	result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
+                  	if(result == true){ 
+						window.location = '3'; 
+						} 
+						else{ 
+						return false; 
+					}
+                  }
                 });
                 }else{
                   document.getElementById('formdescripciones').reset();

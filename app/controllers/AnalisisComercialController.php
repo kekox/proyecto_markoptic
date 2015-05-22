@@ -5,8 +5,8 @@ class AnalisisComercialController extends Controller {
 	
 
 	public function create(){	
-		$id= Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		
+		$perfiles = Perfil::ObtenerPerfil()->get();
 
 		$proyectos = Proyecto::orderBy('created_at','desc')->take(1)->get();
 		return View::make('analisiscomercial/create',array('perfiles' => $perfiles,'proyectos'=>$proyectos));

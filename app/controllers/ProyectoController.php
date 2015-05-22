@@ -6,8 +6,7 @@ class ProyectoController extends Controller {
 
 	public function create()
 	{	
-		$id       = Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		$perfiles = Perfil::ObtenerPerfil()->get();
 		return View::make('proyectos/create',array('perfiles' => $perfiles));
 	}
 
@@ -30,26 +29,34 @@ class ProyectoController extends Controller {
 			);
 
 		$rules=array(
-			'campo0'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
+			'campo0'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
 			'campo1'  => 'required|numeric|min:1|max:100000|unique:proyectos,folio',
-			'campo2'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo3'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo4'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo5'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo6'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo7'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo8'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo9'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo10' => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo11' => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo12' => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
+			'campo2'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/',
+			'campo3'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/',
+			'campo4'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
+			'campo5'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/',
+			'campo6'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/',
+			'campo7'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/',
+			'campo8'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
+			'campo9'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
+			'campo10' => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/',
+			'campo11' => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/',
+			'campo12' => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/',
 			);
 
-		$validator = Validator::make($data, $rules);
+		$messages=([
+			'required'   => 'El campo es obligatorio.',
+			'numeric'    => 'El campo debe ser numérico',
+			'regex'      => 'El formato del campo es inválido',
+			'campo1.min' => 'El tamaño del campo debe ser de al menos :min número.',
+			'min'        => 'El campo debe contener al menos :min caracteres.'
+			]);
+
+		$validator = Validator::make($data, $rules,$messages);
 
 		if($validator->passes()){
 			if(Request::ajax()){
-			/*$proyecto                         = new Proyecto;
+			$proyecto                         = new Proyecto;
 			$proyecto->folio                  = Input::get('campo1');
 			$proyecto->id_user                = Auth::user()->id;
 			$proyecto->nombre_proyecto        = Input::get('campo0');
@@ -64,7 +71,7 @@ class ProyectoController extends Controller {
 			$proyecto->tipo_innovacion        = Input::get('campo10');
 			$proyecto->grado_innovacion       = Input::get('campo11');
 			$proyecto->tipo_mercado           = Input::get('campo12');
-			$proyecto->save();*/
+			$proyecto->save();
 			
 			return Response::json
                                     ([
@@ -100,8 +107,9 @@ class ProyectoController extends Controller {
 
 			 	return Response::json
                                     ([
-                                        'success' => false,
-                                        'errors' => $validator ->getMessageBag()->toArray()
+										'success' => false,
+										'errors'  => $validator ->getMessageBag()->toArray(),
+										'message' => 'Revise los campos porfavor*'
                                     ]);
 			 }else{
 

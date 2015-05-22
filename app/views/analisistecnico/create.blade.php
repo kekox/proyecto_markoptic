@@ -12,7 +12,7 @@
                 <div id="formproyectos" >
                   	<div class="col-lg-10 col-lg-offset-1">
                   		
-                  		<center><h3>Análisis Tecnicos - Sección 3/10</h3></center>
+                  		<center><h3>Análisis Técnicos - Sección 3/10</h3></center>
                   		<div class="col-lg-7 col-lg-offset-3">
 	                  		<div class="progress">
 							  <div class="progress-bar progress-bar-success " role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
@@ -20,7 +20,8 @@
 							  </div>
 							</div>
                   		</div>
-
+						<br>
+                  		<br>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
@@ -36,7 +37,7 @@
 		                		<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo1" >Folio</label></center>
+				               				<center><label for="campo1" >Folio.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               			@if($proyectos)
@@ -60,7 +61,7 @@
 		               			<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo1" >Antecedentes</label></center>
+				               				<center><label for="campo1" >Antecedentes.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo1" placeholder="Informacion acerca del campo..."name="campo1" row="2"></textarea> 
@@ -81,7 +82,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el segundo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo2" >Estado de la Técnica 1</label></center>
+				               				<center><label for="campo2" >Estado de la Técnica 1.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo2" placeholder="Informacion acerca del campo..." name="campo2" row="2"></textarea> 
@@ -101,7 +102,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el tercer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo3" >Estado de la Técnica 2</label></center>
+				               				<center><label for="campo3" >Estado de la Técnica 2.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo3" placeholder="Informacion acerca del campo..."name="campo3" row="2"></textarea> 
@@ -121,7 +122,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el cuarto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo4" >Estado de la Técnica 3</label></center>
+				               				<center><label for="campo4" >Estado de la Técnica 3.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo4" placeholder="Informacion acerca del campo..."name="campo4" row="2"></textarea> 
@@ -141,7 +142,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el quinto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo5" >Estado de la Técnica 4</label></center>
+				               				<center><label for="campo5" >Estado de la Técnica 4.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo5" placeholder="Informacion acerca del campo..."name="campo5" row="2"></textarea> 
@@ -161,7 +162,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el sexto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo6" >Estado de la Técnica 5</label></center>
+				               				<center><label for="campo6" >Estado de la Técnica 5.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo6" placeholder="Informacion acerca del campo..."name="campo6" row="2"></textarea> 
@@ -181,7 +182,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el septimo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo7" >Especificar cuál es la fuente de origen de la tecnología (p.e desarrollo interno, adquisición, transferencia de otra empresa o institución académica)</label></center>
+				               				<center><label for="campo7" >Especificar cuál es la fuente de origen de la tecnología (p.e desarrollo interno, adquisición, transferencia de otra empresa o institución académica).<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo7" placeholder="Informacion acerca del campo..."name="campo7" row="2"></textarea> 
@@ -259,6 +260,7 @@ $(document).ready(function(){
 
     $('#btntecnico').on('click',function()
     {
+    	var MyRegExp = /ya ha sido registrado/;
     	$.ajax({
           url: '3',
           dataType: 'json',
@@ -276,7 +278,16 @@ $(document).ready(function(){
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#_mensaje').text("Revise los campos porfavor*");
+                  $('#_mensaje').text(datos.message);
+                  if(MyRegExp.test(value)){
+                  	result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
+                  	if(result == true){ 
+						window.location = '4'; 
+						} 
+					else{ 
+						return false; 
+					}
+                  }
                 });
                 }else{
                   document.getElementById('formtecnico').reset();
@@ -288,10 +299,9 @@ $(document).ready(function(){
 
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
+
             		alert('Favor de seleccionar el folio del proyecto que puso al principio.')
 			        $('#_campo0').text('Seleccione el folio Correcto');
-
-			        console.log(XMLHttpRequest);
 			    }else{
             	 	alert("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
