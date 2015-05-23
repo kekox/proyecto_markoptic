@@ -48,7 +48,7 @@
 				               			<div class="col-lg-7">
 				               			@if(isset($proyectos))
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" disabled>{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}" disabled>{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif  
 				               			</div>
@@ -218,8 +218,6 @@ $(document).ready(function(){
      $('#formulariodescripciones').on('keyup',function()
      {
         if(
-            $('#campo0').val() !='' 
-            &&  
             $('#campo1').val() !=''
           	&&
           	$('#campo2').val() !=''
@@ -243,7 +241,15 @@ $(document).ready(function(){
 
     $('#btndescripciones').on('click',function()
     {
-    	var MyRegExp = /ya ha sido registrado/;
+    	var MyRegExp = /folio/;
+    	var idproyecto = $('#campo0').attr('value');
+    	var idproyectoform = $('#campo0').val();
+
+    	if(idproyecto != idproyectoform){
+    		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
+			$('#_campo0').text('Seleccione el folio correcto');
+    		return;
+    	}
     	$.ajax({
           url: '2',
           dataType: 'json',
@@ -260,16 +266,19 @@ $(document).ready(function(){
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#_mensaje').text(message);
+                  $('#_mensaje').text(datos.message);
+
                   if(MyRegExp.test(value)){
-                  	result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
-                  	if(result == true){ 
-						window.location = '3'; 
-						} 
-						else{ 
-						return false; 
-					}
-                  }
+	                  	result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
+	                  	if(result == true){ 
+							window.location = '3'; 
+							
+						}else{ 
+							return false; 
+						}
+		             }
+
+
                 });
                 }else{
                   document.getElementById('formdescripciones').reset();
@@ -295,6 +304,7 @@ $(document).ready(function(){
             
         });
 
+		
     });
 
 });

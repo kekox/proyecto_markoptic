@@ -26,12 +26,6 @@ class HomeController extends BaseController {
         return View::make('users/login');
 	}
 
-	public function showWelcome()
-	{
-		$perfiles = Perfil::ObtenerPerfil()->get();
-		return View::make('bienvenida',array('perfiles' => $perfiles));
-	}
-
 	public function showDashboard()
 	{
 		$perfiles = Perfil::ObtenerPerfil()->get();

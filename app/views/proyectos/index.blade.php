@@ -43,7 +43,7 @@
 					@foreach($perfiles as $perfil)
 						@if($perfil->id_perfil==3)
 					<a href="proyectos/list">
-					<span class="fa-stack fa-2x pull-right">
+					<span class="fa-stack fa-2x pull-right" style="margin-top:10px; margin-right:15px;">
 					<i class="fa fa-square  fa-stack-2x fa-inverse"></i>
 					<i class="fa fa-list fa-stack-1x text-black"></i>
 					</span>
@@ -60,8 +60,8 @@
 				          <div class="col-sm-12 col-md-4 col-lg-3 box">   
 				              <div class="panel panel-success">
 
-								  <div class="panel-heading">
-								    <h5 class="panel-title text-center">Folio: <strong>{{{$proyecto->folio}}}</strong></h5>
+								  <div class="panel-heading " style="background-color:#159049;">
+								    <h5 class="panel-title text-center text-white ">Folio: <strong>{{{$proyecto->folio}}}</strong></h5>
 								  </div>
 
 								  <div class="panel-body" style="margin-top:-20px;">

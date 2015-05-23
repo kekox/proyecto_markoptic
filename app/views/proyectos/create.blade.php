@@ -6,6 +6,16 @@
 @section('contenido')
 <script>
 	document.onload(alert('Estas a punto de iniciar el proceso de agregar un proyecto, tome en cuenta las siguientes recomendaciones antes de iniciar el proceso:\n\n*Contar con el tiempo necesario para realizar el proceso.\n*En todo momento recordar el folio del proyecto.\n*Una vez iniciado el proceso llegar hasta el final de este mismo.\n\n En caso de no contar con el tiempo suficiente , cancele el proceso porfavor.'));
+
+	function confirm_proyecto(){
+		result=confirm("Desea cancelar este proceso?");
+          	if(result == true){ 
+				window.history.back();
+			} 
+			else{ 
+				return false; 
+			}
+	}
 </script>
   <section >
             <div class="container-fluid ">
@@ -313,7 +323,12 @@
               		</div>
 
             	</div>
-						
+					<a onclick="confirm_proyecto()">
+					<span class="fa-stack fa-2x pull-right" style="margin-top:10px; margin-right:15px;" title="Cancelar Proceso">
+					<i class="fa fa-square  fa-stack-2x fa-inverse"></i>
+					<i class="fa fa-sign-out fa-stack-1x text-black"></i>
+					</span>
+					</a>	
             </div>
         </div>
             

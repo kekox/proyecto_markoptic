@@ -34,13 +34,13 @@ class AnalisisComercialController extends Controller {
 		if($validator->passes()){
 			if(Request::ajax())
 			{
-				/*$analisiscomercial                          = new AnalisisComercial;
+				$analisiscomercial                          = new AnalisisComercial;
 				$analisiscomercial->folio_proyecto          = Input::get('campo0');
 				$analisiscomercial->caracteristicas_empresa = Input::get('campo1');
 				$analisiscomercial->funciones_criticas      = Input::get('campo2');
 				$analisiscomercial->experiencia_personal    = Input::get('campo3');
 				$analisiscomercial->record_de_exito         = Input::get('campo4');
-				$analisistecnico->save();*/
+				$analisistecnico->save();
 
 
 					

@@ -40,7 +40,7 @@ class DescripcionController extends Controller {
 			'regex'      => 'El formato del campo es inválido',
 			'campo0.min' => 'El tamaño del campo debe ser de al menos :min número.',
 			'min'        => 'El campo debe contener al menos :min caracteres.',
-			'unique'	 => 'El folio ya ha sido registrado'
+			'unique'	 => 'El folio ya ha sido registrado',
 			]);
 
 			$validator = Validator::make($data, $rules,$messages);
@@ -83,7 +83,7 @@ class DescripcionController extends Controller {
                                     ([
 										'success' => false,
 										'errors'  => $validator ->getMessageBag()->toArray(),
-										'message' => 'Revise los campos porfavor*'
+										'message' => 'Revise los campos porfavor',
                                     ]);
 			 	}else{
 

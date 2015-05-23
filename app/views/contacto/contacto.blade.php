@@ -87,7 +87,7 @@
         
   </section>
 
-{{ HTML::script('js/jquery.progressTimer.js') }}
+{{ HTML::script('js/progressbar.js') }}
 <script>
   $("#progressTimer").progressTimer({
 
@@ -132,7 +132,7 @@
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#mensaje').text("Revisa los campos porfavor*");
+                  $('#mensaje').text("Revisa los campos porfavor.");
                   $('.load3').show();
                   setTimeout(function(){
                   $('.load3').hide();

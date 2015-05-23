@@ -42,7 +42,7 @@
 				               			<div class="col-lg-7">
 				               			@if($proyectos)
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" disabled>{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}"disabled>{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif 
 				               			</div>
@@ -233,8 +233,6 @@ $(document).ready(function(){
      $('#formulariotecnico').on('keyup',function()
      {
         if(
-            $('#campo0').val() !='' 
-            &&  
             $('#campo1').val() !=''
           	&&
           	$('#campo2').val() !=''
@@ -261,6 +259,13 @@ $(document).ready(function(){
     $('#btntecnico').on('click',function()
     {
     	var MyRegExp = /ya ha sido registrado/;
+    	var idproyecto = $('#campo0').attr('value');
+    	var idproyectoform = $('#campo0').val();
+    	if(idproyecto != idproyectoform){
+    		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
+			$('#_campo0').text('Seleccione el folio correcto');
+    		return;
+    	}
     	$.ajax({
           url: '3',
           dataType: 'json',
@@ -282,13 +287,14 @@ $(document).ready(function(){
                   if(MyRegExp.test(value)){
                   	result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
                   	if(result == true){ 
-						window.location = '4'; 
+						window.location = '3'; 
 						} 
-					else{ 
+						else{ 
 						return false; 
 					}
                   }
-                });
+                  
+                }); 
                 }else{
                   document.getElementById('formtecnico').reset();
                   window.location = '4';
