@@ -46,7 +46,7 @@ class Proyecto extends Eloquent  {
 	}
 
 	public function vinculaciones(){
-		return $this->hasOne('vinculacion','folio_proyecto');
+		return $this->hasOne('Vinculacion','folio_proyecto');
 	}
 
 	public function instituciones(){

@@ -5,11 +5,8 @@ class AsesoriaController extends Controller {
 	
 
 	public function create(){	
-		$id= Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
-		$idselected = Auth::user()->id;
-
-		$proyectos = Proyecto::orderBy('created_at','desc')->where('id_user','=',$idselected)->take(1)->get();
+		$perfiles = Perfil::ObtenerPerfil()->get();
+		$proyectos = Proyecto::ObtenerProyecto()->take(1)->get();
 		return View::make('asesoria/create',array('perfiles' => $perfiles,'proyectos'=>$proyectos));
 	}
 
@@ -26,26 +23,37 @@ class AsesoriaController extends Controller {
 
 		$rules=array(
 			'campo0'  => 'required|numeric|min:1|max:100000|unique:asesorias,folio_proyecto',
-			'campo1'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo2'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo3'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo4'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
+			'campo1'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
+			'campo2'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
+			'campo3'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
+			'campo4'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
 			'campo5'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
 			);
 
-		$validator = Validator::make($data, $rules);
+		$messages=([
+			'required'   => 'El campo es obligatorio.',
+			'numeric'    => 'El campo debe ser numérico',
+			'regex'      => 'El formato del campo es inválido',
+			'campo0.min' => 'El tamaño del campo debe ser de al menos :min número.',
+			'min'        => 'El campo debe contener al menos :min caracteres.',
+			'unique'	 => 'El folio ya ha sido registrado.'
+		]);
+
+
+
+		$validator = Validator::make($data, $rules, $messages);
 
 		if($validator->passes()){
 			if(Request::ajax()){
 
-				/*$asesoria                           = new Asesoria;
+				$asesoria                           = new Asesoria;
 				$asesoria->folio_proyecto           = Input::get('campo0');
 				$asesoria->pregunta_1               = Input::get('campo1');
 				$asesoria->pregunta_2               = Input::get('campo2');
 				$asesoria->pregunta_3               = Input::get('campo3');
 				$asesoria->pregunta_4               = Input::get('campo4');
 				$asesoria->responsable_del_proyecto = Input::get('campo5');
-				$asesoria->save();*/
+				$asesoria->save();
 				
 			
 
@@ -53,7 +61,7 @@ class AsesoriaController extends Controller {
 			return Response::json
                                     ([
                                         'success' => true,
-                                        'message' => 'Proyecto Agregado Exitosamente'
+                                        'message' => 'Proyecto Agregado Exitosamente.'
                                     ]);  
 			}else{
 				
@@ -69,7 +77,7 @@ class AsesoriaController extends Controller {
 			
 			
 			return Redirect::to('proyectos')	
-         			->with('message_exito', 'Proyecto agregado satisfactoriamente');
+         			->with('message_exito', 'Proyecto agregado satisfactoriamente.');
 			}
 			
 
@@ -81,7 +89,7 @@ class AsesoriaController extends Controller {
                                     ([
                                         'success' => false,
                                         'errors' => $validator ->getMessageBag()->toArray(),
-                                        'message' => 'Revise los campos porfavor*',
+                                        'message' => 'Revise los campos porfavor',
                                     ]);
 			 }else{
 

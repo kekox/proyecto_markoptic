@@ -20,6 +20,8 @@
 							  </div>
 							</div>
                   		</div>
+                  		<br>
+                  		<br>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
@@ -35,12 +37,12 @@
 		                		<div class="col-lg-12"> <!-- Empieza el cero campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo0" >Folio</label></center>
+				               				<center><label for="campo0" >Folio.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               			@if($proyectos)
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Información acerca del campo..."name="campo0" row="2" disabled>{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Información acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}">{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif 
 				               			</div>
@@ -165,42 +167,14 @@
 	
 $(document).ready(function(){
 
-    $('input[type="button"]').attr('disabled','disabled');
-
-     $('#formulariovinculacion').on('keyup',function()
-     {
-        if(
-            $('#campo0').val() !='' 
-            &&  
-            $('#campo1').val() !=''
-          	&&
-          	$('#campo2').val() !=''
-          	&&
-          	$('#campo3').val() !=''
-          	&&
-          	$('#campo4').val() !=''
-          	&&
-          	$('#campo5').val() !=''
-          	&&
-          	$('#campo6').val() !=''
-          	&&
-          	$('#campo7').val() !=''
-          	&&
-          	$('#campo8').val() !=''
-          	&&
-          	$('#campo9').val() !=''
-        ){
-            $('input[type="button"]').removeAttr('disabled');
-        	$('#campo0').removeAttr('disabled');
-        }else{
-         	$('input[type="button"]').attr('disabled','disabled');
-         	$('#campo0').attr('disabled','disabled');
-        }
-
-     });
 
     $('#btnvinculacion').on('click',function()
     {
+    	var MyRegExp = /ya ha sido registrado/;
+		var MyRegExp2 = /numerico/;
+		var idproyecto = $('#campo0').attr('value');
+		var idproyectoform = $('#campo0').val();
+
     	$.ajax({
           url: '7',
           dataType: 'json',
@@ -219,8 +193,27 @@ $(document).ready(function(){
                 {
                   $('#_'+index).text(value);
                   $('#_mensaje').text(datos.message);
+
+                  if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined){
+                		
+                			if(idproyecto == idproyectoform && MyRegExp.test(value)){
+	                  			result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
+				                  	if(result == true){ 
+										window.location = '8'; 
+										}
+										return false;
+	                  		}else{
+		                  			if(datos.errors.campo0!="El campo debe ser numérico"){
+		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+				        				$('#_campo0').text('Seleccione el folio Correcto.');
+		                  			}
+	                  			
+	                  		}
+					}
+
                 });
                 }else{
+                  alert('El registro de esta sección fue todo un éxito');
                   document.getElementById('formvinculacion').reset();
                   window.location = '8';
                 
@@ -231,6 +224,8 @@ $(document).ready(function(){
             	if (XMLHttpRequest.status === 500) {
             		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
 			        $('#_campo0').text('Favor de cambiar el folio');
+
+			        //console.log(XMLHttpRequest);
 			    }else{
             	 	alert("Algo esta mal");
 				    //Se puede obtener Información útil inspecionando el Objeto XMLHttpRequest

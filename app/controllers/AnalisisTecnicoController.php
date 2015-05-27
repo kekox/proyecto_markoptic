@@ -90,7 +90,7 @@ class AnalisisTecnicoController extends Controller {
                                     ([
 										'success' => false,
 										'errors'  => $validator ->getMessageBag()->toArray(),
-										'message' => 'Revise los campos porfavor*'
+										'message' => 'Revise los campos porfavor.'
                                     ]);
 			 }else{
 

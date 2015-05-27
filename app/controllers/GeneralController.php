@@ -5,11 +5,8 @@ class GeneralController extends Controller {
 	
 
 	public function create(){	
-		$id= Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
-		$idselected = Auth::user()->id;
-
-		$proyectos = Proyecto::orderBy('created_at','desc')->where('id_user','=',$idselected)->take(1)->get();
+		$perfiles = Perfil::ObtenerPerfil()->get();
+		$proyectos = Proyecto::ObtenerProyecto()->take(1)->get();
 		return View::make('general/create',array('perfiles' => $perfiles,'proyectos'=>$proyectos));
 	}
 
@@ -30,9 +27,9 @@ class GeneralController extends Controller {
 
 		$rules=array(
 			'campo0'  => 'required|numeric|min:1|max:100000|unique:generales,folio_proyecto',
-			'campo1'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo2'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo3'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
+			'campo1'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()ÑáéíóúÁÉÍÓÚ-]+$/',
+			'campo2'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()ÑáéíóúÁÉÍÓÚ-]+$/',
+			'campo3'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()ÑáéíóúÁÉÍÓÚ-]+$/',
 			'campo4'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
 			'campo5'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
 			'campo6'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
@@ -41,11 +38,20 @@ class GeneralController extends Controller {
 			'campo9'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
 			);
 
-		$validator = Validator::make($data, $rules);
+		$messages=([
+			'required'   => 'El campo es obligatorio.',
+			'numeric'    => 'El campo debe ser numérico',
+			'regex'      => 'El formato del campo es inválido',
+			'campo0.min' => 'El tamaño del campo debe ser de al menos :min número.',
+			'min'        => 'El campo debe contener al menos :min caracteres.',
+			'unique'	 => 'El folio ya ha sido registrado'
+		]);
+
+		$validator = Validator::make($data, $rules,$messages);
 
 		if($validator->passes()){
 			if(Request::ajax()){
-				/*$general                                  = new General;
+				$general                                  = new General;
 				$general->folio_proyecto                  = Input::get('campo0');
 				$general->nivel_de_tecnologia             = Input::get('campo1');
 				$general->nivel_de_innovacion             = Input::get('campo2');
@@ -56,7 +62,7 @@ class GeneralController extends Controller {
 				$general->disponibilidad_y_compatibilidad = Input::get('campo7');
 				$general->plan_de_proteccion              = Input::get('campo8');
 				$general->generacion_de_ingresos          = Input::get('campo9');
-				$general->save();*/
+				$general->save();
 
 				return Response::json
 	                                    ([

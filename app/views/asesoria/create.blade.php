@@ -20,6 +20,8 @@
 							  </div>
 							</div>
                   		</div>
+                  		<br>
+                  		<br>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
@@ -35,12 +37,12 @@
 		                		<div class="col-lg-12"> <!-- Empieza el cero campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo0" >Folio</label></center>
+				               				<center><label for="campo0" >Folio.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               			@if($proyectos)
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" disabled>{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}"disabled>{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif 
 				               			</div>
@@ -140,7 +142,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el quinto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo5" >Responsables del Proyecto</label></center>
+				               				<center><label for="campo5" >Responsables del Proyecto.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo5" placeholder="Informacion acerca del campo..."name="campo5" row="2"></textarea> 
@@ -190,16 +192,6 @@ $(document).ready(function(){
      $('#formularioasesoria').on('keyup',function()
      {
         if(
-            $('#campo0').val() !='' 
-            &&  
-            $('#campo1').val() !=''
-          	&&
-          	$('#campo2').val() !=''
-          	&&
-          	$('#campo3').val() !=''
-          	&&
-          	$('#campo4').val() !=''
-          	&&
           	$('#campo5').val() !=''
         ){
             $('input[type="button"]').removeAttr('disabled');
@@ -213,6 +205,12 @@ $(document).ready(function(){
 
     $('#btnasesoria').on('click',function()
     {
+
+    	var MyRegExp = /ya ha sido registrado/;
+		var MyRegExp2 = /numerico/;
+		var idproyecto = $('#campo0').attr('value');
+		var idproyectoform = $('#campo0').val();
+
     	$.ajax({
           url: '10',
           dataType: 'json',
@@ -231,10 +229,28 @@ $(document).ready(function(){
                 {
                   $('#_'+index).text(value);
                   $('#_mensaje').text(datos.message);
+
+                  if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined && datos.errors.campo5==undefined){
+                		
+                			if(idproyecto == idproyectoform && MyRegExp.test(value)){
+	                  			result=confirm("Esta Sección ya ha sido llenada, Lo redireccionaremos a otra sección.\n\n ¿Desea ir a la sección?");
+				                  	if(result == true){ 
+										window.location = 'http://www.webapp.com/proyectos'; 
+										}
+										return false;
+	                  		}else{
+		                  			if(datos.errors.campo0!="El campo debe ser numérico"){
+		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+				        				$('#_campo0').text('Seleccione el folio Correcto.');
+		                  			}
+	                  			
+	                  		}
+					}
+
                 });
                 }else{
-                  document.getElementById('formasesoria').reset();
                   alert(datos.message);
+                  document.getElementById('formasesoria').reset();
                   window.location = 'http://www.webapp.com/proyectos';
                 
                   
@@ -242,7 +258,10 @@ $(document).ready(function(){
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
-            		
+            		alert('Favor de seleccionar el folio del proyecto que puso al principio.')
+			        $('#_campo0').text('Seleccione el folio Correcto');
+
+			        //console.log(XMLHttpRequest);
 			    }else{
             	 	alert("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest

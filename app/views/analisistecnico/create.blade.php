@@ -259,13 +259,10 @@ $(document).ready(function(){
     $('#btntecnico').on('click',function()
     {
     	var MyRegExp = /ya ha sido registrado/;
+    	var MyRegExp2 = /numerico/;
     	var idproyecto = $('#campo0').attr('value');
     	var idproyectoform = $('#campo0').val();
-    	if(idproyecto != idproyectoform){
-    		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
-			$('#_campo0').text('Seleccione el folio correcto');
-    		return;
-    	}
+    	
     	$.ajax({
           url: '3',
           dataType: 'json',
@@ -284,18 +281,27 @@ $(document).ready(function(){
                 {
                   $('#_'+index).text(value);
                   $('#_mensaje').text(datos.message);
-                  if(MyRegExp.test(value)){
-                  	result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
-                  	if(result == true){ 
-						window.location = '3'; 
-						} 
-						else{ 
-						return false; 
+                 
+                  if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined&& datos.errors.campo5==undefined&& datos.errors.campo6==undefined&&datos.errors.campo7==undefined){
+                		
+                			if(idproyecto == idproyectoform && MyRegExp.test(value)){
+	                  			result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
+				                  	if(result == true){ 
+										window.location = '4'; 
+										}
+										return false;
+	                  		}else{
+		                  			if(datos.errors.campo0!="El campo debe ser numérico"){
+		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+				        				$('#_campo0').text('Seleccione el folio Correcto.');
+		                  			}
+	                  			
+	                  		}
 					}
-                  }
                   
                 }); 
                 }else{
+                  alert('El registro de esta sección fue todo un éxito');
                   document.getElementById('formtecnico').reset();
                   window.location = '4';
                 
@@ -306,7 +312,7 @@ $(document).ready(function(){
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
 
-            		alert('Favor de seleccionar el folio del proyecto que puso al principio.')
+            		alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.')
 			        $('#_campo0').text('Seleccione el folio Correcto');
 			    }else{
             	 	alert("Algo esta mal");

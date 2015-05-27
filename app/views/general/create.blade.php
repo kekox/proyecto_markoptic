@@ -20,6 +20,8 @@
 							  </div>
 							</div>
                   		</div>
+                  		<br>
+                  		<br>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
@@ -35,12 +37,12 @@
 		                		<div class="col-lg-12"> <!-- Empieza el cero campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo0" >Folio</label></center>
+				               				<center><label for="campo0" >Folio.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               			@if($proyectos)
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" disabled>{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}" disabled>{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif 
 				               			</div>
@@ -120,7 +122,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el cuarto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo4" >El principal resultado técnico y comercial del proyecto.</label></center>
+				               				<center><label for="campo4" >El principal resultado técnico y comercial del proyecto.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo4" placeholder="Informacion acerca del campo..."name="campo4" row="2"></textarea> 
@@ -140,7 +142,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el quinto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo5" >Visión general del presupuesto del proyecto.</label></center>
+				               				<center><label for="campo5" >Visión general del presupuesto del proyecto.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo5" placeholder="Informacion acerca del campo..."name="campo5" row="2"></textarea> 
@@ -160,7 +162,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el sexto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo6" >Administración del proyecto</label></center>
+				               				<center><label for="campo6" >Administración del proyecto<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo6" placeholder="Informacion acerca del campo..."name="campo6" row="2"></textarea> 
@@ -180,7 +182,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el septimo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo7" >Disponibilidad y competitividad de la empresa</label></center>
+				               				<center><label for="campo7" >Disponibilidad y competitividad de la empresa.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo7" placeholder="Informacion acerca del campo..."name="campo7" row="2"></textarea> 
@@ -200,7 +202,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el octavo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo8" >Plan de protección industrial vislumbrado</label></center>
+				               				<center><label for="campo8" >Plan de protección industrial vislumbrado.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo8" placeholder="Informacion acerca del campo..."name="campo8" row="2"></textarea> 
@@ -220,7 +222,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el noveno campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo9" >Medios de generación de ingresos</label></center>
+				               				<center><label for="campo9" >Medios de generación de ingresos.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo9" placeholder="Informacion acerca del campo..."name="campo9" row="2"></textarea> 
@@ -271,14 +273,6 @@ $(document).ready(function(){
      $('#formulariogeneral').on('keyup',function()
      {
         if(
-            $('#campo0').val() !='' 
-            &&  
-            $('#campo1').val() !=''
-          	&&
-          	$('#campo2').val() !=''
-          	&&
-          	$('#campo3').val() !=''
-          	&&
           	$('#campo4').val() !=''
           	&&
           	$('#campo5').val() !=''
@@ -302,6 +296,11 @@ $(document).ready(function(){
 
     $('#btngeneral').on('click',function()
     {
+    	var MyRegExp = /ya ha sido registrado/;
+    	var MyRegExp2 = /numerico/;
+    	var idproyecto = $('#campo0').attr('value');
+    	var idproyectoform = $('#campo0').val();
+
     	$.ajax({
           url: '5',
           dataType: 'json',
@@ -320,9 +319,28 @@ $(document).ready(function(){
                 {
                   $('#_'+index).text(value);
                   $('#_mensaje').text(datos.message);
+
+                  if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined&& datos.errors.campo5==undefined&& datos.errors.campo6==undefined && datos.errors.campo7==undefined && datos.errors.campo8==undefined && datos.errors.campo9==undefined){
+                		
+                			if(idproyecto == idproyectoform && MyRegExp.test(value)){
+	                  			result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
+				                  	if(result == true){ 
+										window.location = '6'; 
+										}
+										return false;
+	                  		}else{
+		                  			if(datos.errors.campo0!="El campo debe ser numérico"){
+		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+				        				$('#_campo0').text('Seleccione el folio Correcto.');
+		                  			}
+	                  			
+	                  		}
+					}
+
+
                 });
                 }else{
-                  alert('El registro de seccion fue todo un exito');
+                  alert('El registro de esta sección fue todo un éxito.');
                   document.getElementById('formgeneral').reset();
                   window.location = '6';
                 

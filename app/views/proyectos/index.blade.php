@@ -20,7 +20,7 @@
 									'class'  => 'form-horizontal', 
 									'role'   => 'form',
 		                           ))}}
-								<center>
+		                        <center>
 		                           <div class="input-group">
 		                          	  <span class="input-group-btn">
 								        <button class="btn btn-default" id="back" ><i class="fa fa-arrow-circle-left fa-1x color-black"></i></button>
@@ -38,7 +38,7 @@
 								
 			          </div>
 			    </div>
-
+				
 				@if(isset($perfiles))
 					@foreach($perfiles as $perfil)
 						@if($perfil->id_perfil==3)
@@ -54,7 +54,7 @@
 
                 <section>
         			<div class="col-sm-12 col-md-12 col-md-offset-2 col-lg-10 col-lg-offset-2">
-          
+          			<br>
 				        @if(isset($proyectos))
 				           @foreach($proyectos as $proyecto)
 				          <div class="col-sm-12 col-md-4 col-lg-3 box">   

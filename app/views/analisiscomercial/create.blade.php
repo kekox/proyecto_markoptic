@@ -20,7 +20,8 @@
 							  </div>
 							</div>
                   		</div>
-                  		
+                  		<br>
+                  		<br>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
@@ -36,12 +37,12 @@
 		                		<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo1" >Folio</label></center>
+				               				<center><label for="campo1" >Folio.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               			@if($proyectos)
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" disabled>{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}" disabled>{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif 
 				               			</div>
@@ -60,7 +61,7 @@
 		               			<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo1" >Características de la empresa</label></center>
+				               				<center><label for="campo1" >Características de la empresa.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo1" placeholder="Informacion acerca del campo..."name="campo1" row="2"></textarea> 
@@ -81,7 +82,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el segundo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo2" >Funciones críticas de administración</label></center>
+				               				<center><label for="campo2" >Funciones críticas de administración.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo2" placeholder="Informacion acerca del campo..." name="campo2" row="2"></textarea> 
@@ -101,7 +102,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el tercer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo3" >Experiencia del personal </label></center>
+				               				<center><label for="campo3" >Experiencia del personal.<i class="text-red">*</i> </label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="_campo3" placeholder="Informacion acerca del campo..."name="campo3" row="2"></textarea> 
@@ -121,7 +122,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el cuarto campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo4" >Récord de éxito en comercialización de proyectos y otras investigaciones</label></center>
+				               				<center><label for="campo4" >Récord de éxito en comercialización de proyectos y otras investigaciones.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo4" placeholder="Informacion acerca del campo..."name="campo4" row="2"></textarea> 
@@ -171,9 +172,7 @@ $(document).ready(function(){
 
      $('#formulariocomercial').on('keyup',function()
      {
-        if(
-            $('#campo0').val() !='' 
-            &&  
+        if( 
             $('#campo1').val() !=''
           	&&
           	$('#campo2').val() !=''
@@ -193,6 +192,12 @@ $(document).ready(function(){
 
     $('#btncomercial').on('click',function()
     {
+    	var MyRegExp = /ya ha sido registrado/;
+    	var MyRegExp2 = /numerico/;
+    	var idproyecto = $('#campo0').attr('value');
+    	var idproyectoform = $('#campo0').val();
+
+    	
     	$.ajax({
           url: '4',
           dataType: 'json',
@@ -211,8 +216,29 @@ $(document).ready(function(){
                 {
                   $('#_'+index).text(value);
                   $('#_mensaje').text(datos.message);
+                  
+
+	                  if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined)
+	                  {
+	                  		if(idproyecto == idproyectoform && MyRegExp.test(value)){
+	                  			result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
+				                  	if(result == true){ 
+										window.location = '5'; 
+										}
+										return false;
+	                  		}else{
+		                  			if(datos.errors.campo0!="El campo debe ser numérico"){
+		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+				        				$('#_campo0').text('Seleccione el folio Correcto.');
+		                  			}
+	                  			
+	                  		}
+	                		
+					  }
+
                 });
                 }else{
+                  alert('El registro de esta sección fue todo un éxito');
                   document.getElementById('formcomercial').reset();
                   window.location = '5';
                 
@@ -222,10 +248,12 @@ $(document).ready(function(){
 
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
-            		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
-			        $('#_campo0').text('Seleccione el folio Correcto');
-
-			        console.log(XMLHttpRequest);
+            		
+            		alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+			        $('#_campo0').text('Seleccione el folio Correcto.');
+			        
+			        
+			        //console.log(XMLHttpRequest);
 			    }else{
             	 	alert("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest

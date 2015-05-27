@@ -20,6 +20,8 @@
 							  </div>
 							</div>
                   		</div>
+                  		<br>
+                  		<br>
 						<center><span id="_mensaje" class="display-errors" ></span></center>
 
 		                  	<!--Formulario-->
@@ -35,12 +37,12 @@
 		                		<div class="col-lg-12"> <!-- Empieza el cero campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo0" >Folio</label></center>
+				               				<center><label for="campo0" >Folio<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				@if($proyectos)
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" disabled>{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}"disabled>{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif 
 				               			</div>
@@ -59,7 +61,7 @@
 		               			<div class="col-lg-12"> <!-- Empieza el primer campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo1" >Registro</label></center>
+				               				<center><label for="campo1" >Registro.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo1" placeholder="Informacion acerca del campo..."name="campo1" row="2"></textarea> 
@@ -200,7 +202,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el octavo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo8" >Describa actividades a desarrollar</label></center>
+				               				<center><label for="campo8" >Describa actividades a desarrollar.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo8" placeholder="Informacion acerca del campo..."name="campo8" row="2"></textarea> 
@@ -220,7 +222,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el noveno campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo9" >Entregables comprometidos</label></center>
+				               				<center><label for="campo9" >Entregables comprometidos.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo9" placeholder="Informacion acerca del campo..."name="campo9" row="2"></textarea> 
@@ -240,7 +242,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el decimo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo10" >Descripción de la participación</label></center>
+				               				<center><label for="campo10" >Descripción de la participación.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo10" placeholder="Informacion acerca del campo..."name="campo10" row="2"></textarea> 
@@ -260,7 +262,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el onceavo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo11" >Datos de contacto del personal responsable con la presente propuesta de esta institución.</label></center>
+				               				<center><label for="campo11" >Datos de contacto del personal responsable con la presente propuesta de esta institución.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo11" placeholder="Informacion acerca del campo..."name="campo11" row="2"></textarea> 
@@ -281,7 +283,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el doceavo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo12" >Grupo de Trabajo del Proyecto</label></center>
+				               				<center><label for="campo12" >Grupo de Trabajo del Proyecto.<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo12" placeholder="Informacion acerca del campo..."name="campo12" row="2"></textarea> 
@@ -301,7 +303,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el terceavo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo13" >Grado Académico (de cada participante en el proyecto).</label></center>
+				               				<center><label for="campo13" >Grado Académico (de cada participante en el proyecto).<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo13" placeholder="Informacion acerca del campo..."name="campo13" row="2"></textarea> 
@@ -321,7 +323,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el catorciavo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo14" >Producto que generará (cada uno de los participantes).</label></center>
+				               				<center><label for="campo14" >Producto que generará (cada uno de los participantes).<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo14" placeholder="Informacion acerca del campo..."name="campo14" row="2"></textarea> 
@@ -341,7 +343,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el quinceavo campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo15" >Información relevante del participante ( de cada uno de los participantes en el proyecto).</label></center>
+				               				<center><label for="campo15" >Información relevante del participante ( de cada uno de los participantes en el proyecto).<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo15" placeholder="Informacion acerca del campo..."name="campo15" row="2"></textarea> 
@@ -361,7 +363,7 @@
 								<div class="col-lg-12"> <!-- Empiezan el dieciseis campo -->
 			               			<section  class="form-group">
 				               			<div class="col-lg-3 ">
-				               				<center><label for="campo16" >Actividades específicas que realizará dentro del  proyecto (de cada participante en el proyecto).</label></center>
+				               				<center><label for="campo16" >Actividades específicas que realizará dentro del  proyecto (de cada participante en el proyecto).<i class="text-red">*</i></label></center>
 				               			</div>
 				               			<div class="col-lg-7">
 				               				<textarea type="text" class="form-control"  id="campo16" placeholder="Informacion acerca del campo..."name="campo16" row="2"></textarea> 
@@ -412,21 +414,7 @@ $(document).ready(function(){
      $('#formularioinstitucion').on('keyup',function()
      {
         if(
-            $('#campo0').val() !='' 
-            &&  
             $('#campo1').val() !=''
-          	&&
-          	$('#campo2').val() !=''
-          	&&
-          	$('#campo3').val() !=''
-          	&&
-          	$('#campo4').val() !=''
-          	&&
-          	$('#campo5').val() !=''
-          	&&
-          	$('#campo6').val() !=''
-          	&&
-          	$('#campo7').val() !=''
           	&&
           	$('#campo8').val() !=''
           	&&
@@ -457,6 +445,11 @@ $(document).ready(function(){
 
     $('#btninstitucion').on('click',function()
     {
+    	var MyRegExp = /ya ha sido registrado/;
+		var MyRegExp2 = /numerico/;
+		var idproyecto = $('#campo0').attr('value');
+		var idproyectoform = $('#campo0').val();
+
     	$.ajax({
           url: '8',
           dataType: 'json',
@@ -474,18 +467,34 @@ $(document).ready(function(){
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#_mensaje').text("Revise los campos porfavor*");
+                  $('#_mensaje').text(datos.message);
+
+
+                  	               
                 });
                 }else{
-                  document.getElementById('forminstitucion').reset();
-                  window.location = '9';
+                	if(idproyecto != idproyectoform){
+		              alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+					    $('#_campo0').text('Seleccione el folio Correcto.');
+					    return;
+		             }
+                	result2=confirm("¿Desea agregar otra Institución?");
+				                  	if(result2 == true){ 
+										window.location = '8'; 
+									}else{
+										alert('El registro de esta sección fue todo un éxito');
+						                document.getElementById('forminstitucion').reset();
+						                window.location = '9';
+									}
+                  
                 
                   
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
-            		alert('El folio que ha decidido tomar , ya existe. Favor de seleccionar otro Folio.')
+            		$('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4 ,#_campo5 ,#_campo6 ,#_campo7 ,#_campo8 ,#_campo9 ,#_campo10 ,#_campo11,#_campo12,#_campo13,#_campo14,#_campo15,#_campo16').text('');
+            		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
 			        $('#_campo0').text('Favor de cambiar el folio');
 			    }else{
             	 	alert("Algo esta mal");
@@ -503,6 +512,11 @@ $(document).ready(function(){
 
 	$('#btnotherinstitucion').on('click',function()
     {
+    	var MyRegExp = /ya ha sido registrado/;
+		var MyRegExp2 = /numerico/;
+		var idproyecto = $('#campo0').attr('value');
+		var idproyectoform = $('#campo0').val();
+		
     	$.ajax({
           url: '8',
           dataType: 'json',
@@ -523,6 +537,11 @@ $(document).ready(function(){
                   $('#_mensaje').text("Revise los campos porfavor*");
                 });
                 }else{
+                	if(idproyecto != idproyectoform){
+		              alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+					    $('#_campo0').text('Seleccione el folio Correcto.');
+					    return;
+		             }
                   document.getElementById('forminstitucion').reset();
                   alert("Institución capturado de manera correcta, favor de llenar el formulario para la siguiente institución")
                   window.location = '8';
