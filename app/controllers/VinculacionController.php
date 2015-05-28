@@ -54,7 +54,7 @@ class VinculacionController extends Controller {
 				return Response::json
 	                                    ([
 	                                        'success' => true,
-	                                        'message' => 'Success'
+	                                        'message' => 'El registro de esta sección fue todo un éxito.'
 	                                    ]);  
 			}else{
 				$vinculacion                        = new Vinculacion;
@@ -76,9 +76,10 @@ class VinculacionController extends Controller {
 
 			 	return Response::json
                                     ([
-                                        'success' => false,
-                                        'errors' => $validator ->getMessageBag()->toArray(),
-                                        'message' => 'Revise los campos porfavor.'
+										'success'    => false,
+										'errors'     => $validator ->getMessageBag()->toArray(),
+										'message'    => 'Revise los campos porfavor.',
+										'validation' => 'El campo debe ser numérico'
                                     ]);
 			 }else{
 

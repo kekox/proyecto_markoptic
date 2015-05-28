@@ -74,8 +74,9 @@
 									
 									<center>Nombre del proyecto:<br>{{{$proyecto->nombre_proyecto}}}</center>
 									<br>
+									<center>Folio del proyecto:<br>{{{$proyecto->folio}}}</center>
 									<center>usuario:<br>{{{$proyecto->id_user}}}</center>
-
+	
 									<center>usuario:<br>{{{$proyecto->nombre}}}</center>
 									
 

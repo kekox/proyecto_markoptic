@@ -67,7 +67,7 @@ class GeneralController extends Controller {
 				return Response::json
 	                                    ([
 	                                        'success' => true,
-	                                        'message' => 'Success'
+	                                        'message' => 'El registro de esta sección fue todo un éxito.'
 	                                    ]);  
 			}else{
 				/*$general                                  = new General;
@@ -96,7 +96,8 @@ class GeneralController extends Controller {
                                     ([
                                         'success' => false,
                                         'errors' => $validator ->getMessageBag()->toArray(),
-                                        'message' => 'Revise los campos porfavor*'
+                                        'message' => 'Revise los campos porfavor.',
+                                        'validation'=>'El campo debe ser numérico'
                                     ]);
 			 }else{
 

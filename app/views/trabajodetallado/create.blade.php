@@ -234,7 +234,7 @@ $(document).ready(function(){
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#_mensaje').text("Revise los campos porfavor*");
+                  $('#_mensaje').text(datos.message);
 
                   if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined){
                 		
@@ -245,7 +245,7 @@ $(document).ready(function(){
 										}
 										return false;
 	                  		}else{
-		                  			if(datos.errors.campo0!="El campo debe ser numérico"){
+		                  			if(datos.errors.campo0!=datos.validation){
 		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
 				        				$('#_campo0').text('Seleccione el folio Correcto.');
 		                  			}
@@ -255,7 +255,7 @@ $(document).ready(function(){
 
                 });
                 }else{
-                  alert('El registro de esta sección fue todo un éxito');
+                  alert(datos.message);
                   document.getElementById('formdetallado').reset();
                   window.location = '10';
                 

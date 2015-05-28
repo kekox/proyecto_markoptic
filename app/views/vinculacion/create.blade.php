@@ -171,7 +171,6 @@ $(document).ready(function(){
     $('#btnvinculacion').on('click',function()
     {
     	var MyRegExp = /ya ha sido registrado/;
-		var MyRegExp2 = /numerico/;
 		var idproyecto = $('#campo0').attr('value');
 		var idproyectoform = $('#campo0').val();
 
@@ -203,7 +202,7 @@ $(document).ready(function(){
 										}
 										return false;
 	                  		}else{
-		                  			if(datos.errors.campo0!="El campo debe ser numérico"){
+		                  			if(datos.errors.campo0!=datos.validation){
 		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
 				        				$('#_campo0').text('Seleccione el folio Correcto.');
 		                  			}
@@ -213,8 +212,8 @@ $(document).ready(function(){
 
                 });
                 }else{
-                  alert('El registro de esta sección fue todo un éxito');
                   document.getElementById('formvinculacion').reset();
+                  alert(datos.message);
                   window.location = '8';
                 
                   

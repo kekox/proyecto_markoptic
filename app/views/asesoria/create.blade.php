@@ -239,7 +239,7 @@ $(document).ready(function(){
 										}
 										return false;
 	                  		}else{
-		                  			if(datos.errors.campo0!="El campo debe ser numérico"){
+		                  			if(datos.errors.campo0!=datos.validation){
 		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
 				        				$('#_campo0').text('Seleccione el folio Correcto.');
 		                  			}

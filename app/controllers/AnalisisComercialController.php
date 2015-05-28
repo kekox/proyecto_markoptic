@@ -56,7 +56,7 @@ class AnalisisComercialController extends Controller {
 				return Response::json
                                     ([
 										'success' => true,
-										'message' => 'Success'
+										'message' => 'El registro de esta sección fue todo un éxito.'
                                     ]);  
 			}else{
 				/*$analisiscomercial                          = new AnalisisComercial;
@@ -76,9 +76,10 @@ class AnalisisComercialController extends Controller {
 				
 				return Response::json
                                     ([
-										'success' => false,
-										'errors'  => $validator ->getMessageBag()->toArray(),
-										'message' => 'Revise los campos porfavor.'
+										'success'    => false,
+										'errors'     => $validator ->getMessageBag()->toArray(),
+										'message'    => 'Revise los campos porfavor.',
+										'validation' => 'El campo debe ser numérico.'
                                     ]);
 			}else{
 				return Redirect::to('proyectos/seccion/4')

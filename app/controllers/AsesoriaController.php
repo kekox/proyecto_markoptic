@@ -87,9 +87,10 @@ class AsesoriaController extends Controller {
 
 			 	return Response::json
                                     ([
-                                        'success' => false,
-                                        'errors' => $validator ->getMessageBag()->toArray(),
-                                        'message' => 'Revise los campos porfavor',
+										'success'    => false,
+										'errors'     => $validator ->getMessageBag()->toArray(),
+										'message'    => 'Revise los campos porfavor',
+										'validation' => 'El campo debe ser numérico'
                                     ]);
 			 }else{
 

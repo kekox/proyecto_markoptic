@@ -363,6 +363,7 @@ $(document).ready(function(){
 
     $('#btnproyecto').on('click',function()
     {
+    	var MyRegExp = /ya ha sido registrado/;
     	$.ajax({
           url: '1',
           dataType: 'json',
@@ -381,8 +382,14 @@ $(document).ready(function(){
                 {
                   $('#_'+index).text(value);
                   $('#_mensaje').text(datos.message);
+
+		                if(MyRegExp.test(value)){
+		          			$('#_campo1').text(datos.message2);
+		          		}
+
                 });
                 }else{
+                  alert(datos.message);
                   document.getElementById('formproyectos1').reset();
                   window.location = '2';
                 
@@ -394,11 +401,11 @@ $(document).ready(function(){
             		alert('El folio que ha decidido tomar , ya existe. Favor de seleccionar otro # de Folio.')
 			        $('#_campo1').text('Favor de cambiar el folio');
 			    }else{
-            	 	alert("Algo esta mal");
+            	 	console.log("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
 				    console.log(XMLHttpRequest.statusText);
 				    console.log(textStatus);
-				    console.log(errorThrown);;
+				    console.log(errorThrown);
 		    	}
 			}
             

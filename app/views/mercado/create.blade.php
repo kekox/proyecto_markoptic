@@ -281,7 +281,20 @@
             </div>
         </div>
             
-    
+
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-body">
+			       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			       <center>Error<i class="fa fa-ban fa-3x text-red"></i><center>
+			       Folio Incorrecto. <br><br> Favor de seleccionar el folio del proyecto que puso al principio.
+			      </div>
+			     
+			    </div>
+			  </div>
+			</div>
+			    
   </section>
 
 <script>
@@ -325,7 +338,6 @@ $(document).ready(function(){
     $('#btnmercado').on('click',function()
     {
     	var MyRegExp = /ya ha sido registrado/;
-    	var MyRegExp2 = /numerico/;
     	var idproyecto = $('#campo0').attr('value');
     	var idproyectoform = $('#campo0').val();
 
@@ -337,8 +349,7 @@ $(document).ready(function(){
            
             success: function(datos)
             {
-             
-             
+  
               //Donde se vana  mostrar los errores
               $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4 ,#_campo5 ,#_campo6 ,#_campo7 ,#_campo8 ,#_campo9 ,#_campo10').text('');
                 //Si la respuesta de ajax es false se hace esto
@@ -357,8 +368,8 @@ $(document).ready(function(){
 										}
 										return false;
 	                  		}else{
-		                  			if(datos.errors.campo0!="El campo debe ser numérico"){
-		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+		                  			if(datos.errors.campo0!=datos.validation){
+		                  				$('#myModal').modal('show')
 				        				$('#_campo0').text('Seleccione el folio Correcto.');
 		                  			}
 	                  			
@@ -368,8 +379,8 @@ $(document).ready(function(){
 
                 });
                 }else{
-                  alert('El registro de esta sección fue todo un éxito');
                   document.getElementById('formmercado').reset();
+                  alert(datos.message);
                   window.location = '7';
                 
                   
@@ -378,7 +389,7 @@ $(document).ready(function(){
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             	if (XMLHttpRequest.status === 500) {
             		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
-			        $('#_campo0').text('Favor de cambiar el folio');
+			        $('#_campo0').text('Seleccione el folio Correcto.');
 			    }else{
             	 	alert("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest

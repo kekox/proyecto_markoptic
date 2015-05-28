@@ -14,7 +14,7 @@ class ContactoController extends Controller {
 		
 		
 		$data= array(
-			'name'    => Input::get('name'),
+			'nombre'    => Input::get('nombre'),
 			'correo'  => Input::get('correo'),
 			'subject' => Input::get('subject'),
 			'msg'     => Input::get('msg'),
@@ -37,7 +37,7 @@ class ContactoController extends Controller {
 				$toEmail   ='keko_daniel@hotmail.com';
 				$toName    ='Administrador';
 				$fromEmail =Input::get('correo');
-				$fromName  =Input::get('name');
+				$fromName  =Input::get('nombre');
 
 		            Mail::send('emails.contacto',$data,function($message) use($toEmail,$toName,$fromName,$fromEmail)
 		            {
@@ -59,8 +59,9 @@ class ContactoController extends Controller {
 	        		
 	        			return Response::json
 			        			([
-			        				'success' => false,
-			        				'errors' => $validator ->getMessageBag()->toArray()
+									'success' => false,
+									'errors'  => $validator ->getMessageBag()->toArray(),
+									'message' => 'Revise los campos porfavor.'
 			        			]);
 			       
 	        }

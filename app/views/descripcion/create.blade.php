@@ -24,11 +24,7 @@
                   		<br>
                   		<center><span id="_mensaje" class="display-errors" ></span></center>
                   		
-						{{--@if($proyectos)
-							@foreach($proyectos as $proyecto)
-				              <p>{{$proyecto->folio}}</p>
-				            @endforeach
-						@endif--}}
+				
 						
 
 		                  	<!--Formulario-->
@@ -242,7 +238,6 @@ $(document).ready(function(){
     $('#btndescripciones').on('click',function()
     {
     	var MyRegExp = /ya ha sido registrado/;
-    	var MyRegExp2 = /numerico/;
     	var idproyecto = $('#campo0').attr('value');
     	var idproyectoform = $('#campo0').val();
 
@@ -264,7 +259,7 @@ $(document).ready(function(){
                    $('#_'+index).text(value);
 	               $('#_mensaje').text(datos.message);
 
-	               if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined&& datos.errors.campo5==undefined&& datos.errors.campo6==undefined){
+	                if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined&& datos.errors.campo5==undefined&& datos.errors.campo6==undefined){
                 		
                 			if(idproyecto == idproyectoform && MyRegExp.test(value)){
 	                  			result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
@@ -273,7 +268,7 @@ $(document).ready(function(){
 										}
 										return false;
 	                  		}else{
-		                  			if(datos.errors.campo0!="El campo debe ser numérico"){
+		                  			if(datos.errors.campo0!=datos.validation){
 		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
 				        				$('#_campo0').text('Seleccione el folio Correcto.');
 		                  			}
@@ -285,8 +280,8 @@ $(document).ready(function(){
                 
 
                 }else{
-                  alert('El registro de esta sección fue todo un éxito');
-                  document.getElementById('formdescripciones').reset();
+                  document.getElementById('formdescripciones').reset();	
+                  alert(datos.message);
                   window.location = '3';
                 
                   
@@ -298,7 +293,7 @@ $(document).ready(function(){
             		alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
 			        $('#_campo0').text('Seleccione el folio correcto');
 			    }else{
-            	 	alert("Algo esta mal");
+            	 	alert("Algo salió mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
 				    console.log(XMLHttpRequest.statusText);
 				    console.log(textStatus);

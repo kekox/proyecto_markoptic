@@ -55,7 +55,7 @@ class TrabajoDetalladoController extends Controller {
 				return Response::json
 	                                    ([
 	                                        'success' => true,
-	                                        'message' => 'Success'
+	                                        'message' => 'El registro de esta sección fue todo un éxito.'
 	                                    ]);  
 			}else{
 
@@ -79,8 +79,10 @@ class TrabajoDetalladoController extends Controller {
 
 			 	return Response::json
                                     ([
-                                        'success' => false,
-                                        'errors' => $validator ->getMessageBag()->toArray()
+										'success'    => false,
+										'errors'     => $validator ->getMessageBag()->toArray(),
+										'message'    => 'Revise los campos porfavor.',
+										'validation' => 'El campo debe ser numérico'
                                     ]);
 			 }else{
 

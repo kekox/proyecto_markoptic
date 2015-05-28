@@ -48,8 +48,9 @@ class ProyectoController extends Controller {
 			'required'   => 'El campo es obligatorio.',
 			'numeric'    => 'El campo debe ser numérico',
 			'regex'      => 'El formato del campo es inválido',
-			'campo1.min' => 'El tamaño del campo debe ser de al menos :min número.',
-			'min'        => 'El campo debe contener al menos :min caracteres.'
+			'campo0.min' => 'El tamaño del campo debe ser de al menos :min número.',
+			'min'        => 'El campo debe contener al menos :min caracteres.',
+			'unique'	 => 'El folio ya ha sido registrado',
 			]);
 
 		$validator = Validator::make($data, $rules,$messages);
@@ -76,7 +77,7 @@ class ProyectoController extends Controller {
 			return Response::json
                                     ([
                                         'success' => true,
-                                        'message' => 'Success'
+                                        'message' => 'El registro de esta sección fue todo un éxito.'
                                     ]);  
 			}else{
 			/*$proyecto                         = new Proyecto;
@@ -109,7 +110,8 @@ class ProyectoController extends Controller {
                                     ([
 										'success' => false,
 										'errors'  => $validator ->getMessageBag()->toArray(),
-										'message' => 'Revise los campos porfavor*'
+										'message' => 'Revise los campos porfavor.',
+										'message2'=> 'Folio existente. Seleccionar otro # de folio.'
                                     ]);
 			 }else{
 

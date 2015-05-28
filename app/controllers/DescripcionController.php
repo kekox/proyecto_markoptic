@@ -60,7 +60,7 @@ class DescripcionController extends Controller {
 					return Response::json
                                     ([
                                         'success' => true,
-                                        'message' => 'Éxito'
+                                        'message' => 'El registro de esta sección fue todo un éxito.'
                                     ]); 
                 }else{
                 	$descripcion                              = new Descripcion;
@@ -81,9 +81,10 @@ class DescripcionController extends Controller {
 
 			 		return Response::json
                                     ([
-										'success' => false,
-										'errors'  => $validator ->getMessageBag()->toArray(),
-										'message' => 'Revise los campos porfavor',
+										'success'    => false,
+										'errors'     => $validator ->getMessageBag()->toArray(),
+										'message'    => 'Revise los campos porfavor',
+										'validation' => 'El campo debe ser numérico'
                                     ]);
 			 	}else{
 

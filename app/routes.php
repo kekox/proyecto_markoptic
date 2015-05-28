@@ -19,7 +19,8 @@ Route::get('formtest',function(){
 });
 
 Route::get('test',function(){
-	return View::make('test');
+	Session::flash('message', 'hola');
+	return View::make('test')->with('mensaje','asdasdsadsa');
 });
 
 Route::get('test2',function(){

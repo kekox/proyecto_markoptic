@@ -16,8 +16,8 @@
                       <small>{{HTML::link('dashboard',' ',array('class' => 'fa fa-arrow-circle-left color-black fa-3x ' ))}}</small>
                       {{-- Se despliegan los errores de acuerdo a su situacion--}}
                       
-                      <center><span id="mensaje" class="bg-errors display-errors"></span></center>
-                      <center><span id="mensaje_exito" class="bg-errors display-errors"></span></center>
+                      <center><span id="mensaje" class="display-errors"></span></center>
+                      <center><span id="mensaje_exito" class="display-errors"></span></center>
                       <br>
                     
                          {{ Form::open(array(
@@ -28,15 +28,15 @@
                         ))}}
 
                       <div class="form-group">
-                          {{form::label('Nombre:')}}
-                          {{Form::input('text','name',Input::old('name'),array('class' => 'form-control' , 'placeholder' =>'Nombre'))}}
-                          <span class="bg-errors display-errors" id="_name"> {{ $errors->first('name') }} </span>
+                          <label for="nombre" >Nombre</label>
+                          <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                          <span class="display-errors" id="_nombre"> {{ $errors->first('nombre') }} </span>
                       </div>
 
                       <div class="form-group">
-                          {{form::label('Email:')}}
-                          {{Form::input('email','correo',Input::old('correo'),array('class' => 'form-control' , 'placeholder' =>'Corre Electronico'))}}
-                           <span class="bg-errors display-errors" id="_correo">{{ $errors->first('correo') }}</span>
+                           <label for="Email:" >Email</label>
+                           <input type="email" name="correo" class="form-control" placeholder="Correo Electronico">
+                           <span class="display-errors" id="_correo">{{ $errors->first('correo') }}</span>
 
                       </div>
 
@@ -44,14 +44,14 @@
                           {{form::label('Asunto:')}}
                           {{Form::input('text','subject',null,array('class' => 'form-control' , 'placeholder' =>'Asunto del Mensaje'))
                           }}
-                          <span class="bg-errors display-errors" id="_subject">{{ $errors->first('subject') }}</span>
+                          <span class="display-errors" id="_subject">{{ $errors->first('subject') }}</span>
                       </div>
                       
 
                       <div class="form-group">
                           {{form::label('Mensaje:')}}
                           {{Form::textarea('msg',null,array('class' => 'form-control' , 'placeholder' =>'Cuerpo del mensaje'))}}
-                          <span class="bg-errors display-errors" id="_msg">{{ $errors->first('msg') }}</span>
+                          <span class="display-errors" id="_msg">{{ $errors->first('msg') }}</span>
                       </div>
                       
 
@@ -126,13 +126,13 @@
               $('.load3').hide();
              
               //Donde se vana  mostrar los errores
-              $('#_name , #_correo , #_subject , #_msg').text('');
+              $('#_nombre , #_correo , #_subject , #_msg').text('');
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#mensaje').text("Revisa los campos porfavor.");
+                  $('#mensaje').text(datos.message);
                   $('.load3').show();
                   setTimeout(function(){
                   $('.load3').hide();
@@ -147,7 +147,7 @@
                  
                   $('.enviando').show();
                   document.getElementById('formcontacto').reset();
-                  $('#mensaje').text("Mensaje enviado con Éxito");
+                  $('#mensaje').text(datos.message);
                   $('.enviando').hide();
                   $('.load2').show();
                   setTimeout("window.location = 'contacto'",3000);

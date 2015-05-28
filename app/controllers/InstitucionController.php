@@ -88,7 +88,7 @@ class InstitucionController extends Controller {
 			return Response::json
                                     ([
                                         'success' => true,
-                                        'message' => 'Success'
+                                        'message' => 'El registro de esta sección fue todo un éxito.'
                                     ]);  
 			}else{
 			/*$institucion                             = new Institucion;

@@ -446,7 +446,6 @@ $(document).ready(function(){
     $('#btninstitucion').on('click',function()
     {
     	var MyRegExp = /ya ha sido registrado/;
-		var MyRegExp2 = /numerico/;
 		var idproyecto = $('#campo0').attr('value');
 		var idproyectoform = $('#campo0').val();
 
@@ -482,7 +481,7 @@ $(document).ready(function(){
 				                  	if(result2 == true){ 
 										window.location = '8'; 
 									}else{
-										alert('El registro de esta sección fue todo un éxito');
+										alert(datos.message);
 						                document.getElementById('forminstitucion').reset();
 						                window.location = '9';
 									}
@@ -534,7 +533,7 @@ $(document).ready(function(){
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
-                  $('#_mensaje').text("Revise los campos porfavor*");
+                  $('#_mensaje').text(datos.message);
                 });
                 }else{
                 	if(idproyecto != idproyectoform){

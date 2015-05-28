@@ -73,7 +73,7 @@ class MercadoController extends Controller {
 				return Response::json
 	                                    ([
 	                                        'success' => true,
-	                                        'message' => 'Success'
+	                                        'message' => 'El registro de esta sección fue todo un éxito'
 	                                    ]);  
 			}else{
 				/*$mercado                       = new Mercado;
@@ -101,9 +101,11 @@ class MercadoController extends Controller {
 
 			 	return Response::json
                                     ([
-                                        'success' => false,
-                                        'errors' => $validator ->getMessageBag()->toArray(),
-                                        'message' => 'Revise los campos porfavor.'
+										'success'    => false,
+										'errors'     => $validator ->getMessageBag()->toArray(),
+										'message'    => 'Revise los campos porfavor.',
+										'validation' => 'El campo debe ser numérico',
+										'expression' => 'ya ha sido registrado'
                                     ]);
 			 }else{
 
