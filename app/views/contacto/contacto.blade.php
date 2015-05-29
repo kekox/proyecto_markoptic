@@ -8,16 +8,20 @@
   <div id="contacto" >
             <div class="container-fluid ">
               <div class="row">
-                 
-                  
+
                   	<div class="col-lg-8 col-lg-offset-2 ">
+
+                      <center><ol class="breadcrumb roboto-slab" style="background-color:#eee;">
+                        <li><a href="dashboard">Dashboard</a></li>
+                        <li class="active">contacto</li>
+                      </ol>
+                      </center>
                   		
-                  		<h3>Contacto</h3>
-                      <small>{{HTML::link('dashboard',' ',array('class' => 'fa fa-arrow-circle-left color-black fa-3x ' ))}}</small>
+                  		<h3><a href="dashboard" class="fa fa-arrow-left color-black pull-left" style="text-decoration:none;"></a>        Contacto</h3>
+                     
                       {{-- Se despliegan los errores de acuerdo a su situacion--}}
-                      
-                      <center><span id="mensaje" class="display-errors"></span></center>
-                      <center><span id="mensaje_exito" class="display-errors"></span></center>
+
+                      <center><span id="mensaje_exito" class="display-success"></span></center>
                       <br>
                     
                          {{ Form::open(array(
@@ -28,47 +32,43 @@
                         ))}}
 
                       <div class="form-group">
-                          <label for="nombre" >Nombre</label>
-                          <input type="text" name="nombre" class="form-control" placeholder="Nombre">
-                          <span class="display-errors" id="_nombre"> {{ $errors->first('nombre') }} </span>
+                          <label for="name" >Nombre:</label>
+                          <input type="text" name="name" class="form-control" placeholder="Nombre">
+                          <span class="display-errors" id="_name"> {{ $errors->first('name') }} </span>
                       </div>
+                     
 
                       <div class="form-group">
-                           <label for="Email:" >Email</label>
+                           <label for="email:" >Email:</label>
                            <input type="email" name="correo" class="form-control" placeholder="Correo Electronico">
                            <span class="display-errors" id="_correo">{{ $errors->first('correo') }}</span>
 
                       </div>
 
                       <div class="form-group">
-                          {{form::label('Asunto:')}}
-                          {{Form::input('text','subject',null,array('class' => 'form-control' , 'placeholder' =>'Asunto del Mensaje'))
-                          }}
+                          <label for="subject">Asunto:</label>
+                          <input type="text" name="subject" class="form-control" placeholder= "Asunto del Mensaje">
                           <span class="display-errors" id="_subject">{{ $errors->first('subject') }}</span>
                       </div>
                       
 
                       <div class="form-group">
-                          {{form::label('Mensaje:')}}
-                          {{Form::textarea('msg',null,array('class' => 'form-control' , 'placeholder' =>'Cuerpo del mensaje'))}}
+                          <label for="msg">Mensaje:</label>
+                          <textarea name="msg" id="" class="form-control" placeholder="Cuerpo del mensaje " cols="50" rows="10"></textarea>
+
                           <span class="display-errors" id="_msg">{{ $errors->first('msg') }}</span>
                       </div>
                       
-
                       
-                      
-
-                   
-                      {{Form::input('button',null,'Enviar',array('class' =>'btn btn-primary roboto','id'=> 'btncontact'))}}
+                      <input type="button" value="Enviar" class="btn btn-primary roboto" id="btncontact"  >
 
 
 
                       {{ Form::close() }}
 
 						
-                      <br>
+                      
                       <div id="progressTimer" class="enviando" style="display:none">Enviando...</div>
-		                  <div class="load" align="center" style="display:none"><img src="img/gif/enviando.gif" alt=""></div>
                       <div class="load2" align="center" style="display:none"><img src="img/gif/ok.png" alt=""><p class="alert alert-success">Mensaje enviado con Éxito! Gracias.</p></div>
                       <div class="load3" align="center" style="display:none"><img src="img/gif/error.png" alt=""><p class="alert alert-danger">Error al Intentar enviar el mensaje</p></div>	
 
@@ -80,12 +80,15 @@
             
                     
 
-
-             <p style="color:transparent;">a</p> 
         </div>
             
         
   </section>
+
+    <!--Mensajes-->
+    @include('includes.Messages.MessageError')
+    @include('includes.Messages.MessageContactoSuccess')
+
 
 {{ HTML::script('js/progressbar.js') }}
 <script>
@@ -97,74 +100,71 @@
     warningStyle: 'progress-bar-success',
     completeStyle: 'progress-bar-success',
     onFinish: function() {
-        console.log("I'm done");
+        console.log("Terminado.");
     }
 
 });
 </script>
 <script>
-  $(function(){
-    
-      function send_ajax_contacto()
-      {
-        $.ajax({
+
+$(document).ready(function(){
+
+  
+    $('#btncontact').on('click',function()
+    {
+      
+      $.ajax({
           url: 'contacto',
           dataType: 'json',
           type:'POST',
-          data: $('#formcontacto').serialize(), //Se obtienen los datos del formulario
+          data: $('#formcontacto').serialize(), 
             beforeSend: function(){
               $('.enviando').show();
-              $('.load').hide();
-              $('.load2').hide();
-              $('.load3').hide();
+              
             },
             success: function(datos)
             {
-              $('.enviando').hide();
-              $('.load').hide();
-              $('.load2').hide();
-              $('.load3').hide();
+           
              
-              //Donde se vana  mostrar los errores
-              $('#_nombre , #_correo , #_subject , #_msg').text('');
-                //Si la respuesta de ajax es false se hace esto
+              
+              $('#_name , #_correo , #_subject , #_msg').text('');
                 if(datos.success == false){
-                $.each(datos.errors, function(index, value)
-                {
-                  $('#_'+index).text(value);
-                  $('#mensaje').text(datos.message);
-                  $('.load3').show();
-                  setTimeout(function(){
-                  $('.load3').hide();
-                  },3000);
+                  $.each(datos.errors, function(index, value)
+                  {
+
+                    $('#_'+index).text(value);
+                    $('.enviando').hide();
+                    $('.ModalError').modal('show');
+                    
+                    
                   
-                  //window.location='dashboard'; Redirije a otro Lugar
-                });
-                }
-                //Si la respuesta del ajax es verdadero se hace esto
-                else
-                {
-                 
-                  $('.enviando').show();
-                  document.getElementById('formcontacto').reset();
-                  $('#mensaje').text(datos.message);
-                  $('.enviando').hide();
-                  $('.load2').show();
-                  setTimeout("window.location = 'contacto'",3000);
+                  });
+                }else{
+                    $('.enviando').show();
+                    document.getElementById('formcontacto').reset();
+                    $('.ModalEnviado').modal('show');
+                    setTimeout(function(){window.location.href="contacto"} , 2000);  
                   
                 }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+              if (XMLHttpRequest.status === 500) {
+                    $('load3').show();
+              }else{
+                  //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
+                  console.log(XMLHttpRequest.statusText);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+              }
             }
             
             
         });
-      }
-        //Se manda a llamar la funcion
-        $('#btncontact').on('click',function()
-        {
-            send_ajax_contacto();
-            
-        });
-  });
+
+    });
+
+});
+
 </script>
 
 @stop

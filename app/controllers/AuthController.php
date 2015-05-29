@@ -13,59 +13,71 @@ class AuthController extends BaseController{
         return View::make('users.login');
         
     }
+
+
     public function postLogin()
     {
-        
+
         $data=array(
-            'email'=>Input::get('email'),
-            'password'=>Input::get('password')            
+            'email'    =>Input::get('email'),
+            'password' =>Input::get('password')            
         );
+
         $remember = (Input::has('remember')) ? true : false;
 
         $rules=array(
-            'email'=> 'required|email',
-            'password'=> 'required'
+            'email'    => 'required|email',
+            'password' => 'required|min:6'
         );
 
-        $validator = Validator::make($data,$rules);
+        $messages=array(
+            'email.required'    => 'El correo electrónico es obligatorio.',
+            'email.email'       => 'Ingrese un correo electrónico válido.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min'      => 'La contraseña debe contener mínimo 6 caracteres.'
+        );
 
-         if(Request::ajax())
-        {
-            if ($validator->passes())
-            {
-                // Try to log the user in.
-               
-                if (Auth::attempt($data,$remember))
-                {
-                    return Response::json
-                                    ([
-                                        'success' => true,
-                                        'message' => 'Bienvenido al Sistema.'
-                                    ]);
-                    
-                }
-                else
-                {
-                    return Response::json
+        $validator = Validator::make($data,$rules,$messages);
 
-                                    ([
-                                        'success' => false,
-                                        'message' => 'Email/password are incorrect'
-                                    ]);          
+         
+            if ($validator->passes()){ 
+
+                if(Request::ajax())
+                {
+                        if (Auth::attempt($data,$remember))
+                        {
+                            return Response::json
+                                            ([
+                                                'success' => true,
+                                                'message' => 'Bienvenido al Sistema.'
+                                            ]);
+                            
+                        }else{
+                            return Response::json
+
+                                            ([
+                                                'success' => false,
+                                                'errors'  => $validator ->getMessageBag()->toArray(),
+                                                'message' => 'El correo eléctronico/contraseña son incorrectos.'
+                                            ]);          
+                        }
+
+                
                 }
-            }
-            else
-            {
+
+            }else{
+                if(Request::ajax())
+                {
                     return Response::json
                                     ([
                                         'success' => false,
                                         'errors'  => $validator ->getMessageBag()->toArray(),
-                                        'message' => 'Email/password are incorrect'
+                                        'message' => 'Revise los campos porfavor.'
 
                                     ]);
+                } 
             }
-        }
-           
+        
     }
 
     public function create() {

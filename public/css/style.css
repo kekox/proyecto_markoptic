@@ -50,6 +50,10 @@ html, body {
   
 }
 
+.schema-ultra-gray{
+  background-color: #f8f8f8;
+}
+
 .schema-navy-blue{
   background: #343D46;
 }
@@ -99,6 +103,16 @@ html, body {
   font-weight: 700;
 }
 
+.montserrat-btn{
+  font-family: 'Montserrat',Helvetica;
+  font-weight: 400;
+}
+
+.nunito{
+  font-family: 'Roboto slab';
+  font-weight: 400;
+}
+
 .roboto{
   font-family: 'Roboto';
   font-weight: 700;
@@ -107,6 +121,12 @@ html, body {
 .roboto-slab{
   font-family: 'Roboto slab';
   font-weight: 400;
+}
+
+.open-sans{
+  font-family: 'Open sans';
+  font-weight: 400;
+
 }
 
 /*highlights*/
@@ -159,7 +179,7 @@ html, body {
     border-color:#faebcc;
 }
 
-.display-info{
+.display-success{
   color:#31708f;
   border-color:#bce8f1;
 }

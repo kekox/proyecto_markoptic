@@ -14,7 +14,7 @@ class ContactoController extends Controller {
 		
 		
 		$data= array(
-			'nombre'    => Input::get('nombre'),
+			'name'    => Input::get('name'),
 			'correo'  => Input::get('correo'),
 			'subject' => Input::get('subject'),
 			'msg'     => Input::get('msg'),
@@ -23,13 +23,25 @@ class ContactoController extends Controller {
 		$rules=array(
 			'name'    => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:30',
 			'correo'  => 'required|email|between:3,50',
-			'subject' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:80',
+			'subject' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:255',
 			'msg'     => 'required|between:5,500',
 	        );
 
+		$messages=([
+			'name.required'    => 'El campo nombre es obligatorio.',
+			'name.regex'       => 'El formato del nombre es inválido',
+			'name.min'         => 'El nombre debe contener al menos 3 caracteres.',
+			'subject.required' => 'El campo asunto es obligatorio.',
+			'subject.regex'    => 'El formato del asunto es inválido',
+			'subject.min'      => 'El asunto debe contener al menos 3 caracteres.',
+			'msg.required'     => 'El campo mensaje es obligatorio.',
+			'msg.regex'        => 'El formato del mensaje es inválido',
+			'msg.min'          => 'El mensaje debe contener entre 5 hasta 500 caracteres.',
+			
+		]);
 
 
-        $validator = Validator::make($data, $rules);
+        $validator = Validator::make($data, $rules,$messages);
         if(Request::ajax())
 	    {
 	        if ($validator->passes()) 
@@ -37,7 +49,7 @@ class ContactoController extends Controller {
 				$toEmail   ='keko_daniel@hotmail.com';
 				$toName    ='Administrador';
 				$fromEmail =Input::get('correo');
-				$fromName  =Input::get('nombre');
+				$fromName  =Input::get('name');
 
 		            Mail::send('emails.contacto',$data,function($message) use($toEmail,$toName,$fromName,$fromEmail)
 		            {
