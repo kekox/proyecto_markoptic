@@ -20,7 +20,8 @@ class HomeController extends BaseController {
         if (Auth::check())
         {
             // Redirect to homepage
-            return Redirect::to('dashboard');
+            return Redirect::to('dashboard')
+           		 ->with('message_bienvenida', 'hola');
         }
         // Show the login page
         return View::make('users/login');

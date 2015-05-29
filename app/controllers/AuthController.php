@@ -7,10 +7,11 @@ class AuthController extends BaseController{
         if (Auth::check())
         {
             // Redirect to homepage
-            return Redirect::to('bienvenida');
+            return Redirect::to('dashboard')
+                ->with('message_bienvenida');
         }
         // Show the login page
-        return View::make('users.login');
+        return View::make('users/login');
         
     }
 
@@ -132,9 +133,9 @@ class AuthController extends BaseController{
     {
         // Log out
         Auth::logout();
-        // Redirect to homepage
-        return Redirect::to('login')
-                ->with('info', 'Haz cerrado sesion');
+
+        return Redirect::to('/')
+                ->with('message_exit','');
     }
 
     

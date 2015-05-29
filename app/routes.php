@@ -56,9 +56,6 @@ App::missing(function($excepcion)
 /*Filtro para no permirtir a estas paginas sin estar loggiado  */
 Route::group(array('before' => 'auth'), function()
 {
-
-	/*Pagina Bienvenida*/
-    Route::get('bienvenida', array('uses' => 'HomeController@showWelcome'));
 	
 	/*Pagina Home*/
     Route::get('dashboard', array('uses' => 'HomeController@showDashboard'));

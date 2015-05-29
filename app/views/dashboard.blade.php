@@ -8,16 +8,28 @@
             <div id="dashboard1">
 
                 <div class="col-lg-8 col-lg-offset-2">
-			          <div class="heading">
+			            <div class="heading">
 			                    <center><h3>Dashboard</h3></center>
-			                    
 
-			                  @if (Session::has('message'))
-			                      <center><div class="alert alert-danger"><span class="fa fa-smile-o"></span><a href="#" class="close" data-dismiss="alert">&times;</a>{{ Session::get('message') }}</div></center>
+			                  @if(Session::has('message'))
+		                  		{{ "<script>
+									  $(document).ready(function()
+									  {
+									    $('.ModalDenegado').modal('show');
+									  });
+								   </script>"}}
 			                  @endif
-			                
 
-			                    </div>
+			                  @if(Session::has('message_bienvenida'))
+		                  		{{ "<script>
+									  $(document).ready(function()
+									  {
+									    $('.ModalBienvenida').modal('show');
+									  });
+								   </script>"}}
+			                  @endif
+			                	
+			            </div>
 			    </div>
 
                 <section>
@@ -78,32 +90,32 @@
       
     			</section>
 
-				@if(isset($perfiles))
-					@foreach($perfiles as $perfil)
-						@if($perfil->id_perfil==3)
-                <section>
-				    <div class="col-sm-12 col-md-4 col-lg-10 col-lg-offset-2">
+    			@if(isset($perfiles))
+    			@foreach($perfiles as $perfil)
+    			@if($perfil->id_perfil==3)
+    			<section>
+    				<div class="col-sm-12 col-md-4 col-lg-10 col-lg-offset-2">
 
-				          <a href="cms" >
-				          <div class="col-sm-12 col-md-4 col-lg-3 box">
-				              <h3>Managent System</h3>
-				                <div class="content">
-				                  <center>
-				                  <span class="fa-stack fa-5x">
-				                  <i class="fa fa-circle  fa-stack-2x text-black"></i>
-				                  <i class="fa fa-cogs  fa-stack-1x fa-inverse"></i>
-				                  
-				                  </span></center>
-				                </div>
-				                <div class="ft">
-				                  <p><small><a href="cms">algun mensaje bonito aqui »</a></small></p>
-				                </div>
-				          </div>
-				          </a>
-				    </div>
-    			</section>
-    					@endif
-    				@endforeach
+    					<a href="cms" >
+    						<div class="col-sm-12 col-md-4 col-lg-3 box">
+    							<h3>Managent System</h3>
+    							<div class="content">
+    								<center>
+    									<span class="fa-stack fa-5x">
+    										<i class="fa fa-circle  fa-stack-2x text-black"></i>
+    										<i class="fa fa-cogs  fa-stack-1x fa-inverse"></i>
+
+    									</span></center>
+    							</div>
+    								<div class="ft">
+    									<p><small><a href="cms">algun mensaje bonito aqui »</a></small></p>
+    								</div>
+							</div>
+						</a>
+					</div>
+				</section>
+				@endif
+				@endforeach
 				@endif
                   	
                   	
@@ -113,5 +125,9 @@
 			    
   </section>
 
-</script>
+
+  <!--Mensajes-->
+    @include('includes.Messages.MessageDenegado')
+    @include('includes.Messages.MessageBienvenidaPersonal')
+   
 @stop

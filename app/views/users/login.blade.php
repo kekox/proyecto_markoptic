@@ -39,6 +39,16 @@
 
                       <div class="panel-body ">
 
+                        @if(Session::has('message_exit'))
+                        
+                          {{ "<script>
+                            $(document).ready(function()
+                            {
+                              $('.ModalExit').modal('show');
+                            });
+                           </script>"}}
+                        @endif
+
                           <center><span id="_mensajefail" class="display-errors" ></span></center>
                           <!-- <center><span id="_mensajesuccess" class="display-success" ></span></center> -->
 
@@ -96,6 +106,7 @@
     <!--Mensajes-->
     @include('includes.Messages.MessageError')
     @include('includes.Messages.MessageBienvenida')
+    @include('includes.Messages.MessageExit')
       
 
       
@@ -174,6 +185,8 @@
         });
   });
 </script>
+
+
 
 
   </body>
