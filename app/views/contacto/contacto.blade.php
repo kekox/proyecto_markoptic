@@ -11,11 +11,12 @@
 
                   	<div class="col-lg-8 col-lg-offset-2 ">
 
-                      <center><ol class="breadcrumb roboto-slab" style="background-color:#eee;">
+                      <!--<center><ol class="breadcrumb roboto-slab" style="background-color:#eee;">
                         <li><a href="dashboard">Dashboard</a></li>
                         <li class="active">contacto</li>
                       </ol>
                       </center>
+                      -->
                   		
                   		<h3><a href="dashboard" class="fa fa-arrow-left color-black pull-left" style="text-decoration:none;"></a>        Contacto</h3>
                      

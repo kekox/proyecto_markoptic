@@ -3,62 +3,68 @@
               <div class="modal-content">
 
                   <div class="modal-header schema-green">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close btncmsclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                    <center><h3 class="modal-title" id="myModalLabel"><span class="fa fa-pencil text-white"> Editar Usuario </span></h3></center>
                   </div>
 
                   <div class="modal-body">
-                    <center><span id="mensaje" class=" display-errors" ></span></center>
+                    <center><span id="mensajeupdate" class=" display-errors" ></span></center>
                       <!--Formulario-->
                 {{ Form::open(array(
                   'route' => 'user.update',
-                  'class' => 'form-horizontal', 
-                  'role' => 'form',
-                  'id'=>'formedit')) }}
+                  'class' => 'form-horizontal formedit', 
+                  'role'  => 'form',
+                  'id'    =>'formedit')) }}
 
                 <!-- nombre -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ Form::text('nombre_edit', Input::old('nombre'), array('class' => 'form-control', 'placeholder' => 'Nombre(s)')) }}
+                    <input class="form-control" placeholder="Nombre(s)" name="nombre_edit" type="text">
                 </div>
+                <span class="display-errors" id="nombre_edit">  {{ $errors->first('nombre_edit') }}</span>
                  
 
                 <!-- Apellido Paterno -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ Form::text('apellido_paterno_edit', Input::old('apellido_Paterno'), array('class' => 'form-control', 'placeholder' => 'Apellido Paterno')) }}
+                    <input class="form-control" placeholder="Apellido Paterno" name="apellido_paterno_edit" type="text">
                 </div>
-     
+                <span class="display-errors" id="apellido_paterno_edit">  {{ $errors->first('apellido_paterno_edit') }}</span>
                
 
                  <!-- Apellido Materno -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ Form::text('apellido_materno_edit', Input::old('apellido_Materno'), array('class' => 'form-control', 'placeholder' => 'Apellido Materno')) }}
+                    <input class="form-control" placeholder="Apellido Materno" name="apellido_materno_edit" type="text">
                 </div>
-
+                 <span class="display-errors" id="apellido_materno_edit">  {{ $errors->first('apellido_materno_edit') }}</span>
        
                 <!-- Email -->
                 <div class="input-group separetedinput" >
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                {{ Form::email('email_edit', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Correo Electronico')) }}
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                  <input class="form-control" placeholder="Correo Electronico" name="email_edit" type="email">
                 </div>
-                
+                 <span class="display-errors" id="email_edit">  {{ $errors->first('email_edit') }}</span>
 
                  
                 <!-- Perfil -->
                 <div class="input-group separetedinput col-lg-6" >
 
                 <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-              
-                {{ Form::select('perfil_edit',array(
-                  '1' => 'Investigador',
-                  '2' => 'Usuario',
-                  '3' => 'Administrador'
-                  ),'Usuario',array('class'=>'form-control')) }}
-              
+                   <select class="form-control" name="perfil_edit">
+                     <option value="1">Investigador</option>
+                     <option value="2">Usuario</option>
+                     <option value="3">Administrador</option>
+                   </select>
                 </div>
+                <span class="display-errors" id="perfil_edit">  {{ $errors->first('perfil_edit') }}</span>
 
+                <div class="input-group separetedinput" >
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input class="form-control" placeholder="Contraseña" name="password_edit" type="text" value="">
+                       
+                </div>
+                <span class="display-errors" id="password_edit">  {{ $errors->first('password_edit') }}</span>
 
                 <input type="hidden" name="user_id" >
 
@@ -66,8 +72,8 @@
 
                   <div class="modal-footer">
                     <div class="col-lg-10 col-lg-offset-1">
-                     {{ Form::button('Close',array('class'=>'btn btn-default btn-block','data-dismiss'=>'modal'))}}
-                     {{ Form::submit('Guardar', array('class' => 'btn btn-success btn-block ','id'=>'btncmseditguardar'))}}
+                      <button class="btn btn-default btn-block btncmsclose" data-dismiss="modal" type="button" >Close</button>
+                      <input class="btn btn-success btn-block " id="btncmsupdate" type="button" value="Guardar">
                      </div>
                   </div>
                    {{ Form::close() }}

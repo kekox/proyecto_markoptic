@@ -18,7 +18,7 @@
                       <div class="introduction" >
 
                           <div class="heading">
-                              <h3>Markoptic Chat Online</h3>
+                              <h3><a href="dashboard" class="fa fa-arrow-left text-white " style="text-decoration:none;"></a>&nbsp;&nbsp;&nbsp;&nbsp;Markoptic Chat Online</h3>
                           </div>
 
                           <div class="content">                    
@@ -39,7 +39,7 @@
                                   <span class="input-group-btn">
                                   @if (isset($status))
                                     @if($status==1){
-                                     <button type="submit" class="btn btn-primary">Start Chat</button>
+                                     <button type="submit" class="btn btn-primary montserrat-btn">Start Chat</button>
                                     }@else{
                                       <button type="submit" class="btn btn-primary disabled" data-toggle="modal" data-target="#myModal">Start Chat</button>
                                     }@endif

@@ -39,4 +39,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->password;
     }
 
+    /********************************************** Querys ***************************************************/
+	public function scopeObtenerUsuarios($query){
+		$myid  = Auth::user()->id;
+		return $query->where('id','<>',$myid);
+	}
+
 }
