@@ -2,7 +2,7 @@
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-body">
-              <center class="display-success montserrat" > Gracias por usar el sistema de integración de proyectos.<br>Vuelva pronto!</center>
+              <center class="display-success montserrat" > Gracias por usar el sistema de integración de proyectos.<br></center>
             </div>
           </div>
         </div>

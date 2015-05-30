@@ -27,10 +27,10 @@ class CmsController extends Controller
             'perfil'           => 'required',
             'password'         => 'required|min:6' 
         );
-
-
         
         $validator = Validator::make($data, $rules);
+
+
 
         if(Request::ajax())
         {
@@ -93,38 +93,107 @@ class CmsController extends Controller
             'apellido_materno' =>Input::get('apellido_materno_edit'),
             'email'            =>Input::get('email_edit'),
             'perfil'           =>Input::get('perfil_edit'),
-            'password'         =>Input::get('password_edit'),
-           
+            'password'         =>Input::get('password_edit'),      
         );
 
         $rules=array(
             'nombre'           => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3',
             'apellido_paterno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'apellido_materno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
-            'email'            => 'required|min:2|email',
+            'email'            => 'required|min:2|email|unique:users',
             'perfil'           => 'required',
             'password'         => 'required|min:6' 
-
         );
         
-        $validator = Validator::make($data, $rules);
+        $message=array(
+            'email.unique' => 'El correo electrónico que intenta actualizar ya existe.'
+            );
+     
+        $comparepass = Input::get('password_edit');
+
+        $validator = Validator::make($data, $rules,$message);
         if ($validator->passes()) {
             if(Request::ajax())
             {
-                $user->nombre           = Input::get('nombre_edit');
-                $user->apellido_Paterno = Input::get('apellido_paterno_edit');
-                $user->apellido_Materno = Input::get('apellido_materno_edit');
-                $user->email            = Input::get('email_edit');
-                $user->perfil_id        = Input::get('perfil_edit');
-                $user->password         = Input::get('password_edit');
-                $user->save();
+                if(Hash::check($comparepass,$user->password)){
+
+                    $user->nombre           = Input::get('nombre_edit');
+                    $user->apellido_Paterno = Input::get('apellido_paterno_edit');
+                    $user->apellido_Materno = Input::get('apellido_materno_edit');
+                    $user->email            = Input::get('email_edit');
+                    $user->perfil_id        = Input::get('perfil_edit');
+                    $user->save();
 
                     return Response::json
                                                 ([
                                                     'success' => true,
-                                                    'message' => 'El usuario se ha creado satisfactoriamente.'
-                                                ]);
+                                                    'message' => 'El usuario se ha editado correctamente.',
+                                                 ]);
+                }else{
+                   
+                        if($user->password == Input::get('password_edit') && $user->email == Input::get('email_edit')){
 
+
+                        $user->nombre           = Input::get('nombre_edit');
+                        $user->apellido_Paterno = Input::get('apellido_paterno_edit');
+                        $user->apellido_Materno = Input::get('apellido_materno_edit');
+                        $user->perfil_id        = Input::get('perfil_edit');
+                        $user->save();
+
+                                return Response::json
+                                        ([
+                                            'success' => true,
+                                            'message' => 'El password y el correo no se modificaron.',
+                                        ]);
+
+                        }else if($user->password != Input::get('password_edit') && $user->email == Input::get('email_edit')){
+
+                        /*$user->nombre           = Input::get('nombre_edit');
+                        $user->apellido_Paterno = Input::get('apellido_paterno_edit');
+                        $user->apellido_Materno = Input::get('apellido_materno_edit');
+                        $user->perfil_id        = Input::get('perfil_edit');
+                        $user->password         = Hash::make(Input::get('password_edit'));
+                        $user->save();*/
+
+                                return Response::json
+                                        ([
+                                            'success' => true,
+                                            'message' => 'El password si se modifico pero el correo no',
+                                        ]);
+                        }else if($user->password == Input::get('password_edit') && $user->email != Input::get('email_edit')){
+
+                        $user->nombre           = Input::get('nombre_edit');
+                        $user->apellido_Paterno = Input::get('apellido_paterno_edit');
+                        $user->apellido_Materno = Input::get('apellido_materno_edit');
+                        $user->perfil_id        = Input::get('perfil_edit');
+                        $user->email            = Input::get('email_edit');
+                        $user->save();
+
+                                return Response::json
+                                        ([
+                                            'success' => true,
+                                            'message' => 'El password no se modifico pero si el correo',
+                                            'bandera' => 'ya ha sido registrado' 
+                                        ]);
+                        }else{
+
+                        /*$user->nombre           = Input::get('nombre_edit');
+                        $user->apellido_Paterno = Input::get('apellido_paterno_edit');
+                        $user->apellido_Materno = Input::get('apellido_materno_edit');
+                        $user->email            = Input::get('email_edit');
+                        $user->perfil_id        = Input::get('perfil_edit');
+                        $user->password         = Hash::make(Input::get('password_edit'));
+                        $user->save();*/
+
+                                return Response::json
+                                        ([
+                                            'success' => true,
+                                            'message' => 'Los dos se modificaron',
+                                        ]);
+                        }                                
+                                                
+
+                }
             }else{
                 return Redirect::to('cms')
                    ->with('message_edit','Usuario Editado Correctamente');
@@ -145,9 +214,7 @@ class CmsController extends Controller
                     ->withErrors($validator)
                     ->with('message_fail','Error al modificar el usuario. Favor de revisar los siguientes errores:')
                     ->withInput();
-            }
-           
-           
+            }          
         }
     }
 
@@ -174,31 +241,30 @@ class CmsController extends Controller
         );
         $rules=array(
             'nombre'           => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3',
-            'apellido_paterno' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
-            'apellido_materno' =>'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
-            'email'            => 'required|min:2|email',
+            'apellido_paterno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
+            'apellido_materno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
+            'email'            => 'required|min:2|email|unique:users',
            
         );
         
         $validator = Validator::make($data, $rules);
         if ($validator->passes()) {
-        $user->nombre           = Input::get('nombre_edit');
-        $user->apellido_Paterno = Input::get('apellido_paterno_edit');
-        $user->apellido_Materno = Input::get('apellido_materno_edit');
-        $user->email            = Input::get('email_edit');
-        
-        $user->save();
+            $user->nombre           = Input::get('nombre_edit');
+            $user->apellido_Paterno = Input::get('apellido_paterno_edit');
+            $user->apellido_Materno = Input::get('apellido_materno_edit');
+            $user->email            = Input::get('email_edit');
+            
+            $user->save();
 
-            return Redirect::back()
-                ->with('message_edit','Usuario Editado Correctamente');
+                return Redirect::to('dashboard')
+                    ->with('message_perfil','El perfil se ha actualizado de manera Correcta.');
         }
         else
-        {
-            return Response::json
-                                    ([
-                                        'success' => false,
-                                        'errors' => $validator ->getMessageBag()->toArray()
-                                    ]);
+        {   
+                return Redirect::to('dashboard')
+                    ->with('message','Error al editar el perfil.           Favor de revisarlo')
+                    ->withErrors($validator);
+            
         }
     }
     

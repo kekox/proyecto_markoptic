@@ -61,7 +61,7 @@
 
                 <div class="input-group separetedinput" >
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input class="form-control" placeholder="Contraseña" name="password_edit" type="text" value="">
+                        <input class="form-control password_edit" placeholder="Contraseña" name="password_edit" type="text" value="">
                        
                 </div>
                 <span class="display-errors" id="password_edit">  {{ $errors->first('password_edit') }}</span>

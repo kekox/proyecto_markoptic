@@ -28,6 +28,15 @@
 									  });
 								   </script>"}}
 			                  @endif
+
+			                  @if(Session::has('message_perfil'))
+		                  		{{ "<script>
+									  $(document).ready(function()
+									  {
+									    $('.ModalPerfil').modal('show');
+									  });
+								   </script>"}}
+			                  @endif
 			                	
 			            </div>
 			    </div>
@@ -129,5 +138,6 @@
   <!--Mensajes-->
     @include('includes.Messages.MessageDenegado')
     @include('includes.Messages.MessageBienvenidaPersonal')
+    @include('includes.Messages.MessagePerfil')
    
 @stop

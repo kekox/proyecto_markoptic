@@ -22,7 +22,7 @@
                           @endforeach</span>
                           {{ HTML::link('#MyModalView', ' Ver información',array('class'=>'list-group-item edit glyphicon glyphicon-eye-open','data-toggle'=>'modal','id'=>Auth::user()->id));}}
                         {{--  {{ HTML::link('#MyModalEdit2', ' Editar Información',array('class'=>'list-group-item edit glyphicon glyphicon-pencil','data-toggle'=>'modal','id'=>Auth::user()->id)); }} --}} 
-                          {{ HTML::link('logout', ' Logout',array('class'=>'list-group-item glyphicon glyphicon-ban-circle')); }}
+                          {{ HTML::link('logout', ' Logout',array('class'=>'list-group-item glyphicon glyphicon-log-out')); }}
                         </div>
                     
                       
@@ -81,7 +81,7 @@
                         {{ Form::text('nombre_edit', Input::old('nombre'), array('class' => 'form-control ', 'placeholder' => 'Nombre(s)')) }}
                 </div>
                  <!--Errores-->
-                <span class="bg-danger" id="_nombre">  {{ $errors->first('nombre') }}</span>
+                <span class="display-errors" id="_nombre">  {{ $errors->first('nombre') }}</span>
 
                 <!-- Apellido Paterno -->
                 <div class="input-group separetedinput" >

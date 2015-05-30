@@ -128,11 +128,11 @@
   
 <script>
   $(function(){
-  
+     
     $('#btncsmadd').on('click',function()
         {
 
-
+       
         $.ajax({
           url: 'cms',
           dataType: 'json',
@@ -154,6 +154,7 @@
                 }
                 else
                 {
+                  
 
                    $('#myModal').modal('hide');
                    document.getElementById('formcmsadd').reset();
@@ -230,14 +231,13 @@
             error: function (XMLHttpRequest, textStatus, errorThrown) 
             {
               if (XMLHttpRequest.status === 500) {
-                alert('ERROR 5000');
-               
-                console.log(XMLHttpRequest);
+                /*alert('ERROR 5000');
+                console.log(XMLHttpRequest);*/
               }else{
-                  alert("Algo esta mal");
+                  /*alert("Algo esta mal");
                   console.log(XMLHttpRequest.statusText);
                   console.log(textStatus);
-                  console.log(errorThrown);
+                  console.log(errorThrown);*/
               }
             }
                  
@@ -250,6 +250,7 @@
 
 <script>
   $(document).ready(function(){
+  
         $('#btncmsupdate').on('click',function()
         {
 
@@ -262,7 +263,6 @@
             {
 
               $('#nombre_edit ,#apellido_paterno_edit, #apellido_materno_edit, #correo_electronico_edit, #perfil_edit, #password_edit ').text('');
-              console.log(datos.message)
                 if(datos.success == false){
                   $('#nombre_edit').text(datos.errors.nombre);
                   $('#apellido_paterno_edit').text(datos.errors.apellido_paterno);
@@ -282,7 +282,7 @@
                     setTimeout(function()
                     {
                     window.location.href="cms"
-                    } , 2000); 
+                    } , 100500); 
                     
                 }
             },

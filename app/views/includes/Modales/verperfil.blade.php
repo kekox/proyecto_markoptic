@@ -18,33 +18,33 @@
                 <!-- nombre -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ Form::text('nombre_edit', Input::old('nombre'), array('class' => 'form-control ', 'placeholder' => 'Nombre(s)','disabled')) }}
+                    <input class="form-control " placeholder="Nombre(s)" disabled="disabled" name="nombre_edit" type="text"/>
                 </div>
                  <!--Errores-->
-                <span class="bg-danger" id="_nombre">  {{ $errors->first('nombre') }}</span>
+                <span class="display-errors" id="_nombre">  {{ $errors->first('nombre') }}</span>
 
                 <!-- Apellido Paterno -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ Form::text('apellido_paterno_edit', Input::old('apellido_Paterno'), array('class' => 'form-control ', 'placeholder' => 'Apellido Paterno','disabled')) }}
+                    <input class="form-control " placeholder="Apellido Paterno" disabled="disabled" name="apellido_paterno_edit" type="text"/>
                 </div>
                  <!--Errores-->
-                <span class="bg-danger" id="_apellido_paterno">  {{ $errors->first('apellido_paterno') }}</span>
+                <span class="display-errors" id="_apellido_paterno">  {{ $errors->first('apellido_paterno') }}</span>
 
                  <!-- Apellido Materno -->
                 <div class="input-group separetedinput" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        {{ Form::text('apellido_materno_edit', Input::old('apellido_Materno'), array('class' => 'form-control ', 'placeholder' => 'Apellido Materno','disabled')) }}
+                    <input class="form-control " placeholder="Apellido Materno" disabled="disabled" name="apellido_materno_edit" type="text"/>
                 </div>
                  <!--Errores-->
-                <span class="bg-danger" id="_apellido_materno">  {{ $errors->first('apellido_Materno') }}</span>
+                <span class="display-errors" id="_apellido_materno">  {{ $errors->first('apellido_Materno') }}</span>
                 
                 <!-- Email -->
                 <div class="input-group separetedinput" >
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                {{ Form::email('email_edit', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Correo Electronico','disabled')) }}
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <input class="form-control" placeholder="Correo Electronico" disabled="disabled" name="email_edit" type="email"/>
                 </div>
-                <span class="bg-danger" id="_email">  {{ $errors->first('email') }}</span>
+                <span class="display-errors" id="_email">  {{ $errors->first('email') }}</span>
 
                 <input type="hidden" name="user_id" >
 
@@ -52,9 +52,9 @@
 
                   <div class="modal-footer">
                     <div class="col-lg-10 col-lg-offset-1">
+                     <a href="#MyModalEdit2" class="btn btn-primary edit" data-toggle="modal" data-dismiss="modal" id="{{Auth::user()->id}}">Editar</a>
                      
-                     {{ HTML::link('#MyModalEdit2', ' Editar',array('class'=>'btn btn-primary edit','data-toggle'=>'modal','data-dismiss'=>'modal','id'=>Auth::user()->id)); }}
-                     {{ Form::button('Close',array('class'=>'btn btn-default','data-dismiss'=>'modal'))}}
+                     <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
                    
                      </div>
                   </div>
