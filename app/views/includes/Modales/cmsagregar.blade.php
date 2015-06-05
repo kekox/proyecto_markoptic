@@ -1,9 +1,9 @@
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModalAgregar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
 
                   <div class="modal-header bg-primary">
-                      <button type="button" class="close btncmsclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <button type="button" class="close btncmsaddclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       <center><h3 class="modal-title" id="myModalLabel"><span class="fa fa-user-plus"> Agregar Usuario</span></h3></center>
                   </div>
 
@@ -76,7 +76,7 @@
 
                   <div class="modal-footer">
                     <div class="col-lg-10 col-lg-offset-1">
-                     <input class="btn btn-default btn-block btncmsclose" data-dismiss="modal" type="button" value="Close">
+                     <input class="btn btn-default btn-block btncmsaddclose" data-dismiss="modal" type="button" value="Close">
                      <input class="btn btn-primary btn-block " id="btncsmadd" type="button" value="Crear Usuario">
                      </div>
                   </div>
@@ -84,4 +84,4 @@
 
               </div><!--Termina modal content-->
             </div><!--Termina modal dialog-->
-          </div><!--Termina modal fade-->
+</div><!--Termina modal fade-->

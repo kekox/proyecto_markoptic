@@ -27,8 +27,13 @@ class CmsController extends Controller
             'perfil'           => 'required',
             'password'         => 'required|min:6' 
         );
+
+        $messages=array(
+            'email'     => 'Ingrese un correo electrónico válido.'
+
+        );
         
-        $validator = Validator::make($data, $rules);
+        $validator = Validator::make($data, $rules,$messages);
 
 
 
@@ -63,10 +68,10 @@ class CmsController extends Controller
          }     
     }
 
-    public function edit($user_id)
+    public function edit($usuario_id)
     {
         
-        $user = User::find($user_id);
+        $user = User::find($usuario_id);
 
         $data=array(
             'success'          =>true,
@@ -80,6 +85,7 @@ class CmsController extends Controller
         );
 
         return Response::json($data);
+
     }
     
     public function update()
@@ -100,18 +106,15 @@ class CmsController extends Controller
             'nombre'           => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3',
             'apellido_paterno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'apellido_materno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
-            'email'            => 'required|min:2|email|unique:users',
+            'email'            => 'required|min:2|email',
             'perfil'           => 'required',
             'password'         => 'required|min:6' 
         );
         
-        $message=array(
-            'email.unique' => 'El correo electrónico que intenta actualizar ya existe.'
-            );
      
         $comparepass = Input::get('password_edit');
 
-        $validator = Validator::make($data, $rules,$message);
+        $validator = Validator::make($data, $rules);
         if ($validator->passes()) {
             if(Request::ajax())
             {
@@ -143,22 +146,22 @@ class CmsController extends Controller
                                 return Response::json
                                         ([
                                             'success' => true,
-                                            'message' => 'El password y el correo no se modificaron.',
+                                            'message' => 'El usuario se ha editado correctamente.',
                                         ]);
 
                         }else if($user->password != Input::get('password_edit') && $user->email == Input::get('email_edit')){
 
-                        /*$user->nombre           = Input::get('nombre_edit');
+                        $user->nombre           = Input::get('nombre_edit');
                         $user->apellido_Paterno = Input::get('apellido_paterno_edit');
                         $user->apellido_Materno = Input::get('apellido_materno_edit');
                         $user->perfil_id        = Input::get('perfil_edit');
                         $user->password         = Hash::make(Input::get('password_edit'));
-                        $user->save();*/
+                        $user->save();
 
                                 return Response::json
                                         ([
                                             'success' => true,
-                                            'message' => 'El password si se modifico pero el correo no',
+                                            'message' => 'El usuario se ha editado correctamente.',
                                         ]);
                         }else if($user->password == Input::get('password_edit') && $user->email != Input::get('email_edit')){
 
@@ -172,23 +175,22 @@ class CmsController extends Controller
                                 return Response::json
                                         ([
                                             'success' => true,
-                                            'message' => 'El password no se modifico pero si el correo',
-                                            'bandera' => 'ya ha sido registrado' 
+                                            'message' => 'El usuario se ha editado correctamente.',
                                         ]);
                         }else{
 
-                        /*$user->nombre           = Input::get('nombre_edit');
+                        $user->nombre           = Input::get('nombre_edit');
                         $user->apellido_Paterno = Input::get('apellido_paterno_edit');
                         $user->apellido_Materno = Input::get('apellido_materno_edit');
                         $user->email            = Input::get('email_edit');
                         $user->perfil_id        = Input::get('perfil_edit');
                         $user->password         = Hash::make(Input::get('password_edit'));
-                        $user->save();*/
+                        $user->save();
 
                                 return Response::json
                                         ([
                                             'success' => true,
-                                            'message' => 'Los dos se modificaron',
+                                            'message' => 'El usuario se ha editado correctamente.',
                                         ]);
                         }                                
                                                 
@@ -237,22 +239,27 @@ class CmsController extends Controller
             'nombre'           =>Input::get('nombre_edit'),
             'apellido_paterno' =>Input::get('apellido_paterno_edit'),
             'apellido_materno' =>Input::get('apellido_materno_edit'),
-            'email'            =>Input::get('email_edit'),
         );
         $rules=array(
             'nombre'           => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3',
             'apellido_paterno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
             'apellido_materno' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:25',
-            'email'            => 'required|min:2|email|unique:users',
            
         );
-        
-        $validator = Validator::make($data, $rules);
+
+        $messages=array(
+            'unique'       => 'El campo es obligatorio',
+            'email.unique' => 'Este correo ya existe.',
+            'min'          => 'El campo debe contener al menos :min caracteres.',
+            'regex'        => 'El formato del campo que ingreso es inválido',
+        );
+
+
+        $validator = Validator::make($data, $rules,$messages);
         if ($validator->passes()) {
             $user->nombre           = Input::get('nombre_edit');
             $user->apellido_Paterno = Input::get('apellido_paterno_edit');
             $user->apellido_Materno = Input::get('apellido_materno_edit');
-            $user->email            = Input::get('email_edit');
             
             $user->save();
 
@@ -262,7 +269,7 @@ class CmsController extends Controller
         else
         {   
                 return Redirect::to('dashboard')
-                    ->with('message','Error al editar el perfil.           Favor de revisarlo')
+                    ->with('message','Error al editar el perfil. Favor de revisarlo')
                     ->withErrors($validator);
             
         }

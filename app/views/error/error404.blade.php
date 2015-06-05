@@ -49,11 +49,11 @@
 						
 						<div class="form-inline"><center>
 							<div class="form-group">
-								<button type="button" class="btn btn-primary control-form" onclick="newLocation()"><span class="glyphicon glyphicon-arrow-left "></span> Página anterior</button>
+								<button type="button" class="btn btn-primary control-form" onclick="window.history.back();"><span class="glyphicon glyphicon-arrow-left "></span> Página anterior</button>
 							</div>
 
 							<div class="form-group">
-								<button type="button" class="btn btn-default control-form" onclick="newHome()"><span class="glyphicon glyphicon-home"></span> Página de inicio</button>
+								<a href="dashboard"><button type="button" class="btn btn-default control-form"><span class="glyphicon glyphicon-home"></span> Página de inicio</button></a>
 							</div>
 						</center></div>
 						
@@ -68,19 +68,6 @@
 		<br>
 		<footer class="text-muted "><center>© 2015 Markoptic</center></footer>
 	</div>
-
-	<script>
-	function newLocation() 
-	{ 
-	window.location= history.go(-1);
-	} 
-
-	function newHome() 
-	{ 
-	window.location= 'http://www.webapp.com/bienvenida';
-	} 
-</script>
-
 	{{ HTML::script('js/bootstrap.js') }}
 	{{ HTML::script('js/jquery.js') }}
 </body>

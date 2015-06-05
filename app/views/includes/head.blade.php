@@ -4,7 +4,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Sistema Test</title>	
+	<title>Sistema Markoptic</title>	
     {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') }}
 	  {{ HTML::style('css/bootstrap.css') }}
     {{ HTML::style('css/main.css') }}

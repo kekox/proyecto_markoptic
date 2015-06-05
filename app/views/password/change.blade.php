@@ -26,6 +26,14 @@
                        ))}}
                     </div>
                     <br>
+                    @if(Session::has('message_fail'))            
+                      {{ "<script>
+                        $(document).ready(function()
+                        {
+                          $('.MessageError').modal('show');
+                        });
+                       </script>"}}
+                    @endif 
                     @if(Session::has('message_fail'))
                       <center><span class="display-errors">{{ Session::get('message_fail') }}</span></center> 
                     @endif
@@ -90,11 +98,12 @@
         <br>
          <p style="color:transparent;">a</p>
         <br>
-        <br>
        
         
         
-        
+      <!--Mensajes-->
+      @include('includes.Messages.MessageError')
+      
          
                  
         

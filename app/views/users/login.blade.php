@@ -33,24 +33,13 @@
                           
                           <div class="panel-heading">
                             <div class=" formheadingtitle" >Iniciar Sesión</div>
-                              <a href="http://www.webapp.com/create" class="formheading text-success" style="color:white;">Crear usuario</a>
                           </div>
 
 
                       <div class="panel-body ">
 
-                        @if(Session::has('message_exit'))
-                        
-                          {{ "<script>
-                            $(document).ready(function()
-                            {
-                              $('.ModalExit').modal('show');
-                            });
-                           </script>"}}
-                        @endif
-
-                          <center><span id="_mensajefail" class="display-errors" ></span></center>
-                          <!-- <center><span id="_mensajesuccess" class="display-success" ></span></center> -->
+                          <center><span id="mensajefail" class="display-errors" ></span></center>
+                          <center><span id="mensajesuccess" class="display-success" ></span></center>
 
                             
                             {{ Form::open(array(
@@ -103,6 +92,15 @@
     </div> <!--Termina el container-->
     </div>
 
+     @if(Session::has('message_exit'))            
+      {{ "<script>
+        $(document).ready(function()
+        {
+          $('.MessageExit').modal('show');
+        });
+       </script>"}}
+    @endif
+
     <!--Mensajes-->
     @include('includes.Messages.MessageError')
     @include('includes.Messages.MessageBienvenida')
@@ -118,74 +116,6 @@
       
     <!--Scripts-->
     @include('includes.script')
-
-  <script>
-
-  $(function()
-  {
-    
-      function send_ajax()
-      {
-        $.ajax({
-          url: 'login',
-          dataType: 'json',
-          type:'POST',
-          data: $('#formlogin').serialize(), //Se obtienen los datos del formulario
-
-
-            success: function(datos)
-            {
-              
-              //Donde se vana  mostrar los errores
-              $('#_email , #_password ').text('');
-
-                //Si la respuesta de ajax es false se hace esto
-                if(datos.success == false){
-
-                    $('#_mensajefail').text(datos.message);
-                    $('.ModalError').modal('show')
-
-                     $.each(datos.errors, function(index, value)
-                      {
-                        $('#_mensajefail').text('');
-                        $('#_'+index).text(value);
-                        $('.ModalError').modal('show');
-                      });
-                }
-                else
-                {      
-                      $('.ModalBienvenida').modal('show');
-                      $('#_mensajefail').text('');
-                      document.getElementById('formlogin').reset();
-                      $('#_mensajesuccess').text(datos.message);
-                      setTimeout(function(){window.location.href="dashboard"} , 1000);  
-                      
-                }
-            },
-
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-              if (XMLHttpRequest.status === 500) {
-      
-              }else{
-                    
-                //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
-                console.log(XMLHttpRequest.statusText);
-                console.log(textStatus);
-                console.log(errorThrown);;
-          }
-      }
-        });
-      }
-
-        //Se manda a llamar la funcion
-        $('#btnlogin').on('click',function()
-        {
-            send_ajax();
-            
-        });
-  });
-</script>
-
 
 
 

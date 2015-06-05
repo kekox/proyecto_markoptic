@@ -90,8 +90,7 @@ class PasswordController extends BaseController {
 
 	public function getChange()
 	{
-		$id       = Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		$perfiles = Perfil::ObtenerPerfil()->get();
 		return View::make('password/change',array('perfiles' => $perfiles));
 	}
 
@@ -110,11 +109,17 @@ class PasswordController extends BaseController {
 
 		$rules=array(
 			'password_anterior'     => 'required',
-			'password'              =>'required|min:6',
-			'password_confirmation' =>'same:password',
+			'password'              => 'required|min:6',
+			'password_confirmation' => 'required|same:password',
+			);
+
+		$messages=array(
+			'required'   => 'El campo es obligatorio.',
+			'min'        => 'El password debe contener al menos :min caracteres.',
+			'same'		 => 'El password debe ser el mismo que el password nuevo.'
 			);
 	
-		$validator = Validator::make($data,$rules);
+		$validator = Validator::make($data,$rules,$messages);
 
 		$comparepass = Input::get('password_anterior');
 
@@ -139,10 +144,7 @@ class PasswordController extends BaseController {
 			}
 			
 		}else{
-			/*$idp= Auth::user()->id_perfil;
-			$perfiles = Perfil::where('id_perfil','=',$idp)->get();
-			return View::make('bienvenida',array('perfiles' => $perfiles));*/
-
+			
 			return Redirect::to('password/change')
                 ->with('message_fail', 'Introducir contraseña correcta.')
                 ->withErrors($validator)

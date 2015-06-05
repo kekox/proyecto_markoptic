@@ -3,7 +3,7 @@
               <div class="modal-content">
 
                   <div class="modal-header schema-green">
-                    <button type="button" class="close btncmsclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close btncmseditclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                    <center><h3 class="modal-title" id="myModalLabel"><span class="fa fa-pencil text-white"> Editar Usuario </span></h3></center>
                   </div>
 
@@ -72,7 +72,7 @@
 
                   <div class="modal-footer">
                     <div class="col-lg-10 col-lg-offset-1">
-                      <button class="btn btn-default btn-block btncmsclose" data-dismiss="modal" type="button" >Close</button>
+                      <button class="btn btn-default btn-block btncmseditclose" data-dismiss="modal" type="button" >Close</button>
                       <input class="btn btn-success btn-block " id="btncmsupdate" type="button" value="Guardar">
                      </div>
                   </div>
