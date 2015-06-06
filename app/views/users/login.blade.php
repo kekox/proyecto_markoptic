@@ -29,7 +29,7 @@
                     <div class="col-sm-10 col-md-5  col-md-offset-1 col-lg-4 col-lg-offset-1">
                       <img src="img/logo-fundacion.png" alt="Logo" class="img-responsive pull-right">
                         <h4>Cuenta Markoptic </h4>
-                          <a href="" data-toggle="modal" data-target="#myModal">¿De que trata?</a>
+                          <a href="" data-toggle="modal" data-target="#myModalAbout">¿De que trata?</a>
                           
                           <div class="panel-heading">
                             <div class=" formheadingtitle" >Iniciar Sesión</div>
@@ -92,11 +92,25 @@
     </div> <!--Termina el container-->
     </div>
 
-     @if(Session::has('message_exit'))            
+    @if(Session::has('message_exit'))            
       {{ "<script>
         $(document).ready(function()
         {
           $('.MessageExit').modal('show');
+        });
+       </script>"}}
+    @elseif(Session::has('message_remind'))            
+      {{ "<script>
+        $(document).ready(function()
+        {
+          $('.MessageRemind').modal('show');
+        });
+       </script>"}}
+   @elseif(Session::has('message_exito'))            
+      {{ "<script>
+        $(document).ready(function()
+        {
+          $('.MessageContraSuccess').modal('show');
         });
        </script>"}}
     @endif
@@ -105,8 +119,11 @@
     @include('includes.Messages.MessageError')
     @include('includes.Messages.MessageBienvenida')
     @include('includes.Messages.MessageExit')
+    @include('includes.Messages.MessageRemind')
+    @include('includes.Messages.MessageContraSuccess')
       
-
+    <!--Modales -->
+    @include('includes.Modales.about')
       
     <!--Footer-->
     @include('includes.footerStatic')

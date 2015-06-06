@@ -115,7 +115,7 @@
 		   </script>"}}
       
 
-      @elseif(Session::has('message_bienvenida'))
+    @elseif(Session::has('message_bienvenida'))
   		{{ "<script>
 			  $(document).ready(function()
 			  {
@@ -124,11 +124,18 @@
 		   </script>"}}
       
 
-      @elseif(Session::has('message_perfil'))
+    @elseif(Session::has('message_perfil'))
   		{{ "<script>
 			  $(document).ready(function()
 			  {
 			    $('.MessagePerfil').modal('show');
+			  });
+		   </script>"}}
+	@elseif(Session::has('message_contrasena'))
+  		{{ "<script>
+			  $(document).ready(function()
+			  {
+			    $('.MessageContrasena').modal('show');
 			  });
 		   </script>"}}
 	@endif
@@ -137,5 +144,6 @@
     @include('includes.Messages.MessageDenegado')
     @include('includes.Messages.MessageBienvenidaPersonal')
     @include('includes.Messages.MessagePerfil')
+    @include('includes.Messages.MessageContrasena')
    
 @stop

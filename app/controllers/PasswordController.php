@@ -19,7 +19,11 @@ class PasswordController extends BaseController {
             'email'=> 'required|email',
         );
 
-        $validator = Validator::make($data,$rules);
+		$messages=array(
+			'required' => 'El correo electrónico es obligatorio.',
+			'email'    => 'No es un correo válido'
+		);
+        $validator = Validator::make($data,$rules,$messages);
 
         if($validator->passes())
         {
@@ -29,7 +33,7 @@ class PasswordController extends BaseController {
 
         		switch($response){
         			case Password::INVALID_USER:			
-						return Redirect::back()->with('message','Ingrese un email válido');
+						return Redirect::back()->with('message_invalid','Ingrese un email válido');
 
 					case Password::REMINDER_SENT:			 
 						return Redirect::to('login')->with('message_remind', 'El correo ha sido enviado con éxito!');
@@ -38,7 +42,8 @@ class PasswordController extends BaseController {
         }else{
         		return Redirect::to('password/reset')
         			->withErrors($validator)
-                	->withInput();
+                	->withInput()
+                	->with('message_fail','Revise los campos porfavor.');
         }
 	}
 
@@ -46,7 +51,8 @@ class PasswordController extends BaseController {
 	{
 
 		if (is_null($token)) App::abort(404);
-  		return View::make('password/reset')->with('token', $token);
+  		return View::make('password/reset')
+  				->with('token', $token);
 	}
 
 	public function postReset($token)
@@ -55,19 +61,26 @@ class PasswordController extends BaseController {
 	  $credentials = Input::only(
       'email', 'password', 'password_confirmation', 'token'
     	);
+
 	  $rules=array(
 			'email'                 => 'required|email',
 			'password'              => 'required|min:6',
-			'password_confirmation' => 'same:password',
+			'password_confirmation' => 'required|same:password',
         );
 
-	  	$validator = Validator::make($credentials,$rules);
+
+	  $messages=array(
+			'required'   => 'El campo es obligatorio.',
+			'min'        => 'El password debe contener al menos :min caracteres.',
+			'same'		 => 'Las contraseñas deben coincidir.'
+			);
+
+	  $validator = Validator::make($credentials,$rules,$messages);
 
 	  	if($validator->passes()){
 			$response = Password::reset($credentials, function($user, $password)
 		    	{
 			      $user->password = Hash::make($password);
-
 			      $user->save();
 		    	});
 
@@ -76,13 +89,18 @@ class PasswordController extends BaseController {
 				case Password::INVALID_PASSWORD:
 				case Password::INVALID_TOKEN:
 				case Password::INVALID_USER:
-			        return Redirect::back()->with('error', Lang::get($response));
+			        return Redirect::back()
+			        		->with('message_error', 'Ingrese el correo electrónico con el cual inicio el proceso.');
+			        		//->with('error', Lang::get($response));
 
 			    case Password::PASSWORD_RESET:
-			        return Redirect::to('login');
+			        return Redirect::to('login')
+			        		->with('message_exito','contraseña cambiada satisfactorimente');
 		    	}
 	  	}else{
-	  		return View::make('password/reset')->with('token', $token)->withErrors($validator);
+	  		return View::make('password/reset')
+	  				->with('token', $token)
+	  				->withErrors($validator);
         			
                 	
 	  	}
@@ -116,7 +134,7 @@ class PasswordController extends BaseController {
 		$messages=array(
 			'required'   => 'El campo es obligatorio.',
 			'min'        => 'El password debe contener al menos :min caracteres.',
-			'same'		 => 'El password debe ser el mismo que el password nuevo.'
+			'same'		 => 'Las contraseñas no coinciden.'
 			);
 	
 		$validator = Validator::make($data,$rules,$messages);
@@ -131,14 +149,13 @@ class PasswordController extends BaseController {
 				$user->save();
 
 				return Redirect::to('dashboard')
-         			->with('message_exito', 'Contraseña Cambiada satisfactoriamente.');
+         			->with('message_contrasena', 'Contraseña Cambiada satisfactoriamente.');
 
 			}else{
-				$idp= Auth::user()->id_perfil;
-				$perfiles = Perfil::where('id_perfil','=',$idp)->get();
+				$perfiles = Perfil::ObtenerPerfil()->get();
 
 				return Redirect::to('password/change')
-					->with('message_fail2', 'Favor de repetir la contraseña.')
+					->with('message_fail', 'Las contraseñas deben coincidir.')
 					->withErrors($validator)
 					->withInput();
 			}
@@ -146,7 +163,7 @@ class PasswordController extends BaseController {
 		}else{
 			
 			return Redirect::to('password/change')
-                ->with('message_fail', 'Introducir contraseña correcta.')
+                ->with('message_fail', 'Ingrese su actual contraseña.')
                 ->withErrors($validator)
                 ->withInput();
 		}	

@@ -304,6 +304,58 @@ $(document).ready(function(){/*Empieza Document ready*/
         *************************************************************************************************************
         **  */
 
+        /* Empieza el ajax de contacto */
+        $('#btncontact').on('click',function()
+        {
+          
+          $.ajax({
+              url: 'contacto',
+              dataType: 'json',
+              type:'POST',
+              data: $('#formcontacto').serialize(), 
+                beforeSend: function(){
+                  $('.enviando').show();
+                  
+                },
+                success: function(datos)
+                {
+               
+                  $('#_name , #_correo , #_subject , #_msg').text('');
+                    if(datos.success == false){
+                      $.each(datos.errors, function(index, value)
+                      {
+
+                        $('#_'+index).text(value);
+                        $('.enviando').hide();
+                        $('.MessageError').modal('show');
+                        
+                        
+                      
+                      });
+                    }else{
+                        $('.enviando').show();
+                        document.getElementById('formcontacto').reset();
+                        $('.MessageEnviado').modal('show');
+                        setTimeout(function(){window.location.href="contacto"} , 1500);  
+                      
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                  if (XMLHttpRequest.status === 500) {
+                        $('load3').show();
+                  }else{
+                      //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
+                      /*console.log(XMLHttpRequest.statusText);
+                      console.log(textStatus);
+                      console.log(errorThrown);*/
+                  }
+                }
+                
+                
+            });
+
+         });
+        /* Termina el ajax de contacto */
 
 
 }); /*Termina Document ready*/

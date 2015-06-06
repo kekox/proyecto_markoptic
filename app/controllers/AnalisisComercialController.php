@@ -78,7 +78,7 @@ class AnalisisComercialController extends Controller {
                                     ([
 										'success'    => false,
 										'errors'     => $validator ->getMessageBag()->toArray(),
-										'message'    => 'Revise los campos porfavor.',
+										'message'    => 'Revise los campos .',
 										'validation' => 'El campo debe ser numérico.'
                                     ]);
 			}else{

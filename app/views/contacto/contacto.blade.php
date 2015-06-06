@@ -10,17 +10,8 @@
               <div class="row">
 
                   	<div class="col-lg-8 col-lg-offset-2 ">
-
-                      <!--<center><ol class="breadcrumb roboto-slab" style="background-color:#eee;">
-                        <li><a href="dashboard">Dashboard</a></li>
-                        <li class="active">contacto</li>
-                      </ol>
-                      </center>
-                      -->
                   		
-                  		<h3><a href="dashboard" class="fa fa-arrow-left color-black pull-left" style="text-decoration:none;"></a>        Contacto</h3>
-                     
-                      {{-- Se despliegan los errores de acuerdo a su situacion--}}
+                  		<h3><a href="dashboard" class="fa fa-arrow-left text-black pull-left" style="text-decoration:none;"></a>        Contacto</h3>
 
                       <center><span id="mensaje_exito" class="display-success"></span></center>
                       <br>
@@ -33,14 +24,14 @@
                         ))}}
 
                       <div class="form-group">
-                          <label for="name" >Nombre:</label>
+                          <label for="name" class="robot" >Nombre:</label>
                           <input type="text" name="name" class="form-control" placeholder="Nombre">
                           <span class="display-errors" id="_name"> {{ $errors->first('name') }} </span>
                       </div>
                      
 
                       <div class="form-group">
-                           <label for="email:" >Email:</label>
+                           <label for="email:" >Correo electrónico:</label>
                            <input type="email" name="correo" class="form-control" placeholder="Correo Electronico">
                            <span class="display-errors" id="_correo">{{ $errors->first('correo') }}</span>
 
@@ -70,7 +61,6 @@
 						
                       
                       <div id="progressTimer" class="enviando" style="display:none">Enviando...</div>
-                      <div class="load2" align="center" style="display:none"><img src="img/gif/ok.png" alt=""><p class="alert alert-success">Mensaje enviado con Éxito! Gracias.</p></div>
                       <div class="load3" align="center" style="display:none"><img src="img/gif/error.png" alt=""><p class="alert alert-danger">Error al Intentar enviar el mensaje</p></div>	
 
               		</div>
@@ -101,71 +91,11 @@
     warningStyle: 'progress-bar-success',
     completeStyle: 'progress-bar-success',
     onFinish: function() {
-        console.log("Terminado.");
+        //console.log("Terminado.");
     }
 
 });
 </script>
-<script>
 
-$(document).ready(function(){
-
-  
-    $('#btncontact').on('click',function()
-    {
-      
-      $.ajax({
-          url: 'contacto',
-          dataType: 'json',
-          type:'POST',
-          data: $('#formcontacto').serialize(), 
-            beforeSend: function(){
-              $('.enviando').show();
-              
-            },
-            success: function(datos)
-            {
-           
-             
-              
-              $('#_name , #_correo , #_subject , #_msg').text('');
-                if(datos.success == false){
-                  $.each(datos.errors, function(index, value)
-                  {
-
-                    $('#_'+index).text(value);
-                    $('.enviando').hide();
-                    $('.ModalError').modal('show');
-                    
-                    
-                  
-                  });
-                }else{
-                    $('.enviando').show();
-                    document.getElementById('formcontacto').reset();
-                    $('.ModalEnviado').modal('show');
-                    setTimeout(function(){window.location.href="contacto"} , 2000);  
-                  
-                }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-              if (XMLHttpRequest.status === 500) {
-                    $('load3').show();
-              }else{
-                  //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
-                  console.log(XMLHttpRequest.statusText);
-                  console.log(textStatus);
-                  console.log(errorThrown);
-              }
-            }
-            
-            
-        });
-
-    });
-
-});
-
-</script>
 
 @stop

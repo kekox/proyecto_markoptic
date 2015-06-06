@@ -106,7 +106,7 @@ class UserController extends BaseController{
              });
 
          return Redirect::to('login')
-         ->with('message_exito', 'Thank you for creating a new account. Please sign in.');
+                ->with('message_exito', 'Thank you for creating a new account. Please sign in.');
          }
         return Redirect::to('create')
                 ->with('message_fail', ' Verifique sus datos.')

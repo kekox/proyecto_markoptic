@@ -309,10 +309,11 @@ footer a:hover{
     text-align: center;
     color: black;
     background-attachment: scroll;
-    min-height: 88%;
+    min-height: 86%;
     background-image: url('../img/backgrounds/bg1.jpg') ; 
     background-position: center center;
     background-repeat: none;
+    margin-top:-20px;
 
 }
 
@@ -339,6 +340,42 @@ footer a:hover{
     font-family: 'Roboto Slab','Nunito',Helvetica;
 }
 /*Termina Pagina de resetar Contraseña**/
+
+/*Pagina donde el usuario ya cambia la contraseña */
+#resetpasslast{
+    text-align: center;
+    color: black;
+    background-attachment: scroll;
+    min-height: 86%;
+    background-image: url('../img/backgrounds/bgcontacto.jpg') ; 
+    background-position: center center;
+    background-repeat: none;
+    margin-top:-20px;
+
+}
+
+#resetpasslast .content{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-radius: 1px solid black;
+}
+
+#resetpasslast h3.panel-title{
+    font-family: 'Montserrat','Roboto',Helvetica;
+    font-size: 32px;
+    font-weight: 700px;
+}
+
+#resetpasslast h3.panel-content{
+    font-family: 'Montserrat','Roboto',Helvetica;
+    font-size:16px;
+    font-weight: 600px;
+    color: #f8f8f8;
+}
+
+#resetpasslast div.panel-body{
+    font-family: 'Roboto Slab','Nunito',Helvetica;
+}
 
 /*Contacto page*/
 #contacto{

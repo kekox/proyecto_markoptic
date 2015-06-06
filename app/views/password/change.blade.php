@@ -26,19 +26,9 @@
                        ))}}
                     </div>
                     <br>
-                    @if(Session::has('message_fail'))            
-                      {{ "<script>
-                        $(document).ready(function()
-                        {
-                          $('.MessageError').modal('show');
-                        });
-                       </script>"}}
-                    @endif 
+                    
                     @if(Session::has('message_fail'))
                       <center><span class="display-errors">{{ Session::get('message_fail') }}</span></center> 
-                    @endif
-                    @if(Session::has('message_fail2'))
-                      <center><span class="display-errors">{{ Session::get('message_fail2') }}</span></center> 
                     @endif
 
                     <div class="panel-body">
@@ -65,9 +55,9 @@
                             <div class="auxfot">
                               <div class="form-inline">
                                 <div class="form-group">
-                              {{ Form::submit('Cambiar contraseña', array('class' => 'btn btn-primary btn-sm  '))}}
+                              <input class="btn btn-primary btn-sm " type="submit" value="Cambiar contraseña"/>
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              {{ HTML::link('dashboard','Ir al dashboard',array('class'=>'btn btn-success btn-sm','style'=>'margin-left:25px;'))}}
+                              <a href="../dashboard" class="btn btn-success btn-sm" style="margin-left: 25px;">Ir al dashboard</a>
                         
                                 </div>
                               </div>
@@ -100,7 +90,15 @@
         <br>
        
         
-        
+       @if(Session::has('message_fail'))            
+        {{ "<script>
+          $(document).ready(function()
+          {
+            $('.MessageError').modal('show');
+          });
+         </script>"}}
+      @endif  
+
       <!--Mensajes-->
       @include('includes.Messages.MessageError')
       
