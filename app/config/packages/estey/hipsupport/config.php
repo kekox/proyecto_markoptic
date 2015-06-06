@@ -55,7 +55,7 @@ return array(
     |
     */
 
-    'welcome_msg' => 'En que lo podemos ayudar?',
+    'welcome_msg' => 'Bienvenido al chat del Sistema gestor de integración de proyectos. En que lo podemos ayudar?',
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +69,7 @@ return array(
     |
     */
 
-    'timezone' => 'utc',
+    'timezone' => 'America/Mazatlan',
 
     /*
     |--------------------------------------------------------------------------

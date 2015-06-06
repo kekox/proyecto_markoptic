@@ -22,7 +22,7 @@
                           </div>
 
                           <div class="content">                    
-                            <p>Sistema de chat en vivo que se ejecuta en HipChat en pocos minutos </p>
+                            <p>Plática con nuestros asesores en vivo y resuelve tus dudas! </p>
                           </div>
 
                           
@@ -39,9 +39,9 @@
                                   <span class="input-group-btn">
                                   @if (isset($status))
                                     @if($status==1){
-                                     <button type="submit" class="btn btn-primary montserrat-btn">Start Chat</button>
+                                     <button type="submit" class="btn btn-primary montserrat-btn">Empezar Chat</button>
                                     }@else{
-                                      <button type="submit" class="btn btn-primary disabled" data-toggle="modal" data-target="#myModal">Start Chat</button>
+                                      <button type="submit" class="btn btn-primary montserrat-btn disabled">Empezar Chat</button>
                                     }@endif
                                   @endif
                                  
@@ -49,7 +49,7 @@
                                   <br>
                                    
                                 </div>
-                                <span class=" display-errors"  >  {{ $errors->first('name') }}</span>                                
+                                <span class="display-errors" style="color:#ffffff" >  {{ $errors->first('name') }}</span>                                
                                 </div>
 
                             {{ Form::close() }}
@@ -61,15 +61,41 @@
                           <div class="status">
                               <span>El chat se encuentra</span> 
                               @if (isset($status))
-                                @if($status==1){
+                                @if($status==1)
                                   <span class="online">Online</span>
-                                }@else{
+                                @else
                                   <span class="offline">Offline</span>
-                                }@endif
+                                @endif
                               @endif
                           </div>
                           
                       </div>
+
+                      <div class="media">
+                        <div class="media-left ">
+                          <a href="#">
+                            <span class="fa-stack fa-4x">
+                            <i class="fa fa-circle  fa-stack-2x text-red" ></i>
+                            <i class="fa fa fa-times  fa-stack-1x fa-inverse"></i>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="media-body" >
+                          <h4 class="media-heading"><strong>Reglas generales del chat:</strong></h4>
+                         <p class="text-center">
+                           <ol>
+                             <li>Ingresar tu nombre real , no pseudónimos ni nicknames.</li>
+                             <li>No insultar, agraviar, discriminar ni maltratar.</li>
+                             <li>No realizar SPAM (Promoción de páginas webs, Publicación de correo, etc).</li>
+                             <li>Cuidar el Lenguaje utilizado, este o no dentro del contexto de un insulto.</li>
+                             <li>Evitar escribir todo en mayúsculas. Las oraciones escritas en mayúsculas son consideradas a nivel de reglas de chat como GRITAR.</li>
+                             <li>Se breve, describe en un lenguaje claro y sencillo el mensaje que deseas enviar.</li>
+                             <li>Señalar cuando el chat haya terminado.</li>
+                           </ol>
+                         </p>
+                        </div>
+                      </div>
+                      <hr>
 
                       <div class="media">
                         <div class="media-left">
@@ -81,33 +107,24 @@
                           </a>
                         </div>
                         <div class="media-body" >
-                          <h4 class="media-heading" >Media heading</h4>
-                          <p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore provident reprehenderit ab numquam facilis dolores recusandae molestiae, harum iure hic nulla iste laborum dolorem itaque nam veritatis voluptates dicta quisquam, sint a fugiat culpa ipsa enim? Totam, fugiat, architecto. Quas blanditiis delectus, repudiandae saepe id nobis. Enim consequatur sunt, possimus.</p>
+                          <h4 class="media-heading" ><strong>Horario de atención.</strong></h4>
+                          <p>
+                                  <center>
+                                  Lunes a Viernes:<br>
+                                  De 8:00 A.M A 6:00 P.M. <br><br>
+                                  Sábados <br>
+                                  De 9:00 A.M A 1:00 P.M. <br>
+                                  </center>
+                          </p>
                           
                         </div>
                       </div>
-                      <hr>
-
-                      <div class="media">
-                        <div class="media-left">
-                          <a href="#">
-                            <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle  fa-stack-2x text-blue-fb" ></i>
-                            <i class="fa fa-facebook  fa-stack-1x fa-inverse"></i>
-                            </span>
-                          </a>
-                        </div>
-                        <div class="media-body" >
-                          <h4 class="media-heading">Media heading</h4>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore provident reprehenderit ab numquam facilis dolores recusandae molestiae, harum iure hic nulla iste laborum dolorem itaque nam veritatis voluptates dicta quisquam, sint a fugiat culpa ipsa enim? Totam, fugiat, architecto. Quas blanditiis delectus, repudiandae saepe id nobis. Enim consequatur sunt, possimus.</p>
-                        </div>
-                      </div>
-                      <hr>
+                     <br>
+                      
 
                    
 
-                    <br>
-                   <br>
+                  
                     
 
 

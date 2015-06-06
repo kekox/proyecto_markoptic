@@ -11,11 +11,11 @@
 
                   	<div class="col-lg-8 col-lg-offset-2 ">
                   		
-                  		<h3><a href="dashboard" class="fa fa-arrow-left text-black pull-left" style="text-decoration:none;"></a>        Contacto</h3>
+                  		<h3><a href="dashboard" class="fa fa-arrow-left text-black " style="text-decoration:none;"></a>&nbsp;&nbsp;&nbsp;        Contacto</h3>
 
                       <center><span id="mensaje_exito" class="display-success"></span></center>
                       <br>
-                    
+                      <div id="formulariocontacto">
                          {{ Form::open(array(
                         'route' => 'contacto.sent',
                         'class' => 'form-horizontal', 
@@ -62,7 +62,7 @@
                       
                       <div id="progressTimer" class="enviando" style="display:none">Enviando...</div>
                       <div class="load3" align="center" style="display:none"><img src="img/gif/error.png" alt=""><p class="alert alert-danger">Error al Intentar enviar el mensaje</p></div>	
-
+                    </div>
               		</div>
             	
               </div>

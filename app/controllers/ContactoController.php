@@ -3,8 +3,7 @@
 class ContactoController extends Controller {
 
 	protected function showContacto(){
-		$id       = Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		$perfiles = Perfil::ObtenerPerfil()->get();
 		return View::make('contacto/contacto',array('perfiles' => $perfiles));
 	}
 
@@ -21,10 +20,10 @@ class ContactoController extends Controller {
 			);
 
 		$rules=array(
-			'name'    => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:30',
-			'correo'  => 'required|email|between:3,50',
+			'name'    => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:50',
+			'correo'  => 'required|email',
 			'subject' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:255',
-			'msg'     => 'required|between:5,500',
+			'msg'     => 'required|min:5|max:255',
 	        );
 
 		$messages=([

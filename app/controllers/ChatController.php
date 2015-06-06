@@ -5,24 +5,35 @@ class ChatController extends Controller {
 	
 	public function showChat()
 	{
-		$id= Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
+		$perfiles = Perfil::ObtenerPerfil()->get();
 		$status = HipSupport::isOnline();
-		//$status = HipSupport::isOnline();
-		//return View::make('chat/chat',array('perfiles' => $perfiles,'status'=>$status));
 		return View::make('chat/chat',array('perfiles' => $perfiles,'status'=>$status));
 	}
 
 	public function postChat(){
 		$nombre= input::get('name');
-		$validator = Validator::make(Input::all(), ['name' => 'required|min:3']);
+
+		$data=([
+			'name' => input::get('name'),
+			]);
+
+		$rules=([
+			'name' => 'required|min:3',
+			]);
+
+		$messages=([
+			'required' => 'El nombre es obligatorio',
+			'min'        => 'El nomber debe contener al menos :min caracteres.',
+			]);
+
+		$validator = Validator::make($data,$rules,$messages);
 
 	    if ($validator->passes()) {
 
 	       		 $room = HipSupport::init([
-						'room_name' => 'Live Chat With' . Input::get('name'),
+						'room_name' => Input::get('name').' Chat'." ". '['.date('d-m-Y').']',
 						'notification' => [
-						'message' => Input::get('name') . ' would like to chat.'
+						'message' => Input::get('name') . ' Te esta enviando mensaje'
 			        ]
 			    ]);
 

@@ -1496,6 +1496,78 @@ $(document).ready(function() {/*Terminan el document ready */
     });
     /*Terminan las validaciones para el formulario de asesoria*/
     
+    /*Incian las validaciones para el formulario de contacto */
+    $('#formulariocontacto').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'fa fa-check fa-2x',
+            invalid: 'fa fa-times fa-2x',
+            validating: 'fa fa-refresh fa-2x'
+        },
+        fields: {
+             name: {
+                err:'tooltip',
+                // The messages for this field are shown as usual
+                validators: {
+                    notEmpty: {
+                        message: 'El campo es obligatorio'
+                    },
+                    regexp: {
+                        regexp:   /^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/i,
+                        message: 'El formato del campo es inválido.No se permiten números'
+                    },
+                    stringLength: {
+                        min: 3,
+                        message: 'El campo debe contener al menos 3 caracteres.'
+                    },
+                }
+            },
+            correo: {
+                err:'tooltip',
+                // The messages for this field are shown as usual
+                validators: {
+                    notEmpty:{
+                        message: 'El campo es obligatorio'
+                    },
+                    emailAddress:{
+                        message: 'Ingrese un correo electrónico válido. ej: example@hotmail.com'
+                    },
+                    
+                }
+            },
+             subject: {
+                err:'tooltip',
+                // The messages for this field are shown as usual
+                validators: {
+                    notEmpty: {
+                        message: 'El campo es obligatorio'
+                    },
+                    regexp: {
+                        regexp:   /^[\sa-zA-Z0-9ñÑáéíóúÁÉÍÓÚ-]+$/i,
+                        message: 'El formato del campo es inválido. Solo números,letras y guión medio.'
+                    },
+                }
+            },
+             msg: {
+                err:'tooltip',
+                // The messages for this field are shown as usual
+                validators: {
+                    notEmpty: {
+                        message: 'El campo es obligatorio'
+                    },
+                    stringLength: {
+                        min: 10,
+                        message: 'El campo debe contener al menos 2 caracteres.'
+                    },
+                }
+            },
+            
+                          
+            
+           
+        }
+    });
+    /*Terminan las validaciones para el formulario de contacto*/
 
 
 });/*Termina el document ready*/
