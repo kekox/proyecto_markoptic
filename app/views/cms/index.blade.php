@@ -32,39 +32,56 @@
                               </tr>
                           </thead>
  
- 
-                          <tbody>
-                              @if($users)
+                          @if($users)
                                 @foreach($users as $user)
+                          <tbody>
                               <tr class="opensans">
                                   <td><center>{{$user->id}}</center></td>
                                   <td><center>{{$user->nombre." ".$user->apellido_Paterno." ".$user->apellido_Materno}}</center></td>
                                   <td><center>{{$user->email}}</center></td>
+                                        
+                                        
                                         @if($user->perfil_id == 1)
                                         <td><center>Investigador</center></td> 
                                         @elseif($user->perfil_id == 2)
                                         <td><center>Usuario</center></td> 
-                                        @else
+                                        @elseif($user->perfil_id == 3)
                                         <td><center>Administrador</center></td> 
+                                        @else
+                                        <td><center>{{$user->perfil_id}}</center></td> 
                                         @endif
+
                                   <td><center>{{date("d/m/Y",strtotime($user->updated_at))}}</center></td> 
                                   <td><center>
-                                  <a href="#MyModalEdit" class="btn btn-success btn-sm fa fa-pencil edit" data-toggle="modal" value="{{$user->id}}">Editar</a>
+                                  <a href="#MyModalEdit" class="btn btn-success btn-sm fa fa-pencil edit hidden-xs" data-toggle="modal" value="{{$user->id}}">Editar</a>
                                   &nbsp;
-                                  <a href="#MyModalDelete" class="btn btn-danger btn-sm fa fa-trash-o " data-toggle="modal">Eliminar</a>
-                                 
+                                  <a href="cms/delete/{{$user->id}}" class="btn btn-danger btn-sm fa fa-trash-o hidden-xs delete" data-toggle="modal" >Eliminar</a>
+                                   
                                              
                               </tr>
-                              @endforeach 
+                             
                           </tbody>
+                               @endforeach 
                             @endif
+
+                             @foreach($nombreperfil as $perfil)
+                              {{$perfil->nombre_perfil}}
+                            @endforeach
                       </table>
-                          
+                         
+                           
+
+                           
+                         
 
                 </div>
               </div>
             </div>
-        </div>    
+        </div>   
+
+         
+
+
 </section>        
 
 
@@ -82,7 +99,7 @@
   <!-- Modales-->
   @include('includes.Modales.cmsAgregar')
   @include('includes.Modales.cmsEditar')
-  @include('includes.Modales.cmsEliminar')
+ 
 
   <!--Mensajes-->
   @include('includes.Messages.MessageDelete')

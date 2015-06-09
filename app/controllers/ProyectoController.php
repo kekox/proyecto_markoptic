@@ -137,10 +137,10 @@ class ProyectoController extends Controller {
 
 	}
 
-	public function destroy($proyecto_id){
-		$proyecto = Proyecto::find($proyecto_id);
-        $proyecto->delete();
-        return Redirect::to('cms')
+	public function destroy($proyecto_folio){
+
+		DB::table('proyectos')->where('folio', '=', $proyecto_folio)->delete();
+        return Redirect::to('proyectos')
             ->with('message_delete','Proyecto Eliminado Correctamente');
 	}
 }

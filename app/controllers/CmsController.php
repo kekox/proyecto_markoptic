@@ -5,7 +5,18 @@ class CmsController extends Controller
     {
         $perfiles = Perfil::ObtenerPerfil()->get();
         $users = User::ObtenerUsuarios()->get();
-        return View::make('cms/index',array('perfiles' => $perfiles,'users'=>$users));
+        $Perfil = Perfil::all();
+
+        $nombreperfil = DB::table('users')
+                            ->join('perfiles',function($join)
+                            {
+                                $join->on('users.perfil_id','=','perfiles.id_perfil');
+                            })
+                            ->select('perfiles.nombre_perfil')
+                            ->get();
+;
+        
+        return View::make('cms/index',array('perfiles' => $perfiles,'users'=>$users ,'nombreperfil'=>$nombreperfil,'Perfil'=>$Perfil));
     }
 
     public function store()
@@ -223,8 +234,7 @@ class CmsController extends Controller
     
     public function destroy($user_id)
     {
-        $user = User::find($user_id);
-        $user->delete();
+        DB::table('users')->where('id', '=', $user_id)->delete();
         return Redirect::to('cms')
             ->with('message_delete','Usuario Eliminado Correctamente');
     }

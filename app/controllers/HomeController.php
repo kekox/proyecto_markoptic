@@ -38,12 +38,13 @@ class HomeController extends BaseController {
 	{
 		$perfiles = Perfil::ObtenerPerfil()->get();
 
+	
 		if(isset($_GET['buscar'])){
 			$buscar = Input::get("buscar");
 			$proyectos = Proyecto::where('folio','LIKE','%'.$buscar.'%')
 				->orwhere('nombre_proyecto','LIKE','%'.$buscar.'%')
-				->Paginate(6);
-
+				->get();
+				
 		}else{
 			$proyectos = Proyecto::orderBy('created_at')
 				->simplePaginate(15);

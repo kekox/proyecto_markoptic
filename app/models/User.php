@@ -18,8 +18,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'password'
 		);
 
-	public function perfiles(){
-		return $this->BelongsTo('Perfil','id_perfil');
+	public function perfil(){
+		return $this->hasOne('Perfil','id_perfil');
 	}
 
 	public function proyectos(){

@@ -106,7 +106,7 @@ Route::group(array('before' => 'auth'), function()
 
 		});
 	
-
+	Route::get('proyectos/delete/{id}',array('uses' => 'ProyectoController@destroy','as'=>'proyecto.delete'));
 
 	/*Seccion CMS*/
 	Route::get('cms',array('before'=>'admin','uses'             => 'CmsController@index'));

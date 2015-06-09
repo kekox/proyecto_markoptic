@@ -55,8 +55,8 @@
                 <section>
         			<div class="col-sm-12 col-md-12 col-md-offset-2 col-lg-10 col-lg-offset-2">
           			<br>
-				        @if(isset($proyectos))
-				           @foreach($proyectos as $proyecto)
+				    @if(isset($proyectos))
+				        @foreach($proyectos as $proyecto)
 				          <div class="col-sm-12 col-md-4 col-lg-3 box">   
 				              <div class="panel panel-success">
 
@@ -65,64 +65,74 @@
 								  </div>
 
 								  <div class="panel-body" style="margin-top:-20px;">
-									    <center>
-					                  <span class="fa-stack fa-5x">
-					                  <i class="fa fa-circle  fa-stack-2x fa-inverse"></i>
-					                  <i class="fa fa-file-pdf-o  fa-stack-1x text-red"></i>
-					                  
-					                  </span></center>
-									
-									<center>Nombre del proyecto:<br>{{{$proyecto->nombre_proyecto}}}</center>
-									<br>
-									<center>Folio del proyecto:<br>{{{$proyecto->folio}}}</center>
-									<center>usuario:<br>{{{$proyecto->id_user}}}</center>
-	
-									<center>usuario:<br>{{{$proyecto->nombre}}}</center>
+										<center>
+										<span class="fa-stack fa-5x">
+										<i class="fa fa-circle  fa-stack-2x fa-inverse"></i>
+										<i class="fa fa-file-pdf-o  fa-stack-1x text-red"></i>
+										
+										</span></center>
+										
+										<center>Nombre del proyecto:<br>{{{$proyecto->nombre_proyecto}}}</center>
+										<br>
+										<center>Folio del proyecto:<br>{{{$proyecto->folio}}}</center>
+										<center>usuario:<br>{{{$proyecto->id_user}}}</center>
+										
+										<center>usuario:<br>{{{$proyecto->nombre}}}</center>
 									
 
 								  </div>
-									
-									@if(isset($perfiles))
-										@foreach($perfiles as $perfil)
-											@if($perfil->id_perfil!=1)
+											
+											@if(isset($perfiles))
+												@foreach($perfiles as $perfil)
+													@if($perfil->id_perfil!=1)
 								   <center>
 								   <div class="panel-footer">
 								   	 
-								  {{HTML::link('','Editar',array('class'=>'btn btn-success btn-sm fa fa-pencil color-white','style'=>'color:white;'))}}
-                                  &nbsp;
-                                  				@if($perfil->id_perfil==3)
-                                  {{HTML::link('','Eliminar',array('class'=>'btn btn-danger btn-sm fa fa-trash-o text-white','style'=>'color:white;'))}}</td> 
-                                  				@endif
+								 {{-- {{HTML::link('','Editar',array('class'=>'btn btn-success btn-sm fa fa-pencil color-white','style'=>'color:white;'))}}--}}
+											&nbsp;
+											@if($perfil->id_perfil==3)
+											<a href="proyectos/delete/{{$proyecto->folio}}" class="btn btn-danger btn-sm fa fa-trash-o hidden-xs text-white" data-toggle="modal" style="color:white;" onclick="myFunction()">Eliminar</a>
+											@endif
+                          				
                                   		
 								   </div>
 								   </center>
-								   @endif
-						    				@endforeach
-										@endif
-
+								  					 @endif
+						    					@endforeach
+											@endif
+									
 							  </div>     
 				          </div>
-				           @endforeach
-				      	@endif
-
+							 
+				        @endforeach
+				    @endif
+						
 				          
-      				</div>
+      				</div><!-- Termina el box -->
 
 
     			</section>
 
-				
-              
-                  	
-                  	
-            	
 			</div>
 
-            <div class="container">
-				<center>{{$proyectos->appends(array("buscar"=> Input::get("buscar")))->links()}}</center>
-			</div>
+  @if(Session::has('message_delete'))
+      {{ "<script>
+          $(document).ready(function()
+          {
+            $('.MessageDelete2').modal('show');
+          });
+         </script>"
+      }}        
+  @endif         
     	
+    <!--Mensajes-->
+  @include('includes.Messages.MessageDelete2')
+  
   </section>
+
+
+ 
+
 
 <script>
 	

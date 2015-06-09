@@ -9,8 +9,8 @@ class Perfil extends Eloquent  {
     	'desc_perfil'
     	);
     /********************************************** Relaciones ***************************************************/
-	public function usuarios(){
-		return $this->hasMany('User','perfil_id');
+	public function user(){
+		return $this->belongsTo('User','perfil_id');
 	}
 
 	/********************************************** Querys ***************************************************/
