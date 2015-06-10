@@ -5,6 +5,18 @@
 
 @section('contenido')
 
+<script>
+	function confirm_proyecto(){
+		result=confirm("Desea cancelar este proceso?");
+          	if(result == true){ 
+				window.history.back();
+			} 
+			else{ 
+				return false; 
+			}
+	}
+</script>
+
   <section >
             <div class="container-fluid ">
               <div class="row">
@@ -44,7 +56,7 @@
 				               			<div class="col-lg-7">
 				               			@if(isset($proyectos))
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}" disabled>{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}" readonly>{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif  
 				               			</div>
@@ -198,10 +210,23 @@
               		</div>
 
             	</div>
+				
+				@if(isset($proyectos))
+					@foreach($proyectos as $proyecto)
+            	<a value="{{$proyecto->folio}}" class="ProcessCancel">
+					<span class="fa-stack fa-2x pull-right" style="margin-top:10px; margin-right:15px;" title="Cancelar Proceso">
+					<i class="fa fa-square  fa-stack-2x fa-inverse"></i>
+					<i class="fa fa-sign-out fa-stack-1x text-black"></i>
+					</span>
+					</a>
+					@endforeach
+				@endif
 						
             </div>
         </div>
             
+    <!-- Modales-->
+ 	 @include('includes.Modales.CancelarProceso')
     
   </section>
 
@@ -214,6 +239,8 @@ $(document).ready(function(){
      $('#formulariodescripciones').on('keyup',function()
      {
         if(
+        	$('#campo0').val() !=''
+          	&&
             $('#campo1').val() !=''
           	&&
           	$('#campo2').val() !=''
@@ -310,5 +337,19 @@ $(document).ready(function(){
 });
 
 
+</script>
+
+<script>
+  $(document).ready(function(){
+    $('.ProcessCancel').on('click',function(){
+       	var id=(this).attr('value');
+          $('#ProcessCancel').modal('show').on('click','#ProcesoCancel',function(){
+          		window.location.href = '../../proyectos/delete/'+id; 
+          });
+
+
+    });
+
+  });
 </script>
 @stop

@@ -42,7 +42,7 @@
 				               			<div class="col-lg-7">
 				               			@if($proyectos)
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}"disabled>{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Informacion acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}" readonly>{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif 
 				               			</div>
@@ -192,6 +192,8 @@ $(document).ready(function(){
      $('#formularioasesoria').on('keyup',function()
      {
         if(
+        	$('#campo0').val() !=''
+        	&&
           	$('#campo5').val() !=''
         ){
             $('input[type="button"]').removeAttr('disabled');

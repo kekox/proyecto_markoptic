@@ -22,7 +22,7 @@ class ContactoController extends Controller {
 		$rules=array(
 			'name'    => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:50',
 			'correo'  => 'required|email',
-			'subject' => 'required|regex:/^[\sa-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:255',
+			'subject' => 'required|regex:/^[\s0-9a-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/|min:3|max:255',
 			'msg'     => 'required|min:5|max:255',
 	        );
 

@@ -42,7 +42,7 @@
 				               			<div class="col-lg-7">
 				               			@if($proyectos)
 											@foreach($proyectos as $proyecto)
-				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Información acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}">{{$proyecto->folio}}</textarea>
+				               				<textarea type="text" class="form-control"  id="campo0" placeholder="Información acerca del campo..."name="campo0" row="2" value="{{$proyecto->folio}}" readonly>{{$proyecto->folio}}</textarea>
 				               				@endforeach
 										@endif 
 				               			</div>

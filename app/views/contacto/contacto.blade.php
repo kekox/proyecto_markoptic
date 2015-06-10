@@ -32,7 +32,7 @@
 
                       <div class="form-group">
                            <label for="email:" >Correo electrónico:</label>
-                           <input type="email" name="correo" class="form-control" placeholder="Correo Electronico">
+                           <input type="email" name="correo" class="form-control" placeholder="Correo Electronico" value="{{Auth::user()->email}}" readonly>
                            <span class="display-errors" id="_correo">{{ $errors->first('correo') }}</span>
 
                       </div>

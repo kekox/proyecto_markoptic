@@ -151,11 +151,12 @@ $(document).ready(function(){/*Empieza Document ready*/
                     $('#email').text(datos.errors.email);
                     $('#perfil').text(datos.errors.perfil);
                     $('#password').text(datos.errors.password);
+                    $('#mensaje').text(datos.message);
                   }
                   else
                   {
                     
-
+                       $('#mensaje').text('');
                      $('#myModalAgregar').modal('hide');
                      document.getElementById('formcmsadd').reset();
                      $('.MessageAgregado').modal('show');

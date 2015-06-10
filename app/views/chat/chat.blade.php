@@ -34,7 +34,7 @@
                               <div class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
                                 <div class="input-group">
                                   
-                                  <input class="form-control" maxlength="30" placeholder="Nombre" name="name" type="text">
+                                  <input class="form-control" maxlength="30" placeholder="Nombre" name="name" type="text" value="{{Auth::user()->nombre." ".Auth::user()->apellido_Paterno}}" readonly>
 
                                   <span class="input-group-btn">
                                   @if (isset($status))
@@ -82,16 +82,16 @@
                         </div>
                         <div class="media-body" >
                           <h4 class="media-heading"><strong>Reglas generales del chat:</strong></h4>
-                         <p class="text-center">
-                           <ol>
-                             <li>Ingresar tu nombre real , no pseudónimos ni nicknames.</li>
-                             <li>No insultar, agraviar, discriminar ni maltratar.</li>
-                             <li>No realizar SPAM (Promoción de páginas webs, Publicación de correo, etc).</li>
-                             <li>Cuidar el Lenguaje utilizado, este o no dentro del contexto de un insulto.</li>
-                             <li>Evitar escribir todo en mayúsculas. Las oraciones escritas en mayúsculas son consideradas a nivel de reglas de chat como GRITAR.</li>
-                             <li>Se breve, describe en un lenguaje claro y sencillo el mensaje que deseas enviar.</li>
-                             <li>Señalar cuando el chat haya terminado.</li>
-                           </ol>
+                         <p>
+                             <center>
+                             1- Ingresar tu nombre real , no pseudónimos ni nicknames. <br><br>
+                             2- No insultar, agraviar, discriminar ni maltratar. <br><br>
+                             3- No realizar SPAM (Promoción de páginas webs, Publicación de correo, etc). <br><br>
+                             4- Cuidar el Lenguaje utilizado, este o no dentro del contexto de un insulto. <br><br>
+                             5- Evitar escribir todo en mayúsculas. Las oraciones escritas en mayúsculas son consideradas a nivel de reglas de chat como GRITAR. <br><br>
+                             6- Se breve, describe en un lenguaje claro y sencillo el mensaje que deseas enviar. <br><br>
+                             7- Señalar cuando el chat haya terminado. <br><br>
+                             </center>
                          </p>
                         </div>
                       </div>

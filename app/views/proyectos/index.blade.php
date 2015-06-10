@@ -12,7 +12,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
 			          <div class="heading">
 
-			                    <center><h3>Proyectos</h3><small><a href="proyectos/seccion/1">(Agregar Proyecto)</a></small></center>
+			                    <center><h3>Proyectos<small><h5><a href="proyectos/seccion/1">(Agregar Proyecto)</h5></a></small></h3></center>
 
 								<br>
 			                    <div class="col-lg-8 col-lg-offset-2" >
@@ -84,7 +84,7 @@
 								 {{-- {{HTML::link('','Editar',array('class'=>'btn btn-success btn-sm fa fa-pencil color-white','style'=>'color:white;'))}}--}}
 											&nbsp;
 											@if($perfil->id_perfil==3)
-											<a href="proyectos/delete/{{$proyecto->folio}}" class="btn btn-danger btn-sm fa fa-trash-o hidden-xs text-white" data-toggle="modal" style="color:white;" onclick="myFunction()">Eliminar</a>
+											<a href="" class="btn btn-danger btn-sm fa fa-trash-o hidden-xs text-white deleteproyecto" data-toggle="modal" style="color:white;" value="{{$proyecto->folio}}">Eliminar</a>
 											@endif
                           				
                                   		
@@ -118,7 +118,10 @@
           });
          </script>"
       }}        
-  @endif         
+  @endif 
+
+  <!-- Modales-->
+  @include('includes.Modales.ProyectoEliminar')        
     	
     <!--Mensajes-->
   @include('includes.Messages.MessageDelete2')
@@ -152,5 +155,19 @@ $(document).ready(function(){
 });
 
 
-</script>				  
+</script>	
+
+<script>
+  $(document).ready(function(){
+    $('.deleteproyecto').on('click',function(){
+        var id=(this).attr('value');
+
+        $('#ProyectoDelete').modal('show').on('click','#DeleteProyecto',function(){
+               window.location.href = 'proyectos/delete/'+id; 
+          });
+
+    });
+
+  });
+</script>			  
 @stop

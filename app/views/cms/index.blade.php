@@ -13,7 +13,7 @@
 
                       <h3 class="heading"><a href="dashboard" class="fa fa-arrow-left color-black " style="text-decoration:none;">&nbsp;&nbsp;&nbsp;</a>Content Managent System</h3>
 
-                      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8 col-xs-push-2">
+                      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-7 col-xs-push-2">
                       <button id="add" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalAgregar"><span class="fa fa-user-plus"> Agregar Usuario</span></button>
                       </div>
 
@@ -23,7 +23,7 @@
                           
                           <thead class="schema-dark text-white">
                               <tr>
-                                  <th><center>ID</center></th>
+                                  
                                   <th><center>Nombre Completo</center></th>
                                   <th><center>Correo</center></th>
                                   <th><center>Perfil</center></th>
@@ -39,7 +39,7 @@
                                 @foreach($users as $user)
                               <tr class="opensans">
 
-                                  <td><center>{{$user->id}}</center></td>
+                                 
                                   <td><center>{{$user->nombre." ".$user->apellido_Paterno." ".$user->apellido_Materno}}</center></td>
                                   <td><center>{{$user->email}}</center></td>
                                   <td><center>{{$user->nombre_perfil}}</center></td>      
@@ -48,9 +48,11 @@
 
                                   <td><center>{{date("d/m/Y",strtotime($user->updated_at))}}</center></td> 
                                   <td><center>
-                                  <a href="#MyModalEdit" class="btn btn-success btn-sm fa fa-pencil edit hidden-xs" data-toggle="modal" value="{{$user->id}}">Editar</a>
+                                  <a href="#MyModalEdit" class="btn btn-success btn-sm fa fa-pencil edit hidden-xs hidden-sm hidden-md" data-toggle="modal" value="{{$user->id}}">Editar</a>
                                   &nbsp;
-                                  <a href="cms/delete/{{$user->id}}" class="btn btn-danger btn-sm fa fa-trash-o hidden-xs delete" data-toggle="modal" >Eliminar</a>
+                                  <a href="#" class="btn btn-danger btn-sm fa fa-trash-o hidden-xs delete" data-toggle="modal" value="{{$user->id}}">Eliminar</a>
+                                  <!--  <a href="cms/delete/{{$user->id}}" class="btn btn-danger btn-sm fa fa-trash-o hidden-xs delete" data-toggle="modal" >Eliminar</a>-->
+                                   
                                    
                                              
                               </tr>
@@ -101,6 +103,7 @@
   <!-- Modales-->
   @include('includes.Modales.cmsAgregar')
   @include('includes.Modales.cmsEditar')
+  @include('includes.Modales.cmsEliminar')
  
 
   <!--Mensajes-->
@@ -113,15 +116,26 @@
  
  <input id="val" type="hidden" name="user" class="input-block-level" value="" >
   <script>
-    $(document).ready( function () {
+    $(document).ready( function (){
     $('#DatatableUsers').DataTable();
     responsive: true
     });
   </script>
 
 
+<script>
+  $(document).ready(function(){
+    $('.delete').on('click',function(){
+        var id=(this).attr('value');
+          $('#UserDelete').modal('show').on('click','#DeleteUser',function(){
+               window.location.href = 'cms/delete/'+id; 
+          });
 
 
+    });
+
+  });
+</script>
   </section>
 
 @stop

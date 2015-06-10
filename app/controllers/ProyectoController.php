@@ -30,7 +30,7 @@ class ProyectoController extends Controller {
 
 		$rules=array(
 			'campo0'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/|min:2',
-			'campo1'  => 'required|numeric|min:1|max:100000|unique:proyectos,folio',
+			'campo1'  => 'required|numeric|min:1|max:1000000|unique:proyectos,folio',
 			'campo2'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/',
 			'campo3'  => 'regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/',
 			'campo4'  => 'required|regex:/^[\sa-z0-9 A-Z ñ.-_,()*ÑáéíóúÁÉÍÓÚ-]+$/|min:2',

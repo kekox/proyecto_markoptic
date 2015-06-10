@@ -1,4 +1,4 @@
-<div class="modal fade" id="MyModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="UserDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
 
@@ -11,7 +11,7 @@
                     
                   <center><strong>¿Realmente desea eliminar este usuario?</strong></center>
 
-
+                  
                   </div> <!--Termina el modal body-->
 
                  
@@ -20,7 +20,7 @@
                   <div class="modal-footer">
                     <div class="col-lg-10 col-lg-offset-1">
                       <button class="btn btn-default btn-block" data-dismiss="modal" type="button">Cerrar</button>
-                      <a href="cms/delete/" class="btn btn-danger btn-block btn-sm" >Eliminar</a>
+                      <button id="DeleteUser" class="btn btn-danger btn-block btn-sm" >Eliminar</button>
                     </div>
                   </div>
                   

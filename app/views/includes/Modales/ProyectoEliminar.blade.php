@@ -20,8 +20,7 @@
                   <div class="modal-footer">
                     <div class="col-lg-10 col-lg-offset-1">
                       <button class="btn btn-default btn-block" data-dismiss="modal" type="button">Cerrar</button>
-                      {{$proyecto->folio}}
-                      <a href="proyectos/delete/{{$proyecto->folio}}" class="btn btn-danger btn-block btn-sm text-white"style="color:white">Eliminar</a>
+                      <button id="DeleteProyecto" class="btn btn-danger btn-block btn-sm" >Eliminar</button>
                     </div>
                   </div>
               
