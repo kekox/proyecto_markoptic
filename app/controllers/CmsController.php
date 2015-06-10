@@ -5,18 +5,7 @@ class CmsController extends Controller
     {
         $perfiles = Perfil::ObtenerPerfil()->get();
         $users = User::ObtenerUsuarios()->get();
-        $Perfil = Perfil::all();
-
-        $nombreperfil = DB::table('users')
-                            ->join('perfiles',function($join)
-                            {
-                                $join->on('users.perfil_id','=','perfiles.id_perfil');
-                            })
-                            ->select('perfiles.nombre_perfil')
-                            ->get();
-;
-        
-        return View::make('cms/index',array('perfiles' => $perfiles,'users'=>$users ,'nombreperfil'=>$nombreperfil,'Perfil'=>$Perfil));
+        return View::make('cms/index',array('perfiles' => $perfiles,'users'=>$users));
     }
 
     public function store()
@@ -234,9 +223,20 @@ class CmsController extends Controller
     
     public function destroy($user_id)
     {
-        DB::table('users')->where('id', '=', $user_id)->delete();
-        return Redirect::to('cms')
-            ->with('message_delete','Usuario Eliminado Correctamente');
+        try{
+            DB::table('users')->where('id', '=', $user_id)->delete();
+                 return Redirect::to('cms')
+                    ->with('message_delete','Usuario Eliminado Correctamente');
+
+        }catch(\Illuminate\Database\QueryException $e){
+
+            $perfiles = Perfil::ObtenerPerfil()->get();
+            $users = User::ObtenerUsuarios()->get();
+                return Redirect::to('cms')
+                    ->with('message_error_delete','Error al eliminar el usuario.');
+               
+        }
+        
     }
     
     

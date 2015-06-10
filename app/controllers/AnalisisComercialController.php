@@ -8,7 +8,6 @@ class AnalisisComercialController extends Controller {
 		
 		$perfiles = Perfil::ObtenerPerfil()->get();
 		$proyectos = Proyecto::ObtenerProyecto()->take(1)->get();
-
 		return View::make('analisiscomercial/create',array('perfiles' => $perfiles,'proyectos'=>$proyectos));
 	}
 

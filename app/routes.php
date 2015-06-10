@@ -128,8 +128,6 @@ Route::group(array('before' => 'auth'), function()
 	/*Seccion de dudas y sugerencias */
 	Route::get('contacto',array('uses' => 'ContactoController@showContacto'));
 	Route::post('contacto',array('uses' => 'ContactoController@postContacto', 'as' =>'contacto.sent'));
-
-	
 	
 
 });

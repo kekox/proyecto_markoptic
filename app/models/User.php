@@ -42,7 +42,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     /********************************************** Querys ***************************************************/
 	public function scopeObtenerUsuarios($query){
 		$myid  = Auth::user()->id;
-		return $query->where('id','<>',$myid);
+		$query = DB::table('users')
+                            ->join('perfiles',function($join)
+                            {
+                                $join->on('users.perfil_id','=','perfiles.id_perfil');
+                            })
+                            ->select('users.id','users.nombre','users.apellido_Paterno','users.apellido_Materno','users.email','users.updated_at','perfiles.nombre_perfil')
+                            ->where('users.id','<>',$myid);
+
+        return $query;
+		
 	}
 
 }

@@ -4,13 +4,17 @@
 @stop 
  
 @section('contenido')
+
   <section>
-            <div id="dashboard1">
-				
+            <div id="dashboard1">	
+							
+
                 <div class="col-lg-8 col-lg-offset-2">
 			          <div class="heading">
-			                    <center><h3>Proyectos</h3></center>
-								<a href="proyectos/seccion/1"><button class="btn btn-primary pull-right"><i class="fa fa-plus fa-inverse"> Agregar Proyecto</i></button></a>
+
+			                    <center><h3>Proyectos</h3><small><a href="proyectos/seccion/1">(Agregar Proyecto)</a></small></center>
+
+								<br>
 			                    <div class="col-lg-8 col-lg-offset-2" >
 	
 			                    <!--Formulario-->
@@ -39,18 +43,7 @@
 			          </div>
 			    </div>
 				
-				@if(isset($perfiles))
-					@foreach($perfiles as $perfil)
-						@if($perfil->id_perfil==3)
-					<a href="proyectos/list">
-					<span class="fa-stack fa-2x pull-right" style="margin-top:10px; margin-right:15px;">
-					<i class="fa fa-square  fa-stack-2x fa-inverse"></i>
-					<i class="fa fa-list fa-stack-1x text-black"></i>
-					</span>
-					</a>
-						@endif
-					@endforeach
-				@endif
+				
 
                 <section>
         			<div class="col-sm-12 col-md-12 col-md-offset-2 col-lg-10 col-lg-offset-2">
@@ -72,12 +65,12 @@
 										
 										</span></center>
 										
-										<center>Nombre del proyecto:<br>{{{$proyecto->nombre_proyecto}}}</center>
+										<center><strong>Nombre del proyecto:</strong><br>{{{$proyecto->nombre_proyecto}}}</center>
 										<br>
-										<center>Folio del proyecto:<br>{{{$proyecto->folio}}}</center>
-										<center>usuario:<br>{{{$proyecto->id_user}}}</center>
+										<center><strong>Agregado por:</strong><br>{{{$proyecto->nombre.' '.$proyecto->apellido_Paterno.' '.$proyecto->apellido_Materno}}} <br>{{date("d/m/Y",strtotime($proyecto->created_at))}}</center><br>
+
+										<center><strong>Modalidad:</strong><br>{{{$proyecto->modalidad}}}</center>
 										
-										<center>usuario:<br>{{{$proyecto->nombre}}}</center>
 									
 
 								  </div>
@@ -110,7 +103,9 @@
 				          
       				</div><!-- Termina el box -->
 
-
+			<div class="container">
+				<center>{{$proyectos->appends(array("buscar"=> Input::get('buscar')))->links()}}</center>
+			</div>
     			</section>
 
 			</div>
@@ -130,9 +125,19 @@
   
   </section>
 
-
- 
-
+ 								
+@if(isset($perfiles))
+									@foreach($perfiles as $perfil)
+										@if($perfil->id_perfil==3)
+									<a href="proyectos/list">
+									<span class="fa-stack fa-2x pull-right" style="margin-top:10px; margin-right:15px; ">
+									<i class="fa fa-square  fa-stack-2x fa-inverse"></i>
+									<i class="fa fa-list fa-stack-1x text-black"></i>
+									</span>
+									</a>
+										@endif
+									@endforeach
+								@endif	
 
 <script>
 	

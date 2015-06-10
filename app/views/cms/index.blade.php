@@ -13,8 +13,9 @@
 
                       <h3 class="heading"><a href="dashboard" class="fa fa-arrow-left color-black " style="text-decoration:none;">&nbsp;&nbsp;&nbsp;</a>Content Managent System</h3>
 
-                      
+                      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8 col-xs-push-2">
                       <button id="add" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalAgregar"><span class="fa fa-user-plus"> Agregar Usuario</span></button>
+                      </div>
 
                       
 
@@ -32,24 +33,18 @@
                               </tr>
                           </thead>
  
-                          @if($users)
-                                @foreach($users as $user)
+                         
                           <tbody>
+                           @if($users)
+                                @foreach($users as $user)
                               <tr class="opensans">
+
                                   <td><center>{{$user->id}}</center></td>
                                   <td><center>{{$user->nombre." ".$user->apellido_Paterno." ".$user->apellido_Materno}}</center></td>
                                   <td><center>{{$user->email}}</center></td>
+                                  <td><center>{{$user->nombre_perfil}}</center></td>      
                                         
-                                        
-                                        @if($user->perfil_id == 1)
-                                        <td><center>Investigador</center></td> 
-                                        @elseif($user->perfil_id == 2)
-                                        <td><center>Usuario</center></td> 
-                                        @elseif($user->perfil_id == 3)
-                                        <td><center>Administrador</center></td> 
-                                        @else
-                                        <td><center>{{$user->perfil_id}}</center></td> 
-                                        @endif
+                                      
 
                                   <td><center>{{date("d/m/Y",strtotime($user->updated_at))}}</center></td> 
                                   <td><center>
@@ -59,14 +54,13 @@
                                    
                                              
                               </tr>
-                             
-                          </tbody>
-                               @endforeach 
+                              @endforeach 
                             @endif
 
-                             @foreach($nombreperfil as $perfil)
-                              {{$perfil->nombre_perfil}}
-                            @endforeach
+                          </tbody>
+                              
+
+                             
                       </table>
                          
                            
@@ -93,6 +87,14 @@
           });
          </script>"
       }}        
+  @elseif(Session::has('message_error_delete'))
+      {{ "<script>
+          $(document).ready(function()
+          {
+            $('.MessageError2').modal('show');
+          });
+         </script>"
+      }}   
   @endif
 
 
@@ -105,6 +107,7 @@
   @include('includes.Messages.MessageDelete')
   @include('includes.Messages.MessageAgregado')
   @include('includes.Messages.MessageUpdate')
+  @include('includes.Messages.MessageError2')
                   
   
  
