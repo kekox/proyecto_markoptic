@@ -43,7 +43,7 @@ class HomeController extends BaseController {
 			$buscar = Input::get("buscar");
 			$proyectos = Proyecto::where('folio','LIKE','%'.$buscar.'%')
 				->orwhere('nombre_proyecto','LIKE','%'.$buscar.'%')
-				->simplePaginate(6);
+				->Paginate(6);
 
 				
 		}else{
@@ -58,15 +58,22 @@ class HomeController extends BaseController {
                             
 
 		}
+	
+		//return Response::json($proyectos);
 
 		return View::make('proyectos/index',array('perfiles' => $perfiles,'proyectos' => $proyectos));
 	}
 
 
 	public function showProyectoslist(){
-		$id       = Auth::user()->perfil_id;
-		$perfiles = Perfil::where('id_perfil','=',$id)->get();
-		$proyectos = Proyecto::all();
+		$perfiles = Perfil::ObtenerPerfil()->get();
+		$proyectos = DB::table('users')
+                            ->join('proyectos',function($join)
+
+                            {
+                                $join->on('users.id','=','proyectos.id_user');
+                            })
+                            ->get();
 
 		return View::make('proyectos/indexlist',array('perfiles' => $perfiles,'proyectos'=>$proyectos));
 	}

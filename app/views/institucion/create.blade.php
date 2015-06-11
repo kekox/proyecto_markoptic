@@ -414,8 +414,14 @@
         </div>
             
     <!-- Modales-->
- 	@include('includes.Modales.CancelarProceso')  
+ 	@include('includes.Modales.CancelarProceso') 
+ 	@include('includes.Modales.CambiarSeccion') 
   </section>
+
+    <!-- Messages-->
+ 	@include('includes.Messages.MessageSeccionSuccess')
+ 	@include('includes.Messages.MessageSeccionSuccess2')
+ 	@include('includes.Messages.MessageError')
 
 <script>
 	
@@ -477,6 +483,7 @@ $(document).ready(function(){
               $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4 ,#_campo5 ,#_campo6 ,#_campo7 ,#_campo8 ,#_campo9 ,#_campo10 ,#_campo11,#_campo12,#_campo13,#_campo14,#_campo15,#_campo16').text('');
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
+                $('.MessageError').modal('show');
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
@@ -487,18 +494,16 @@ $(document).ready(function(){
                 });
                 }else{
                 	if(idproyecto != idproyectoform){
+                	  $('.MessageError').modal('show');
 		              alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
 					    $('#_campo0').text('Seleccione el folio Correcto.');
 					    return;
-		             }
-                	result2=confirm("¿Desea agregar otra Institución?");
-				                  	if(result2 == true){ 
-										window.location = '8'; 
-									}else{
-										alert(datos.message);
-						                document.getElementById('forminstitucion').reset();
-						                window.location = '9';
-									}
+		             }else{
+						    $('#_mensaje').text('');
+			                document.getElementById('forminstitucion').reset();
+			                $('.MessageSeccionSuccess').modal('show');
+      						setTimeout(function(){window.location.href='9'} , 1500);
+					 }
                   
                 
                   
@@ -510,11 +515,11 @@ $(document).ready(function(){
             		alert('Favor de seleccionar el folio del proyecto que puso al principio.');
 			        $('#_campo0').text('Favor de cambiar el folio');
 			    }else{
-            	 	alert("Algo esta mal");
+            	 	//alert("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
-				    console.log(XMLHttpRequest.statusText);
-				    console.log(textStatus);
-				    console.log(errorThrown);;
+				    //console.log(XMLHttpRequest.statusText);
+				    //console.log(textStatus);
+				    //console.log(errorThrown);;
 		    	}
 			}
             
@@ -544,6 +549,7 @@ $(document).ready(function(){
               $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4 ,#_campo5 ,#_campo6 ,#_campo7 ,#_campo8 ,#_campo9 ,#_campo10 ,#_campo11,#_campo12,#_campo13,#_campo14,#_campo15,#_campo16').text('');
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
+                $('.MessageError').modal('show');
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
@@ -551,13 +557,19 @@ $(document).ready(function(){
                 });
                 }else{
                 	if(idproyecto != idproyectoform){
+                	 $('.MessageError').modal('show');
 		              alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
 					    $('#_campo0').text('Seleccione el folio Correcto.');
 					    return;
+		             }else{
+		             	$('#_mensaje').text('');
+		                document.getElementById('forminstitucion').reset();
+		                $('.MessageSeccionSuccess2').modal('show');
+  						setTimeout(function(){window.location.href='8'} , 1500);
 		             }
-                  document.getElementById('forminstitucion').reset();
-                  alert("Institución capturado de manera correcta, favor de llenar el formulario para la siguiente institución")
-                  window.location = '8';
+                  
+                  
+                 
                 
                   
                 }
@@ -567,11 +579,11 @@ $(document).ready(function(){
             		alert('El folio que ha decidido tomar , ya existe. Favor de seleccionar otro Folio.')
 			        $('#_campo0').text('Favor de cambiar el folio');
 			    }else{
-            	 	alert("Algo esta mal");
+            	 	//alert("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
-				    console.log(XMLHttpRequest.statusText);
-				    console.log(textStatus);
-				    console.log(errorThrown);;
+				    //console.log(XMLHttpRequest.statusText);
+				    //console.log(textStatus);
+				    //console.log(errorThrown);;
 		    	}
 			}
             

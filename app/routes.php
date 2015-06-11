@@ -14,20 +14,11 @@
 /* Pagina Bienvenida y Login*/
 Route::get('/',array('uses' => 'HomeController@showLogin'));
 
-Route::get('formtest',function(){
-	return View::make('formtest');
-});
-
-Route::get('test',function(){
-	Session::flash('message', 'hola');
-	return View::make('test')->with('mensaje','asdasdsadsa');
-});
 
 Route::get('test2',function(){
 	return View::make('test2');
 });
 
-/*Route::controller('account','UserController');*/
 
 Route::when('*', 'csrf', array('post', 'put', 'delete'));
 
@@ -68,7 +59,7 @@ Route::group(array('before' => 'auth'), function()
 
     /*seccion proyectos*/
     Route::get('proyectos', array('uses' => 'HomeController@showProyectos','as'=>'proyectosindex'));
-    Route::get('proyectos/list',array('uses' => 'HomeController@showProyectoslist'));
+    Route::get('proyectos/list',array('before'=>'admin','uses' => 'HomeController@showProyectoslist'));
 
     	/*prefijo para */
 		Route::group(array('prefix' => 'proyectos/seccion/'),function()

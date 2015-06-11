@@ -173,9 +173,14 @@
         </div>
          
     <!-- Modales-->
- 	@include('includes.Modales.CancelarProceso')   
+ 	@include('includes.Modales.CancelarProceso')
+ 	@include('includes.Modales.CambiarSeccion')   
     
   </section>
+
+  <!-- Messages-->
+ 	@include('includes.Messages.MessageSeccionSuccess')
+ 	@include('includes.Messages.MessageError')
 
 <script>
 	
@@ -216,33 +221,30 @@ $(document).ready(function(){
           url: '4',
           dataType: 'json',
           type:'POST',
-          data: $('#formcomercial').serialize(), //Se obtienen los datos del formulario
+          data: $('#formcomercial').serialize(),
            
             success: function(datos)
             {
              
-             
-              //Donde se vana  mostrar los errores
+
               $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4').text('');
-                //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
+                $('.MessageError').modal('show');
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
                   $('#_mensaje').text(datos.message);
                   
 
-	                  if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined)
-	                  {
+	                  if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined){
+	                  		$('.MessageError').modal('hide');
 	                  		if(idproyecto == idproyectoform && MyRegExp.test(value)){
-	                  			result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
-				                  	if(result == true){ 
-										window.location = '5'; 
-										}
-										return false;
+	                  			$('.CambiarSeccion').modal('show').on('click','.ChangeSeccion',function(){
+							          		window.location.href = '5'; 
+							          });
 	                  		}else{
 		                  			if(datos.errors.campo0!=datos.validation){
-		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+		                  				$('.MessageError').modal('show');	
 				        				$('#_campo0').text('Seleccione el folio Correcto.');
 		                  			}
 	                  			
@@ -252,9 +254,10 @@ $(document).ready(function(){
 
                 });
                 }else{
+                  $('#_mensaje').text('');
                   document.getElementById('formcomercial').reset();
-                  alert(datos.message);
-                  window.location = '5';
+                  $('.MessageSeccionSuccess').modal('show');
+                  setTimeout(function(){window.location.href='5'} , 1500);
                 
                   
                 }

@@ -51,8 +51,9 @@
 				    @if(isset($proyectos))
 				        @foreach($proyectos as $proyecto)
 				          <div class="col-sm-12 col-md-4 col-lg-3 box">   
-				              <div class="panel panel-success">
 
+				              <div class="panel panel-success">
+										
 								  <div class="panel-heading " style="background-color:#159049;">
 								    <h5 class="panel-title text-center text-white ">Folio: <strong>{{{$proyecto->folio}}}</strong></h5>
 								  </div>
@@ -98,13 +99,31 @@
 				          </div>
 							 
 				        @endforeach
-				    @endif
+				    	
+				    	@if($proyectos->getTotal()==0)
+				    	  <div class="col-lg-10">
+				    		<div class="jumbotron">
+							  <h2 class="montserrat text-center">No existe ningún registro. Por favor haga un registro</h2>
+							  <div class="col-lg-6 col-lg-push-4">
+							  <br>
+							 	 <p><a class="btn btn-primary btn-lg" href="proyectos/seccion/1" role="button"><i class="fa fa-plus text-white"></i> Agregar Proyecto</a></p>
+							  </div>
+							</div>
+						  </div>
+				    	@endif
+				    	
 						
+				    @endif
+					
+
 				          
       				</div><!-- Termina el box -->
 
 			<div class="container">
 				<center>{{$proyectos->appends(array("buscar"=> Input::get('buscar')))->links()}}</center>
+			</div>
+			<div class="container">
+				<center><h3 class="montserrat-btn">total de proyectos:<span class="text-green"> {{$proyectos->getTotal()}}</span></h3> </center>
 			</div>
     			</section>
 
@@ -138,18 +157,18 @@
   </section>
 
  								
-@if(isset($perfiles))
-									@foreach($perfiles as $perfil)
-										@if($perfil->id_perfil==3)
-									<a href="proyectos/list">
-									<span class="fa-stack fa-2x pull-right" style="margin-top:10px; margin-right:15px; ">
-									<i class="fa fa-square  fa-stack-2x fa-inverse"></i>
-									<i class="fa fa-list fa-stack-1x text-black"></i>
-									</span>
-									</a>
-										@endif
-									@endforeach
-								@endif	
+		@if(isset($perfiles))
+			@foreach($perfiles as $perfil)
+				@if($perfil->id_perfil==3)
+			<a href="proyectos/list">
+			<span class="fa-stack fa-2x pull-right" style="margin-top:10px; margin-right:15px; ">
+			<i class="fa fa-square  fa-stack-2x fa-inverse"></i>
+			<i class="fa fa-list fa-stack-1x text-black"></i>
+			</span>
+			</a>
+				@endif
+			@endforeach
+		@endif	
 
 <script>
 	

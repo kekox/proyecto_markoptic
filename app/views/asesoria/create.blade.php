@@ -191,7 +191,13 @@
             
     <!-- Modales-->
  	@include('includes.Modales.CancelarProceso') 
+ 	@include('includes.Modales.CambiarSeccion')
   </section>
+
+	<!-- Messages-->
+ 	@include('includes.Messages.MessageSeccionSuccess')
+ 	@include('includes.Messages.MessageProyectoTerminado')
+ 	@include('includes.Messages.MessageError')
 
 <script>
 	
@@ -237,22 +243,21 @@ $(document).ready(function(){
               $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4,#_campo5').text('');
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
+                $('.MessageError').modal('show');
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
                   $('#_mensaje').text(datos.message);
 
                   if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined && datos.errors.campo5==undefined){
-                		
+                			$('.MessageError').modal('hide');
                 			if(idproyecto == idproyectoform && MyRegExp.test(value)){
-	                  			result=confirm("Esta Sección ya ha sido llenada, Lo redireccionaremos a otra sección.\n\n ¿Desea ir a la sección?");
-				                  	if(result == true){ 
-										window.location = 'http://www.webapp.com/proyectos'; 
-										}
-										return false;
+	                  			$('.CambiarSeccion').modal('show').on('click','.ChangeSeccion',function(){
+							          		window.location.href = '../../proyectos'; 
+							          });
 	                  		}else{
 		                  			if(datos.errors.campo0!=datos.validation){
-		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+		                  				$('.MessageError').modal('show');	
 				        				$('#_campo0').text('Seleccione el folio Correcto.');
 		                  			}
 	                  			
@@ -261,9 +266,10 @@ $(document).ready(function(){
 
                 });
                 }else{
-                  alert(datos.message);
+                  $('#_mensaje').text('');
                   document.getElementById('formasesoria').reset();
-                  window.location = 'http://www.webapp.com/proyectos';
+                  $('.MessageProyectoTerminado').modal('show');
+                  setTimeout(function(){window.location.href='../../proyectos'} , 1500);
                 
                   
                 }
@@ -275,11 +281,11 @@ $(document).ready(function(){
 
 			        //console.log(XMLHttpRequest);
 			    }else{
-            	 	alert("Algo esta mal");
+            	 	//alert("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
-				    console.log(XMLHttpRequest.statusText);
-				    console.log(textStatus);
-				    console.log(errorThrown);;
+				    //console.log(XMLHttpRequest.statusText);
+				    //console.log(textStatus);
+				    //console.log(errorThrown);;
 		    	}
 			}
             
