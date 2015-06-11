@@ -126,7 +126,7 @@
 <script>
   $(document).ready(function(){
     $('.delete').on('click',function(){
-        var id=(this).attr('value');
+        var id= $(this).attr('value');
           $('#UserDelete').modal('show').on('click','#DeleteUser',function(){
                window.location.href = 'cms/delete/'+id; 
           });

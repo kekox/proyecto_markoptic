@@ -118,6 +118,14 @@
           });
          </script>"
       }}        
+  @elseif(Session::has('message_cancel'))
+      {{ "<script>
+          $(document).ready(function()
+          {
+            $('.MessageStopProcess').modal('show');
+          });
+         </script>"
+      }}   
   @endif 
 
   <!-- Modales-->
@@ -125,6 +133,7 @@
     	
     <!--Mensajes-->
   @include('includes.Messages.MessageDelete2')
+  @include('includes.Messages.MessageStopProcess')
   
   </section>
 
@@ -160,7 +169,7 @@ $(document).ready(function(){
 <script>
   $(document).ready(function(){
     $('.deleteproyecto').on('click',function(){
-        var id=(this).attr('value');
+        var id= $(this).attr('value');
 
         $('#ProyectoDelete').modal('show').on('click','#DeleteProyecto',function(){
                window.location.href = 'proyectos/delete/'+id; 

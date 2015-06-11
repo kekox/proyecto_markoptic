@@ -5,17 +5,15 @@
 
 @section('contenido')
 <script>
-	document.onload(alert('Estas a punto de iniciar el proceso de agregar un proyecto, tome en cuenta las siguientes recomendaciones antes de iniciar el proceso:\n\n*Contar con el tiempo necesario para realizar el proceso.\n*En todo momento recordar el folio del proyecto.\n*Una vez iniciado el proceso llegar hasta el final de este mismo.\n\n En caso de no contar con el tiempo suficiente , cancele el proceso porfavor.'));
+$(window).load(function() {
+      $('.MessageStartProcess').modal('show').on('click','#StopProcess',function(){
+          		window.location.href = '../../dashboard'; 
+          })
+          
+});
+	
+	
 
-	function confirm_proyecto(){
-		result=confirm("Desea cancelar este proceso?");
-          	if(result == true){ 
-				window.history.back();
-			} 
-			else{ 
-				return false; 
-			}
-	}
 </script>
   <section >
             <div class="container-fluid ">
@@ -323,7 +321,7 @@
               		</div>
 
             	</div>
-					<a onclick="confirm_proyecto()">
+					<a class="ProcessCancel">
 					<span class="fa-stack fa-2x pull-right" style="margin-top:10px; margin-right:15px;" title="Cancelar Proceso">
 					<i class="fa fa-square  fa-stack-2x fa-inverse"></i>
 					<i class="fa fa-sign-out fa-stack-1x text-black"></i>
@@ -332,8 +330,18 @@
             </div>
         </div>
             
-    
+    <!-- Modales-->
+ 	@include('includes.Modales.CancelarProceso')
+ 
+
+
   </section>
+	
+	<!-- Messages-->
+ 	@include('includes.Messages.MessageSeccionSuccess')
+ 	@include('includes.Messages.MessageError')
+ 	@include('includes.Messages.MessageStartProcess')
+ 	
 
 <script>
 	
@@ -374,24 +382,28 @@ $(document).ready(function(){
             {
              
              
-              //Donde se vana  mostrar los errores
               $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4 ,#_campo5 ,#_campo6 ,#_campo7 ,#_campo8 ,#_campo9 ,#_campo10 ,#_campo11 ,#_campo12').text('');
-                //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
+               
                 $.each(datos.errors, function(index, value)
                 {
                   $('#_'+index).text(value);
                   $('#_mensaje').text(datos.message);
+                  $('.MessageError').modal('show');	
+                  
 
 		                if(MyRegExp.test(value)){
 		          			$('#_campo1').text(datos.message2);
+		          			
 		          		}
 
                 });
                 }else{
-                  alert(datos.message);
+                  $('#_mensaje,#_campo1').text('');
                   document.getElementById('formproyectos1').reset();
-                  window.location = '2';
+                  $('.MessageSeccionSuccess').modal('show');
+                  setTimeout(function(){window.location.href='2'} , 1500);  
+                  
                 
                   
                 }
@@ -401,11 +413,11 @@ $(document).ready(function(){
             		alert('El folio que ha decidido tomar , ya existe. Favor de seleccionar otro # de Folio.')
 			        $('#_campo1').text('Favor de cambiar el folio');
 			    }else{
-            	 	console.log("Algo esta mal");
+            	 	//console.log("Algo esta mal");
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
-				    console.log(XMLHttpRequest.statusText);
-				    console.log(textStatus);
-				    console.log(errorThrown);
+				    //console.log(XMLHttpRequest.statusText);
+				    //console.log(textStatus);
+				    //console.log(errorThrown);
 		    	}
 			}
             
@@ -418,4 +430,19 @@ $(document).ready(function(){
 
 
 </script>
+
+<script>
+  $(document).ready(function(){
+    $('.ProcessCancel').on('click',function(){
+       	var id= $(this).attr('value');
+          $('#ProcessCancel').modal('show').on('click','#ProcesoCancel',function(){
+          		window.location.href = '../../proyectos'; 
+          });
+
+
+    });
+
+  });
+</script>
+
 @stop

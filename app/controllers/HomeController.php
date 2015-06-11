@@ -44,14 +44,19 @@ class HomeController extends BaseController {
 			$proyectos = Proyecto::where('folio','LIKE','%'.$buscar.'%')
 				->orwhere('nombre_proyecto','LIKE','%'.$buscar.'%')
 				->simplePaginate(6);
+
 				
 		}else{
 			$proyectos = DB::table('users')
                             ->join('proyectos',function($join)
+
                             {
                                 $join->on('users.id','=','proyectos.id_user');
                             })
-                            ->simplePaginate(6);
+                            ->orderBy('proyectos.created_at','Desc')
+                            ->paginate(6);
+                            
+
 		}
 
 		return View::make('proyectos/index',array('perfiles' => $perfiles,'proyectos' => $proyectos));

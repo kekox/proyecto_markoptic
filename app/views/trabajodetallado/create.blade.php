@@ -176,11 +176,24 @@
               		</div>
 
             	</div>
+
+            	@if(isset($proyectos))
+					@foreach($proyectos as $proyecto)
+            	<a value="{{$proyecto->folio}}" class="ProcessCancel">
+					<span class="fa-stack fa-2x pull-right" style="margin-top:10px; margin-right:15px;" title="Cancelar Proceso">
+					<i class="fa fa-square  fa-stack-2x fa-inverse"></i>
+					<i class="fa fa-sign-out fa-stack-1x text-black"></i>
+					</span>
+					</a>
+					@endforeach
+				@endif
+
 						
             </div>
         </div>
             
-    
+    <!-- Modales-->
+ 	@include('includes.Modales.CancelarProceso') 
   </section>
 
 <script>
@@ -289,4 +302,19 @@ $(document).ready(function(){
 
 
 </script>
+
+<script>
+  $(document).ready(function(){
+    $('.ProcessCancel').on('click',function(){
+       	var id= $(this).attr('value');
+          $('#ProcessCancel').modal('show').on('click','#ProcesoCancel',function(){
+          		window.location.href = '../../proyectos/stop/'+id; 
+          });
+
+
+    });
+
+  });
+</script>
+
 @stop

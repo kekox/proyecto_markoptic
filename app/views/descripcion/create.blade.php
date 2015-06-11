@@ -226,10 +226,13 @@
         </div>
             
     <!-- Modales-->
- 	 @include('includes.Modales.CancelarProceso')
+ 	@include('includes.Modales.CancelarProceso')
+ 	@include('includes.Modales.CambiarSeccion')
     
   </section>
-
+	<!-- Messages-->
+ 	@include('includes.Messages.MessageSeccionSuccess')
+ 	@include('includes.Messages.MessageError')
 <script>
 	
 $(document).ready(function(){
@@ -281,22 +284,21 @@ $(document).ready(function(){
               $('#_campo0 ,#_campo1 ,#_campo2 ,#_campo3 ,#_campo4 ,#_campo5 ,#_campo6').text('');
                 //Si la respuesta de ajax es false se hace esto
                 if(datos.success == false){
+                $('.MessageError').modal('show');	
                 $.each(datos.errors, function(index, value)
                 {
                    $('#_'+index).text(value);
 	               $('#_mensaje').text(datos.message);
 
 	                if(datos.errors.campo1==undefined && datos.errors.campo2==undefined&& datos.errors.campo3==undefined && datos.errors.campo4==undefined&& datos.errors.campo5==undefined&& datos.errors.campo6==undefined){
-                		
+                			$('.MessageError').modal('hide');
                 			if(idproyecto == idproyectoform && MyRegExp.test(value)){
-	                  			result=confirm("Esta Sección ya ha sido llenada, Le segurimos pasar a la siguiente sección.\n\n ¿Desea ir a la siguiente sección?");
-				                  	if(result == true){ 
-										window.location = '3'; 
-										}
-										return false;
+	                  			$('.CambiarSeccion').modal('show').on('click','.ChangeSeccion',function(){
+							          		window.location.href = '3'; 
+							          });
 	                  		}else{
 		                  			if(datos.errors.campo0!=datos.validation){
-		                  				alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
+		                  				$('.MessageError').modal('show');	
 				        				$('#_campo0').text('Seleccione el folio Correcto.');
 		                  			}
 	                  			
@@ -307,9 +309,10 @@ $(document).ready(function(){
                 
 
                 }else{
+                  $('#_mensaje').text('');
                   document.getElementById('formdescripciones').reset();	
-                  alert(datos.message);
-                  window.location = '3';
+                  $('.MessageSeccionSuccess').modal('show');
+                  setTimeout(function(){window.location.href='3'} , 1500); 
                 
                   
                 }
@@ -320,11 +323,11 @@ $(document).ready(function(){
             		alert('Folio Incorrecto.\n\nFavor de seleccionar el folio del proyecto que puso al principio.');
 			        $('#_campo0').text('Seleccione el folio correcto');
 			    }else{
-            	 	alert("Algo salió mal");
+            	 	
 				    //Se puede obtener informacion útil inspecionando el Objeto XMLHttpRequest
-				    console.log(XMLHttpRequest.statusText);
-				    console.log(textStatus);
-				    console.log(errorThrown);;
+				    //console.log(XMLHttpRequest.statusText);
+				    //console.log(textStatus);
+				    //console.log(errorThrown);;
 		    	}
 			}
             
@@ -342,9 +345,9 @@ $(document).ready(function(){
 <script>
   $(document).ready(function(){
     $('.ProcessCancel').on('click',function(){
-       	var id=(this).attr('value');
+       	var id= $(this).attr('value');
           $('#ProcessCancel').modal('show').on('click','#ProcesoCancel',function(){
-          		window.location.href = '../../proyectos/delete/'+id; 
+          		window.location.href = '../../proyectos/stop/'+id; 
           });
 
 

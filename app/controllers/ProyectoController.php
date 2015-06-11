@@ -143,4 +143,10 @@ class ProyectoController extends Controller {
         return Redirect::to('proyectos')
             ->with('message_delete','Proyecto Eliminado Correctamente');
 	}
+
+	public function stop($proyecto_folio){
+		DB::table('proyectos')->where('folio', '=', $proyecto_folio)->delete();
+        return Redirect::to('proyectos')
+            ->with('message_cancel','Proceso cancelado');
+	}
 }
