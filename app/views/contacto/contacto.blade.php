@@ -25,7 +25,7 @@
 
                       <div class="form-group">
                           <label for="name" class="robot" >Nombre:</label>
-                          <input type="text" name="name" class="form-control" placeholder="Nombre">
+                          <input type="text" name="name" class="form-control" placeholder="Nombre" value="{{Auth::user()->nombre." ".Auth::user()->apellido_Paterno." ".Auth::user()->apellido_Materno}}" readonly>
                           <span class="display-errors" id="_name"> {{ $errors->first('name') }} </span>
                       </div>
                      

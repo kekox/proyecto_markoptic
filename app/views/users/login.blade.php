@@ -81,7 +81,7 @@
                                 <br>
                          
 
-                            <p>¿Se te olvido tu contraseña? <a href="http://www.webapp.com/password/reset" class="">Recuperar Contraseña</a></p>
+                            <p>¿Se te olvido tu contraseña? <a href="password/reset" class="">Recuperar Contraseña</a></p>
                             <br>
                             
                       </div><!--Termina el panel body-->

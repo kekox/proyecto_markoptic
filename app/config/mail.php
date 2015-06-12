@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'mailgun',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp-mail.outlook.com',
+	'host' => 'smtp.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'keko_daniel@hotmail.com', 'name' => 'Markoptic Administrator'),
+	'from' => array('address' => 'kmedina@markoptic.mx', 'name' => 'Administrador'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'keko_daniel@hotmail.com',
+	'username' => 'postmaster@sandbox5d6ff534af03407694a27e6413ec9e62.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'k3k01992',
+	'password' => '01dde9459e890fc1b38f5894fcec11d2',
 
 	/*
 	|--------------------------------------------------------------------------
